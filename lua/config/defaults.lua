@@ -42,6 +42,7 @@ vim.o.visualbell = true
 vim.o.colorcolumn = '100'
 vim.o.updatetime = 100
 vim.o.virtualedit = 'block'
+vim.g.maplocalleader = '  '
 
 vim.cmd([[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup

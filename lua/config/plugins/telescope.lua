@@ -162,7 +162,7 @@ M.config = {
 			vim.keymap.set('n', 'gi', builtin.git_status, m)
 			--vim.keymap.set("n", ":", builtin.commands, m)
 
-			vim.keymap.set("n", "<leader><leader>", function()
+			vim.keymap.set("n", "<leader>so", function()
 				require("telescope").extensions.smart_open.smart_open()
 			end, { noremap = true, silent = true })
 
@@ -357,7 +357,7 @@ M.config = {
 				{
 					desc = "Smart Open",
 					cmd = "<CMD>Telescope smart_open<CR>",
-					keys = { "n", "<leader><leader>" }
+					keys = { "n", "<leader>so" }
 				},
 			})
 		end

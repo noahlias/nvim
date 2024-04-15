@@ -19,26 +19,18 @@ local opts = {
 	reload_on_bufenter = false,
 	respect_buf_cwd = true,
 	on_attach = "disable",
-	remove_keymaps = false,
 	select_prompts = false,
 	view = {
 		centralize_selection = false,
 		cursorline = true,
 		debounce_delay = 15,
 		width = custom.width,
-		hide_root_folder = false,
 		side = "left",
 		preserve_window_proportions = false,
 		number = false,
 		relativenumber = false,
 		signcolumn = "yes",
-		mappings = {
-			custom_only = false,
-			list = {
-				-- user mappings go here
-			},
-		},
-		float = {
+			float = {
 			enable = false,
 			quit_on_focus_loss = true,
 			open_win_config = {

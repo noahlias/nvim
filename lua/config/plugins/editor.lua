@@ -68,6 +68,8 @@ return {
 	{
 		"fedepujol/move.nvim",
 		config = function()
+			require('move').setup({
+			})
 			local opts = { noremap = true, silent = true }
 			-- Normal-mode commands
 			vim.keymap.set('n', '<c-y>', ':MoveLine(1)<CR>', opts)
@@ -104,6 +106,7 @@ return {
 	},
 	{
 		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end

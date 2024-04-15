@@ -499,4 +499,14 @@ return {
 		lazy = true,
 		ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
 	}
-}
+	, {
+	'Julian/lean.nvim',
+	enabled = true,
+	event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+	dependencies = {
+		'neovim/nvim-lspconfig',
+		'nvim-lua/plenary.nvim',
+	},
+	opts = {
+	}
+}, }
