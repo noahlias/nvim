@@ -2,6 +2,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
+		enabled = true,
 		init = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
@@ -10,6 +11,8 @@ return {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
+			window = { margin = { 1, 0, 0.03, 0.6 }, border = "single" },
+			layout = { height = { min = 4, max = 75 }, align = "right", },
 		}
 	},
 	{
@@ -119,6 +122,7 @@ return {
 	{
 		"kawre/leetcode.nvim",
 		build = ":TSUpdate html",
+		lazy = false,
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 			"nvim-lua/plenary.nvim", -- required by telescope
@@ -245,7 +249,6 @@ return {
 			},
 		},
 	},
-	{ "ofseed/copilot-status.nvim" },
 	{
 		"3rd/image.nvim",
 		-- enabled = false,
@@ -253,9 +256,17 @@ return {
 			package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?/init.lua;"
 			package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?.lua;"
 		end,
-		event = "VeryLazy",
+		event = function(plugin)
+			return {
+				{
+					event = "BufRead",
+					pattern = plugin.opts.hijack_file_patterns,
+				},
+			}
+		end,
 		opts = {
 			backend = "kitty",
+			hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
 			integrations = {
 				markdown = {
 					enabled = true,
@@ -387,7 +398,7 @@ return {
 	},
 	{
 		'chomosuke/typst-preview.nvim',
-		ft = 'typ',
+		ft = 'typst',
 		version = '0.1.*',
 		build = function() require 'typst-preview'.update() end,
 	},
@@ -442,30 +453,6 @@ return {
 	}
 	,
 	{
-		'stevearc/conform.nvim',
-		opts = {
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
-			lua = { "stylua" },
-			python = { "ruff" },
-			go = { "gofumpt", "goimports" },
-
-			html = { "prettier" },
-			css = { "prettier" },
-			less = { "prettier" },
-			scss = { "prettier" },
-			javascript = { "prettier" },
-			typescript = { "prettier" },
-			javascriptreact = { "prettier" },
-			typescriptreact = { "prettier" },
-			vue = { "prettier" },
-			json = { "prettier" },
-			yaml = { "prettier" },
-		},
-	},
-	{
 		"HakonHarnes/img-clip.nvim",
 		ft = { "markdwon", "tex", "typ" },
 		cmd = {
@@ -496,8 +483,7 @@ return {
 	{
 		'mrcjkb/haskell-tools.nvim',
 		version = '^3', -- Recommended
-		lazy = true,
-		ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+		lazy = false,
 	}
 	, {
 	'Julian/lean.nvim',

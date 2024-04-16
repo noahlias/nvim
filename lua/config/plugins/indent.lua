@@ -6,6 +6,7 @@ return {
 			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL", })
 			require('hlchunk').setup({
 				chunk = {
+					notify = false,
 					enable = true,
 					use_treesitter = true,
 					style = {

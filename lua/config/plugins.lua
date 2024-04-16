@@ -72,6 +72,8 @@ require("lazy").setup({
 	-- extra plugins
 	require("config.plugins.rustacean"),
 	require("config.plugins.typescript-tools"),
+	---mini.nvim
+	require("config.plugins.mini"),
 	{ "dstein64/vim-startuptime" }, })
 
 require("plugin.vertical_cursor_movement")

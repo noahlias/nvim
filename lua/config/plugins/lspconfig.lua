@@ -45,6 +45,44 @@ M.config = {
 			"b0o/SchemaStore.nvim",
 			"nanotee/sqls.nvim",
 			-- "mjlbach/lsp_signature.nvim",
+			{
+				'stevearc/conform.nvim',
+				opts = {
+					format_on_save = {
+						timeout_ms = 500,
+						lsp_fallback = true,
+					},
+					lua = { "stylua" },
+					python = { "ruff" },
+					go = { "gofumpt", "goimports" },
+
+					html = { "prettier" },
+					css = { "prettier" },
+					less = { "prettier" },
+					scss = { "prettier" },
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					javascriptreact = { "prettier" },
+					typescriptreact = { "prettier" },
+					vue = { "prettier" },
+					json = { "prettier" },
+					yaml = { "prettier" },
+				},
+				config = function()
+					require("conform").setup()
+				end,
+				keys = {
+					{
+						"<leader>cf",
+						function()
+							require("conform").format { lsp_fallback = true }
+						end,
+						desc = "Format Document",
+						mode = { "n", "v" }
+					},
+				},
+			},
+
 		},
 
 		config = function()
@@ -52,8 +90,8 @@ M.config = {
 			M.lsp = lsp
 
 			lsp.ensure_installed({
-				'tsserver',
-				'eslint',
+				-- 'tsserver',
+				-- 'eslint',
 				'gopls',
 				'jsonls',
 				'html',
@@ -199,9 +237,10 @@ end
 F.configureDocAndSignature = function()
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 		vim.lsp.handlers.signature_help, {
-			silent = true,
+			-- silent = true,
 			focusable = false,
 			border = "rounded",
+			zindex = 60,
 		}
 	)
 	local group = vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
@@ -211,12 +250,15 @@ F.configureDocAndSignature = function()
 			vim.diagnostic.open_float(0, {
 				scope = "cursor",
 				focusable = false,
+				zindex = 10,
 				close_events = {
 					"CursorMoved",
 					"CursorMovedI",
 					"BufHidden",
 					"InsertCharPre",
+					"InsertEnter",
 					"WinLeave",
+					"ModeChanged",
 				},
 			})
 		end,
@@ -240,6 +282,19 @@ F.configureDocAndSignature = function()
 	-- lspsignature.setup(F.signature_config)
 end
 
+local documentation_window_open_index = 0
+local function show_documentation()
+	documentation_window_open_index = documentation_window_open_index + 1
+	local current_index = documentation_window_open_index
+	documentation_window_open = true
+	vim.defer_fn(function()
+		if current_index == documentation_window_open_index then
+			documentation_window_open = false
+		end
+	end, 500)
+	vim.lsp.buf.hover()
+end
+
 
 F.configureKeybinds = function()
 	vim.api.nvim_create_autocmd('LspAttach', {
@@ -247,7 +302,7 @@ F.configureKeybinds = function()
 		callback = function(event)
 			local opts = { buffer = event.buf, noremap = true, nowait = true }
 
-			vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
+			vim.keymap.set('n', '<leader>h', show_documentation, opts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 			vim.keymap.set('n', 'gD', ':tab sp<CR><cmd>lua vim.lsp.buf.definition()<cr>', opts)
 			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)

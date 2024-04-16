@@ -66,12 +66,12 @@ local nmappings = {
 	{ from = "srv",           to = "<C-w>b<C-w>H", },
 
 	-- Tab management
-	{ from = "tu",            to = ":tab<CR>", },
-	{ from = "tU",            to = ":tab split<CR>", },
-	{ from = "tn",            to = ":-tabnext<CR>", },
-	{ from = "ti",            to = ":+tabnext<CR>", },
-	{ from = "tmn",           to = ":-tabmove<CR>", },
-	{ from = "tmi",           to = ":+tabmove<CR>", },
+	{ from = "<leader>tu",    to = ":tab<CR>", },
+	{ from = "<leader>tU",    to = ":tab split<CR>", },
+	{ from = "<leader>tn",    to = ":-tabnext<CR>", },
+	{ from = "<leader>ti",    to = ":+tabnext<CR>", },
+	{ from = "<leader>tmn",   to = ":-tabmove<CR>", },
+	{ from = "<leader>tmi",   to = ":+tabmove<CR>", },
 
 	-- Other
 	{ from = "<leader>sw",    to = ":set wrap<CR>" },
