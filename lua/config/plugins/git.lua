@@ -12,7 +12,7 @@ return {
 					changedelete = { hl = 'GitSignsChange', text = '▒', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
 					untracked    = { hl = 'GitSignsAdd', text = '┆', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
 				},
-				current_line_blame = false,
+				-- current_line_blame = false,
 			})
 			vim.keymap.set("n", "<leader>g-", ":Gitsigns prev_hunk<CR>", { noremap = true, silent = true })
 			vim.keymap.set("n", "<leader>g=", ":Gitsigns next_hunk<CR>", { noremap = true, silent = true })
@@ -31,11 +31,19 @@ return {
 			vim.keymap.set("n", "<leader>gl", ":LazyGit<CR>", { noremap = true, silent = true })
 		end
 	},
-	-- {
-	-- 	"APZelos/blamer.nvim",
-	-- 	config = function()
-	-- 		vim.g.blamer_enabled = true
-	-- 		vim.g.blamer_relative_time = true
-	-- 	end
-	-- }
+	{
+		"tpope/vim-fugitive",
+		cmd = {
+			"G",
+			"Git",
+		},
+	},
+	{
+		"APZelos/blamer.nvim",
+		config = function()
+			vim.g.blamer_enabled = true
+			vim.g.blamer_relative_time = true
+			vim.g.blamer_date_format = '%y/%m/%d'
+		end
+	}
 }

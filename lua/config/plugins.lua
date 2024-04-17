@@ -76,6 +76,7 @@ require("lazy").setup({
 	require("config.plugins.mini"),
 	require("config.plugins.clangd_extensions"),
 	-- { "dstein64/vim-startuptime" },
+	require("config.plugins.noice")
 }
 )
 

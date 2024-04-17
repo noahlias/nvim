@@ -18,7 +18,7 @@ return {
 	{
 		-- NOTE: there is some note about this misc
 		"mvllow/stand.nvim",
-		-- lazy = true,
+		lazy = true,
 		config = function()
 			require("stand").setup({
 				minute_interval = 60
@@ -110,13 +110,6 @@ return {
 				},
 			}
 		end,
-	}
-	,
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
 	}
 	,
 	{
@@ -449,6 +442,7 @@ return {
 	},
 	{
 		"ethanholz/freeze.nvim",
+		lazy = true,
 		config = true,
 	}
 	,

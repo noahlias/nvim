@@ -23,126 +23,22 @@ M.config = {
 			-- "nvim-telescope/telescope-ui-select.nvim",
 			'stevearc/dressing.nvim',
 			'dimaportenko/telescope-simulators.nvim',
-			"nvim-telescope/telescope-file-browser.nvim",
-			"nvim-telescope/telescope-media-files.nvim",
-			{
-				"danielfalk/smart-open.nvim",
-				branch = "0.2.x",
-				config = function()
-					require("telescope").load_extension("smart_open")
-				end,
-				dependencies = {
-					"kkharji/sqlite.lua",
-					-- Only required if using match_algorithm fzf
-					{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-					-- Optional.  If installed, native fzy will be used when match_algorithm is fzy
-					{ "nvim-telescope/telescope-fzy-native.nvim" },
-				},
-			},
-			{
-				"folke/noice.nvim",
-				event = "VeryLazy",
-				init = function()
-					vim.o.cmdheight = 0
-
-					-- Make sure to load noice when notify is called
-					---@diagnostic disable-next-line: duplicate-set-field
-					vim.notify = function(...)
-						require("noice").notify(...)
-					end
-				end,
-				dependencies = {
-					"MunifTanjim/nui.nvim",
-					"rcarriga/nvim-notify",
-				},
-				opts = {
-					presets = {
-						long_message_to_split = true,
-						-- command_palette = true,
-						inc_rename = true,
-						bottom_search = true,
-					},
-					cmdline = {
-						view = 'cmdline_popup',
-						format = {
-							search_down = {
-								view = "cmdline",
-							},
-							search_up = {
-								view = "cmdline",
-							},
-							substitute = {
-								pattern = {
-									"^:%s*%%s?n?o?m?/",
-									"^:'<,'>%s*s?n?m?/",
-									"^:%d+,%d+%s*s?n?m?/",
-								},
-								icon = " /",
-								view = "cmdline",
-								lang = "regex",
-							},
-						},
-					},
-					lsp = {
-						override = {
-							["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-							["vim.lsp.util.stylize_markdown"] = true,
-							["cmp.entry.get_documentation"] = true,
-						},
-						progress = {
-							enabled = false,
-						},
-						message = {
-							enabled = false,
-						},
-						hover = {
-							silent = true,
-						}
-					},
-					views = {
-						cmdline_popup = {
-							position = {
-								row = 5,
-								col = "50%",
-							},
-							size = {
-								width = 60,
-								height = "auto",
-							},
-						},
-						popupmenu = {
-							relative = "editor",
-							position = {
-								row = 8,
-								col = "50%",
-							},
-							size = {
-								width = 60,
-								height = 10,
-							},
-							border = {
-								style = "rounded",
-								padding = { 0, 1 },
-							},
-							win_options = {
-								winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-							},
-						},
-						hover = {
-							size = {
-								max_width = 80,
-							},
-							border = {
-								style = custom.border,
-								padding = { 0, custom.border == "none" and 2 or 0 },
-							},
-							position = {
-								row = custom.border == "none" and 1 or 2,
-							},
-						},
-					},
-				},
-			}
+			-- "nvim-telescope/telescope-file-browser.nvim",
+			-- "nvim-telescope/telescope-media-files.nvim",
+			-- {
+			-- 	"danielfalk/smart-open.nvim",
+			-- 	branch = "0.2.x",
+			-- 	config = function()
+			-- 		require("telescope").load_extension("smart_open")
+			-- 	end,
+			-- 	dependencies = {
+			-- 		"kkharji/sqlite.lua",
+			-- 		-- Only required if using match_algorithm fzf
+			-- 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			-- 		-- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+			-- 		{ "nvim-telescope/telescope-fzy-native.nvim" },
+			-- 	},
+			-- },
 		},
 		config = function()
 			local builtin = require('telescope.builtin')
@@ -166,7 +62,7 @@ M.config = {
 				require("telescope").extensions.smart_open.smart_open()
 			end, { noremap = true, silent = true })
 
-			local trouble = require("trouble.providers.telescope")
+			-- local trouble = require("trouble.providers.telescope")
 
 			local ts = require('telescope')
 			local actions = require('telescope.actions')
@@ -223,7 +119,7 @@ M.config = {
 							["<C-l>"] = "preview_scrolling_up",
 							["<C-y>"] = "preview_scrolling_down",
 							["<esc>"] = "close",
-						}
+						},
 					},
 					color_devicons = true,
 					prompt_prefix = "🔍 ",
@@ -284,9 +180,8 @@ M.config = {
 			ts.load_extension('telescope-tabs')
 			ts.load_extension('fzf')
 			ts.load_extension('simulators')
-			ts.load_extension("commander")
-			ts.load_extension("file_browser")
-			ts.load_extension("media_files")
+			-- ts.load_extension("file_browser")
+			-- ts.load_extension("media_files")
 			ts.load_extension("noice")
 
 			require("simulators").setup({
@@ -304,7 +199,6 @@ M.config = {
 	},
 	{
 		"FeiyouG/commander.nvim",
-		dependencies = "nvim-telescope/telescope.nvim",
 		keys = {
 			{ "<c-q>", "<CMD>Telescope commander<CR>", mode = "n" },
 		},
@@ -344,16 +238,16 @@ M.config = {
 					cmd = "<CMD>Telescope git_status<CR>",
 					keys = { "n", "<leader>gs" }
 				},
-				{
-					desc = "File browser",
-					cmd = "<CMD>Telescope file_browser<CR>",
-					keys = { "n", "<leader>fb" }
-				},
-				{
-					desc = "Media Files",
-					cmd = "<CMD>Telescope media_files<CR>",
-					keys = { "n", "<leader>fm" }
-				},
+				-- {
+				-- 	desc = "File browser",
+				-- 	cmd = "<CMD>Telescope file_browser<CR>",
+				-- 	keys = { "n", "<leader>fb" }
+				-- },
+				-- {
+				-- 	desc = "Media Files",
+				-- 	cmd = "<CMD>Telescope media_files<CR>",
+				-- 	keys = { "n", "<leader>fm" }
+				-- },
 				{
 					desc = "Smart Open",
 					cmd = "<CMD>Telescope smart_open<CR>",
