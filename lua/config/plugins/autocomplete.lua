@@ -110,9 +110,9 @@ M.configfunc = function()
 			maxheight = 10,
 			format = function(entry, vim_item)
 				local kind = lspkind.cmp_format({
-							mode = "symbol_text",
-							symbol_map = { Codeium = "", },
-						})(entry, vim_item)
+					mode = "symbol_text",
+					symbol_map = { Codeium = "", },
+				})(entry, vim_item)
 				local strings = vim.split(kind.kind, "%s", { trimempty = true })
 				kind.kind = " " .. (strings[1] or "") .. " "
 				kind.menu = limitStr(entry:get_completion_item().detail or "")
@@ -123,6 +123,7 @@ M.configfunc = function()
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "buffer" },
+			{ name = "ultisnips" },
 		}, {
 			{ name = "path" },
 			{ name = "nvim_lua" },

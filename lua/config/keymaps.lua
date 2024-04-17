@@ -12,6 +12,7 @@ local nmappings = {
 	-- copy to clipboard
 	--[[ { from = '"+y',           to = "by",                                                                  mode = mode_v } ]]
 
+	{ from = "mp",            to = ":put _<CR>p",                                                         mode = mode_nv },
 	-- Movement
 	{ from = "u",             to = "k",                                                                   mode = mode_nv },
 	{ from = "e",             to = "j",                                                                   mode = mode_nv },

@@ -15,3 +15,17 @@ snippet gt_detail "Github Detail Expand"
 ${0}
 </details>
 endsnippet
+
+snippet hg "Hugo Start"
+
+---
+title: "${1}"
+date: ${2:, `!v strftime('%Y-%m-%dT%H:%M:%S%z')`}
+draft: false
+tags: ["${3}"]
+categories: ["${4}"]
+mathjax: true
+---
+
+endsnippet
+

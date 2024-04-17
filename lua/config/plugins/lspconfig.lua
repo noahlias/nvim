@@ -163,6 +163,8 @@ M.config = {
 			require("config.lsp.go").setup(lspconfig, lsp)
 			require("config.lsp.sql").setup(lspconfig, lsp)
 			require("config.lsp.yaml").setup(lspconfig, lsp)
+			-- volar
+			require("config.lsp.vue").setup(lspconfig, lsp)
 
 			-- require("config.lsp.haskell").setup(lspconfig, lsp)
 
