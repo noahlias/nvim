@@ -1,12 +1,15 @@
 return {
 	"Bekaboo/dropbar.nvim",
-	commit = "19011d96959cd40a7173485ee54202589760caae",
+	-- commit = "19011d96959cd40a7173485ee54202589760caae",
+	dependencies = {
+		'nvim-telescope/telescope-fzf-native.nvim'
+	},
 	config = function()
 		local api = require("dropbar.api")
 		vim.keymap.set('n', '<Leader>;', api.pick)
-		vim.keymap.set('n', '[c', api.goto_context_start)
-		vim.keymap.set('n', ']c', api.select_next_context)
-
+		-- vim.keymap.set('n', '[c', api.goto_context_start)
+		-- vim.keymap.set('n', ']c', api.select_next_context)
+		--
 		local confirm = function()
 			local menu = api.get_current_dropbar_menu()
 			if not menu then

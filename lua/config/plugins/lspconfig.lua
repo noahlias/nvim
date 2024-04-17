@@ -53,7 +53,7 @@ M.config = {
 						lsp_fallback = true,
 					},
 					lua = { "stylua" },
-					python = { "ruff" },
+					python = { "black", "isort", "ruff" },
 					go = { "gofumpt", "goimports" },
 
 					html = { "prettier" },
@@ -91,7 +91,6 @@ M.config = {
 
 			lsp.ensure_installed({
 				-- 'tsserver',
-				-- 'eslint',
 				'gopls',
 				'jsonls',
 				'html',

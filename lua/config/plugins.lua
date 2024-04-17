@@ -74,7 +74,10 @@ require("lazy").setup({
 	require("config.plugins.typescript-tools"),
 	---mini.nvim
 	require("config.plugins.mini"),
-	{ "dstein64/vim-startuptime" }, })
+	require("config.plugins.clangd_extensions"),
+	-- { "dstein64/vim-startuptime" },
+}
+)
 
 require("plugin.vertical_cursor_movement")
 

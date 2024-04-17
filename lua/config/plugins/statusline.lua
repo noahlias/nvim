@@ -82,9 +82,9 @@ return {
 				lazy_status.updates,
 				cond = lazy_status.has_updates,
 				color = { fg = "#ff9e64" },
-			}, 'copilot', "encoding", "fileformat" },
-			lualine_y = { 'filesize', 'filetype' },
-			lualine_z = { 'location' }
+			}, 'copilot', "fileformat" },
+			lualine_y = { 'location', 'filesize', 'filetype' },
+			lualine_z = { 'mode' }
 		},
 		inactive_sections = {
 			lualine_a = {},

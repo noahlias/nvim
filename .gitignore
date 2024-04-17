@@ -10,3 +10,5 @@ _machine_specific.vim
 .vim-bookmarks
 
 lua/config/machine_specific.lua
+*.log
+spell/

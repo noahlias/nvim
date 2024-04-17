@@ -24,7 +24,7 @@ return {
 			dashboard.button("Ctrl f", "󰊄  Live grep"),
 			dashboard.button("l", "󰇯  Leetcode", "<Cmd>Leet<CR>"),
 			dashboard.button("c", "  Configuration", "<Cmd>edit ~/.config/nvim<CR>"),
-			-- dashboard.button("u", "  Update plugins", "<Cmd>Lazy sync<CR>"),
+			dashboard.button("f", "  File Browser", "<Cmd>Telescope file_browser<CR>"),
 			dashboard.button("q", "󰅚  Quit", "<Cmd>qa<CR>"),
 		}
 
