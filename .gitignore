@@ -11,4 +11,4 @@ _machine_specific.vim
 
 lua/config/machine_specific.lua
 *.log
-spell/
+spell/*
