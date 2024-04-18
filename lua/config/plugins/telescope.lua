@@ -24,7 +24,13 @@ M.config = {
 			'stevearc/dressing.nvim',
 			'dimaportenko/telescope-simulators.nvim',
 			-- "nvim-telescope/telescope-file-browser.nvim",
-			-- "nvim-telescope/telescope-media-files.nvim",
+			-- {
+			-- 	"nvim-telescope/telescope-media-files.nvim",
+			-- 	dependencies = {
+			-- 		"nvim-lua/popup.nvim",
+			-- 		"nvim-lua/plenary.nvim",
+			-- 	}
+			-- },
 			-- {
 			-- 	"danielfalk/smart-open.nvim",
 			-- 	branch = "0.2.x",
@@ -52,16 +58,20 @@ M.config = {
 			vim.keymap.set('n', '<c-_>', builtin.current_buffer_fuzzy_find, m)
 			vim.keymap.set('n', 'z=', builtin.spell_suggest, m)
 
-			vim.keymap.set('n', '<leader>d', builtin.diagnostics, m)
+			vim.keymap.set('n', '<leader>d', function()
+				builtin.diagnostics({
+					severity_sort = true,
+				})
+			end, m)
 			-- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
 			-- vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
 			-- vim.keymap.set('n', 'gi', builtin.git_status, m)
 			--vim.keymap.set("n", ":", builtin.commands, m)
 
-			vim.keymap.set("n", "<leader>so", function()
-				require("telescope").extensions.smart_open.smart_open()
-			end, { noremap = true, silent = true })
-
+			-- vim.keymap.set("n", "<leader>so", function()
+			-- 	require("telescope").extensions.smart_open.smart_open()
+			-- end, { noremap = true, silent = true })
+			--
 			-- local trouble = require("trouble.providers.telescope")
 
 			local ts = require('telescope')
@@ -248,15 +258,14 @@ M.config = {
 				-- 	cmd = "<CMD>Telescope media_files<CR>",
 				-- 	keys = { "n", "<leader>fm" }
 				-- },
-				{
-					desc = "Smart Open",
-					cmd = "<CMD>Telescope smart_open<CR>",
-					keys = { "n", "<leader>so" }
-				},
+				-- {
+				-- 	desc = "Smart Open",
+				-- 	cmd = "<CMD>Telescope smart_open<CR>",
+				-- 	keys = { "n", "<leader>so" }
+				-- },
 			})
 		end
 	}
 }
-
 
 return M

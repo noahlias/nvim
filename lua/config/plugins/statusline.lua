@@ -102,7 +102,6 @@ return {
 			"toggleterm",
 			"symbols-outline",
 			"aerial",
-			"fugitive",
 			"nvim-dap-ui",
 			"mundo",
 			"lazy",

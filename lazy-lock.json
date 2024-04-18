@@ -99,6 +99,7 @@
   "substitute.nvim": { "branch": "main", "commit": "17ffaeb5a1dc2dbef39cf0865d8a4b6000836714" },
   "tcomment_vim": { "branch": "master", "commit": "48ab639a461d9b8344f7fee06cb69b4374863b13" },
   "telescope-dap.nvim": { "branch": "master", "commit": "8c88d9716c91eaef1cdea13cb9390d8ef447dbfe" },
+  "telescope-file-browser.nvim": { "branch": "master", "commit": "5ee5002373655fd684a4ad0d47a3de876ceacf9a" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
   "telescope-simulators.nvim": { "branch": "main", "commit": "f00e0dafb0c2911917cb601dc01cadf91a7edb8c" },
   "telescope-tabs": { "branch": "master", "commit": "0a678eefcb71ebe5cb0876aa71dd2e2583d27fd3" },

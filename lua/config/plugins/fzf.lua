@@ -87,16 +87,16 @@ return {
 			global_resume = true,
 			global_resume_query = true,
 			winopts = {
-				-- height     = 1,
-				-- width      = 1,
-				-- preview    = {
-				-- 	layout = 'vertical',
-				-- 	scrollbar = 'float',
-				-- },
+				-- height     = 0.6,
+				-- width      = 0.7,
+				preview    = {
+					layout = 'horizontal',
+					scrollbar = 'float',
+				},
 				-- fullscreen = true,
-				-- vertical   = 'down:45%', -- up|down:size
-				-- horizontal = 'right:60%', -- right|left:size
-				-- hidden     = 'nohidden',
+				vertical   = 'down:45%', -- up|down:size
+				horizontal = 'right:60%', -- right|left:size
+				hidden     = 'nohidden',
 			},
 			keymap = {
 				builtin = {
@@ -141,10 +141,15 @@ return {
 					syntax         = true,   -- preview syntax highlight?
 					syntax_limit_l = 0,      -- syntax limit (lines), 0=nolimit
 					syntax_limit_b = 1024 * 1024, -- syntax limit (bytes), 0=nolimit
+					-- extensions     = {
+					-- 	['png'] = { 'chafa' },
+					-- 	['webp'] = { 'chafa' },
+					-- 	['jpg'] = { 'chafa' },
+					-- }
 				},
 			},
 			files = {
-				previewer    = "bat", -- uncomment to override previewer
+				-- previewer    = "bat", -- uncomment to override previewer
 				-- (name from 'previewers' table)
 				-- set to 'false' to disable
 				prompt       = 'Files❯ ',

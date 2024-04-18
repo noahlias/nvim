@@ -249,14 +249,14 @@ return {
 			package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?/init.lua;"
 			package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?.lua;"
 		end,
-		event = function(plugin)
-			return {
-				{
-					event = "BufRead",
-					pattern = plugin.opts.hijack_file_patterns,
-				},
-			}
-		end,
+		-- event = function()
+		-- 	return {
+		-- 		{
+		-- 			event = "BufRead",
+		-- 			pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
+		-- 		},
+		-- 	}
+		-- end,
 		opts = {
 			backend = "kitty",
 			hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
@@ -280,7 +280,7 @@ return {
 			max_height = nil,
 			max_width_window_percentage = nil,
 			max_height_window_percentage = 50,
-			kitty_method = "normal",
+			editor_only_render_when_focused = true,
 		}
 	},
 	{
@@ -333,31 +333,12 @@ return {
 		event = "VeryLazy", -- keep for lazy loading
 		opts = {
 			{
-				---Dictionary to check whether a buftype should be included.
-				---
-				---@type table<string, boolean>
 				included_buftypes = {
 					[""] = true,
 				},
-
-				---Dictionary to check whether a filetype should be excluded.
-				---
-				---@type table<string, boolean>
 				excluded_filetypes = {},
-
-				---How much to wait before calculating the location of pairs.
-				---
-				---@type integer
 				delay = 50,
-
-				---How many lines to look backwards/forwards to find a pair.
-				---
-				---@type integer
 				limit = 100,
-
-				---List of `(left, right)` pairs.
-				---
-				---@type tuple<string, string>[]
 				pairs = {
 					{ "(", ")" },
 					{ "{", "}" },
@@ -386,6 +367,7 @@ return {
 		"lukas-reineke/headlines.nvim",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		ft = "markdown",
+		enabled = true,
 		lazy = true,
 		config = true, -- or `opts = {}`
 	},
