@@ -165,7 +165,7 @@ M.config = {
 			require("config.lsp.yaml").setup(lspconfig, lsp)
 			-- volar
 			require("config.lsp.vue").setup(lspconfig, lsp)
-
+			-- require("config.lsp.swift").setup(lspconfig, lsp)
 			-- require("config.lsp.haskell").setup(lspconfig, lsp)
 
 

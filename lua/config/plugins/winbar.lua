@@ -1,6 +1,10 @@
 return {
 	"Bekaboo/dropbar.nvim",
 	-- commit = "19011d96959cd40a7173485ee54202589760caae",
+	event = {
+		"BufRead",
+		"BufNewFile",
+	},
 	dependencies = {
 		'nvim-telescope/telescope-fzf-native.nvim'
 	},

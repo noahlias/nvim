@@ -489,4 +489,12 @@ return {
 	},
 	opts = {
 	}
-}, }
+},
+	{
+		"smjonas/inc-rename.nvim",
+		opts = {},
+		cmd = {
+			"IncRename",
+		},
+	}
+}

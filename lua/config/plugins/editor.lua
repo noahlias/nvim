@@ -14,15 +14,35 @@ inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
 return {
 	{
 		"RRethy/vim-illuminate",
+		event = 'VeryLazy',
 		config = function()
-			require('illuminate').configure({
+			local illuminate = require('illuminate')
+			illuminate.configure({
 				providers = {
 					-- 'lsp',
 					-- 'treesitter',
 					'regex',
 				},
+				large_file_cutoff = 10000,
+				should_enable = function(bufnr)
+					local win = vim.fn.bufwinid(bufnr)
+					-- Very bad performance in diff-mode
+					if vim.wo[win].diff then
+						return false
+					end
+					return true
+				end,
 			})
 			vim.cmd("hi IlluminatedWordText guibg=#393E4D gui=none")
+			vim.api.nvim_create_autocmd("TextYankPost", {
+				group = vim.api.nvim_create_augroup("highlight_on_yank", {}),
+				desc = "Briefly highlight yanked text",
+				callback = function()
+					illuminate.pause()
+					vim.highlight.on_yank()
+					illuminate.resume()
+				end,
+			})
 		end
 	},
 	{
@@ -39,6 +59,7 @@ return {
 	-- },
 	{
 		"NvChad/nvim-colorizer.lua",
+		event = "VeryLazy",
 		opts = {
 			filetypes = { "*" },
 			user_default_options = {
