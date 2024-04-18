@@ -17,6 +17,7 @@ return {
 						parameterNames = true,
 						rangeVariableTypes = true,
 					},
+					gofumpt = true,
 				},
 			},
 		})

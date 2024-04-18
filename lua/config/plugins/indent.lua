@@ -1,7 +1,7 @@
 return {
 	{
 		"shellRaining/hlchunk.nvim",
-		ft = { "lua", "sh", "typescript", "typescriptreact", "javascript", "javascriptreact", "c", "cpp", "rust", "python", "java", "go", "json", "yaml", "toml", "html", "css", "scss", "markdown", "graphql", "dockerfile", "zig", "haskell" },
+		ft = { "lua", "sh", "typescript", "typescriptreact", "javascript", "javascriptreact", "c", "cpp", "rust", "python", "java", "go", "html", "css", "scss", "dockerfile", "zig", "haskell" },
 		init = function()
 			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL", })
 			require('hlchunk').setup({

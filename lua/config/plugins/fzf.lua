@@ -1,7 +1,53 @@
 local m = { noremap = true }
 return {
 	"ibhagwan/fzf-lua",
-	keys = { "<c-f>" },
+	cmd = "FzfLua",
+	keys = {
+		{
+			"<c-p>",
+			function()
+				require("fzf-lua").files()
+			end,
+			desc = "Files",
+		},
+
+		{
+			"<c-w>",
+			function()
+				require("fzf-lua").buffers()
+			end,
+			desc = "Buffers",
+		},
+		{
+			"<c-h>",
+			function()
+				require("fzf-lua").oldfiles()
+			end,
+			desc = "Old files",
+		},
+		{
+			"<leader>rs",
+			function()
+				require("fzf-lua").resume()
+			end,
+			desc = "Resume",
+		},
+		{
+			"<c-f>",
+			function()
+				require("fzf-lua").live_grep_native()
+			end,
+			desc = "Live grep",
+		},
+		{
+			"<leader>fi",
+			function()
+				require("fzf-lua").git_status()
+			end,
+			desc = "Git status",
+		}
+
+	},
 	opts = {
 		hls = {
 			normal = "NormalFloat",
@@ -29,28 +75,28 @@ return {
 	},
 	config = function()
 		local fzf = require('fzf-lua')
-		vim.keymap.set('n', '<c-f>', function()
-			-- fzf.live_grep_resume({ multiprocess = true, debug = true })
-			fzf.grep({ search = "", fzf_opts = { ['--layout'] = 'default' } })
-		end, m)
-		vim.keymap.set('x', '<c-f>', function()
-			-- fzf.live_grep_resume({ multiprocess = true, debug = true })
-			fzf.grep_visual({ fzf_opts = { ['--layout'] = 'default' } })
-		end, m)
+		-- vim.keymap.set('n', '<c-f>', function()
+		-- 	-- fzf.live_grep_resume({ multiprocess = true, debug = true })
+		-- 	fzf.grep({ search = "", fzf_opts = { ['--layout'] = 'default' } })
+		-- end, m)
+		-- vim.keymap.set('x', '<c-f>', function()
+		-- 	-- fzf.live_grep_resume({ multiprocess = true, debug = true })
+		-- 	fzf.grep_visual({ fzf_opts = { ['--layout'] = 'default' } })
+		-- end, m)
 		fzf.setup({
 			global_resume = true,
 			global_resume_query = true,
 			winopts = {
-				height     = 1,
-				width      = 1,
-				preview    = {
-					layout = 'vertical',
-					scrollbar = 'float',
-				},
-				fullscreen = true,
-				vertical   = 'down:45%', -- up|down:size
-				horizontal = 'right:60%', -- right|left:size
-				hidden     = 'nohidden',
+				-- height     = 1,
+				-- width      = 1,
+				-- preview    = {
+				-- 	layout = 'vertical',
+				-- 	scrollbar = 'float',
+				-- },
+				-- fullscreen = true,
+				-- vertical   = 'down:45%', -- up|down:size
+				-- horizontal = 'right:60%', -- right|left:size
+				-- hidden     = 'nohidden',
 			},
 			keymap = {
 				builtin = {
