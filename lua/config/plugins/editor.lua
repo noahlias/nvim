@@ -23,7 +23,7 @@ return {
 					-- 'treesitter',
 					'regex',
 				},
-				large_file_cutoff = 10000,
+				large_file_cutoff = 3000,
 				should_enable = function(bufnr)
 					local win = vim.fn.bufwinid(bufnr)
 					-- Very bad performance in diff-mode

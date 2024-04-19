@@ -30,9 +30,10 @@ end
 vim.keymap.set("n", "<leader>pl", ":Lazy<CR>", { noremap = true })
 
 require("lazy").setup({
+	require("config.plugins.colorscheme"),
+	require("config.plugins.plenary"),
 	require("config.plugins.telescope").config,
 	require("config.plugins.fzf"),
-	require("config.plugins.colorscheme"),
 	require("config.plugins.notify"),
 	require("config.plugins.statusline"),
 	require("config.plugins.editor"),
@@ -44,7 +45,7 @@ require("lazy").setup({
 	require("config.plugins.flutter"),
 	require("config.plugins.go"),
 	require("config.plugins.treesitter"),
-	require("config.plugins.joshuto"),
+	-- require("config.plugins.joshuto"),
 	require("config.plugins.comment"),
 	require("config.plugins.surround"),
 	require("config.plugins.project"),

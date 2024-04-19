@@ -48,6 +48,10 @@ Referenced from the following repositories:
 
 They are all great resources to learn from.
 
+## Performance
+
+It seems some performance issues are present in the current configuration. I will try to fix them as soon as possible.
+
 ## License
 
 MIT
