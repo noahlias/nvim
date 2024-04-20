@@ -18,7 +18,7 @@ return
 	opts = {
 		presets = {
 			long_message_to_split = true,
-			-- command_palette = true,
+			command_palette = true,
 			inc_rename = true,
 			bottom_search = true,
 		},
@@ -57,7 +57,10 @@ return
 			},
 			hover = {
 				silent = true,
-			}
+			},
+			signature = {
+				enabled = false,
+			},
 		},
 		views = {
 			cmdline_popup = {

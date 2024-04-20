@@ -42,7 +42,7 @@ require("lazy").setup({
 	require("config.plugins.autocomplete").config,
 	require("config.plugins.debugger"),
 	require("config.plugins.lspconfig").config,
-	require("config.plugins.flutter"),
+	-- require("config.plugins.flutter"),
 	require("config.plugins.go"),
 	require("config.plugins.treesitter"),
 	-- require("config.plugins.joshuto"),
@@ -76,7 +76,7 @@ require("lazy").setup({
 	---mini.nvim
 	require("config.plugins.mini"),
 	require("config.plugins.clangd_extensions"),
-	-- { "dstein64/vim-startuptime" },
+	{ "dstein64/vim-startuptime" },
 	require("config.plugins.noice")
 }
 )

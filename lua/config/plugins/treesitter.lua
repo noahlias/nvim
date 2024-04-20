@@ -2,7 +2,7 @@ return {
 	"nvim-treesitter/playground",
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
+		event = "VeryLazy",
 		priority = 1000,
 		build = ":TSUpdate",
 		config = function()
