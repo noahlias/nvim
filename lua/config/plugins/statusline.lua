@@ -60,7 +60,7 @@ return {
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = 'auto',
+			theme = 'gruvbox-material',
 			component_separators = { left = '', right = '' },
 			section_separators = { left = '', right = '' },
 			disabled_filetypes = {
@@ -75,7 +75,7 @@ return {
 			-- }
 		},
 		sections = {
-			lualine_a = { 'filename' },
+			lualine_a = { 'mode' },
 			lualine_b = { 'branch', 'diff', 'diagnostics' },
 			lualine_c = { lsp },
 			lualine_x = { recording, {
@@ -84,7 +84,7 @@ return {
 				color = { fg = "#ff9e64" },
 			}, 'copilot', "fileformat" },
 			lualine_y = { 'location', 'filesize', 'filetype' },
-			lualine_z = { 'mode' }
+			lualine_z = { 'filename' }
 		},
 		inactive_sections = {
 			lualine_a = {},

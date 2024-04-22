@@ -8,13 +8,19 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "query", "typescript", "dart", "java", "c", "prisma", "bash", "go", "lua", "html", "vim",
-					"cpp", "javascript",
+					"cpp", "javascript", "org",
 					"haskell", "rust", "markdown", "markdown_inline", "yaml", "python", "dockerfile", "latex", "pkl" },
 				highlight = {
 					enable = true,
-					disable = {}, -- list of language that will be disabled
+					-- additional_vim_regex_highlighting = false,
+					-- use_languagetree = false,
+					disable = function(_, bufnr)
+						local buf_name = vim.api.nvim_buf_get_name(bufnr)
+						local file_size = vim.api.nvim_call_function("getfsize", { buf_name })
+						return file_size > 256 * 1024
+					end,
 				},
-				indent = {
+				ident = {
 					enable = false
 				},
 				incremental_selection = {

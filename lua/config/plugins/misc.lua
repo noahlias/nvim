@@ -77,42 +77,23 @@ return {
 	{
 		"nvim-neorg/neorg",
 		ft = "norg",
-		build = ":Neorg sync-parsers",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("neorg").setup {
-				load = {
-					["core.defaults"] = {}, -- Loads default behaviour
-					-- ["core.concealer"] = {}, -- Adds pretty icons to your documents
-					["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
-					["core.integrations.nvim-cmp"] = {},
-					["core.concealer"] = { config = { icon_preset = "diamond" } },
-					["core.keybinds"] = {
-						-- https://github.com/nvim-neorg/neorg/blob/main/lua/neorg/modules/core/keybinds/keybinds.lua
-						config = {
-							default_keybinds = true,
-							neorg_leader = "<Leader><Leader>",
-						},
-					},
-					["core.export"] = {},
-					["core.ui.calendar"] = {},
-					["core.export.markdown"] = {},
-					["core.dirman"] = { -- Manages Neorg workspaces
-						config = {
-							workspaces = {
-								notes = "~/notes",
-							},
-						},
-					},
-				},
+		version = "*",
+		enabled = false,
+		dependencies = {
+			{
+				"vhyrro/luarocks.nvim",
+				priority = 1000,
+				config = true,
 			}
-		end,
+		},
+		config = true
 	}
 	,
 	{
 		"kawre/leetcode.nvim",
 		build = ":TSUpdate html",
 		lazy = false,
+		enabled = true,
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 			"nvim-lua/plenary.nvim", -- required by telescope
@@ -349,17 +330,17 @@ return {
 		end,
 	}
 	,
-	{
-		"https://github.com/apple/pkl-neovim",
-		lazy = true,
-		event = "BufReadPre *.pkl",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		build = function()
-			vim.cmd("TSInstall! pkl")
-		end,
-	},
+	-- {
+	-- 	"https://github.com/apple/pkl-neovim",
+	-- 	lazy = true,
+	-- 	event = "BufReadPre *.pkl",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	build = function()
+	-- 		vim.cmd("TSInstall! pkl")
+	-- 	end,
+	-- },
 	{
 		"lukas-reineke/headlines.nvim",
 		dependencies = "nvim-treesitter/nvim-treesitter",
@@ -470,11 +451,20 @@ return {
 	opts = {
 	}
 },
-	{
-		"smjonas/inc-rename.nvim",
-		opts = {},
-		cmd = {
-			"IncRename",
-		},
-	}
+	-- {
+	-- 	"smjonas/inc-rename.nvim",
+	-- 	opts = {},
+	-- 	cmd = {
+	-- 		"IncRename",
+	-- 	},
+	-- }
+	-- ,
+	-- {
+	-- 	'bennypowers/nvim-regexplainer',
+	-- 	config = function() require 'regexplainer'.setup() end,
+	-- 	requires = {
+	-- 		'nvim-treesitter/nvim-treesitter',
+	-- 		'MunifTanjim/nui.nvim',
+	-- 	}
+	-- }
 }
