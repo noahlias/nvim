@@ -159,17 +159,17 @@ M.config = {
 						override_file_sorter = true,
 						case_mode = "smart_case",
 					},
-					media_files = {
-						filetypes = { "pdf", "mp4", "png", "webp", "jpg", "jpeg" },
-						find_cmd = "rg"
-					},
+					-- media_files = {
+					-- 	filetypes = { "pdf", "mp4", "png", "webp", "jpg", "jpeg" },
+					-- 	find_cmd = "rg"
+					-- },
 					-- command_palette = command_palette,
-					smart_open = {
-						show_scores = false,
-						ignore_patterns = { "*.git/*", "*/tmp/*" },
-						match_algorithm = "fzy",
-						disable_devicons = false,
-					},
+					-- smart_open = {
+					-- 	show_scores = false,
+					-- 	ignore_patterns = { "*.git/*", "*/tmp/*" },
+					-- 	match_algorithm = "fzy",
+					-- 	disable_devicons = false,
+					-- },
 				}
 			})
 			require('dressing').setup({

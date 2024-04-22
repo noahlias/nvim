@@ -86,7 +86,7 @@ local nmappings = {
 	{ from = "<leader><esc>", to = "<nop>" },
 
 	-- Joshuto
-	{ from = "R",             to = ":Joshuto<CR>" },
+	-- { from = "R",             to = ":Joshuto<CR>" },
 }
 
 for _, mapping in ipairs(nmappings) do
@@ -106,15 +106,3 @@ vim.keymap.set("n", "<leader>q", function()
 		run_vim_shortcut([[<C-w>j:q<CR>]])
 	end
 end, { noremap = true, silent = true })
-
-
--- NOTE: todonvim keymap
-vim.keymap.set("n", "]t", function()
-	require("todo-comments").jump_next()
-end, { desc = "Next todo comment" })
-
-vim.keymap.set("n", "[t", function()
-	require("todo-comments").jump_prev()
-end, { desc = "Previous todo comment" })
-
---------------

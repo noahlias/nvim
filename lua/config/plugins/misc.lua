@@ -16,20 +16,18 @@ return {
 		}
 	},
 	{
-		-- NOTE: there is some note about this misc
-		"mvllow/stand.nvim",
-		lazy = true,
-		config = function()
-			require("stand").setup({
-				minute_interval = 60
-			})
-		end,
-	},
-	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		-- TODO: something to write
-		-- TODO: this is a test
+		-- -- NOTE: todonvim keymap
+		-- vim.keymap.set("n", "]t", function()
+		-- 	require("todo-comments").jump_next()
+		-- end, { desc = "Next todo comment" })
+		--
+		-- vim.keymap.set("n", "[t", function()
+		-- 	require("todo-comments").jump_prev()
+		-- end, { desc = "Previous todo comment" })
+		--
+		--------------
 		opts = {},
 	},
 	{
@@ -49,34 +47,33 @@ return {
 				file_assets         = {},                     -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
 				show_time           = true,                   -- Show the timer
 
-				-- Rich Presence text options
-				editing_text        = "Editing %s",     -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
-				file_explorer_text  = "Browsing %s",    -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
-				git_commit_text     = "Committing changes", -- Format string rendered when committing changes in git (either string or function(filename: string): string)
-				plugin_manager_text = "Managing plugins", -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
-				reading_text        = "Reading %s",     -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
-				workspace_text      = "Working on %s",  -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
-				line_number_text    = "Line %s out of %s", -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
+				editing_text        = "Editing %s",           -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
+				file_explorer_text  = "Browsing %s",          -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
+				git_commit_text     = "Committing changes",   -- Format string rendered when committing changes in git (either string or function(filename: string): string)
+				plugin_manager_text = "Managing plugins",     -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
+				reading_text        = "Reading %s",           -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
+				workspace_text      = "Working on %s",        -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
+				line_number_text    = "Line %s out of %s",    -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
 			})
 		end
 	},
-	{
-		"linux-cultist/venv-selector.nvim",
-		dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
-		config = function()
-			require("venv-selector").setup({
-				anaconda_base_path = "/opt/Homebrew/Caskroom/miniforge/base",
-				annconda_ens_path = "/opt/Homebrew/Caskroom/miniforge/base/envs",
-			})
-		end,
-		ft = "python",
-		event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-		keys = { { "<leader>vs", "<cmd>:VenvSelect<cr>",
-			-- optional if you use a autocmd (see #🤖-Automate)
-			"<leader>vc", "<cmd>:VenvSelectCached<cr>"
-		} },
-
-	},
+	-- {
+	-- 	"linux-cultist/venv-selector.nvim",
+	-- 	dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
+	-- 	config = function()
+	-- 		require("venv-selector").setup({
+	-- 			anaconda_base_path = "/opt/Homebrew/Caskroom/miniforge/base",
+	-- 			annconda_ens_path = "/opt/Homebrew/Caskroom/miniforge/base/envs",
+	-- 		})
+	-- 	end,
+	-- 	ft = "python",
+	-- 	event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+	-- 	keys = { { "<leader>vs", "<cmd>:VenvSelect<cr>",
+	-- 		-- optional if you use a autocmd (see #🤖-Automate)
+	-- 		"<leader>vc", "<cmd>:VenvSelectCached<cr>"
+	-- 	} },
+	--
+	-- },
 	{
 		"nvim-neorg/neorg",
 		ft = "norg",
@@ -244,7 +241,7 @@ return {
 	},
 	{
 		"3rd/image.nvim",
-		-- enabled = false,
+		enabled = false,
 		init = function()
 			package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?/init.lua;"
 			package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?.lua;"
@@ -422,12 +419,12 @@ return {
 			}
 		end,
 	},
-	{
-		"ethanholz/freeze.nvim",
-		lazy = true,
-		config = true,
-	}
-	,
+	-- {
+	-- 	"ethanholz/freeze.nvim",
+	-- 	lazy = true,
+	-- 	config = true,
+	-- }
+	-- ,
 	{
 		"HakonHarnes/img-clip.nvim",
 		ft = { "markdwon", "tex", "typ" },
@@ -458,6 +455,7 @@ return {
 	},
 	{
 		'mrcjkb/haskell-tools.nvim',
+		event = "BufRead *.hs",
 		version = '^3', -- Recommended
 		lazy = false,
 	}
