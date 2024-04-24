@@ -46,45 +46,6 @@ M.config = {
 			"b0o/SchemaStore.nvim",
 			"nanotee/sqls.nvim",
 			-- "mjlbach/lsp_signature.nvim",
-			-- {
-			-- 	'stevearc/conform.nvim',
-			-- 	opts = {
-			-- 		format_on_save = {
-			-- 			timeout_ms = 500,
-			-- 			lsp_fallback = true,
-			-- 		},
-			-- 		lua = { "stylua" },
-			-- 		python = { "black", "isort", "ruff" },
-			-- 		go = { "gofumpt", "goimports" },
-			--
-			-- 		html = { "prettier" },
-			-- 		css = { "prettier" },
-			-- 		less = { "prettier" },
-			-- 		scss = { "prettier" },
-			-- 		javascript = { "prettier" },
-			-- 		typescript = { "prettier" },
-			-- 		javascriptreact = { "prettier" },
-			-- 		typescriptreact = { "prettier" },
-			-- 		vue = { "prettier" },
-			-- 		json = { "prettier" },
-			-- 		yaml = { "prettier" },
-			-- 	},
-			-- 	config = function()
-			-- 		require("conform").setup()
-			-- 	end,
-			-- 	keys = {
-			-- 		{
-			-- 			"<leader>cf",
-			-- 			function()
-			-- 				require("conform").format { lsp_fallback = true }
-			-- 			end,
-			-- 			desc = "Format Document",
-			-- 			mode = { "n", "v" }
-			-- 		},
-			-- 	},
-			-- },
-			"MunifTanjim/prettier.nvim",
-			-- "mjlbach/lsp_signature.nvim",
 			"airblade/vim-rooter",
 
 		},
@@ -183,73 +144,73 @@ M.config = {
 			F.configureDocAndSignature()
 			F.configureKeybinds()
 
-			local prettier = require("prettier")
-
-			prettier.setup({
-				bin = 'prettierd',
-				filetypes = {
-					"css",
-					"graphql",
-					"html",
-					"javascript",
-					"javascriptreact",
-					"json",
-					"less",
-					"markdown",
-					"scss",
-					"typescript",
-					"typescriptreact",
-					"yaml",
-				},
-				cli_options = {
-					arrow_parens = "always",
-					bracket_spacing = true,
-					bracket_same_line = false,
-					embedded_language_formatting = "auto",
-					end_of_line = "lf",
-					html_whitespace_sensitivity = "css",
-					-- jsx_bracket_same_line = false,
-					jsx_single_quote = false,
-					print_width = 80,
-					prose_wrap = "preserve",
-					quote_props = "as-needed",
-					semi = true,
-					single_attribute_per_line = false,
-					single_quote = false,
-					tab_width = 2,
-					trailing_comma = "es5",
-					use_tabs = false,
-					vue_indent_script_and_style = false,
-				},
-			})
-
-			local format_on_save_filetypes = {
-				dart = true,
-				json = true,
-				go = true,
-				lua = true,
-				html = true,
-				javascript = true,
-				typescript = true,
-				typescriptreact = true,
-				c = true,
-				cpp = true,
-				objc = true,
-				objcpp = true,
-				dockerfile = true,
-				terraform = true,
-				tex = true,
-			}
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				pattern = "*",
-				callback = function()
-					if format_on_save_filetypes[vim.bo.filetype] then
-						local lineno = vim.api.nvim_win_get_cursor(0)
-						vim.lsp.buf.format({ async = false })
-						pcall(vim.api.nvim_win_set_cursor, 0, lineno)
-					end
-				end,
-			})
+			-- local prettier = require("prettier")
+			--
+			-- prettier.setup({
+			-- 	bin = 'prettierd',
+			-- 	filetypes = {
+			-- 		"css",
+			-- 		"graphql",
+			-- 		"html",
+			-- 		"javascript",
+			-- 		"javascriptreact",
+			-- 		"json",
+			-- 		"less",
+			-- 		"markdown",
+			-- 		"scss",
+			-- 		"typescript",
+			-- 		"typescriptreact",
+			-- 		"yaml",
+			-- 	},
+			-- 	cli_options = {
+			-- 		arrow_parens = "always",
+			-- 		bracket_spacing = true,
+			-- 		bracket_same_line = false,
+			-- 		embedded_language_formatting = "auto",
+			-- 		end_of_line = "lf",
+			-- 		html_whitespace_sensitivity = "css",
+			-- 		-- jsx_bracket_same_line = false,
+			-- 		jsx_single_quote = false,
+			-- 		print_width = 80,
+			-- 		prose_wrap = "preserve",
+			-- 		quote_props = "as-needed",
+			-- 		semi = true,
+			-- 		single_attribute_per_line = false,
+			-- 		single_quote = false,
+			-- 		tab_width = 2,
+			-- 		trailing_comma = "es5",
+			-- 		use_tabs = false,
+			-- 		vue_indent_script_and_style = false,
+			-- 	},
+			-- })
+			--
+			-- local format_on_save_filetypes = {
+			-- 	dart = true,
+			-- 	json = true,
+			-- 	go = true,
+			-- 	lua = true,
+			-- 	html = true,
+			-- 	javascript = true,
+			-- 	typescript = true,
+			-- 	typescriptreact = true,
+			-- 	c = true,
+			-- 	cpp = true,
+			-- 	objc = true,
+			-- 	objcpp = true,
+			-- 	dockerfile = true,
+			-- 	terraform = true,
+			-- 	tex = true,
+			-- }
+			-- vim.api.nvim_create_autocmd("BufWritePre", {
+			-- 	pattern = "*",
+			-- 	callback = function()
+			-- 		if format_on_save_filetypes[vim.bo.filetype] then
+			-- 			local lineno = vim.api.nvim_win_get_cursor(0)
+			-- 			vim.lsp.buf.format({ async = false })
+			-- 			pcall(vim.api.nvim_win_set_cursor, 0, lineno)
+			-- 		end
+			-- 	end,
+			-- })
 		end
 	},
 }
