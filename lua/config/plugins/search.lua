@@ -24,7 +24,7 @@ return {
 	},
 	{
 		"pechorin/any-jump.vim",
-		enabled = false,
+		enabled = true,
 		config = function()
 			vim.keymap.set("n", "j", ":AnyJump<CR>", { noremap = true })
 			vim.keymap.set("x", "j", ":AnyJumpVisual<CR>", { noremap = true })
