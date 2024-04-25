@@ -75,20 +75,36 @@ return {
 	--
 	-- },
 	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		config = true,
+	},
+	{
 		"nvim-neorg/neorg",
 		ft = "norg",
+		dependencies = { "luarocks.nvim", { "laher/neorg-exec" } },
 		version = "*",
-		enabled = false,
-		dependencies = {
-			{
-				"vhyrro/luarocks.nvim",
-				priority = 1000,
-				config = true,
+		config = function()
+			require("neorg").setup {
+				load = {
+					["core.defaults"] = {},
+					["core.concealer"] = {},
+					["external.exec"] = {},
+					["core.dirman"] = {
+						config = {
+							workspaces = {
+								notes = "~/notes",
+							},
+							default_workspace = "notes",
+						},
+					},
+				},
 			}
-		},
-		config = true
-	}
-	,
+
+			vim.wo.foldlevel = 99
+			vim.wo.conceallevel = 2
+		end,
+	},
 	{
 		"kawre/leetcode.nvim",
 		build = ":TSUpdate html",
@@ -314,7 +330,7 @@ return {
 				included_buftypes = {
 					[""] = true,
 				},
-				excluded_filetypes = {},
+				excluded_filetypes = { 'norg' },
 				delay = 50,
 				limit = 100,
 				pairs = {
@@ -345,7 +361,7 @@ return {
 		"lukas-reineke/headlines.nvim",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		ft = "markdown",
-		enabled = true,
+		enabled = false,
 		lazy = true,
 		config = true, -- or `opts = {}`
 	},
@@ -412,8 +428,8 @@ return {
 		cmd = {
 			"PasteImage",
 		},
+		event = "VeryLazy",
 		opts = {},
-		lazy = true,
 	},
 	{
 		"aznhe21/actions-preview.nvim",

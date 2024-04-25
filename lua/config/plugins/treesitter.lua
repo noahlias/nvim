@@ -8,7 +8,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "query", "typescript", "dart", "java", "c", "prisma", "bash", "go", "lua", "html", "vim",
-					"cpp", "javascript", "org",
+					"cpp", "javascript", "norg", "org", "vimdoc",
 					"haskell", "rust", "markdown", "markdown_inline", "yaml", "python", "dockerfile", "latex", "pkl" },
 				highlight = {
 					enable = true,

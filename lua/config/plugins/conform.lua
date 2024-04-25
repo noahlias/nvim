@@ -23,16 +23,24 @@ return {
 		markdown = { "markdownlint" }
 	},
 	config = function()
-		require("conform").setup()
+		require("conform").setup(
+			{
+				format_on_save = {
+					-- These options will be passed to conform.format()
+					timeout_ms = 500,
+					lsp_fallback = true,
+				}
+			}
+		)
 	end,
-	keys = {
-		{
-			"<leader>cf",
-			function()
-				require("conform").format { lsp_fallback = true }
-			end,
-			desc = "Format Document",
-			mode = { "n", "v" }
-		},
-	},
+	-- keys = {
+	-- 	{
+	-- 		"<leader>cf",
+	-- 		function()
+	-- 			require("conform").format { lsp_fallback = true }
+	-- 		end,
+	-- 		desc = "Format Document",
+	-- 		mode = { "n", "v" }
+	-- 	},
+	-- },
 }
