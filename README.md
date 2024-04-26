@@ -1,11 +1,10 @@
 
-
 # User Guide
-
 
 ![](./assets/dashboard.png)
 
 Install it
+
 ```bash
 git clone https://github.com/noahlias/nvim.git ~/.config/nvim
 ```
@@ -13,7 +12,6 @@ git clone https://github.com/noahlias/nvim.git ~/.config/nvim
 # Plugins
 
 Just dig into the lua/config/plugins.lua file to see the plugins that I use.
-
 
 ### nvim-surround
 
@@ -28,6 +26,7 @@ Just dig into the lua/config/plugins.lua file to see the plugins that I use.
     delete(functi*on calls)     dsf             function calls
 
 ### mini.trailspace
+
     Command         Description
     <leader>mt      remove trailing spaces
     <leader>ms      trim_last_lines
@@ -38,6 +37,7 @@ Just dig into the lua/config/plugins.lua file to see the plugins that I use.
     gj              toggle split/join
 
 ## References
+
 Referenced from the following repositories:
 
 - [TheCW](https://github.com/theniceboy/nvim)
@@ -51,6 +51,9 @@ They are all great resources to learn from.
 ## Performance
 
 It seems some performance issues are present in the current configuration. I will try to fix them as soon as possible.
+
+> [!Note]
+> If you have any suggestions or improvements, please let me know.
 
 ## License
 
