@@ -418,12 +418,16 @@ return {
       }
     end,
   },
-  -- {
-  -- 	"ethanholz/freeze.nvim",
-  -- 	lazy = true,
-  -- 	config = true,
-  -- }
-  -- ,
+  {
+    "ethanholz/freeze.nvim",
+    opts = {
+      theme = "catppuccin-mocha",
+      config = "full",
+    },
+    init = function()
+      vim.keymap.set("v", "<leader>fr", ":Freeze<cr>", { silent = true, desc = "Freeze selection" })
+    end,
+  },
   {
     "HakonHarnes/img-clip.nvim",
     ft = { "markdwon", "tex", "typ" },
