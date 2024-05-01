@@ -130,38 +130,54 @@ return {
     branch = "canary",
     show_help = false,
     auto_follow_cursor = false,
+    event = "VeryLazy",
     dependencies = {
       { "github/copilot.vim" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     opts = {
       debug = false, -- Enable debugging
-      window = {
-        layout = "float",
-        relative = "editor",
-        border = "rounded",
-        width = 0.6,
-        height = 0.5,
-        row = 1,
+      question_header = "", -- Header to use for user questions
+      answer_header = "", -- Header to use for AI answers
+      error_header = "", -- Header to use for errors
+      -- window = {
+      --   layout = "float",
+      --   relative = "editor",
+      --   border = "rounded",
+      --   width = 0.6,
+      --   height = 0.5,
+      --   row = 1,
+      -- },
+      mappings = {
+        complete = {
+          detail = "Use @<Tab> or /<Tab> for options.",
+          insert = "<Tab>",
+        },
+        -- Close the chat
+        close = {
+          normal = "q",
+          insert = "<C-c>",
+        },
+        -- Reset the chat buffer
+        reset = {
+          normal = "<C-l>",
+          insert = "<C-l>",
+        },
+        -- Submit the prompt to Copilot
+        submit_prompt = {
+          normal = "<CR>",
+          insert = "<C-CR>",
+        },
       },
     },
     keys = {
-      {
-        "<leader>cch",
-        function()
-          local actions = require "CopilotChat.actions"
-          require("CopilotChat.integrations.telescope").pick(actions.help_actions())
-        end,
-        desc = "CopilotChat - Help actions",
-      },
       -- Show prompts actions with telescope
       {
-        "<leader>ccp",
+        "<leader>cct",
         function()
-          local actions = require "CopilotChat.actions"
-          require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+          require("CopilotChat").toggle()
         end,
-        desc = "CopilotChat - Prompt actions",
+        desc = "CopilotChat - chat",
       },
       {
         "<leader>ccq",
