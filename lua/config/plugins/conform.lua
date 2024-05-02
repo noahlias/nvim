@@ -26,7 +26,7 @@ return {
         typescript = { "prettier" },
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
-        vue = { "prettier" },
+        -- vue = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "markdownlint" },

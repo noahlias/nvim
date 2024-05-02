@@ -79,6 +79,7 @@ require("lazy").setup {
   { "dstein64/vim-startuptime" },
   require "config.plugins.noice",
   require "config.plugins.conform",
+  -- require "config.plugins.overseer",
 }
 
 require "plugin.vertical_cursor_movement"
