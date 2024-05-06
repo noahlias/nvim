@@ -141,8 +141,11 @@ return {
           name = "personal",
           path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Noahlias",
         },
-
-        -- see below for full list of options 👇
+      },
+      templates = {
+        folder = "templates",
+        date_format = "%Y-%m-%d-%a",
+        time_format = "%H:%M",
       },
     },
   },
@@ -473,13 +476,13 @@ return {
     opts = {},
   },
   -- {
-  -- 	"smjonas/inc-rename.nvim",
-  -- 	opts = {},
-  -- 	cmd = {
-  -- 		"IncRename",
-  -- 	},
-  -- }
-  -- ,
+  --   "smjonas/inc-rename.nvim",
+  --   enabled = false,
+  --   config = function()
+  --     require("inc_rename").setup()
+  --     vim.keymap.set("n", "<leader>ra", ":IncRename ", { silent = true, desc = "Incremental Rename" })
+  --   end,
+  -- },
   -- {
   -- 	'bennypowers/nvim-regexplainer',
   -- 	config = function() require 'regexplainer'.setup() end,

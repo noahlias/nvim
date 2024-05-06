@@ -43,16 +43,7 @@ vim.o.colorcolumn = "100"
 vim.o.updatetime = 100
 vim.o.virtualedit = "block"
 vim.g.maplocalleader = "  "
-
--- local hr = tonumber(os.date('%H', os.time()))
--- if hr > 6 and hr < 21 then -- day between 6am and 9pm
--- 	vim.opt.background = 'light'
--- else                       -- night
--- 	vim.opt.background = 'dark'
--- end
-
 vim.opt.conceallevel = 1
--- set spelllang=en_us,cjk
 vim.cmd [[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
 silent !mkdir -p $HOME/.config/nvim/tmp/undo
