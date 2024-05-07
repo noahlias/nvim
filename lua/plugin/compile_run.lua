@@ -26,6 +26,9 @@ local compileRun = function()
   elseif ft == "ocaml" then
     split()
     vim.cmd "term ocaml %"
+  elseif ft == "zig" then
+    split()
+    vim.cmd "term zig run %"
   end
 end
 
