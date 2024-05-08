@@ -43,7 +43,7 @@ vim.o.colorcolumn = "100"
 vim.o.updatetime = 100
 vim.o.virtualedit = "block"
 vim.g.maplocalleader = "  "
-vim.opt.conceallevel = 1
+-- vim.opt.conceallevel = 1
 vim.cmd [[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
 silent !mkdir -p $HOME/.config/nvim/tmp/undo
