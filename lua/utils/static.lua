@@ -4,78 +4,77 @@ local langs_mt = {}
 langs_mt.__index = langs_mt
 
 function langs_mt:list(field)
-	local deduplist = {}
-	local result = {}
-	-- deduplication
-	for _, info in pairs(self) do
-		if type(info[field]) == 'string' then
-			deduplist[info[field]] = true
-		end
-	end
-	for name, _ in pairs(deduplist) do
-		table.insert(result, name)
-	end
-	return result
+  local deduplist = {}
+  local result = {}
+  -- deduplication
+  for _, info in pairs(self) do
+    if type(info[field]) == "string" then
+      deduplist[info[field]] = true
+    end
+  end
+  for name, _ in pairs(deduplist) do
+    table.insert(result, name)
+  end
+  return result
 end
 
 M.langs = setmetatable({
-	bash = {
-		ft = 'sh',
-		lsp_server = 'bashls',
-		dap = 'bashdb',
-		formatting = 'shfmt',
-	},
-	c = {
-		ts = 'c',
-		ft = 'c',
-		lsp_server = 'clangd',
-		dap = 'codelldb',
-		formatting = 'clang-format',
-	},
-	cpp = {
-		ts = 'cpp',
-		ft = 'cpp',
-		lsp_server = 'clangd',
-		dap = 'codelldb',
-		formatting = 'clang-format',
-	},
-	help = {
-		ts = 'vimdoc',
-		ft = 'help',
-	},
-	lua = {
-		ts = 'lua',
-		ft = 'lua',
-		lsp_server = 'lua_ls',
-		formatting = 'stylua',
-	},
-	rust = {
-		ts = 'rust',
-		ft = 'rust',
-		lsp_server = 'rust_analyzer',
-		formatting = 'rustfmt',
-	},
-	make = {
-		ts = 'make',
-		ft = 'make',
-	},
-	python = {
-		ts = 'python',
-		ft = 'python',
-		lsp_server = 'pyright',
-		dap = 'debugpy',
-		formatting = 'black',
-	},
-	vim = {
-		ts = 'vim',
-		ft = 'vim',
-		lsp_server = 'vimls',
-	},
-	latex = {
-		ft = 'tex',
-		lsp_server = 'texlab',
-		formatting = 'latexindent',
-	},
+  bash = {
+    ft = "sh",
+    lsp_server = "bashls",
+    dap = "bashdb",
+    formatting = "shfmt",
+  },
+  c = {
+    ts = "c",
+    ft = "c",
+    lsp_server = "clangd",
+    dap = "codelldb",
+    formatting = "clang-format",
+  },
+  cpp = {
+    ts = "cpp",
+    ft = "cpp",
+    lsp_server = "clangd",
+    dap = "codelldb",
+    formatting = "clang-format",
+  },
+  help = {
+    ts = "vimdoc",
+    ft = "help",
+  },
+  lua = {
+    ts = "lua",
+    ft = "lua",
+    lsp_server = "lua_ls",
+    formatting = "stylua",
+  },
+  -- rust = {
+  --   ts = "rust",
+  --   ft = "rust",
+  --   formatting = "rustfmt",
+  -- },
+  make = {
+    ts = "make",
+    ft = "make",
+  },
+  python = {
+    ts = "python",
+    ft = "python",
+    lsp_server = "pyright",
+    dap = "debugpy",
+    formatting = "black",
+  },
+  vim = {
+    ts = "vim",
+    ft = "vim",
+    lsp_server = "vimls",
+  },
+  latex = {
+    ft = "tex",
+    lsp_server = "texlab",
+    formatting = "latexindent",
+  },
 }, langs_mt)
 
 -- stylua: ignore start
@@ -107,23 +106,19 @@ M.borders = {
 local icons_mt = {}
 
 function icons_mt:__index(key)
-	return self.debug[key]
-			or self.diagnostics[key]
-			or self.kinds[key]
-			or self.ui[key]
-			or icons_mt[key]
+  return self.debug[key] or self.diagnostics[key] or self.kinds[key] or self.ui[key] or icons_mt[key]
 end
 
 ---Flatten the layered icons table into a single type-icon table.
 ---@return table<string, string>
 function icons_mt:flatten()
-	local result = {}
-	for _, icons in pairs(self) do
-		for type, icon in pairs(icons) do
-			result[type] = icon
-		end
-	end
-	return result
+  local result = {}
+  for _, icons in pairs(self) do
+    for type, icon in pairs(icons) do
+      result[type] = icon
+    end
+  end
+  return result
 end
 
 -- stylua: ignore start
