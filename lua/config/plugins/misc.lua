@@ -250,14 +250,6 @@ return {
       package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?/init.lua;"
       package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?.lua;"
     end,
-    -- event = function()
-    -- 	return {
-    -- 		{
-    -- 			event = "BufRead",
-    -- 			pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
-    -- 		},
-    -- 	}
-    -- end,
     opts = {
       backend = "kitty",
       hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
@@ -277,10 +269,12 @@ return {
           filetypes = { "norg" },
         },
       },
-      max_width = nil,
-      max_height = nil,
-      max_width_window_percentage = nil,
-      max_height_window_percentage = 50,
+      max_width = 100,
+      max_height = 12,
+      max_width_window_percentage = math.huge,
+      max_height_window_percentage = math.huge,
+      window_overlap_clear_enabled = true,
+      window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
       editor_only_render_when_focused = true,
     },
   },
@@ -352,17 +346,6 @@ return {
       vim.g.loaded_matchparen = 1
     end,
   },
-  -- {
-  -- 	"https://github.com/apple/pkl-neovim",
-  -- 	lazy = true,
-  -- 	event = "BufReadPre *.pkl",
-  -- 	dependencies = {
-  -- 		"nvim-treesitter/nvim-treesitter",
-  -- 	},
-  -- 	build = function()
-  -- 		vim.cmd("TSInstall! pkl")
-  -- 	end,
-  -- },
   {
     "lukas-reineke/headlines.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
