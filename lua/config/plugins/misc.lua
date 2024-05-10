@@ -245,7 +245,7 @@ return {
   },
   {
     "3rd/image.nvim",
-    enabled = false,
+    enabled = true,
     init = function()
       package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?/init.lua;"
       package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?.lua;"
@@ -478,22 +478,6 @@ return {
     },
     opts = {},
   },
-  -- {
-  --   "smjonas/inc-rename.nvim",
-  --   enabled = false,
-  --   config = function()
-  --     require("inc_rename").setup()
-  --     vim.keymap.set("n", "<leader>ra", ":IncRename ", { silent = true, desc = "Incremental Rename" })
-  --   end,
-  -- },
-  -- {
-  -- 	'bennypowers/nvim-regexplainer',
-  -- 	config = function() require 'regexplainer'.setup() end,
-  -- 	requires = {
-  -- 		'nvim-treesitter/nvim-treesitter',
-  -- 		'MunifTanjim/nui.nvim',
-  -- 	}
-  -- Lua
   {
     "lervag/vimtex",
     enabled = false,
@@ -502,5 +486,35 @@ return {
     init = function()
       -- VimTeX configuration goes here
     end,
+  },
+  {
+    "benlubas/molten-nvim",
+    version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+    build = ":UpdateRemotePlugins",
+    ft = { "python", "ipynb" },
+    dependencies = {
+      "3rd/image.nvim",
+    },
+    init = function()
+      vim.g.molten_image_provider = "image.nvim"
+      vim.g.molten_output_win_max_height = 20
+    end,
+    keys = {
+      {
+        "<leader>mi",
+        "<cmd>MoltenInit<CR>",
+        desc = "This command initializes a runtime for the current buffer.",
+      },
+      { "<leader>mo", "<cmd>MoltenEvaluateOperator<CR>", desc = "Evaluate the text given by some operator." },
+      { "<leader>ml", "<cmd>MoltenEvaluateLine<CR>", desc = "Evaluate the current line." },
+      { "<leader>mv", "<cmd>MoltenEvaluateVisual<CR>", desc = "Evaluate the selected text." },
+      { "<leader>mc", "<cmd>MoltenEvaluateOperator<CR>", desc = "Reevaluate the currently selected cell." },
+      { "<leader>mr", "<cmd>MoltenRestart!<CR>", desc = "Shuts down and restarts the current kernel." },
+      {
+        "<leader>mx",
+        "<cmd>MoltenInterrupt<CR>",
+        desc = "Interrupts the currently running cell and does nothing if not cell is running.",
+      },
+    },
   },
 }
