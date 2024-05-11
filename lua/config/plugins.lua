@@ -80,6 +80,7 @@ require("lazy").setup {
   require "config.plugins.noice",
   require "config.plugins.conform",
   -- require "config.plugins.overseer",
+  require "config.plugins.jdtls",
 }
 
 require "plugin.vertical_cursor_movement"

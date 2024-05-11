@@ -129,6 +129,7 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    enabled = true,
     branch = "canary",
     show_help = false,
     auto_follow_cursor = false,
