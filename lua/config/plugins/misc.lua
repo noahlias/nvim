@@ -125,6 +125,9 @@ return {
       -- configuration goes here
       image_support = true,
       lang = "python3",
+      description = {
+        widht = "100%",
+      },
     },
   },
   {
