@@ -1,3 +1,3 @@
 return {
-  markdown = require('utils.funcs.ft.markdown'),
+  markdown = require "utils.funcs.ft.markdown",
 }
