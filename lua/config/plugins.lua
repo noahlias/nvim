@@ -46,7 +46,8 @@ require("lazy").setup {
   require "config.plugins.go",
   require "config.plugins.treesitter",
   -- require("config.plugins.joshuto"),
-  require "config.plugins.comment",
+  --NOTE: This plugin has been merged into neovim main repo
+  -- require "config.plugins.comment",
   require "config.plugins.surround",
   require "config.plugins.project",
   require "config.plugins.wilder",
