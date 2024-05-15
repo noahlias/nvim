@@ -38,6 +38,7 @@ return {
       dashboard.button("l", "󰇯  Leetcode", "<Cmd>Leet<CR>"),
       dashboard.button("c", "  Configuration", "<Cmd>edit ~/.config/nvim/init.lua<CR>"),
       dashboard.button("f", "  File Browser", "<Cmd>Telescope file_browser<CR>"),
+      dashboard.button("d", "  Database", "<Cmd>DBUIToggle<CR>"),
       dashboard.button("q", "󰅚  Quit", "<Cmd>qa<CR>"),
     }
 
