@@ -82,6 +82,7 @@ require("lazy").setup {
   require "config.plugins.conform",
   -- require "config.plugins.overseer",
   require "config.plugins.jdtls",
+  require "config.plugins.sql",
 }
 
 local swap_ternary = require "plugin.swap_ternary"

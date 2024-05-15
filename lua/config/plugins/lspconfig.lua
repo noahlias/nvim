@@ -44,7 +44,6 @@ M.config = {
       --   branch = "anticonceal",
       -- },
       "b0o/SchemaStore.nvim",
-      "nanotee/sqls.nvim",
       -- "mjlbach/lsp_signature.nvim",
       "airblade/vim-rooter",
     },
@@ -122,7 +121,6 @@ M.config = {
       require("config.lsp.c").setup(lspconfig, lsp)
       require("config.lsp.python").setup(lspconfig, lsp)
       require("config.lsp.zig").setup(lspconfig, lsp)
-      require("config.lsp.sql").setup(lspconfig, lsp)
       require("config.lsp.yaml").setup(lspconfig, lsp)
       require("config.lsp.vue").setup(lspconfig, lsp)
 
