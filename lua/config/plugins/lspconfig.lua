@@ -39,10 +39,6 @@ M.config = {
       "folke/neodev.nvim",
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
       "ldelossa/nvim-dap-projects",
-      -- {
-      --   "lvimuser/lsp-inlayhints.nvim",
-      --   branch = "anticonceal",
-      -- },
       "b0o/SchemaStore.nvim",
       -- "mjlbach/lsp_signature.nvim",
       "airblade/vim-rooter",
@@ -75,7 +71,9 @@ M.config = {
         -- 	callback = function() vim.lsp.inlay_hint(bufnr, false) end,
         -- 	group = "lsp_augroup",
         -- })
+        -- FIX: it's too slow for me
         vim.lsp.inlay_hint.enable()
+
         -- vim.api.nvim_create_autocmd("InsertLeave", {
         -- 	buffer = bufnr,
         -- 	callback = function() vim.lsp.inlay_hint(bufnr, true) end,

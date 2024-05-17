@@ -128,6 +128,20 @@ return {
       description = {
         widht = "100%",
       },
+      injector = {
+        ["python3"] = {
+          before = true,
+        },
+        ["cpp"] = {
+          before = {
+            "#include <iostream>",
+            "#include <vector>",
+            "#include <algorithm>",
+            "using namespace std;",
+          },
+          after = "int main() {}",
+        },
+      },
     },
   },
   {
