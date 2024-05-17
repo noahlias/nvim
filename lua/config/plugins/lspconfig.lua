@@ -260,8 +260,9 @@ F.configureKeybinds = function()
       -- vim.keymap.set('x', '<leader>aw', vim.lsp.buf.range_code_action, opts)
       -- vim.keymap.set('x', "<leader>,", vim.lsp.buf.range_code_action, opts)
       vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", opts)
-      vim.keymap.set("n", "<leader>-", vim.diagnostic.goto_prev, opts)
-      vim.keymap.set("n", "<leader>=", vim.diagnostic.goto_next, opts)
+      --NOTE: neovim 0.10 add [ d and ] d for diagnostic navigation
+      -- vim.keymap.set("n", "<leader>-", vim.diagnostic.goto_prev, opts)
+      -- vim.keymap.set("n", "<leader>=", vim.diagnostic.goto_next, opts)
     end,
   })
 end
