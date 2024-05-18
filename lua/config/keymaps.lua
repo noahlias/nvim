@@ -20,7 +20,8 @@ local nmappings = {
   -- copy to clipboard
   --[[ { from = '"+y',           to = "by",                                                                  mode = mode_v } ]]
 
-  -- { from = "mp", to = "o<Esc>g'[p", mode = mode_nv },
+  { from = "mp", to = "o<Esc>g'[p", mode = mode_nv },
+
   -- Movement
   {
     from = "u",
@@ -162,7 +163,7 @@ local nmappings = {
 }
 
 for _, mapping in ipairs(nmappings) do
-  vim.keymap.set(mapping.mode or "n", mapping.from, mapping.to, { noremap = true })
+  vim.keymap.set(mapping.mode or "n", mapping.from, mapping.to, { noremap = true, silent = true })
 end
 
 local function run_vim_shortcut(shortcut)
@@ -172,7 +173,6 @@ end
 
 -- close win below
 vim.keymap.set("n", "<leader>q", function()
-  -- vim.cmd "TroubleClose"
   local wins = vim.api.nvim_tabpage_list_wins(0)
   if #wins > 1 then
     run_vim_shortcut [[<C-w>j:q<CR>]]
