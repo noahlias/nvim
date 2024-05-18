@@ -2,7 +2,7 @@ local compile = function()
   vim.cmd "write"
   local filetype = vim.bo.filetype
   if filetype == "cpp" or filetype == "c" then
-    os.execute("gcc " .. vim.fn.expand "%" .. " -g -o " .. vim.fn.expand "%<")
+    os.execute("clang " .. vim.fn.expand "%" .. " -g -o " .. vim.fn.expand "%<")
   end
 end
 return {
@@ -27,6 +27,39 @@ return {
       },
       "nvim-dap-virtual-text",
       "nvim-telescope/telescope-dap.nvim",
+      {
+        "mfussenegger/nvim-dap-python",
+        ft = { "python" },
+        config = function()
+          require("dap-python").setup(
+            -- vim.fs.joinpath(require("mason-registry").get_package("debugpy"):get_install_path(), "venv/bin/python")
+          )
+        end,
+      },
+      {
+        "leoluz/nvim-dap-go",
+        ft = { "go" },
+        opts = {},
+      },
+      -- {
+      --   "jbyuki/one-small-step-for-vimkind",
+      --   keys = {
+      --     {
+      --       "<leader>Dr",
+      --       function()
+      --         require("osv").launch { port = 8086 }
+      --       end,
+      --       desc = "Run",
+      --     },
+      --     {
+      --       "<leader>Ds",
+      --       function()
+      --         require("osv").stop()
+      --       end,
+      --       desc = "Stop",
+      --     },
+      --   },
+      -- },
     },
     config = function()
       local dap = require "dap"
@@ -76,6 +109,26 @@ return {
         "DapStopped",
         { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
       )
+      -- NOTE: this plugin for neovim debug
+      -- dap.defaults.fallback.external_terminal = {
+      --   command = "/Applications/kitty.app/Contents/MacOS/kitty",
+      --   args = { "--class", "kitty-dap", "--hold", "--detach", "nvim-dap", "-c", "DAP" },
+      -- }
+      --
+      -- dap.adapters["nvim-lua"] = function(callback, config)
+      --   callback {
+      --     type = "server",
+      --     host = config.host or "127.0.0.1",
+      --     port = config.port or 8086,
+      --   }
+      -- end
+      -- dap.configurations.lua = {
+      --   {
+      --     type = "nvim-lua",
+      --     request = "attach",
+      --     name = "Attach to running Neovim instance",
+      --   },
+      -- }
 
       dap.adapters.codelldb = {
         type = "server",
@@ -98,8 +151,30 @@ return {
           stopOnEntry = false,
         },
       }
+
       dap.configurations.c = dap.configurations.cpp
       dap.configurations.rust = dap.configurations.cpp
+
+      -- NOTE: This is for OCaml
+      dap.adapters.ocamlearlybird = {
+        type = "executable",
+        command = "ocamlearlybird",
+        args = { "debug" },
+      }
+      dap.configurations.ocaml = {
+        {
+          name = "OCaml Debug test.bc",
+          type = "ocamlearlybird",
+          request = "launch",
+          program = "${workspaceFolder}/_build/default/test/test.bc",
+        },
+        {
+          name = "OCaml Debug main.bc",
+          type = "ocamlearlybird",
+          request = "launch",
+          program = "${workspaceFolder}/_build/default/bin/main.bc",
+        },
+      }
 
       local dap_install = require "dap-install"
       dap_install.config("codelldb", {})

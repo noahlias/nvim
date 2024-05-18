@@ -64,22 +64,9 @@ M.config = {
         client.server_capabilities.semanticTokensProvider = nil
         require("config.plugins.autocomplete").configfunc()
         require("lsp_signature").on_attach(F.signature_config, bufnr)
-        -- require("lsp-inlayhints").on_attach(client, bufnr)
-        -- vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
-        -- vim.api.nvim_create_autocmd("InsertEnter", {
-        -- 	buffer = bufnr,
-        -- 	callback = function() vim.lsp.inlay_hint(bufnr, false) end,
-        -- 	group = "lsp_augroup",
-        -- })
         -- FIX: it's too slow for me
-        vim.lsp.inlay_hint.enable()
+        -- vim.lsp.inlay_hint.enable()
 
-        -- vim.api.nvim_create_autocmd("InsertLeave", {
-        -- 	buffer = bufnr,
-        -- 	callback = function() vim.lsp.inlay_hint(bufnr, true) end,
-        -- 	group = "lsp_augroup",
-        -- })
-        -- vim.cmd('highlight! link LspInlayHint Comment')
         vim.diagnostic.config {
           severity_sort = true,
           underline = true,
@@ -258,6 +245,10 @@ F.configureKeybinds = function()
       -- vim.keymap.set('x', '<leader>aw', vim.lsp.buf.range_code_action, opts)
       -- vim.keymap.set('x', "<leader>,", vim.lsp.buf.range_code_action, opts)
       vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", opts)
+      -- keymap for toggle inlay hints
+      vim.keymap.set("n", "<leader>ih", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end, opts)
       --NOTE: neovim 0.10 add [ d and ] d for diagnostic navigation
       -- vim.keymap.set("n", "<leader>-", vim.diagnostic.goto_prev, opts)
       -- vim.keymap.set("n", "<leader>=", vim.diagnostic.goto_next, opts)
