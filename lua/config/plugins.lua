@@ -83,6 +83,9 @@ require("lazy").setup {
   -- require "config.plugins.overseer",
   require "config.plugins.jdtls",
   require "config.plugins.sql",
+  {
+    "gleam-lang/gleam.vim",
+  },
 }
 
 local swap_ternary = require "plugin.swap_ternary"
