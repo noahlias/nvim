@@ -46,7 +46,6 @@ require("lazy").setup {
   require "config.plugins.flutter",
   require "config.plugins.go",
   require "config.plugins.treesitter",
-  -- require("config.plugins.joshuto"),
   --NOTE: This plugin has been merged into neovim main repo
   -- require "config.plugins.comment",
   require "config.plugins.surround",
