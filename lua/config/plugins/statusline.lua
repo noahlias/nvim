@@ -42,6 +42,7 @@ local function recording()
   return ""
 end
 
+---@type LazyPluginSpec
 return {
   -- "theniceboy/eleline.vim",
   -- branch = "no-scrollbar",

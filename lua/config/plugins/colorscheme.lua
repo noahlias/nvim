@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
   {
     "theniceboy/nvim-deus",

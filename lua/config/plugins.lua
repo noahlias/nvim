@@ -29,6 +29,7 @@ for _, v in ipairs(lazy_keys) do
 end
 vim.keymap.set("n", "<leader>pl", ":Lazy<CR>", { noremap = true })
 
+---@type LazyConfig
 require("lazy").setup {
   require "config.plugins.colorscheme",
   require "config.plugins.plenary",

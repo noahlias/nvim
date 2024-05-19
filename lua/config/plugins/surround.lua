@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "kylechui/nvim-surround",
   version = "*",

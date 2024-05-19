@@ -1,14 +1,10 @@
 {
-	"workspace": {
-		"library": [
-			"/usr/local/share/nvim/runtime/lua",
-			"/usr/local/share/nvim/runtime/lua/vim",
-			"/usr/local/share/nvim/runtime/lua/vim/lsp"
-		],
-		"maxPreload": 2000,
-		"preloadFileSize": 1000
-	},
-	"diagnostics.globals": [
-		"compileRun"
-	]
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "workspace": {
+    "library": ["$VIMRUNTIME", "$LAZYROOT/lazy.nvim", "${3rd}/luv/library"]
+  },
+  "diagnostics.disable": ["missing-fields"]
 }

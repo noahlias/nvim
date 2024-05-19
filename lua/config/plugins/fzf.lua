@@ -1,4 +1,5 @@
 local m = { noremap = true }
+---@type LazyPluginSpec
 return {
   "ibhagwan/fzf-lua",
   cmd = "FzfLua",

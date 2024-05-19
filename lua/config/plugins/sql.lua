@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "kristijanhusak/vim-dadbod-ui",
   dependencies = {

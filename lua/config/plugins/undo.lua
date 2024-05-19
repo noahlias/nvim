@@ -1,9 +1,9 @@
+---@type LazyPluginSpec
 return {
-  {
-    "mbbill/undotree",
-    keys = { "L" },
-    config = function()
-      vim.cmd [[
+  "mbbill/undotree",
+  keys = { "L" },
+  config = function()
+    vim.cmd [[
 noremap L :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
@@ -17,6 +17,5 @@ function g:Undotree_CustomMap()
 	nmap <buffer> U 5<plug>UndotreeNextState
 	nmap <buffer> E 5<plug>UndotreePreviousState
 endfunc]]
-    end,
-  },
+  end,
 }

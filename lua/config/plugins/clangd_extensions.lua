@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "p00f/clangd_extensions.nvim",
   ft = {
@@ -36,6 +37,7 @@ return {
               cmp.config.compare.length,
               cmp.config.compare.order,
             },
+            priority_weight = 2,
           },
         }
       end,

@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "hedyhli/outline.nvim",
   keys = {

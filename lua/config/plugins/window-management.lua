@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
   {
     "nvim-zh/colorful-winsep.nvim",
