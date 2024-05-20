@@ -46,8 +46,6 @@ require("lazy").setup {
   require "config.plugins.flutter",
   require "config.plugins.go",
   require "config.plugins.treesitter",
-  --NOTE: This plugin has been merged into neovim main repo
-  -- require "config.plugins.comment",
   require "config.plugins.surround",
   require "config.plugins.project",
   require "config.plugins.wilder",
@@ -69,6 +67,7 @@ require("lazy").setup {
   require "config.plugins.misc",
   require "config.plugins.tree",
   require "config.plugins.outline",
+  -- NOTE: AI plugins(copilot and gp and codieum)
   require "config.plugins.ai",
   require "config.plugins.alpha",
   -- extra plugins
@@ -83,8 +82,13 @@ require("lazy").setup {
   -- require "config.plugins.overseer",
   require "config.plugins.jdtls",
   require "config.plugins.sql",
+  -- NOTE: This plugin use for my personal use
   {
     "gleam-lang/gleam.vim",
+  },
+  {
+    "fladson/vim-kitty",
+    event = { "BufReadPre kitty.conf" },
   },
 }
 
