@@ -109,6 +109,7 @@ M.config = {
       require("config.lsp.yaml").setup(lspconfig, lsp)
       require("config.lsp.vue").setup(lspconfig, lsp)
       require("config.lsp.gleam").setup(lspconfig, lsp)
+      require("config.lsp.r").setup(lspconfig, lsp)
       lsp.setup()
       require("fidget").setup {}
 
