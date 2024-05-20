@@ -10,14 +10,14 @@ M.config = {
     -- tag = '0.1.1',
     dependencies = {
       "nvim-lua/plenary.nvim",
-      {
-        "LukasPietzschmann/telescope-tabs",
-        config = function()
-          local tstabs = require "telescope-tabs"
-          tstabs.setup {}
-          vim.keymap.set("n", "<c-t>", tstabs.list_tabs, {})
-        end,
-      },
+      -- {
+      --   "LukasPietzschmann/telescope-tabs",
+      --   config = function()
+      --     local tstabs = require "telescope-tabs"
+      --     tstabs.setup {}
+      --     vim.keymap.set("n", "<c-t>", tstabs.list_tabs, {})
+      --   end,
+      -- },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       -- "nvim-telescope/telescope-ui-select.nvim",
       "stevearc/dressing.nvim",
@@ -186,7 +186,7 @@ M.config = {
 
       ts.load_extension "neoclip"
       ts.load_extension "dap"
-      ts.load_extension "telescope-tabs"
+      -- ts.load_extension "telescope-tabs"
       ts.load_extension "fzf"
       ts.load_extension "simulators"
       -- ts.load_extension("file_browser")

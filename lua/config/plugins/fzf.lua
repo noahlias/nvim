@@ -47,6 +47,13 @@ return {
       end,
       desc = "Git status",
     },
+    {
+      "<c-t>",
+      function()
+        require("fzf-lua").tabs()
+      end,
+      desc = "Tab List",
+    },
   },
   opts = {
     hls = {
