@@ -39,6 +39,7 @@
   "hlchunk.nvim": { "branch": "main", "commit": "882d1bc86d459fa8884398223c841fd09ea61b6b" },
   "image.nvim": { "branch": "master", "commit": "604692f493519128c58893c28273d4247bc71a4d" },
   "img-clip.nvim": { "branch": "main", "commit": "fc30500c35663aa1762697f5aba31d43b86028f0" },
+  "kitty-scrollback.nvim": { "branch": "main", "commit": "8bf3320493a7c7231a75add7157d746907e35215" },
   "lazy.nvim": { "branch": "main", "commit": "e44636a43376e8a1e851958f7e9cbe996751d59f" },
   "lazygit.nvim": { "branch": "main", "commit": "0ada6c6e7e138df92f5009b6952f4ac41248305a" },
   "lean.nvim": { "branch": "main", "commit": "2828898ad6f6ac6c1c9f404d72bd3d56546b0c72" },
