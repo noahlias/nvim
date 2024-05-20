@@ -1,8 +1,5 @@
 local m = { noremap = true, nowait = true }
 local M = {}
-local custom = {
-  border = "rounded",
-}
 
 M.config = {
   {
@@ -10,50 +7,12 @@ M.config = {
     -- tag = '0.1.1',
     dependencies = {
       "nvim-lua/plenary.nvim",
-      -- {
-      --   "LukasPietzschmann/telescope-tabs",
-      --   config = function()
-      --     local tstabs = require "telescope-tabs"
-      --     tstabs.setup {}
-      --     vim.keymap.set("n", "<c-t>", tstabs.list_tabs, {})
-      --   end,
-      -- },
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      -- "nvim-telescope/telescope-ui-select.nvim",
       "stevearc/dressing.nvim",
       "dimaportenko/telescope-simulators.nvim",
-      -- "nvim-telescope/telescope-file-browser.nvim",
-      -- {
-      -- 	"nvim-telescope/telescope-media-files.nvim",
-      -- 	dependencies = {
-      -- 		"nvim-lua/popup.nvim",
-      -- 		"nvim-lua/plenary.nvim",
-      -- 	}
-      -- },
-      -- {
-      -- 	"danielfalk/smart-open.nvim",
-      -- 	branch = "0.2.x",
-      -- 	config = function()
-      -- 		require("telescope").load_extension("smart_open")
-      -- 	end,
-      -- 	dependencies = {
-      -- 		"kkharji/sqlite.lua",
-      -- 		-- Only required if using match_algorithm fzf
-      -- 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      -- 		-- Optional.  If installed, native fzy will be used when match_algorithm is fzy
-      -- 		{ "nvim-telescope/telescope-fzy-native.nvim" },
-      -- 	},
-      -- },
     },
     config = function()
       local builtin = require "telescope.builtin"
-      -- vim.keymap.set('n', '<c-p>', builtin.find_files, m)
-      -- vim.keymap.set('n', '<c-f>', function()
-      -- 	builtin.grep_string({ search = "" })
-      -- end, m)
-      -- vim.keymap.set('n', '<leader>rs', builtin.resume, m)
-      -- vim.keymap.set('n', '<c-w>', builtin.buffers, m)
-      -- vim.keymap.set('n', '<c-h>', builtin.oldfiles, m)
       vim.keymap.set("n", "<c-_>", builtin.current_buffer_fuzzy_find, m)
       vim.keymap.set("n", "z=", builtin.spell_suggest, m)
 
@@ -62,16 +21,6 @@ M.config = {
           severity_sort = true,
         }
       end, m)
-      -- vim.keymap.set('n', 'gd', builtin.lsp_definitions, m)
-      -- vim.keymap.set('n', '<c-t>', builtin.lsp_document_symbols, {})
-      -- vim.keymap.set('n', 'gi', builtin.git_status, m)
-      --vim.keymap.set("n", ":", builtin.commands, m)
-
-      -- vim.keymap.set("n", "<leader>so", function()
-      -- 	require("telescope").extensions.smart_open.smart_open()
-      -- end, { noremap = true, silent = true })
-      --
-      -- local trouble = require("trouble.providers.telescope")
 
       local ts = require "telescope"
       local actions = require "telescope.actions"
@@ -163,12 +112,6 @@ M.config = {
           -- 	find_cmd = "rg"
           -- },
           -- command_palette = command_palette,
-          -- smart_open = {
-          -- 	show_scores = false,
-          -- 	ignore_patterns = { "*.git/*", "*/tmp/*" },
-          -- 	match_algorithm = "fzy",
-          -- 	disable_devicons = false,
-          -- },
         },
       }
       require("dressing").setup {
@@ -235,7 +178,6 @@ M.config = {
           },
         },
       }
-      -- vim.keymap.set('n', '<c-q>', ":Telescope commander<CR>", m)
       commander.add {
         {
           desc = "Run Simulator",
@@ -247,21 +189,6 @@ M.config = {
           cmd = "<CMD>Telescope git_status<CR>",
           keys = { "n", "<leader>gs" },
         },
-        -- {
-        -- 	desc = "File browser",
-        -- 	cmd = "<CMD>Telescope file_browser<CR>",
-        -- 	keys = { "n", "<leader>fb" }
-        -- },
-        -- {
-        -- 	desc = "Media Files",
-        -- 	cmd = "<CMD>Telescope media_files<CR>",
-        -- 	keys = { "n", "<leader>fm" }
-        -- },
-        -- {
-        -- 	desc = "Smart Open",
-        -- 	cmd = "<CMD>Telescope smart_open<CR>",
-        -- 	keys = { "n", "<leader>so" }
-        -- },
       }
     end,
   },
