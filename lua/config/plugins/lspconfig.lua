@@ -248,8 +248,13 @@ F.configureKeybinds = function()
       vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", opts)
       -- keymap for toggle inlay hints
       vim.keymap.set("n", "<leader>ih", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-      end, opts)
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }, { bufnr = event.buf })
+      end, {
+        buffer = event.buf,
+        noremap = true,
+        nowait = true,
+        desc = "Toggle inlay hints",
+      })
       --NOTE: neovim 0.10 add [ d and ] d for diagnostic navigation
       -- vim.keymap.set("n", "<leader>-", vim.diagnostic.goto_prev, opts)
       -- vim.keymap.set("n", "<leader>=", vim.diagnostic.goto_next, opts)
