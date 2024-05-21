@@ -31,8 +31,10 @@ vim.keymap.set("n", "<leader>pl", ":Lazy<CR>", { noremap = true })
 
 ---@type LazyConfig
 require("lazy").setup {
+  require("config.plugins.lspconfig").config,
   require "config.plugins.colorscheme",
   require "config.plugins.plenary",
+  require "config.plugins.treesitter",
   require("config.plugins.telescope").config,
   require "config.plugins.fzf",
   require "config.plugins.notify",
@@ -42,10 +44,8 @@ require("lazy").setup {
   require "config.plugins.tabline",
   require("config.plugins.autocomplete").config,
   require "config.plugins.debugger",
-  require("config.plugins.lspconfig").config,
   require "config.plugins.flutter",
   require "config.plugins.go",
-  require "config.plugins.treesitter",
   require "config.plugins.surround",
   require "config.plugins.project",
   require "config.plugins.wilder",
