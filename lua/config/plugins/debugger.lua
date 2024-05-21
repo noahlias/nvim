@@ -34,6 +34,14 @@ return {
           require("dap-python").setup(
             -- vim.fs.joinpath(require("mason-registry").get_package("debugpy"):get_install_path(), "venv/bin/python")
           )
+          --- NOTE: This is for Python
+          table.insert(require("dap").configurations.python, {
+            name = "Launch file with repl highlights",
+            type = "python",
+            request = "launch",
+            program = "${file}",
+            repl_lang = "python",
+          })
         end,
       },
       {
@@ -175,7 +183,6 @@ return {
           program = "${workspaceFolder}/_build/default/bin/main.bc",
         },
       }
-
       local dap_install = require "dap-install"
       dap_install.config("codelldb", {})
     end,

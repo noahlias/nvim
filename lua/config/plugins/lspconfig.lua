@@ -36,7 +36,7 @@ M.config = {
         "j-hui/fidget.nvim",
         tag = "legacy",
       },
-      "folke/neodev.nvim",
+      { "folke/neodev.nvim", lazy = true },
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
       "ldelossa/nvim-dap-projects",
       "b0o/SchemaStore.nvim",

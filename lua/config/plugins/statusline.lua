@@ -42,6 +42,22 @@ local function recording()
   return ""
 end
 
+local function dap()
+  ---@diagnostic disable-next-line: redefined-local
+  local dap = package.loaded["dap"]
+  if dap then
+    return dap.status()
+  end
+  return ""
+end
+
+local function dap_or_lsp()
+  if dap() ~= "" then
+    return dap()
+  else
+    return lsp()
+  end
+end
 ---@type LazyPluginSpec
 return {
   -- "theniceboy/eleline.vim",
@@ -62,8 +78,8 @@ return {
       icons_enabled = true,
       theme = "gruvbox-material",
       -- theme = "auto",
-      component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
       disabled_filetypes = {
         statusline = { "alpha" },
       },
@@ -77,8 +93,22 @@ return {
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch", "diff", "diagnostics" },
-      lualine_c = { lsp },
+      lualine_b = {
+        { "branch", icon = "" },
+        {
+          "diff",
+          symbols = {
+            added = " ",
+            modified = " ",
+            removed = " ",
+          },
+          source = function()
+            return vim.b.gitsigns_status_dict
+          end,
+        },
+        "diagnostics",
+      },
+      lualine_c = { dap_or_lsp },
       lualine_x = {
         recording,
         {
@@ -89,8 +119,8 @@ return {
         "copilot",
         "fileformat",
       },
-      lualine_y = { "location", "filesize", "filetype" },
-      lualine_z = { "filename" },
+      lualine_y = { "filesize", "diagnostics", "progress" },
+      lualine_z = { "location" },
     },
     inactive_sections = {
       lualine_a = {},

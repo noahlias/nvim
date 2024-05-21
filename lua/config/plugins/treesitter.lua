@@ -6,7 +6,12 @@ return {
     event = "VeryLazy",
     priority = 1000,
     build = ":TSUpdate",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-context",
+      "LiadOz/nvim-dap-repl-highlights",
+    },
     config = function()
+      require("nvim-dap-repl-highlights").setup()
       require("nvim-treesitter.configs").setup {
         ensure_installed = {
           "query",
@@ -33,6 +38,7 @@ return {
           "python",
           "dockerfile",
           "latex",
+          "dap_repl",
         },
         highlight = {
           enable = true,
