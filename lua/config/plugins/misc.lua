@@ -165,7 +165,7 @@ return {
         time_format = "%H:%M",
       },
       ui = {
-        enable = false,
+        enable = true,
       },
     },
   },

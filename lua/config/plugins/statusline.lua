@@ -106,7 +106,6 @@ return {
             return vim.b.gitsigns_status_dict
           end,
         },
-        "diagnostics",
       },
       lualine_c = { dap_or_lsp },
       lualine_x = {
@@ -118,8 +117,9 @@ return {
         },
         "copilot",
         "fileformat",
+        "filesize",
       },
-      lualine_y = { "filesize", "diagnostics", "progress" },
+      lualine_y = { "diagnostics", "progress" },
       lualine_z = { "location" },
     },
     inactive_sections = {
