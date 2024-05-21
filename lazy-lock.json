@@ -107,6 +107,7 @@
   "todo-comments.nvim": { "branch": "main", "commit": "a7e39ae9e74f2c8c6dc4eea6d40c3971ae84752d" },
   "toggleterm.nvim": { "branch": "main", "commit": "066cccf48a43553a80a210eb3be89a15d789d6e6" },
   "trouble.nvim": { "branch": "dev", "commit": "52fe175294a4ccd4b759c59a08ae45b768ffda1c" },
+  "ts-comments.nvim": { "branch": "main", "commit": "57e6c133c6091e1eba25ffd77697563d3f8ffc68" },
   "typescript-tools.nvim": { "branch": "master", "commit": "c43d9580c3ff5999a1eabca849f807ab33787ea7" },
   "typst-preview.nvim": { "branch": "master", "commit": "5867db936576741f378b558a9d7428b928819df5" },
   "ultisnips": { "branch": "master", "commit": "49dc8cb2086db19d385791c8e1635723b0fd95c7" },

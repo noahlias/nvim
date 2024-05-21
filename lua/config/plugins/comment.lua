@@ -1,0 +1,41 @@
+--- @type LazyPluginSpec
+return {
+  "folke/ts-comments.nvim",
+  opts = {
+    lang = {
+      c = "// %s",
+      cpp = "// %s",
+      zig = "// %s",
+      css = "/* %s */",
+      gleam = "// %s",
+      graphql = "# %s",
+      hcl = "# %s",
+      html = "<!-- %s -->",
+      sql = "-- %s",
+      svelte = "<!-- %s -->",
+      terraform = "# %s",
+      tsx = {
+        _ = "// %s",
+        call_expression = "// %s",
+        comment = "// %s",
+        jsx_attribute = "// %s",
+        jsx_element = "{/* %s */}",
+        jsx_fragment = "{/* %s */}",
+        spread_element = "// %s",
+        statement_block = "// %s",
+      },
+      javascript = {
+        _ = "// %s",
+        call_expression = "// %s",
+        comment = "// %s",
+        jsx_attribute = "// %s",
+        jsx_element = "{/* %s */}",
+        jsx_fragment = "{/* %s */}",
+        spread_element = "// %s",
+        statement_block = "// %s",
+      },
+    },
+  },
+  event = "VeryLazy",
+  enabled = vim.fn.has "nvim-0.10.0" == 1,
+}

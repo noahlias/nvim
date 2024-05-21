@@ -82,6 +82,7 @@ require("lazy").setup {
   -- require "config.plugins.overseer",
   require "config.plugins.jdtls",
   require "config.plugins.sql",
+  require "config.plugins.comment",
   -- NOTE: This plugin use for my personal use
   {
     "gleam-lang/gleam.vim",
