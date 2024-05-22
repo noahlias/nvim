@@ -34,7 +34,17 @@ M.config = {
         require("cmp_nvim_ultisnips").setup {}
       end,
     },
-    -- "L3MON4D3/LuaSnip",
+    {
+      "garymjr/nvim-snippets",
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+      },
+      config = function()
+        require("snippets").setup {
+          friendly_snippets = true,
+        }
+      end,
+    },
   },
 }
 
@@ -94,6 +104,8 @@ M.configfunc = function()
       expand = function(args)
         -- luasnip.lsp_expand(args.body)
         vim.fn["UltiSnips#Anon"](args.body)
+        -- NOTE: This has been injected by the nvim-snippets plugin not need to call it
+        -- vim.snippet.expand(args.body)
       end,
     },
     window = {
@@ -119,12 +131,14 @@ M.configfunc = function()
 
         return kind
       end,
+      expandable_indicator = true,
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "vim-dadbod-completion" },
       { name = "buffer" },
       { name = "ultisnips" },
+      { name = "snippets" },
     }, {
       { name = "path" },
       { name = "nvim_lua" },
