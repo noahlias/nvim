@@ -96,14 +96,31 @@ return {
           timer = 200,
         },
       }
-      vim.keymap.set("n", "st", substitute.operator, { noremap = true })
+      vim.keymap.set("n", "st", substitute.operator, { noremap = true, desc = "substitute with motion" })
       vim.keymap.set("n", "sh", function()
         substitute.operator { motion = "e" }
       end, { noremap = true })
       vim.keymap.set("x", "s", require("substitute.range").visual, { noremap = true })
-      vim.keymap.set("n", "ss", substitute.line, { noremap = true })
+      vim.keymap.set("n", "ss", substitute.line, { noremap = true, desc = "substitute with line" })
       vim.keymap.set("n", "sI", substitute.eol, { noremap = true })
-      vim.keymap.set("x", "s", substitute.visual, { noremap = true })
+      vim.keymap.set("x", "s", substitute.visual, { noremap = true, desc = "substitute with visual" })
+      vim.keymap.set(
+        "n",
+        "sx",
+        require("substitute.exchange").operator,
+        { noremap = true, desc = "exchange with motion" }
+      )
+      vim.keymap.set("x", "X", require("substitute.exchange").visual, { noremap = true })
+      vim.keymap.set(
+        "n",
+        "sxc",
+        require("substitute.exchange").cancel,
+        { noremap = true, desc = "cancel exchange with motion" }
+      )
+
+      -- NOTE: This is the same to move line up and down
+      ---NOTE: I use the mini.move to change position
+      -- vim.keymap.set("n", "sxx", require("substitute.exchange").line, { noremap = true, desc = "exchange with line" })
     end,
   },
   {

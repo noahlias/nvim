@@ -13,9 +13,11 @@ return {
       html = "<!-- %s -->",
       sql = "-- %s",
       svelte = "<!-- %s -->",
+      lua = { "-- %s", "--- %s" }, -- langs can have multiple commentstrings
       terraform = "# %s",
       tsx = {
-        _ = "// %s",
+        "// %s", -- default commentstring when no treesitter node matches
+        "/* %s */", -- will be used for uncommenting
         call_expression = "// %s",
         comment = "// %s",
         jsx_attribute = "// %s",
@@ -25,15 +27,16 @@ return {
         statement_block = "// %s",
       },
       javascript = {
-        _ = "// %s",
+        "// %s",
+        "/* %s */",
         call_expression = "// %s",
-        comment = "// %s",
         jsx_attribute = "// %s",
         jsx_element = "{/* %s */}",
         jsx_fragment = "{/* %s */}",
         spread_element = "// %s",
         statement_block = "// %s",
       },
+      python = { "# %s", '""" %s """', "''' %s '''" },
     },
   },
   event = "VeryLazy",
