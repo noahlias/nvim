@@ -36,6 +36,14 @@ Just dig into the lua/config/plugins.lua file to see the plugins that I use.
     Command         Description
     gj              toggle split/join
 
+## Snippets
+
+- [ultisnps](https://github.com/SirVer/ultisnips)
+- [nvim-snippets](https://github.com/garymjr/nvim-snippets)
+
+You can use the `Ultisnips` directory and `Snippets` directory to add your own snippets.
+And the Snippets can be used the `json` format which refers to the `VSCODE` snippets.
+
 ## References
 
 Referenced from the following repositories:
