@@ -89,6 +89,19 @@ local setCompHL = function()
   vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = fgdark, bg = "#58B5A8" })
   vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = fgdark, bg = "#58B5A8" })
 end
+local moveCursorBeforeComma = function()
+  if vim.bo.filetype ~= "dart" then
+    return
+  end
+  vim.defer_fn(function()
+    local line = vim.api.nvim_get_current_line()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local char = line:sub(col - 2, col)
+    if char == ": ," then
+      vim.api.nvim_win_set_cursor(0, { row, col - 1 })
+    end
+  end, 100)
+end
 
 M.configfunc = function()
   local lspkind = require "lspkind"
@@ -116,6 +129,18 @@ M.configfunc = function()
       },
       documentation = cmp.config.window.bordered(),
     },
+    sorting = {
+      comparators = {
+        -- label_comparator,
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.kind,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
     formatting = {
       fields = { "kind", "abbr", "menu" },
       maxwidth = 60,
@@ -127,8 +152,20 @@ M.configfunc = function()
         }(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. (strings[1] or "") .. " "
-        kind.menu = limitStr(entry:get_completion_item().detail or "")
-
+        -- HACK: Add some padding to the kind field
+        local complete_item = limitStr(entry:get_completion_item().detail or "")
+        local menu_table = {
+          nvim_lsp = "LSP",
+          snippets = "Snippet",
+          ultisnips = "UltiSnips",
+          buffer = "Buffer",
+          path = "Path",
+          nvim_lua = "Lua",
+          calc = "Calc",
+          crates = "Crates",
+        }
+        menu_table["vim-dadbod-completion"] = "SQL"
+        kind.menu = "[" .. (menu_table[entry.source.name] or complete_item) .. "]"
         return kind
       end,
       expandable_indicator = true,
@@ -185,8 +222,10 @@ M.configfunc = function()
         i = function(fallback)
           if cmp.visible() then
             cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
+            moveCursorBeforeComma()
           elseif has_words_before() then
             cmp.complete()
+            moveCursorBeforeComma()
           else
             fallback()
           end
@@ -196,6 +235,7 @@ M.configfunc = function()
         i = function(fallback)
           if cmp.visible() then
             cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
+            moveCursorBeforeComma()
           else
             fallback()
           end
