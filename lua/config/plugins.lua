@@ -9,7 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.runtimepath:prepend(lazypath)
 
 local lazy_cmd = require("lazy.view.config").commands
 local lazy_keys = {
@@ -31,66 +31,90 @@ vim.keymap.set("n", "<leader>pl", ":Lazy<CR>", { noremap = true })
 
 ---@type LazyConfig
 require("lazy").setup {
-  require("config.plugins.lspconfig").config,
-  require "config.plugins.colorscheme",
-  require "config.plugins.plenary",
-  require "config.plugins.treesitter",
-  require("config.plugins.telescope").config,
-  require "config.plugins.fzf",
-  require "config.plugins.notify",
-  require "config.plugins.statusline",
-  require "config.plugins.editor",
-  require "config.plugins.scrollbar",
-  require "config.plugins.tabline",
-  require("config.plugins.autocomplete").config,
-  require "config.plugins.debugger",
-  require "config.plugins.flutter",
-  require "config.plugins.go",
-  require "config.plugins.surround",
-  require "config.plugins.project",
-  require "config.plugins.wilder",
-  require "config.plugins.multi-cursor",
-  require "config.plugins.copilot",
-  require "config.plugins.markdown",
-  require "config.plugins.git",
-  require "config.plugins.indent",
-  require "config.plugins.search",
-  require "config.plugins.yank",
-  require "config.plugins.snippets",
-  require "config.plugins.window-management",
-  require "config.plugins.undo",
-  require "config.plugins.ft",
-  require "config.plugins.fun",
-  require "config.plugins.crates",
-  require "config.plugins.winbar",
-  require "config.plugins.leap",
-  require "config.plugins.misc",
-  require "config.plugins.tree",
-  require "config.plugins.outline",
-  -- NOTE: AI plugins(copilot and gp and codieum)
-  require "config.plugins.ai",
-  require "config.plugins.alpha",
-  -- extra plugins
-  require "config.plugins.rustacean",
-  require "config.plugins.typescript-tools",
-  ---mini.nvim
-  require "config.plugins.mini",
-  require "config.plugins.clangd_extensions",
-  { "dstein64/vim-startuptime" },
-  require "config.plugins.noice",
-  require "config.plugins.conform",
-  -- require "config.plugins.overseer",
-  require "config.plugins.jdtls",
-  require "config.plugins.sql",
-  require "config.plugins.comment",
-  -- NOTE: This plugin use for my personal use
-  {
-    "gleam-lang/gleam.vim",
+  spec = {
+    require("config.plugins.lspconfig").config,
+    require "config.plugins.colorscheme",
+    require "config.plugins.plenary",
+    require "config.plugins.treesitter",
+    require("config.plugins.telescope").config,
+    require "config.plugins.fzf",
+    require "config.plugins.notify",
+    require "config.plugins.statusline",
+    require "config.plugins.editor",
+    require "config.plugins.scrollbar",
+    require "config.plugins.tabline",
+    require("config.plugins.autocomplete").config,
+    require "config.plugins.debugger",
+    require "config.plugins.flutter",
+    require "config.plugins.go",
+    require "config.plugins.surround",
+    require "config.plugins.project",
+    require "config.plugins.wilder",
+    require "config.plugins.multi-cursor",
+    require "config.plugins.copilot",
+    require "config.plugins.markdown",
+    require "config.plugins.git",
+    require "config.plugins.indent",
+    require "config.plugins.search",
+    require "config.plugins.yank",
+    require "config.plugins.snippets",
+    require "config.plugins.window-management",
+    require "config.plugins.undo",
+    require "config.plugins.ft",
+    require "config.plugins.fun",
+    require "config.plugins.crates",
+    require "config.plugins.winbar",
+    require "config.plugins.leap",
+    require "config.plugins.misc",
+    require "config.plugins.tree",
+    require "config.plugins.outline",
+    -- NOTE: AI plugins(copilot and gp and codieum)
+    require "config.plugins.ai",
+    require "config.plugins.alpha",
+    -- extra plugins
+    require "config.plugins.rustacean",
+    require "config.plugins.typescript-tools",
+    ---mini.nvim
+    require "config.plugins.mini",
+    require "config.plugins.clangd_extensions",
+    { "dstein64/vim-startuptime" },
+    require "config.plugins.noice",
+    require "config.plugins.conform",
+    -- require "config.plugins.overseer",
+    require "config.plugins.jdtls",
+    require "config.plugins.sql",
+    require "config.plugins.comment",
+    -- NOTE: This plugin use for my personal use
+    {
+      "gleam-lang/gleam.vim",
+    },
+    {
+      "fladson/vim-kitty",
+      event = { "BufReadPre kitty.conf" },
+    },
   },
-  {
-    "fladson/vim-kitty",
-    event = { "BufReadPre kitty.conf" },
+  diff = {
+    cmd = "diffview.nvim",
   },
+  ---NOTE: This checker for lazy update status
+  -- checker = {
+  --   enabled = true,
+  -- },
+  -- performance = {
+  --   rtp = {
+  --     reset = false,
+  --     disabled_plugins = {
+  --       "gzip",
+  --       -- "matchit",
+  --       "matchparen",
+  --       "netrwPlugin",
+  --       "tarPlugin",
+  --       "tohtml",
+  --       "tutor",
+  --       "zipPlugin",
+  --     },
+  --   },
+  -- },
 }
 
 local swap_ternary = require "plugin.swap_ternary"
