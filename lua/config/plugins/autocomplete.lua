@@ -165,7 +165,15 @@ M.configfunc = function()
           crates = "Crates",
         }
         menu_table["vim-dadbod-completion"] = "SQL"
-        kind.menu = "[" .. (menu_table[entry.source.name] or complete_item) .. "]"
+        local menu_kind = strings[2] or ""
+        local menu_source = (menu_table[entry.source.name] or complete_item)
+        local menu = menu_source .. "_" .. menu_kind
+        if strings[2] == "Snippet" then
+          menu = "[" .. menu_source .. "]"
+        elseif entry.source.name == "nvim_lsp" then
+          menu = menu_kind
+        end
+        kind.menu = menu
         return kind
       end,
       expandable_indicator = true,
