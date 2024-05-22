@@ -44,13 +44,4 @@ return {
       "Git",
     },
   },
-  {
-    "APZelos/blamer.nvim",
-    enabled = false,
-    config = function()
-      vim.g.blamer_enabled = true
-      vim.g.blamer_relative_time = true
-      vim.g.blamer_date_format = "%y/%m/%d"
-    end,
-  },
 }

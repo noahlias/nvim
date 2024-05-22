@@ -195,30 +195,6 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
-  {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    enabled = false,
-    --TODO: add gopass command to set the api key
-    config = function()
-      require("chatgpt").setup {
-        openai_params = {
-          model = "gpt-3.5-turbo-0125",
-          frequency_penalty = 0,
-          presence_penalty = 0,
-          max_tokens = 300,
-          temperature = 0,
-          top_p = 1,
-          n = 1,
-        },
-      }
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
   -- NOTE: temporaily disable this plugin  <04/26, 2024, noahlias> --
   {
     "Exafunction/codeium.nvim",

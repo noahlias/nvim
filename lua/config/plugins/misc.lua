@@ -371,14 +371,6 @@ return {
     end,
   },
   {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    ft = "markdown",
-    enabled = false,
-    lazy = true,
-    config = true, -- or `opts = {}`
-  },
-  {
     "chomosuke/typst-preview.nvim",
     ft = "typst",
     version = "0.1.*",
