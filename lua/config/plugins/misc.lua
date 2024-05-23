@@ -18,16 +18,6 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    -- -- NOTE: todonvim keymap
-    -- vim.keymap.set("n", "]t", function()
-    -- 	require("todo-comments").jump_next()
-    -- end, { desc = "Next todo comment" })
-    --
-    -- vim.keymap.set("n", "[t", function()
-    -- 	require("todo-comments").jump_prev()
-    -- end, { desc = "Previous todo comment" })
-    --
-    --------------
     opts = {},
   },
   {
@@ -57,23 +47,6 @@ return {
       }
     end,
   },
-  -- {
-  -- 	"linux-cultist/venv-selector.nvim",
-  -- 	dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim" },
-  -- 	config = function()
-  -- 		require("venv-selector").setup({
-  -- 			anaconda_base_path = "/opt/Homebrew/Caskroom/miniforge/base",
-  -- 			annconda_ens_path = "/opt/Homebrew/Caskroom/miniforge/base/envs",
-  -- 		})
-  -- 	end,
-  -- 	ft = "python",
-  -- 	event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-  -- 	keys = { { "<leader>vs", "<cmd>:VenvSelect<cr>",
-  -- 		-- optional if you use a autocmd (see #🤖-Automate)
-  -- 		"<leader>vc", "<cmd>:VenvSelectCached<cr>"
-  -- 	} },
-  --
-  -- },
   {
     "vhyrro/luarocks.nvim",
     ft = "norg",
@@ -547,5 +520,17 @@ return {
       -- toggle keymappings for venn using <leader>v
       vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", { noremap = true })
     end,
+  },
+  ---NOTE: just for try to use remote nvim
+  {
+    "amitds1997/remote-nvim.nvim",
+    enabled = false,
+    version = "*", -- Pin to GitHub releases
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- For standard functions
+      "MunifTanjim/nui.nvim", -- To build the plugin UI
+      "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+    },
+    config = true,
   },
 }

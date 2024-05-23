@@ -64,7 +64,7 @@
   "mini.trailspace": { "branch": "main", "commit": "91f2e0c1b0ee7b72189e6f88da03da9d04077051" },
   "molten-nvim": { "branch": "main", "commit": "df5ccef3b6fda3582f7746e45327ee031f668826" },
   "neodev.nvim": { "branch": "main", "commit": "ce9a2e8eaba5649b553529c5498acb43a6c317cd" },
-  "neorg": { "branch": "main", "commit": "c17b8e9e7327e03f78fbdccfb15abd09ec607bd0" },
+  "neorg": { "branch": "main", "commit": "f7c3fe69bea1f111ebd3dbd16e7b0f3f50a8cd8b" },
   "neorg-exec": { "branch": "main", "commit": "90064eaeee596eb6ec1c476cf26ea0087861faed" },
   "noice.nvim": { "branch": "main", "commit": "9f6f6ba74f8bfbf7e43d6302cf86b070362f6203" },
   "nui.nvim": { "branch": "main", "commit": "b1b3dcd6ed8f355c78bad3d395ff645be5f8b6ae" },
