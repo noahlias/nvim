@@ -1,56 +1,10 @@
 -- local utils = require "utils"
 ---@type LazyPluginSpec[]
 return {
-  {
-    "shellRaining/hlchunk.nvim",
-    ft = {
-      "lua",
-      "sh",
-      "typescript",
-      "typescriptreact",
-      "javascript",
-      "javascriptreact",
-      "c",
-      "cpp",
-      "rust",
-      "python",
-      "java",
-      "go",
-      "html",
-      "css",
-      "scss",
-      "dockerfile",
-      "zig",
-      "haskell",
-    },
-    init = function()
-      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, { pattern = "*", command = "EnableHL" })
-      require("hlchunk").setup {
-        chunk = {
-          notify = false,
-          enable = true,
-          use_treesitter = true,
-          style = {
-            { fg = "#806d9c" },
-          },
-        },
-        indent = {
-          chars = { "│", "¦", "┆", "┊" },
-          use_treesitter = false,
-        },
-        blank = {
-          enable = false,
-        },
-        line_num = {
-          use_treesitter = true,
-        },
-      }
-    end,
-  },
   -- {
   --   "lukas-reineke/indent-blankline.nvim",
   --   event = "VeryLazy",
-  --   enabled = false,
+  --   enabled = true,
   --   opts = {
   --     indent = {
   --       char = "▏", -- Thiner, not suitable when enable scope
@@ -82,4 +36,76 @@ return {
   --     end)
   --   end,
   -- },
+  {
+    "Mr-LLLLL/cool-chunk.nvim",
+    event = { "CursorHold", "CursorHoldI" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      local cool_chunk_mods = require "cool-chunk.mods"
+      local support_filetypes = {
+        "lua",
+        "sh",
+        "typescript",
+        "typescriptreact",
+        "javascript",
+        "javascriptreact",
+        "c",
+        "cpp",
+        "rust",
+        "python",
+        "java",
+        "go",
+        "html",
+        "css",
+        "scss",
+        "dockerfile",
+        "zig",
+        "haskell",
+      }
+      require("cool-chunk").setup {
+        {
+          chunk = {
+            notify = true,
+            support_filetypes = support_filetypes,
+            hl_group = {
+              chunk = "CursorLineNr",
+              error = "CoolError",
+            },
+            chars = {
+              horizontal_line = "─",
+              vertical_line = "│",
+              left_top = "╭",
+              left_bottom = "╰",
+              left_arrow = "<",
+              bottom_arrow = "v",
+              right_arrow = ">",
+            },
+            textobject = "ah",
+            animate_duration = 200,
+            fire_event = { "CursorHold", "CursorHoldI" },
+          },
+          context = {
+            notify = true,
+            chars = {
+              "│",
+            },
+            hl_group = {
+              context = "LineNr",
+            },
+            support_filetypes = support_filetypes,
+            textobject = "ih",
+            jump_support_filetypes = { "lua", "python" },
+            jump_start = "[{",
+            jump_end = "]}",
+            fire_event = { "CursorHold", "CursorHoldI" },
+          },
+        },
+      }
+      --NOTE: disable line_num
+      cool_chunk_mods.line_num:disable()
+      vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE", fg = "#806d9c" })
+    end,
+  },
 }
