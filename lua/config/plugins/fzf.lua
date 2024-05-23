@@ -139,7 +139,6 @@ return {
           cmd_deleted = "git diff --color HEAD --",
           cmd_modified = "git diff --color HEAD",
           cmd_untracked = "git diff --color --no-index /dev/null",
-          -- pager        = "delta",      -- if you have `delta` installed
         },
         man = {
           cmd = "man -c %s | col -bx",
