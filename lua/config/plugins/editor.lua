@@ -50,13 +50,6 @@ return {
     lazy = false,
     ft = { "markdown", "txt" },
   },
-  -- {
-  -- 	"psliwka/vim-smoothie",
-  -- 	init = function()
-  -- 		vim.cmd([[nnoremap <unique> <C-e> <cmd>call smoothie#do("\<C-D>") <CR>]])
-  -- 		vim.cmd([[nnoremap <unique> <C-u> <cmd>call smoothie#do("\<C-U>") <CR>]])
-  -- 	end
-  -- },
   {
     "NvChad/nvim-colorizer.lua",
     -- event = "VeryLazy",
@@ -125,9 +118,136 @@ return {
   },
   {
     "kevinhwang91/nvim-ufo",
-    dependencies = { "kevinhwang91/promise-async" },
-    config = function()
-      require("ufo").setup()
+    dependencies = {
+      "kevinhwang91/promise-async",
+      {
+        "luukvbaal/statuscol.nvim",
+        config = function()
+          local builtin = require "statuscol.builtin"
+          require("statuscol").setup {
+            bt_ignore = { "nofile", "terminal" },
+            ft_ignore = { "NeogitStatus" },
+            segments = {
+              {
+                sign = {
+                  name = { ".*" },
+                  text = { ".*" },
+                },
+                click = "v:lua.ScSa",
+              },
+              {
+                text = { builtin.lnumfunc },
+                condition = { builtin.not_empty },
+                click = "v:lua.ScLa",
+              },
+              {
+                sign = { namespace = { "gitsigns" }, colwidth = 1, wrap = true },
+                click = "v:lua.ScSa",
+              },
+              {
+                text = {
+                  function(args)
+                    args.fold.close = ""
+                    args.fold.open = ""
+                    args.fold.sep = " "
+                    -- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+                    return builtin.foldfunc(args)
+                  end,
+                },
+                condition = {
+                  function()
+                    return vim.o.foldcolumn ~= "0"
+                  end,
+                },
+                click = "v:lua.ScFa",
+              },
+            },
+          }
+        end,
+      },
+    },
+    event = "VeryLazy",
+    opts = {
+      close_fold_kinds_for_ft = {
+        default = { "imports" },
+      },
+    },
+    init = function()
+      local set_foldcolumn_for_file = vim.api.nvim_create_augroup("set_foldcolumn_for_file", {
+        clear = true,
+      })
+      vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        group = set_foldcolumn_for_file,
+        callback = function()
+          if vim.bo.buftype == "" then
+            vim.wo.foldcolumn = "1"
+          else
+            vim.wo.foldcolumn = "0"
+          end
+        end,
+      })
+      vim.api.nvim_create_autocmd("OptionSet", {
+        group = set_foldcolumn_for_file,
+        pattern = "buftype",
+        callback = function()
+          if vim.bo.buftype == "" then
+            vim.wo.foldcolumn = "1"
+          else
+            vim.wo.foldcolumn = "0"
+          end
+        end,
+      })
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+    end,
+    config = function(_, opts)
+      local handler = function(virtText, lnum, endLnum, width, truncate)
+        local newVirtText = {}
+        local totalLines = vim.api.nvim_buf_line_count(0)
+        local foldedLines = endLnum - lnum
+        local suffix = ("  %d %d%%"):format(foldedLines, foldedLines / totalLines * 100)
+        local sufWidth = vim.fn.strdisplaywidth(suffix)
+        local targetWidth = width - sufWidth
+        local curWidth = 0
+        for _, chunk in ipairs(virtText) do
+          local chunkText = chunk[1]
+          local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+          if targetWidth > curWidth + chunkWidth then
+            table.insert(newVirtText, chunk)
+          else
+            chunkText = truncate(chunkText, targetWidth - curWidth)
+            local hlGroup = chunk[2]
+            table.insert(newVirtText, { chunkText, hlGroup })
+            chunkWidth = vim.fn.strdisplaywidth(chunkText)
+            -- str width returned from truncate() may less than 2nd argument, need padding
+            if curWidth + chunkWidth < targetWidth then
+              suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
+            end
+            break
+          end
+          curWidth = curWidth + chunkWidth
+        end
+        local rAlignAppndx = math.max(math.min(vim.api.nvim_win_get_width(0), width - 1) - curWidth - sufWidth, 0)
+        suffix = (" "):rep(rAlignAppndx) .. suffix
+        table.insert(newVirtText, { suffix, "MoreMsg" })
+        return newVirtText
+      end
+      opts["fold_virt_text_handler"] = handler
+      require("ufo").setup(opts)
+      --  vim.api.nvim_create_autocmd("LspAttach", {
+      --   desc = "Setup Ufo `K` with LSP hover",
+      --   callback = function(args)
+      --     local bufnr = args.buf
+      --
+      --     vim.keymap.set("n", "K", function()
+      --       local winid = ufo.peekFoldedLinesUnderCursor()
+      --       if not winid then
+      --         vim.lsp.buf.hover()
+      --       end
+      --     end, { buffer = bufnr, desc = "LSP: Signature help" })
+      --   end,
+      -- })
     end,
   },
   {
