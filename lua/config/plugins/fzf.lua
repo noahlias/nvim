@@ -148,15 +148,17 @@ return {
           syntax = true, -- preview syntax highlight?
           syntax_limit_l = 0, -- syntax limit (lines), 0=nolimit
           syntax_limit_b = 1024 * 1024, -- syntax limit (bytes), 0=nolimit
-          -- extensions     = {
-          -- 	['png'] = { 'chafa' },
-          -- 	['webp'] = { 'chafa' },
-          -- 	['jpg'] = { 'chafa' },
-          -- }
+          --NOTE: THe `chafa` not work So I change to `viu`(rust)
+          extensions = {
+            ["png"] = { "viu" },
+            ["webp"] = { "viu" },
+            ["jpg"] = { "viu" },
+            ["jpeg"] = { "viu" },
+          },
         },
       },
       files = {
-        -- previewer    = "bat", -- uncomment to override previewer
+        -- previewer = { "bat", "-p", "--theme", "gruvbox-dark" }, -- uncomment to override previewer
         -- (name from 'previewers' table)
         -- set to 'false' to disable
         prompt = "Files❯ ",
