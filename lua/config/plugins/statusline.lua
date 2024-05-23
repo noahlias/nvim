@@ -4,8 +4,6 @@
 -- 	return sig.label .. "🐼" .. sig.hint
 -- end
 
-local lazy_status = require "lazy.status"
-
 local function lsp()
   local clients = vim.lsp.get_clients()
   local buf = vim.api.nvim_get_current_buf()
@@ -110,14 +108,9 @@ return {
       lualine_c = { dap_or_lsp },
       lualine_x = {
         recording,
-        {
-          lazy_status.updates,
-          cond = lazy_status.has_updates,
-          color = { fg = "#ff9e64" },
-        },
         "copilot",
-        "fileformat",
         "filesize",
+        "filetype",
       },
       lualine_y = { "diagnostics", "progress" },
       lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
