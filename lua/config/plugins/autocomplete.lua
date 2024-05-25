@@ -211,7 +211,6 @@ M.configfunc = function()
           vim.schedule(function()
             vim.snippet.jump(-1)
           end)
-          return
         end
       end, {
         "i",
