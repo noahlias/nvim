@@ -196,12 +196,23 @@ M.configfunc = function()
       ["<C-o>"] = cmp.mapping.complete(),
       ["<c-e>"] = cmp.mapping(function()
         cmp_ultisnips_mappings.compose { "expand", "jump_forwards" }(function() end)
+        if vim.snippet.active { direction = 1 } then
+          vim.schedule(function()
+            vim.snippet.jump(1)
+          end)
+        end
       end, {
         "i",
         "s", --[[ "c" (to enable the mapping in command mode) ]]
       }),
       ["<c-n>"] = cmp.mapping(function(fallback)
         cmp_ultisnips_mappings.jump_backwards(fallback)
+        if vim.snippet.active { direction = -1 } then
+          vim.schedule(function()
+            vim.snippet.jump(-1)
+          end)
+          return
+        end
       end, {
         "i",
         "s", --[[ "c" (to enable the mapping in command mode) ]]

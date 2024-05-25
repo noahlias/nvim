@@ -1,3 +1,5 @@
+// Extract from
+// https://github.com/golang/vscode-go/blob/master/extension/snippets/go.json
 {
   "single import": {
     "prefix": "im",
