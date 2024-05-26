@@ -533,4 +533,12 @@ return {
     },
     config = true,
   },
+  {
+    "jedrzejboczar/possession.nvim",
+    event = "VeryLazy",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = function()
+      require("possession").setup {}
+    end,
+  },
 }

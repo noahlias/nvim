@@ -99,6 +99,7 @@
   "outline.nvim": { "branch": "main", "commit": "139e363dd5a44f66a51041264aabe3884df4dd98" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
+  "possession.nvim": { "branch": "master", "commit": "b14d3400d86e9ac9b52c335a585986509670f2e4" },
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "promise-async": { "branch": "main", "commit": "93540c168c5ed2b030ec3e6c40ab8bbb85e36355" },
   "rustaceanvim": { "branch": "master", "commit": "9d3ee35b62d84f0657ef2202ebde132df5bc6cf9" },

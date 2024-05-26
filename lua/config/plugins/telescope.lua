@@ -129,12 +129,10 @@ M.config = {
 
       ts.load_extension "neoclip"
       ts.load_extension "dap"
-      -- ts.load_extension "telescope-tabs"
       ts.load_extension "fzf"
       ts.load_extension "simulators"
-      -- ts.load_extension("file_browser")
-      -- ts.load_extension("media_files")
       ts.load_extension "noice"
+      ts.load_extension "possession"
 
       require("simulators").setup {
         android_emulator = false,
