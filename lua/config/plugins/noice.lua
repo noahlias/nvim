@@ -16,6 +16,12 @@ return {
     "rcarriga/nvim-notify",
   },
   opts = {
+    routes = {
+      {
+        filter = { event = "msg_show", min_height = 20 },
+        view = "cmdline_output",
+      },
+    },
     presets = {
       long_message_to_split = true,
       command_palette = true,
@@ -72,6 +78,9 @@ return {
           width = 60,
           height = "auto",
         },
+        border = {
+          style = "rounded",
+        },
       },
       popupmenu = {
         relative = "editor",
@@ -94,6 +103,13 @@ return {
       hover = {
         size = {
           max_width = 80,
+        },
+        border = {
+          style = "rounded",
+          padding = { 0, 0 },
+        },
+        position = {
+          row = 2,
         },
       },
     },
