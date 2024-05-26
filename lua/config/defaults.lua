@@ -40,6 +40,7 @@ vim.o.inccommand = "split"
 vim.o.completeopt = "longest,noinsert,menuone,noselect,preview"
 vim.o.completeopt = "menuone,noinsert,noselect,preview"
 -- vim.o.lazyredraw = true
+vim.o.visualbell = true
 vim.o.colorcolumn = "100"
 vim.o.updatetime = 100
 vim.o.virtualedit = "block"
