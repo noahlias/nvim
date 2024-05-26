@@ -111,6 +111,18 @@ M.config = {
       require("config.lsp.gleam").setup(lspconfig, lsp)
       require("config.lsp.r").setup(lspconfig, lsp)
       lsp.setup()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+      for _, ls in ipairs(language_servers) do
+        require("lspconfig")[ls].setup {
+          capabilities = capabilities,
+          -- you can add other fields for setting up lsp server in this table
+        }
+      end
       require("fidget").setup {}
 
       local lsp_defaults = lspconfig.util.default_config
@@ -209,11 +221,7 @@ F.configureKeybinds = function()
       vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
       vim.keymap.set("i", "<c-f>", vim.lsp.buf.signature_help, opts)
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-      -- vim.keymap.set({ 'n', 'x' }, '<leader>f', function() vim.lsp.buf.format({ async = true }) end, opts)
-      -- vim.keymap.set('n', '<leader>aw', vim.lsp.buf.code_action, opts)
       vim.keymap.set("n", "<leader>,", vim.lsp.buf.code_action, opts)
-      -- vim.keymap.set('x', '<leader>aw', vim.lsp.buf.range_code_action, opts)
-      -- vim.keymap.set('x', "<leader>,", vim.lsp.buf.range_code_action, opts)
       vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", opts)
       -- keymap for toggle inlay hints
       vim.keymap.set("n", "<leader>ih", function()
