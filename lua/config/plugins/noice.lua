@@ -19,8 +19,8 @@ return {
     presets = {
       long_message_to_split = true,
       command_palette = true,
-      inc_rename = true,
       bottom_search = true,
+      lsp_doc_border = true,
     },
     cmdline = {
       view = "cmdline_popup",
