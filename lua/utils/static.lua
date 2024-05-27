@@ -61,7 +61,6 @@ M.langs = setmetatable({
   python = {
     ts = "python",
     ft = "python",
-    lsp_server = "pyright",
     dap = "debugpy",
     formatting = "black",
   },

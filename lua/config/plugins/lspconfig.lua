@@ -54,7 +54,6 @@ M.config = {
         "jsonls",
         "html",
         "clangd",
-        "pyright",
       }
 
       -- F.configureInlayHints()

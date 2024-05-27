@@ -16,6 +16,9 @@ local function lsp()
       return client.name ~= "GitHub Copilot"
     end)
     :map(function(client)
+      if client.name == "pyright" then
+        return " pylance"
+      end
       return " " .. client.name
     end)
     :totable()
