@@ -29,6 +29,9 @@ local compileRun = function()
   elseif ft == "zig" then
     split()
     vim.cmd "term zig run %"
+  elseif ft == "hurl" then
+    split()
+    vim.cmd "term hurl %"
   end
 end
 
