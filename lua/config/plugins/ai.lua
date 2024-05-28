@@ -203,6 +203,23 @@ return {
         end,
         desc = "CopilotChat - Quick chat",
       },
+      {
+        "<leader>cch",
+        function()
+          local actions = require "CopilotChat.actions"
+          require("CopilotChat.integrations.fzflua").pick(actions.help_actions())
+        end,
+        desc = "CopilotChat - Help actions",
+      },
+      -- Show prompts actions with fzf-lua
+      {
+        "<leader>ccp",
+        function()
+          local actions = require "CopilotChat.actions"
+          require("CopilotChat.integrations.fzflua").pick(actions.prompt_actions())
+        end,
+        desc = "CopilotChat - Prompt actions",
+      },
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
