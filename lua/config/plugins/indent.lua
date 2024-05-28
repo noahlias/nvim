@@ -1,4 +1,3 @@
-local utils = require "utils"
 ---@type LazyPluginSpec[]
 return {
   {
@@ -29,6 +28,9 @@ return {
         },
         supported_filetypes = {
           "*.zig",
+        },
+        exclude_filetypes = {
+          ["copilot-chat"] = true,
         },
       }
     end,

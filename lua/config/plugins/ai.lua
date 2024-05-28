@@ -131,48 +131,59 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     enabled = true,
     branch = "canary",
-    show_help = false,
-    auto_follow_cursor = false,
     event = "VeryLazy",
     dependencies = {
       { "github/copilot.vim" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
-    opts = {
-      debug = false, -- Enable debugging
-      question_header = "", -- Header to use for user questions
-      answer_header = "", -- Header to use for AI answers
-      error_header = "", -- Header to use for errors
-      -- window = {
-      --   layout = "float",
-      --   relative = "editor",
-      --   border = "rounded",
-      --   width = 0.6,
-      --   height = 0.5,
-      --   row = 1,
-      -- },
-      mappings = {
-        complete = {
-          detail = "Use @<Tab> or /<Tab> for options.",
-          insert = "<Tab>",
+    config = function()
+      local opts = {
+        show_fold = false,
+        show_help = false,
+        auto_follow_cursor = true,
+        debug = false, -- Enable debugging
+        question_header = "  noahlias ", -- Header to use for user questions
+        answer_header = "  Copilot ", -- Header to use for AI answers
+        error_header = "", -- Header to use for errors
+        window = {
+          border = "rounded",
+          width = 0.3,
+          height = 0.2,
         },
-        -- Close the chat
-        close = {
-          normal = "q",
-          insert = "<C-c>",
+        mappings = {
+          complete = {
+            detail = "Use @<Tab> or /<Tab> for options.",
+            insert = "<Tab>",
+          },
+          -- Close the chat
+          close = {
+            normal = "q",
+            insert = "<C-q>",
+          },
+          -- Reset the chat buffer
+          reset = {
+            normal = "<C-l>",
+            insert = "<C-l>",
+          },
+          -- Submit the prompt to Copilot
+          submit_prompt = {
+            normal = "<CR>",
+            insert = "<C-CR>",
+          },
         },
-        -- Reset the chat buffer
-        reset = {
-          normal = "<C-l>",
-          insert = "<C-l>",
-        },
-        -- Submit the prompt to Copilot
-        submit_prompt = {
-          normal = "<CR>",
-          insert = "<C-CR>",
-        },
-      },
-    },
+      }
+
+      require("CopilotChat").setup(opts)
+      vim.api.nvim_set_hl(0, "CopilotChatSeparator", { fg = "#7a8d76", bg = "none" })
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = "copilot-*",
+        callback = function()
+          vim.opt_local.relativenumber = false
+          vim.opt_local.number = false
+          vim.opt_local.fillchars = "eob: "
+        end,
+      })
+    end,
     keys = {
       -- Show prompts actions with telescope
       {
