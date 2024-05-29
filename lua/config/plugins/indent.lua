@@ -18,7 +18,7 @@ return {
         },
         indent = {
           enable = true,
-          chars = { "│", "¦", "┆", "┊" },
+          chars = { "│" },
         },
         line_num = {
           enable = false,
