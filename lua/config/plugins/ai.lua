@@ -140,6 +140,7 @@ return {
       local opts = {
         show_fold = false,
         show_help = false,
+        model = "gpt-4",
         auto_follow_cursor = true,
         auto_inert_mode = true,
         debug = false, -- Enable debugging
@@ -175,6 +176,10 @@ return {
             insert = "<C-CR>",
           },
         },
+        selection = function(source)
+          local select = require "CopilotChat.select"
+          return select.visual(source) or select.buffer(source)
+        end,
       }
 
       vim.api.nvim_set_hl(0, "CopilotChatSeparator", { fg = "#7a8d76", bg = "none" })
@@ -192,24 +197,26 @@ return {
     keys = {
       -- Show prompts actions with telescope
       {
-        "<leader>cct",
+        "<leader>ax",
         function()
           require("CopilotChat").toggle()
         end,
         desc = "CopilotChat - chat",
+        mode = { "n", "v" },
       },
       {
-        "<leader>ccq",
+        "<leader>aq",
         function()
           local input = vim.fn.input "Quick Chat: "
           if input ~= "" then
-            require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+            require("CopilotChat").ask(input)
           end
         end,
         desc = "CopilotChat - Quick chat",
+        mode = { "n", "v" },
       },
       {
-        "<leader>cch",
+        "<leader>ah",
         function()
           local actions = require "CopilotChat.actions"
           require("CopilotChat.integrations.fzflua").pick(actions.help_actions())
@@ -218,7 +225,7 @@ return {
       },
       -- Show prompts actions with fzf-lua
       {
-        "<leader>ccp",
+        "<leader>ap",
         function()
           local actions = require "CopilotChat.actions"
           require("CopilotChat.integrations.fzflua").pick(actions.prompt_actions())
