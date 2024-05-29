@@ -124,6 +124,11 @@ return {
     ft = "markdown",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      --FIX: problem with snippet not works
+      "hrsh7th/nvim-cmp",
+      "nvim-telescope/telescope.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "3rd/image.nvim",
     },
     opts = {
       workspaces = {

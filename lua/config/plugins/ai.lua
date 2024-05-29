@@ -141,14 +141,18 @@ return {
         show_fold = false,
         show_help = false,
         auto_follow_cursor = true,
+        auto_inert_mode = true,
         debug = false, -- Enable debugging
         question_header = "  noahlias ", -- Header to use for user questions
         answer_header = "  Copilot ", -- Header to use for AI answers
         error_header = "", -- Header to use for errors
         window = {
           border = "rounded",
-          width = 0.3,
-          height = 0.2,
+          width = 0.4,
+          selection = function(source)
+            local select = require "CopilotChat.select"
+            return select.visual(source) or select.buffer(source)
+          end,
         },
         mappings = {
           complete = {
@@ -173,16 +177,17 @@ return {
         },
       }
 
-      require("CopilotChat").setup(opts)
       vim.api.nvim_set_hl(0, "CopilotChatSeparator", { fg = "#7a8d76", bg = "none" })
       vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "copilot-*",
+        pattern = "copilot-chat",
         callback = function()
           vim.opt_local.relativenumber = false
           vim.opt_local.number = false
           vim.opt_local.fillchars = "eob: "
         end,
       })
+
+      require("CopilotChat").setup(opts)
     end,
     keys = {
       -- Show prompts actions with telescope
