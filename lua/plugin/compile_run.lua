@@ -35,4 +35,49 @@ local compileRun = function()
   end
 end
 
+local chooseVisualFormatAndRun = function()
+  local formats = {
+    "beams",
+    "binarypath",
+    "blackhole",
+    "bouncyballs",
+    "bubbles",
+    "burn",
+    "colorshift",
+    "crumble",
+    "decrypt",
+    "errorcorrect",
+    "expand",
+    "fireworks",
+    "middleout",
+    "orbittingvolley",
+    "overflow",
+    "pour",
+    "print",
+    "rain",
+    "randomsequence",
+    "rings",
+    "scattered",
+    "slice",
+    "slide",
+    "spotlights",
+    "spray",
+    "swarm",
+    "synthgrid",
+    "unstable",
+    "vhstape",
+    "waves",
+    "wipe",
+  }
+  -- local choice = vim.fn.inputlist(formats)
+  vim.ui.select(formats, { prompt = "Choose a visual format: " }, function(choice)
+    vim.cmd "w"
+    split()
+    if choice ~= nil then
+      vim.cmd("term cat % | tte " .. choice)
+    end
+  end)
+end
+
 vim.keymap.set("n", "r", compileRun, { silent = true })
+vim.keymap.set("n", "<leader>tt", chooseVisualFormatAndRun, { silent = true, desc = "TTE with visual effects" })

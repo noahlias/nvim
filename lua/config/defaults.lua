@@ -80,6 +80,7 @@ vim.g.terminal_color_12 = "#CAA9FA"
 vim.g.terminal_color_13 = "#FF92D0"
 vim.g.terminal_color_14 = "#9AEDFE"
 vim.cmd [[autocmd TermOpen term://* startinsert]]
+vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
 vim.cmd [[
 augroup NVIMRC
     autocmd!
