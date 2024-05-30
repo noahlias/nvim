@@ -13,7 +13,7 @@ M.config = {
     dependencies = {
       {
         "folke/trouble.nvim",
-        branch = "dev",
+        -- branch = "dev",
         opts = {
           use_diagnostic_signs = true,
           action_keys = {
@@ -222,6 +222,20 @@ F.configureKeybinds = function()
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
       vim.keymap.set("n", "<leader>,", vim.lsp.buf.code_action, opts)
       vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", opts)
+
+      vim.keymap.set("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>", {
+        buffer = event.buf,
+        noremap = true,
+        nowait = true,
+        desc = "Symbols (Trouble)",
+      })
+
+      vim.keymap.set("n", "<leader>tS", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", {
+        buffer = event.buf,
+        noremap = true,
+        nowait = true,
+        desc = "LSP references/definitions/... (Trouble)",
+      })
       -- keymap for toggle inlay hints
       vim.keymap.set("n", "<leader>ih", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }, { bufnr = event.buf })
