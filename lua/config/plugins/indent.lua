@@ -26,9 +26,6 @@ return {
         blank = {
           enable = false,
         },
-        supported_filetypes = {
-          "*.zig",
-        },
         exclude_filetypes = {
           ["copilot-chat"] = true,
         },
