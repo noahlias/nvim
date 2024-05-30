@@ -157,8 +157,7 @@ return {
         },
         mappings = {
           complete = {
-            detail = "Use @<Tab> or /<Tab> for options.",
-            insert = "<Tab>",
+            insert = "",
           },
           -- Close the chat
           close = {
@@ -193,6 +192,7 @@ return {
       })
 
       require("CopilotChat").setup(opts)
+      require("CopilotChat.integrations.cmp").setup()
     end,
     keys = {
       -- Show prompts actions with telescope
