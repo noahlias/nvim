@@ -81,3 +81,10 @@ end
 
 vim.keymap.set("n", "r", compileRun, { silent = true })
 vim.keymap.set("n", "<leader>tt", chooseVisualFormatAndRun, { silent = true, desc = "TTE with visual effects" })
+
+vim.cmd [[
+  augroup MarkdownCommands
+    autocmd!
+    autocmd FileType markdown command! MarkdownOpenWithChrome :silent !open -a 'Google Chrome' %
+  augroup END
+]]

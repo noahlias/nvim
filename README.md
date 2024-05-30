@@ -36,6 +36,14 @@ Just dig into the lua/config/plugins.lua file to see the plugins that I use.
     Command         Description
     gj              toggle split/join
 
+### Markdown Preview
+
+- [vim-instant-markdown](https://github.com/instant-markdown/vim-instant-markdown)
+- [markdown-viewer](https://chromewebstore.google.com/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk?hl=JA)
+
+The first one is used to with `node` and the second one is used with `chrome extension`.
+Two solutions are useful but the second one is more better.
+
 ## Snippets
 
 - [ultisnps](https://github.com/SirVer/ultisnips)
