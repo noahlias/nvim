@@ -1,0 +1,12 @@
+{
+  "empty function": {
+    "prefix": ["f"],
+    "body": ["function ()", " ${0}", "end"],
+    "description": "empty function"
+  },
+  "config function": {
+    "prefix": ["conf"],
+    "body": ["config = function ()", " ${0}", "end"],
+    "description": "Config function"
+  }
+}

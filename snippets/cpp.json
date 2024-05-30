@@ -1,0 +1,7 @@
+{
+  "cout": {
+    "prefix": "ct",
+    "body": "cout << ${1} << endl;",
+    "description": "cout"
+  }
+}

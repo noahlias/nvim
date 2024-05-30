@@ -1,0 +1,6 @@
+{
+  "printout": {
+    "prefix": "st",
+    "body": ["System.out.println(${0});"]
+  }
+}

@@ -1,6 +1,7 @@
 {
-  "Say hello to the world": {
-    "prefix": ["hw", "hello"],
-    "body": "Hello, ${1:world}!$0"
+  "Comment Section": {
+    "prefix": ["sec"],
+    "body": [" ===", " === ${1:Comment Section}", " ==="],
+    "description": "Comment Section"
   }
 }

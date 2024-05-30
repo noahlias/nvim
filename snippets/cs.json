@@ -1,0 +1,18 @@
+{
+  "public main class": {
+    "prefix": "main",
+    "body": [
+      "public class Main {",
+      "    public static void main(String[] args) {",
+      "        ${1:/* code */}",
+      "    }",
+      "}"
+    ],
+    "description": "Create a public main class"
+  },
+  "println": {
+    "prefix": "println",
+    "body": ["System.Console.WriteLine(${1:/* code */});"],
+    "description": "Print line to console"
+  }
+}
