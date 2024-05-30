@@ -23,9 +23,18 @@ M.config = {
           },
         },
       },
-      { "neovim/nvim-lspconfig", dependencies = {
-        { "folke/neoconf.nvim", event = "BufReadPre" },
-      } },
+      {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+          {
+            "folke/neoconf.nvim",
+            event = "BufReadPre",
+            config = function()
+              require("neoconf").setup()
+            end,
+          },
+        },
+      },
       {
         "williamboman/mason.nvim",
         build = function()
