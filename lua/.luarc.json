@@ -4,7 +4,12 @@
     "version": "LuaJIT"
   },
   "workspace": {
-    "library": ["$VIMRUNTIME", "$LAZYROOT/lazy.nvim", "${3rd}/luv/library"]
+    "library": [
+      "$VIMRUNTIME/lua",
+      "$VIMRUNTIME/lua/vim",
+      "$VIMRUNTIME/lua/vim/lsp",
+      "$LAZYROOT/lazy.nvim/lua/lazy"
+    ]
   },
   "diagnostics.disable": ["missing-fields"]
 }

@@ -23,7 +23,9 @@ M.config = {
           },
         },
       },
-      { "neovim/nvim-lspconfig" },
+      { "neovim/nvim-lspconfig", dependencies = {
+        { "folke/neoconf.nvim", event = "BufReadPre" },
+      } },
       {
         "williamboman/mason.nvim",
         build = function()
@@ -36,7 +38,7 @@ M.config = {
         "j-hui/fidget.nvim",
         tag = "legacy",
       },
-      { "folke/neodev.nvim", lazy = true },
+      { "folke/neodev.nvim" },
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
       "ldelossa/nvim-dap-projects",
       "b0o/SchemaStore.nvim",
