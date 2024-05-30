@@ -121,6 +121,9 @@ M.configfunc = function()
         -- vim.snippet.expand(args.body)
       end,
     },
+    enabled = function()
+      return vim.bo.ft ~= "norg"
+    end,
     window = {
       completion = {
         -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
