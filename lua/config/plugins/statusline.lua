@@ -58,8 +58,6 @@ local function dap_or_lsp()
 end
 ---@type LazyPluginSpec
 return {
-  -- "theniceboy/eleline.vim",
-  -- branch = "no-scrollbar",
   "nvim-lualine/lualine.nvim",
   -- You can optionally lazy-load heirline on UiEnter
   -- to make sure all required plugins and colorschemes are loaded before setup
@@ -126,7 +124,6 @@ return {
     extensions = {
       "man",
       "quickfix",
-      "nvim-tree",
       "neo-tree",
       "toggleterm",
       "symbols-outline",
@@ -134,6 +131,22 @@ return {
       "nvim-dap-ui",
       "mundo",
       "lazy",
+      ---copilot-chat
+      {
+        sections = {
+          lualine_a = {
+            {
+              "filename",
+              fmt = function()
+                return "GitHub Copilot"
+              end,
+              icon = " ",
+              color = { fg = "none", bg = "#806d9c" },
+            },
+          },
+        },
+        filetypes = { "copilot-chat" },
+      },
     },
   },
 }
