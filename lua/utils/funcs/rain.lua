@@ -2,7 +2,8 @@
 -- FIX: Gets stuck after sometime.
 local M = {}
 
-local gtimer = nil
+local running = nil
+local win = nil
 
 M.rain = function()
   local ns = vim.api.nvim_create_namespace "rain"
@@ -10,7 +11,7 @@ M.rain = function()
   local CHAR = "" -- "" -- "|" -- "💧"
 
   local buf = vim.api.nvim_create_buf(false, true)
-  local win = vim.api.nvim_open_win(buf, false, {
+  win = vim.api.nvim_open_win(buf, false, {
     relative = "editor",
     style = "minimal",
     border = "none",
@@ -36,64 +37,64 @@ M.rain = function()
   vim.wo[win].winblend = 100
 
   local counter = 0
-  gtimer = vim.loop.new_timer()
-  gtimer:start(
-    1000,
-    500,
-    vim.schedule_wrap(function()
-      -- local ids = vim.api.nvim_buf_get_extmarks()
-      -- vim.api.nvim_buf_del_extmark(buf, ns, id)
-      local numbers = {}
-      for _ = 1, N do
-        local n = math.random(1, vim.o.columns)
-        table.insert(numbers, { c = n, l = 0 })
-      end
+  local function startRain()
+    if running == false then
+      return
+    end
+    local numbers = {}
+    for _ = 1, N do
+      local n = math.random(1, vim.o.columns)
+      table.insert(numbers, { c = n, l = 0 })
+    end
 
-      for _, d in ipairs(numbers) do
-        local id = vim.api.nvim_buf_set_extmark(
+    for _, d in ipairs(numbers) do
+      local id = vim.api.nvim_buf_set_extmark(
+        buf,
+        ns,
+        d.l,
+        d.c,
+        { virt_text = { { CHAR, "Identifier" } }, virt_text_pos = "overlay" }
+      )
+
+      -- TODO: should these go above?
+      -- FIXME: Performance issue will stuck
+      counter = counter + 1
+      local function startDrop()
+        if running == false then
+          vim.api.nvim_buf_del_extmark(buf, ns, id)
+          return
+        end
+        if d.l >= vim.o.lines - 1 or d.c >= vim.o.columns - 1 then
+          vim.api.nvim_buf_del_extmark(buf, ns, id)
+          return
+        end
+        vim.api.nvim_buf_set_extmark(
           buf,
           ns,
           d.l,
           d.c,
-          { virt_text = { { CHAR, "Identifier" } }, virt_text_pos = "overlay" }
+          { virt_text = { { CHAR, "Identifier" } }, virt_text_pos = "overlay", id = id }
         )
-
-        -- TODO: should these go above?
-        -- FIXME: Performance issue will stuck
-        local timer = vim.loop.new_timer()
-        counter = counter + 1
-        timer:start(
-          0,
-          35,
-          vim.schedule_wrap(function()
-            if d.l >= vim.o.lines - 1 or d.c >= vim.o.columns - 1 then
-              timer:close()
-              timer:stop()
-              vim.api.nvim_buf_del_extmark(buf, ns, id)
-              return
-            end
-            vim.api.nvim_buf_set_extmark(
-              buf,
-              ns,
-              d.l,
-              d.c,
-              { virt_text = { { CHAR, "Identifier" } }, virt_text_pos = "overlay", id = id }
-            )
-            d.l = d.l + 1
-            d.c = d.c + 1
-          end)
-        )
+        d.l = d.l + 1
+        d.c = d.c + 1
+        vim.defer_fn(startDrop, 35)
       end
-    end)
-  )
+      vim.defer_fn(startDrop, 0)
+    end
+    vim.defer_fn(startRain, 500)
+  end
+  vim.defer_fn(startRain, 1000)
 end
 
 M.toggle_rain = function()
-  if gtimer then
-    gtimer:close()
-    gtimer:stop()
-    gtimer = nil
+  if running then
+    running = false
+    if win then
+      vim.api.nvim_win_close(win, true)
+      win = nil
+    end
   else
+    running = true
     M.rain()
   end
 end
