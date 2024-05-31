@@ -2,6 +2,7 @@ return {
   {
     "robitx/gp.nvim",
     enabled = true,
+		event = "VeryLazy",
     config = function()
       local config = {
 

@@ -82,7 +82,7 @@ return {
   {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html",
-    lazy = false,
+    event = "VeryLazy",
     enabled = true,
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -238,6 +238,7 @@ return {
         open = "alternate",
       },
     },
+    priority = 1001,
   },
   {
     "3rd/image.nvim",
@@ -463,6 +464,7 @@ return {
     "benlubas/molten-nvim",
     version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
     build = ":UpdateRemotePlugins",
+    event = "VeryLazy",
     ft = { "python", "ipynb" },
     dependencies = {
       "3rd/image.nvim",
@@ -521,24 +523,24 @@ return {
       vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", { noremap = true })
     end,
   },
-  ---NOTE: just for try to use remote nvim
-  {
-    "amitds1997/remote-nvim.nvim",
-    enabled = false,
-    version = "*", -- Pin to GitHub releases
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- For standard functions
-      "MunifTanjim/nui.nvim", -- To build the plugin UI
-      "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
-    },
-    config = true,
-  },
-  {
-    "jedrzejboczar/possession.nvim",
-    event = "VeryLazy",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("possession").setup {}
-    end,
-  },
+  ------NOTE: just for try to use remote nvim
+  ---{
+  ---  "amitds1997/remote-nvim.nvim",
+  ---  enabled = false,
+  ---  version = "*", -- Pin to GitHub releases
+  ---  dependencies = {
+  ---    "nvim-lua/plenary.nvim", -- For standard functions
+  ---    "MunifTanjim/nui.nvim", -- To build the plugin UI
+  ---    "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+  ---  },
+  ---  config = true,
+  ---},
+  -- {
+  --   "jedrzejboczar/possession.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = "nvim-lua/plenary.nvim",
+  --   config = function()
+  --     require("possession").setup {}
+  --   end,
+  -- },
 }

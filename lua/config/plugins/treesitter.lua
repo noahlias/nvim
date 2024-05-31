@@ -1,6 +1,5 @@
 ---@type LazyPluginSpec
 return {
-  "nvim-treesitter/playground",
   {
     "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",

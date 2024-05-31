@@ -132,7 +132,7 @@ M.config = {
       ts.load_extension "fzf"
       ts.load_extension "simulators"
       ts.load_extension "noice"
-      ts.load_extension "possession"
+      -- ts.load_extension "possession"
 
       require("simulators").setup {
         android_emulator = false,
