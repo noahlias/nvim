@@ -1,18 +1,22 @@
 ---@type LazyPluginSpec
 return {
   "stevearc/conform.nvim",
-  keys = {
-    {
-      "<leader>cf",
-      function()
-        require("conform").format { lsp_fallback = true }
-      end,
-      desc = "Format Document",
-      mode = { "n", "v" },
-    },
-  },
+  -- keys = {
+  --   {
+  --     "<leader>cf",
+  --     function()
+  --       require("conform").format { lsp_fallback = true }
+  --     end,
+  --     desc = "Format Document",
+  --     mode = { "n", "v" },
+  --   },
+  -- },
   config = function()
     require("conform").setup {
+			format_on_save = {
+				timeout_ms = 1000,
+				lsp_fallback = true,
+			},
       formatters_by_ft = {
         lua = { "stylua" },
         python = function(bufnr)
