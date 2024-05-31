@@ -137,4 +137,10 @@ local swap_ternary = require "plugin.swap_ternary"
 vim.keymap.set("n", "<leader>st", swap_ternary.swap_ternary, { noremap = true })
 
 require "plugin.compile_run"
+
+-- NOTE: Some funny
+local rain = require "utils.funcs.rain"
+
+vim.api.nvim_create_user_command("Rain", rain.rain, {})
+
 -- require "plugin.custom_commands"

@@ -23,6 +23,7 @@
   "crates.nvim": { "branch": "main", "commit": "d556c00d60c9421c913ee54ff690df2a34f6264e" },
   "dart-vim-plugin": { "branch": "master", "commit": "928302ec931caf0dcf21835cca284ccd2b192f7b" },
   "diffview.nvim": { "branch": "main", "commit": "3afa6a053f680e9f1329c4a151db988a482306cd" },
+  "donut.nvim": { "branch": "main", "commit": "29b9f570e2a335f1d601a0e143fbbc7dcca6dcdb" },
   "dressing.nvim": { "branch": "master", "commit": "3c38ac861e1b8d4077ff46a779cde17330b29f3a" },
   "dropbar.nvim": { "branch": "master", "commit": "2b546383bdf4daa254ac70c760ee1e5524bc60b1" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
