@@ -9,8 +9,20 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-vim.opt.runtimepath:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)
 
+-- -- Loading shada is SLOW, so we're going to load it manually,
+-- -- after UI-enter so it doesn't block startup.
+-- local shada = vim.o.shada
+-- vim.o.shada = ""
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "VeryLazy",
+--   callback = function()
+--     vim.o.shada = shada
+--     pcall(vim.cmd.rshada, { bang = true })
+--   end,
+-- })
+--
 local lazy_cmd = require("lazy.view.config").commands
 local lazy_keys = {
   { cmd = "install", key = "i" },
@@ -100,21 +112,25 @@ require("lazy").setup {
   -- checker = {
   --   enabled = true,
   -- },
-  -- performance = {
-  --   rtp = {
-  --     reset = false,
-  --     disabled_plugins = {
-  --       "gzip",
-  --       -- "matchit",
-  --       "matchparen",
-  --       "netrwPlugin",
-  --       "tarPlugin",
-  --       "tohtml",
-  --       "tutor",
-  --       "zipPlugin",
-  --     },
-  --   },
-  -- },
+  performance = {
+    cache = {
+      enabled = true,
+      disable_events = { "UIEnter" },
+    },
+    rtp = {
+      reset = true,
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 }
 
 local swap_ternary = require "plugin.swap_ternary"

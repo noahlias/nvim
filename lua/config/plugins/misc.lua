@@ -348,6 +348,7 @@ return {
     "chomosuke/typst-preview.nvim",
     ft = "typst",
     version = "0.1.*",
+		event = "VeryLazy",
     build = function()
       require("typst-preview").update()
     end,
@@ -399,6 +400,7 @@ return {
   },
   {
     "ethanholz/freeze.nvim",
+		event = "VeryLazy",
     opts = {
       theme = "catppuccin-mocha",
       config = "full",
