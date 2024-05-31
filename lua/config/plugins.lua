@@ -141,6 +141,6 @@ require "plugin.compile_run"
 -- NOTE: Some funny
 local rain = require "utils.funcs.rain"
 
-vim.api.nvim_create_user_command("Rain", rain.rain, {})
+vim.api.nvim_create_user_command("Rain", rain.toggle_rain, {})
 
 -- require "plugin.custom_commands"

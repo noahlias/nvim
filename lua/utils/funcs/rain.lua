@@ -2,17 +2,23 @@
 -- FIX: Gets stuck after sometime.
 local M = {}
 
+local gtimer = nil
+
 M.rain = function()
   local ns = vim.api.nvim_create_namespace "rain"
   local N = 5
   local CHAR = "" -- "" -- "|" -- "💧"
 
   local buf = vim.api.nvim_create_buf(false, true)
-  local win = vim.api.nvim_open_win(
-    buf,
-    false,
-    { relative = "editor", style = "minimal", border = "none", width = vim.o.columns, height = vim.o.lines, row = 0, col = 0 }
-  )
+  local win = vim.api.nvim_open_win(buf, false, {
+    relative = "editor",
+    style = "minimal",
+    border = "none",
+    width = vim.o.columns,
+    height = vim.o.lines,
+    row = 0,
+    col = 0,
+  })
   vim.api.nvim_buf_set_lines(
     buf,
     0,
@@ -30,7 +36,7 @@ M.rain = function()
   vim.wo[win].winblend = 100
 
   local counter = 0
-  local gtimer = vim.loop.new_timer()
+  gtimer = vim.loop.new_timer()
   gtimer:start(
     1000,
     500,
@@ -53,16 +59,17 @@ M.rain = function()
         )
 
         -- TODO: should these go above?
+        -- FIXME: Performance issue will stuck
         local timer = vim.loop.new_timer()
         counter = counter + 1
         timer:start(
           0,
           35,
           vim.schedule_wrap(function()
-            if d.l >= vim.o.lines or d.c >= vim.o.columns then
+            if d.l >= vim.o.lines - 1 or d.c >= vim.o.columns - 1 then
               timer:close()
               timer:stop()
-              -- vim.api.nvim_buf_del_extmark(buf, ns, id)
+              vim.api.nvim_buf_del_extmark(buf, ns, id)
               return
             end
             vim.api.nvim_buf_set_extmark(
@@ -81,4 +88,13 @@ M.rain = function()
   )
 end
 
+M.toggle_rain = function()
+  if gtimer then
+    gtimer:close()
+    gtimer:stop()
+    gtimer = nil
+  else
+    M.rain()
+  end
+end
 return M
