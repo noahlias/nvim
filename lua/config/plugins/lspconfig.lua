@@ -25,6 +25,9 @@ M.config = {
       },
       {
         "neovim/nvim-lspconfig",
+        event = {
+          "Filetype",
+        },
         dependencies = {
           {
             "folke/neoconf.nvim",

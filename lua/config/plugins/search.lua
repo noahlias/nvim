@@ -31,6 +31,7 @@ return {
   },
   {
     "pechorin/any-jump.vim",
+    event = "BufRead",
     enabled = true,
     config = function()
       vim.keymap.set("n", "j", ":AnyJump<CR>", { noremap = true })
