@@ -134,7 +134,7 @@ return {
       ---copilot-chat
       {
         sections = {
-          lualine_a = {
+          lualine_z = {
             {
               "filename",
               fmt = function()
@@ -144,7 +144,7 @@ return {
               color = { fg = "none", bg = "#806d9c" },
             },
           },
-          lualine_z = {
+          lualine_a = {
             { "mode" },
           },
         },
