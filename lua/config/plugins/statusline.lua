@@ -144,6 +144,9 @@ return {
               color = { fg = "none", bg = "#806d9c" },
             },
           },
+          lualine_z = {
+            { "mode" },
+          },
         },
         filetypes = { "copilot-chat" },
       },
