@@ -145,7 +145,7 @@ return {
         auto_follow_cursor = true,
         auto_inert_mode = true,
         debug = false, -- Enable debugging
-        question_header = "  noahlias ", -- Header to use for user questions
+        question_header = "  " .. vim.g.snips_author .. " ", -- Header to use for user questions
         answer_header = "  Copilot ", -- Header to use for AI answers
         error_header = "", -- Header to use for errors
         window = {
