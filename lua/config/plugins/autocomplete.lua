@@ -202,7 +202,7 @@ M.configfunc = function()
         },
       },
       -- { name = "ultisnips" },
-      { name = "lazydev" },
+      { name = "lazydev", group_index = 0 },
       { name = "snippets" },
     }, {
       { name = "path" },
