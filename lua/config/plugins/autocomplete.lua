@@ -12,7 +12,7 @@ end
 local M = {}
 M.config = {
   "hrsh7th/nvim-cmp",
-  after = "SirVer/ultisnips",
+  -- after = "SirVer/ultisnips",
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -27,23 +27,21 @@ M.config = {
         require("lspkind").init()
       end,
     },
-    {
-      "quangnguyen30192/cmp-nvim-ultisnips",
-      config = function()
-        -- optional call to setup (see customization section)
-        require("cmp_nvim_ultisnips").setup {}
-      end,
-    },
+    -- {
+    --   "quangnguyen30192/cmp-nvim-ultisnips",
+    --   config = function()
+    --     -- optional call to setup (see customization section)
+    --     require("cmp_nvim_ultisnips").setup {}
+    --   end,
+    -- },
     {
       "garymjr/nvim-snippets",
       dependencies = {
         "rafamadriz/friendly-snippets",
       },
-      config = function()
-        require("snippets").setup {
-          friendly_snippets = true,
-        }
-      end,
+      opts = {
+        friendly_snippets = true,
+      },
     },
   },
 }
@@ -107,7 +105,7 @@ M.configfunc = function()
   local lspkind = require "lspkind"
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   local cmp = require "cmp"
-  local cmp_ultisnips_mappings = require "cmp_nvim_ultisnips.mappings"
+  -- local cmp_ultisnips_mappings = require "cmp_nvim_ultisnips.mappings"
   -- local luasnip = require("luasnip")
 
   setCompHL()
@@ -116,9 +114,9 @@ M.configfunc = function()
     snippet = {
       expand = function(args)
         -- luasnip.lsp_expand(args.body)
-        vim.fn["UltiSnips#Anon"](args.body)
+        -- vim.fn["UltiSnips#Anon"](args.body)
         -- NOTE: This has been injected by the nvim-snippets plugin not need to call it
-        -- vim.snippet.expand(args.body)
+        vim.snippet.expand(args.body)
       end,
     },
     enabled = function()
@@ -145,6 +143,7 @@ M.configfunc = function()
         cmp.config.compare.length,
         cmp.config.compare.order,
       },
+      priority_weight = 2,
     },
     experimental = {
       ghost_text = true,
@@ -165,7 +164,7 @@ M.configfunc = function()
         local menu_table = {
           nvim_lsp = "LSP",
           snippets = "Snippet",
-          ultisnips = "UltiSnips",
+          -- ultisnips = "UltiSnips",
           buffer = "Buffer",
           path = "Path",
           nvim_lua = "Lua",
@@ -201,7 +200,7 @@ M.configfunc = function()
           end,
         },
       },
-      { name = "ultisnips" },
+      -- { name = "ultisnips" },
       { name = "snippets" },
     }, {
       { name = "path" },
@@ -214,7 +213,7 @@ M.configfunc = function()
     mapping = cmp.mapping.preset.insert {
       ["<C-o>"] = cmp.mapping.complete(),
       ["<c-e>"] = cmp.mapping(function()
-        cmp_ultisnips_mappings.compose { "expand", "jump_forwards" }(function() end)
+        -- cmp_ultisnips_mappings.compose { "expand", "jump_forwards" }(function() end)
         if vim.snippet.active { direction = 1 } then
           vim.schedule(function()
             vim.snippet.jump(1)
@@ -224,8 +223,8 @@ M.configfunc = function()
         "i",
         "s", --[[ "c" (to enable the mapping in command mode) ]]
       }),
-      ["<c-n>"] = cmp.mapping(function(fallback)
-        cmp_ultisnips_mappings.jump_backwards(fallback)
+      ["<c-n>"] = cmp.mapping(function()
+        -- cmp_ultisnips_mappings.jump_backwards(fallback)
         if vim.snippet.active { direction = -1 } then
           vim.schedule(function()
             vim.snippet.jump(-1)
