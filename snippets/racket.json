@@ -1,0 +1,7 @@
+{
+  "function": {
+    "prefix": "fn",
+    "body": ["(define (${1:name} ${2:args}), )", "${0:(+ 1 1)})"],
+    "description": "Define a function"
+  }
+}

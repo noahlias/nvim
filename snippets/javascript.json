@@ -1,0 +1,21 @@
+{
+  "console.log": {
+    "prefix": "log",
+    "body": ["console.log('$1');", "$2"],
+    "description": "Log output to console"
+  },
+  "Empty Function": {
+    "prefix": "empty",
+    "body": ["function ${1:functionName}(${2:arguments}) {", "${3}", "}"],
+    "description": "Empty function"
+  },
+  "Export Async Function": {
+    "prefix": "async",
+    "body": [
+      "export async function ${1:functionName}(${2:arguments}) {",
+      "${3}",
+      "}"
+    ],
+    "description": "Export async function"
+  }
+}

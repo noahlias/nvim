@@ -1,0 +1,35 @@
+{
+  "Import Material": {
+    "prefix": "imat",
+    "body": ["import 'package:flutter/material.dart';"]
+  },
+  "Widget Function": {
+    "prefix": "wfunc",
+    "body": [
+      "Widget ${1:widgetName}(){",
+      "\treturn Container(",
+      "\t\tchild: ${2:child},",
+      "\t);",
+      "}"
+    ]
+  },
+  "Positioned left": {
+    "prefix": "posl",
+    "body": [
+      "Positioned(",
+      "\tleft: ${1:0.0},",
+      "\ttop: ${2:0.0},",
+      "\tbottom: ${3:0.0},",
+      "\tchild: ${0:Container()},",
+      ")"
+    ]
+  },
+  "fix add type": {
+    "prefix": "fa",
+    "body": ["// TYPEADD"]
+  },
+  "For loop add type": {
+    "prefix": ".f",
+    "body": [".forEach((${1:item)}){", " ${0:// TODO}"]
+  }
+}
