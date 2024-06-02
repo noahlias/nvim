@@ -135,8 +135,8 @@ require("lazy").setup {
   },
 }
 
-local swap_ternary = require "plugin.swap_ternary"
-vim.keymap.set("n", "<leader>st", swap_ternary.swap_ternary, { noremap = true })
+-- local swap_ternary = require "plugin.swap_ternary"
+-- vim.keymap.set("n", "<leader>st", swap_ternary.swap_ternary, { noremap = true })
 
 require "plugin.compile_run"
 
