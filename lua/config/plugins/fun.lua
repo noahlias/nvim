@@ -1,10 +1,7 @@
 return {
   {
     "Eandrju/cellular-automaton.nvim",
-    enabled = false,
-    config = function()
-      vim.keymap.set("n", "<leader>rr", "<cmd>CellularAutomaton make_it_rain<CR>")
-    end,
+    enabled = true,
   },
   -- 	{
   -- 		'ryoppippi/bad-apple.vim',
@@ -17,5 +14,11 @@ return {
     "NStefan002/donut.nvim",
     version = "*",
     lazy = false,
+    config = function()
+      require("donut").setup {
+        timeout = 0, --- disable this plugin
+        sync_donuts = true,
+      }
+    end,
   },
 }

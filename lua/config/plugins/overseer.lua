@@ -5,7 +5,7 @@ local custom = {
 ---@type LazyPluginSpec
 return {
   "stevearc/overseer.nvim",
-  enabled = false,
+  enabled = true,
   opts = function()
     return {
       strategy = {
