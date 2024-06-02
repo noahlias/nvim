@@ -107,7 +107,7 @@ return {
       lualine_x = {
         recording,
         "copilot",
-        "filesize",
+        -- "filesize",
         "filetype",
       },
       lualine_y = { "diagnostics", "progress" },
