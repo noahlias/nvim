@@ -1,6 +1,22 @@
 ---@type LazyPluginSpec
 return {
   "goolord/alpha-nvim",
+  init = function()
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "AlphaReady",
+      desc = "disable tabline for alpha",
+      callback = function()
+        vim.opt.showtabline = 0
+      end,
+    })
+    vim.api.nvim_create_autocmd("BufUnload", {
+      buffer = 0,
+      desc = "enable tabline after alpha",
+      callback = function()
+        vim.opt.showtabline = 2
+      end,
+    })
+  end,
   config = function()
     local alpha = require "alpha"
 
