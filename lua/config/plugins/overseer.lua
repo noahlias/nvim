@@ -166,6 +166,7 @@ return {
     { "<leader>rn", "<cmd>OverseerBuild<CR>", desc = "OverseerBuild" },
     { "<leader>ra", "<cmd>OverseerTaskAction<CR>", desc = "OverseerAction" },
     { "<leader>ri", "<cmd>OverseerInfo<CR>", desc = "OverseerInfo" },
+    { "<leader>rt", "<cmd>OverseerTaskToggle<CR>", desc = "OverseerTaskToggle" },
     { "<leader>rc", "<cmd>OverseerClearCache<CR>", desc = "Overseer Clear cache" },
   },
 }

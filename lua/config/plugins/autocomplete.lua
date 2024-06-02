@@ -145,9 +145,10 @@ M.configfunc = function()
       },
       priority_weight = 2,
     },
-    experimental = {
-      ghost_text = true,
-    },
+    -- NOTE: some bug
+    -- experimental = {
+    --   ghost_text = true,
+    -- },
     formatting = {
       fields = { "kind", "abbr", "menu" },
       maxwidth = 60,
