@@ -196,7 +196,7 @@ F.configureDocAndSignature = function()
   vim.api.nvim_create_autocmd({ "CursorHold" }, {
     pattern = "*",
     callback = function()
-      vim.diagnostic.open_float(0, {
+      vim.diagnostic.open_float {
         scope = "cursor",
         focusable = false,
         zindex = 10,
@@ -209,7 +209,7 @@ F.configureDocAndSignature = function()
           "WinLeave",
           "ModeChanged",
         },
-      })
+      }
     end,
     group = group,
   })
@@ -235,9 +235,11 @@ local documentation_window_open_index = 0
 local function show_documentation()
   documentation_window_open_index = documentation_window_open_index + 1
   local current_index = documentation_window_open_index
+  ---@diagnostic disable-next-line: lowercase-global
   documentation_window_open = true
   vim.defer_fn(function()
     if current_index == documentation_window_open_index then
+      ---@diagnostic disable-next-line: lowercase-global
       documentation_window_open = false
     end
   end, 500)
@@ -284,8 +286,6 @@ F.configureKeybinds = function()
         desc = "Toggle inlay hints",
       })
       --NOTE: neovim 0.10 add [ d and ] d for diagnostic navigation
-      -- vim.keymap.set("n", "<leader>-", vim.diagnostic.goto_prev, opts)
-      -- vim.keymap.set("n", "<leader>=", vim.diagnostic.goto_next, opts)
     end,
   })
 end
