@@ -16,7 +16,7 @@ M.config = {
       vim.keymap.set("n", "<c-_>", builtin.current_buffer_fuzzy_find, m)
       vim.keymap.set("n", "z=", builtin.spell_suggest, m)
 
-      vim.keymap.set("n", "<leader>dd", function()
+      vim.keymap.set("n", "<leader>d", function()
         builtin.diagnostics {
           severity_sort = true,
         }
