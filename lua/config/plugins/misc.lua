@@ -348,7 +348,7 @@ return {
     "chomosuke/typst-preview.nvim",
     ft = "typst",
     version = "0.1.*",
-		event = "VeryLazy",
+    event = "VeryLazy",
     build = function()
       require("typst-preview").update()
     end,
@@ -400,7 +400,7 @@ return {
   },
   {
     "ethanholz/freeze.nvim",
-		event = "VeryLazy",
+    event = "VeryLazy",
     opts = {
       theme = "catppuccin-mocha",
       config = "full",
@@ -545,4 +545,13 @@ return {
   --     require("possession").setup {}
   --   end,
   -- },
+  -- NOTE: wonderful toggle plugin
+  {
+    "xiyaowong/transparent.nvim",
+    opts = {
+      extra_groups = {
+        "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+      },
+    },
+  },
 }
