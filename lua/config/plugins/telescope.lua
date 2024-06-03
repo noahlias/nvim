@@ -16,11 +16,11 @@ M.config = {
       vim.keymap.set("n", "<c-_>", builtin.current_buffer_fuzzy_find, m)
       vim.keymap.set("n", "z=", builtin.spell_suggest, m)
 
-      vim.keymap.set("n", "<leader>d", function()
+      vim.keymap.set("n", "<leader>dd", function()
         builtin.diagnostics {
           severity_sort = true,
         }
-      end, m)
+      end, { noremap = true, nowait = true, desc = "Workspace diagnostics" })
 
       local ts = require "telescope"
       local actions = require "telescope.actions"
@@ -140,7 +140,7 @@ M.config = {
       }
       -- ts.load_extension("ui-select")
       ts.load_extension "flutter"
-      local tsdap = ts.extensions.dap
+      -- local tsdap = ts.extensions.dap
       -- vim.keymap.set("n", "<leader>'v", tsdap.variables, m)
       -- vim.keymap.set("n", "<leader>'a", tsdap.commands, m)
       -- vim.keymap.set("n", "<leader>'b", tsdap.list_breakpoints, m)
@@ -154,6 +154,7 @@ M.config = {
     },
     config = function()
       local commander = require "commander"
+      ---@diagnostic disable: missing-fields
       commander.setup {
         components = {
           "DESC",
@@ -176,6 +177,7 @@ M.config = {
           },
         },
       }
+      ---@diagnostic disable: missing-parameter
       commander.add {
         {
           desc = "Run Simulator",
