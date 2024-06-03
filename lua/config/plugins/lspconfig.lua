@@ -48,7 +48,16 @@ M.config = {
       { "hrsh7th/cmp-nvim-lsp" },
       {
         "j-hui/fidget.nvim",
-        tag = "legacy",
+        event = "LspAttach",
+        config = function()
+          require("fidget").setup {
+            notification = {
+              window = {
+                winblend = 0,
+              },
+            },
+          }
+        end,
       },
       {
         {
