@@ -1,8 +1,7 @@
 
 # User Guide
 
-![](./assets/dashboard.png)
-
+![](assets/dashboard_cat.png)
 Install it
 
 ```bash
