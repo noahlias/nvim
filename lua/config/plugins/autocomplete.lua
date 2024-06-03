@@ -120,7 +120,12 @@ M.configfunc = function()
       end,
     },
     enabled = function()
-      return vim.bo.ft ~= "norg"
+      ---@diagnostic disable-next-line: deprecated
+      local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+      if buftype == "prompt" then
+        return false
+      end
+      return true and vim.bo.ft ~= "norg"
     end,
     window = {
       completion = {
