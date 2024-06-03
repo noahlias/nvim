@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
   {
     "robitx/gp.nvim",
