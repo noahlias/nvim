@@ -56,9 +56,10 @@ M.config = {
           ft = "lua", -- only load on lua files
           opts = {
             library = {
-              vim.env.LAZY .. "/luvit-meta/library", -- see below
-              vim.env.LAZY .. "/lazy.nvim",
+              "luvit-meta/library", -- see below
+              "lazy.nvim",
             },
+            -- debug = true,
           },
         },
         { "Bilal2453/luvit-meta", lazy = true },
