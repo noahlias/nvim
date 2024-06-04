@@ -205,7 +205,12 @@ return {
 
       return {
         { "<C-\\>" },
-        { "<leader>a", "<Cmd>ToggleTermToggleAll<CR>", mode = "n", desc = "All Terminal" },
+        {
+          "<leader>a",
+          "<Cmd>ToggleTermToggleAll<CR>",
+          mode = "n",
+          desc = "All Terminal",
+        },
         {
           "<leader>pd",
           function()
@@ -244,8 +249,14 @@ return {
     "3rd/image.nvim",
     enabled = true,
     init = function()
-      package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?/init.lua;"
-      package.path = package.path .. ";" .. vim.fn.expand "$HOME" .. "/.luarocks/share/lua/5.1/?.lua;"
+      package.path = package.path
+        .. ";"
+        .. vim.fn.expand "$HOME"
+        .. "/.luarocks/share/lua/5.1/?/init.lua;"
+      package.path = package.path
+        .. ";"
+        .. vim.fn.expand "$HOME"
+        .. "/.luarocks/share/lua/5.1/?.lua;"
     end,
     opts = {
       backend = "kitty",
@@ -363,7 +374,11 @@ return {
       { "<leader>gdo", "<Cmd>DiffviewOpen<CR>", desc = "Open" },
       { "<leader>gdc", "<Cmd>DiffviewClose<CR>", desc = "Close" },
       { "<leader>gdh", "<Cmd>DiffviewFileHistory<CR>", desc = "Open History" },
-      { "<leader>gdf", "<Cmd>DiffviewFileHistory %<CR>", desc = "Current History" },
+      {
+        "<leader>gdf",
+        "<Cmd>DiffviewFileHistory %<CR>",
+        desc = "Current History",
+      },
     },
     opts = function()
       local actions = require "diffview.actions"
@@ -373,7 +388,9 @@ return {
         show_help_hints = false,
         file_panel = {
           win_config = {
-            width = math.floor(vim.go.columns * 0.2) > 25 and math.floor(vim.go.columns * 0.2) or 25,
+            width = math.floor(vim.go.columns * 0.2) > 25 and math.floor(
+              vim.go.columns * 0.2
+            ) or 25,
           },
         },
         hooks = {
@@ -406,7 +423,12 @@ return {
       config = "full",
     },
     init = function()
-      vim.keymap.set("v", "<leader>fr", ":Freeze<cr>", { silent = true, desc = "Freeze selection" })
+      vim.keymap.set(
+        "v",
+        "<leader>fr",
+        ":Freeze<cr>",
+        { silent = true, desc = "Freeze selection" }
+      )
     end,
   },
   {
@@ -481,11 +503,31 @@ return {
         "<cmd>MoltenInit<CR>",
         desc = "This command initializes a runtime for the current buffer.",
       },
-      { "<leader>mo", "<cmd>MoltenEvaluateOperator<CR>", desc = "Evaluate the text given by some operator." },
-      { "<leader>ml", "<cmd>MoltenEvaluateLine<CR>", desc = "Evaluate the current line." },
-      { "<leader>mv", "<cmd>MoltenEvaluateVisual<CR>", desc = "Evaluate the selected text." },
-      { "<leader>mc", "<cmd>MoltenEvaluateOperator<CR>", desc = "Reevaluate the currently selected cell." },
-      { "<leader>mr", "<cmd>MoltenRestart!<CR>", desc = "Shuts down and restarts the current kernel." },
+      {
+        "<leader>mo",
+        "<cmd>MoltenEvaluateOperator<CR>",
+        desc = "Evaluate the text given by some operator.",
+      },
+      {
+        "<leader>ml",
+        "<cmd>MoltenEvaluateLine<CR>",
+        desc = "Evaluate the current line.",
+      },
+      {
+        "<leader>mv",
+        "<cmd>MoltenEvaluateVisual<CR>",
+        desc = "Evaluate the selected text.",
+      },
+      {
+        "<leader>mc",
+        "<cmd>MoltenEvaluateOperator<CR>",
+        desc = "Reevaluate the currently selected cell.",
+      },
+      {
+        "<leader>mr",
+        "<cmd>MoltenRestart!<CR>",
+        desc = "Shuts down and restarts the current kernel.",
+      },
       {
         "<leader>mx",
         "<cmd>MoltenInterrupt<CR>",
@@ -510,7 +552,13 @@ return {
           vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", opts)
           vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", opts)
           -- draw a box by pressing "f" with visual selection
-          vim.api.nvim_buf_set_keymap(0, "v", "v", ":VBox<CR>", { noremap = true })
+          vim.api.nvim_buf_set_keymap(
+            0,
+            "v",
+            "v",
+            ":VBox<CR>",
+            { noremap = true }
+          )
         else
           vim.cmd [[setlocal ve=]]
           vim.api.nvim_buf_del_keymap(0, "n", "J")
@@ -522,7 +570,12 @@ return {
         end
       end
       -- toggle keymappings for venn using <leader>v
-      vim.api.nvim_set_keymap("n", "<leader>v", ":lua Toggle_venn()<CR>", { noremap = true })
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader>v",
+        ":lua Toggle_venn()<CR>",
+        { noremap = true }
+      )
     end,
   },
   ------NOTE: just for try to use remote nvim
