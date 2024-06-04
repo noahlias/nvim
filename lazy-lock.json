@@ -44,7 +44,7 @@
   "img-clip.nvim": { "branch": "main", "commit": "d7ddfd88d50f0b1acd5175448ad159057fe41ab6" },
   "kitty-scrollback.nvim": { "branch": "main", "commit": "3b0eba29a82f703c44093a91d0ccdc523dabe298" },
   "lazy.nvim": { "branch": "main", "commit": "0fc34a0cf5f5f6f998a0897119a7d846b47eaa9d" },
-  "lazydev.nvim": { "branch": "main", "commit": "ddab2f1d901dc0c5c4f721da94c604cc1a86b5dc" },
+  "lazydev.nvim": { "branch": "main", "commit": "39eb1f81eaddafc14f2b5ed2e1463068a35d8f90" },
   "lazygit.nvim": { "branch": "main", "commit": "ad3e1ea592f9d13e86e0d4e850224d9d78069508" },
   "lean.nvim": { "branch": "main", "commit": "dab10ccb3a8040b71a59d6644fdf21d4d8ee4573" },
   "leetcode.nvim": { "branch": "master", "commit": "458da8ea7e73e8ed221165aa56a595e33c4ec644" },

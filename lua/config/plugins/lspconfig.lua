@@ -65,7 +65,7 @@ M.config = {
           ft = "lua", -- only load on lua files
           opts = {
             library = {
-              "luvit-meta/library", -- see below
+              { path = "luvit-meta/library", words = { "vim%.uv" } },
               "lazy.nvim",
             },
             -- debug = true,
