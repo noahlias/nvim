@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: param-type-mismatch
 vim.env.LAZY = vim.fs.joinpath(vim.fn.stdpath "data", "lazy")
 local lazypath = vim.fs.joinpath(vim.env.LAZY, "lazy.nvim")
 
