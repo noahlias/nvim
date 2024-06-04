@@ -69,6 +69,9 @@ M.config = {
               "lazy.nvim",
             },
             -- debug = true,
+            enabled = function(root_dir)
+              return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
+            end,
           },
         },
         { "Bilal2453/luvit-meta", lazy = true },
