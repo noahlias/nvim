@@ -103,7 +103,7 @@
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "promise-async": { "branch": "main", "commit": "93540c168c5ed2b030ec3e6c40ab8bbb85e36355" },
-  "rustaceanvim": { "branch": "master", "commit": "2fa45427c01ded4d3ecca72e357f8a60fd8e46d4" },
+  "rustaceanvim": { "branch": "master", "commit": "27d7cb31284a427d5fa590bdff15625e845117d5" },
   "sentiment.nvim": { "branch": "main", "commit": "ecde8d877881bb78fdb90060c0991e76770dbdbc" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "statuscol.nvim": { "branch": "main", "commit": "483b9a596dfd63d541db1aa51ee6ee9a1441c4cc" },
