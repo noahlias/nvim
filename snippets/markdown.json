@@ -19,5 +19,25 @@
       "${0}",
       "</details>"
     ]
+  },
+  "Github Block Note Quote": {
+    "prefix": ["gt_note"],
+    "body": ["> [!NOTE]", "> ${1:note}"]
+  },
+  "Github Block Tip Quote": {
+    "prefix": ["gt_tip"],
+    "body": ["> [!TIP]", "> ${1:tip}"]
+  },
+  "Github Block Warning Quote": {
+    "prefix": ["gt_warning"],
+    "body": ["> [!WARNING]", "> ${1:warning}"]
+  },
+  "Github Block Important Quote": {
+    "prefix": ["gt_important"],
+    "body": ["> [!IMPORTANT]", "> ${1:important}"]
+  },
+  "Github Block Caution Quote": {
+    "prefix": ["gt_caution"],
+    "body": ["> [!CAUTION]", "> ${1:caution}"]
   }
 }
