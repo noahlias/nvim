@@ -1,4 +1,3 @@
-local m = { noremap = true }
 ---@type LazyPluginSpec
 return {
   "ibhagwan/fzf-lua",
@@ -158,6 +157,7 @@ return {
         },
       },
       files = {
+        formatter = "path.filename_first",
         -- previewer = { "bat", "-p", "--theme", "gruvbox-dark" }, -- uncomment to override previewer
         -- (name from 'previewers' table)
         -- set to 'false' to disable
@@ -166,6 +166,8 @@ return {
         git_icons = true, -- show git icons?
         file_icons = true, -- show file icons?
         color_icons = true, -- colorize file|git icons
+        --NOTE: the .git folder shoul be the working directory
+        cwd = require("fzf-lua").path.git_root(nil, true),
         -- executed command priority is 'cmd' (if exists)
         -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
         -- default options are controlled by 'fd|rg|find|_opts'
