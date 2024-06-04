@@ -259,7 +259,12 @@ F.configureKeybinds = function()
       vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
       vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
       vim.keymap.set("i", "<c-f>", vim.lsp.buf.signature_help, opts)
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {
+        buffer = event.buf,
+        noremap = true,
+        nowait = true,
+        desc = "Rename",
+      })
       vim.keymap.set("n", "<leader>,", vim.lsp.buf.code_action, opts)
       vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", opts)
 

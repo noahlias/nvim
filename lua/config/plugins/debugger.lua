@@ -75,7 +75,7 @@ return {
     local dapui = require "dapui"
 
     dapui.setup()
-    require("nvim-dap-virtual-text").setup()
+    require("nvim-dap-virtual-text").setup {}
 
     -- dap.listeners.after.event_initialized["dapui_config"] = dapui.open
     -- dap.listeners.before.event_terminated["dapui_config"] = dapui.close
@@ -186,5 +186,7 @@ return {
     }
     local dap_install = require "dap-install"
     dap_install.config("codelldb", {})
+
+    require("overseer").enable_dap(true)
   end,
 }

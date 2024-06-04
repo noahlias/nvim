@@ -106,6 +106,12 @@ return {
       lualine_c = { dap_or_lsp },
       lualine_x = {
         recording,
+        {
+          name = "overseer-placeholder",
+          function()
+            return ""
+          end,
+        },
         "copilot",
         -- "filesize",
         "filetype",
@@ -127,7 +133,6 @@ return {
       "neo-tree",
       "toggleterm",
       "symbols-outline",
-      "aerial",
       "nvim-dap-ui",
       "mundo",
       "lazy",
