@@ -4,7 +4,7 @@
 ![](assets/dashboard_cat.png)
 Install it
 
-```bash
+```console
 git clone https://github.com/noahlias/nvim.git ~/.config/nvim
 ```
 
