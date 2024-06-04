@@ -94,8 +94,8 @@ return {
       global_resume = true,
       global_resume_query = true,
       winopts = {
-        -- height     = 0.6,
-        -- width      = 0.7,
+        height = 0.85,
+        width = 0.95,
         preview = {
           layout = "horizontal",
           scrollbar = "float",
