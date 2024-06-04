@@ -186,7 +186,8 @@ return {
     }
     local dap_install = require "dap-install"
     dap_install.config("codelldb", {})
-
+    ---@diagnostic disable-next-line: undefined-field
     require("overseer").enable_dap(true)
+    require("dap.ext.vscode").json_decode = require("overseer.json").decode
   end,
 }

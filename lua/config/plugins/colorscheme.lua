@@ -64,6 +64,7 @@ return {
         gitsigns = false,
         noice = true,
         notify = true,
+        overseer = true,
         treesitter_context = true,
         octo = true,
         symbols_outline = true,
