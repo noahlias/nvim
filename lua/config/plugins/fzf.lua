@@ -175,7 +175,7 @@ return {
         -- cmd            = "find . -type f -printf '%P\n'",
         find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
         rg_opts = "--color=never --files --hidden --follow -g '!.git'",
-        fd_opts = "--color=never --type f --hidden --follow --exclude .git",
+        fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude node_modules",
       },
       buffers = {
         prompt = "Buffers❯ ",
