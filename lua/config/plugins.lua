@@ -107,6 +107,8 @@ require("lazy").setup {
       "fladson/vim-kitty",
       event = { "BufReadPre kitty.conf" },
     },
+    ---NOTE: Add neotest for test
+    require "config.plugins.neotest",
   },
   diff = {
     cmd = "diffview.nvim",
