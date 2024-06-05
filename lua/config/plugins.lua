@@ -60,6 +60,7 @@ require("lazy").setup {
     require "config.plugins.tabline",
     require("config.plugins.autocomplete").config,
     require "config.plugins.debugger",
+    require "config.plugins.cmake_tools",
     require "config.plugins.flutter",
     require "config.plugins.go",
     require "config.plugins.surround",
