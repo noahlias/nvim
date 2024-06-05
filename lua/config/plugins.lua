@@ -2,6 +2,7 @@
 vim.env.LAZY = vim.fs.joinpath(vim.fn.stdpath "data", "lazy")
 local lazypath = vim.fs.joinpath(vim.env.LAZY, "lazy.nvim")
 
+---@diagnostic disable-next-line: undefined-field
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     "git",
