@@ -80,7 +80,10 @@ local nmappings = {
   { from = "<leader><CR>", to = ":nohlsearch<CR>" },
   { from = "<f10>", to = ":TSHighlightCapturesUnderCursor<CR>" },
   { from = "<leader>o", to = "za" },
-  { from = "<leader>pr", to = ":profile start profile.log<CR>:profile func *<CR>:profile file *<CR>" },
+  {
+    from = "<leader>pr",
+    to = ":profile start profile.log<CR>:profile func *<CR>:profile file *<CR>",
+  },
   { from = "<leader>rc", to = ":e ~/.config/nvim/init.lua<CR>" },
   { from = ",v", to = "v%" },
   { from = "<leader><esc>", to = "<nop>" },
@@ -92,11 +95,17 @@ local nmappings = {
 vim.keymap.set("n", "q", "<nop>", { noremap = true })
 vim.keymap.set("n", ",q", "q", { noremap = true })
 for _, mapping in ipairs(nmappings) do
-  vim.keymap.set(mapping.mode or "n", mapping.from, mapping.to, { noremap = true, silent = true })
+  vim.keymap.set(
+    mapping.mode or "n",
+    mapping.from,
+    mapping.to,
+    { noremap = true, silent = true }
+  )
 end
 
 local function run_vim_shortcut(shortcut)
-  local escaped_shortcut = vim.api.nvim_replace_termcodes(shortcut, true, false, true)
+  local escaped_shortcut =
+    vim.api.nvim_replace_termcodes(shortcut, true, false, true)
   vim.api.nvim_feedkeys(escaped_shortcut, "n", true)
 end
 
