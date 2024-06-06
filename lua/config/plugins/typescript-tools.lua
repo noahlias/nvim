@@ -2,9 +2,10 @@
 return {
   "pmizio/typescript-tools.nvim",
   event = {
-    "BufRead *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx",
-    "BufNewFile *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx",
+    "BufRead *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx,*.vue",
+    "BufNewFile *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx,*.vue",
   },
+
   dependencies = {
     "nvim-lua/plenary.nvim",
     "neovim/nvim-lspconfig",
@@ -13,8 +14,15 @@ return {
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
+      --BUG: https://github.com/pmizio/typescript-tools.nvim/issues/250
+      client.server_capabilities.semanticTokensProvider = false
 
-      vim.keymap.set("n", "gD", "<Cmd>TSToolsGoToSourceDefinition<CR>", { buffer = bufnr, desc = "Source Definition" })
+      vim.keymap.set(
+        "n",
+        "gD",
+        "<Cmd>TSToolsGoToSourceDefinition<CR>",
+        { buffer = bufnr, desc = "Source Definition" }
+      )
 
       vim.keymap.set(
         "n",
@@ -34,7 +42,12 @@ return {
         "<Cmd>TSToolsRemoveUnused<CR>",
         { buffer = bufnr, desc = "Remove unused variables" }
       )
-      vim.keymap.set("n", "<localleader>F", "<Cmd>TSToolsFixAll<CR>", { buffer = bufnr, desc = "Fix all" })
+      vim.keymap.set(
+        "n",
+        "<localleader>F",
+        "<Cmd>TSToolsFixAll<CR>",
+        { buffer = bufnr, desc = "Fix all" }
+      )
 
       vim.keymap.set(
         "n",
@@ -42,8 +55,22 @@ return {
         "<Cmd>TSToolsFileReferences<CR>",
         { buffer = bufnr, desc = "File references" }
       )
-      vim.keymap.set("n", "<localleader>fn", "<Cmd>TSToolsRenameFile<CR>", { buffer = bufnr, desc = "File rename" })
+      vim.keymap.set(
+        "n",
+        "<localleader>fn",
+        "<Cmd>TSToolsRenameFile<CR>",
+        { buffer = bufnr, desc = "File rename" }
+      )
     end,
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+      "vue",
+    },
     settings = {
       tsserver_file_preferences = {
         includeInlayParameterNameHints = "all",
@@ -53,6 +80,14 @@ return {
         includeInlayPropertyDeclarationTypeHints = true,
         includeInlayFunctionLikeReturnTypeHints = true,
         includeInlayEnumMemberValueHints = true,
+      },
+      tsserver_plugins = {
+        "@vue/typescript-plugin",
+      },
+      expose_as_code_action = "all",
+      jsx_close_tag = {
+        enable = true,
+        filetypes = { "javascriptreact", "typescriptreact" },
       },
     },
     code_lens = "all",
