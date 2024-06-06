@@ -261,7 +261,12 @@ F.configureKeybinds = function()
     callback = function(event)
       local opts = { buffer = event.buf, noremap = true, nowait = true }
 
-      vim.keymap.set("n", "<leader>hh", show_documentation, opts)
+      vim.keymap.set("n", "<leader>hh", show_documentation, {
+        buffer = event.buf,
+        noremap = true,
+        nowait = true,
+        desc = "Hover documentation",
+      })
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
       vim.keymap.set(
         "n",
