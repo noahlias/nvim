@@ -145,7 +145,8 @@ M.config = {
       require("config.lsp.python").setup(lspconfig, lsp)
       require("config.lsp.zig").setup(lspconfig, lsp)
       require("config.lsp.yaml").setup(lspconfig, lsp)
-      require("config.lsp.vue").setup(lspconfig, lsp)
+      ---NOTE: This lsp not working
+      -- require("config.lsp.vue").setup(lspconfig, lsp)
       require("config.lsp.gleam").setup(lspconfig, lsp)
       require("config.lsp.r").setup(lspconfig, lsp)
 
@@ -166,8 +167,11 @@ M.config = {
       require("fidget").setup {}
 
       local lsp_defaults = lspconfig.util.default_config
-      lsp_defaults.capabilities =
-        vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+      lsp_defaults.capabilities = vim.tbl_deep_extend(
+        "force",
+        lsp_defaults.capabilities,
+        require("cmp_nvim_lsp").default_capabilities()
+      )
 
       require("nvim-dap-projects").search_project_config()
 
@@ -189,13 +193,15 @@ M.config = {
 }
 
 F.configureDocAndSignature = function()
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    -- silent = true,
-    focusable = false,
-    border = "rounded",
-    zindex = 60,
-  })
-  local group = vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, {
+      -- silent = true,
+      focusable = false,
+      border = "rounded",
+      zindex = 60,
+    })
+  local group =
+    vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
   vim.api.nvim_create_autocmd({ "CursorHold" }, {
     pattern = "*",
     callback = function()
@@ -257,7 +263,12 @@ F.configureKeybinds = function()
 
       vim.keymap.set("n", "<leader>h", show_documentation, opts)
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "gD", ":tab sp<CR><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+      vim.keymap.set(
+        "n",
+        "gD",
+        ":tab sp<CR><cmd>lua vim.lsp.buf.definition()<cr>",
+        opts
+      )
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
       vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
       vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
@@ -269,24 +280,42 @@ F.configureKeybinds = function()
         desc = "Rename",
       })
       vim.keymap.set("n", "<leader>,", vim.lsp.buf.code_action, opts)
-      vim.keymap.set("n", "<leader>td", "<cmd>Trouble diagnostics toggle<cr>", opts)
+      vim.keymap.set(
+        "n",
+        "<leader>td",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        opts
+      )
 
-      vim.keymap.set("n", "<leader>ts", "<cmd>Trouble symbols toggle focus=false<cr>", {
-        buffer = event.buf,
-        noremap = true,
-        nowait = true,
-        desc = "Symbols (Trouble)",
-      })
+      vim.keymap.set(
+        "n",
+        "<leader>ts",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        {
+          buffer = event.buf,
+          noremap = true,
+          nowait = true,
+          desc = "Symbols (Trouble)",
+        }
+      )
 
-      vim.keymap.set("n", "<leader>tS", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", {
-        buffer = event.buf,
-        noremap = true,
-        nowait = true,
-        desc = "LSP references/definitions/... (Trouble)",
-      })
+      vim.keymap.set(
+        "n",
+        "<leader>tS",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        {
+          buffer = event.buf,
+          noremap = true,
+          nowait = true,
+          desc = "LSP references/definitions/... (Trouble)",
+        }
+      )
       -- keymap for toggle inlay hints
       vim.keymap.set("n", "<leader>ih", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }, { bufnr = event.buf })
+        vim.lsp.inlay_hint.enable(
+          not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf },
+          { bufnr = event.buf }
+        )
       end, {
         buffer = event.buf,
         noremap = true,
