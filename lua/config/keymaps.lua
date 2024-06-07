@@ -84,7 +84,7 @@ local nmappings = {
     from = "<leader>pr",
     to = ":profile start profile.log<CR>:profile func *<CR>:profile file *<CR>",
   },
-  { from = "<leader>rc", to = ":e ~/.config/nvim/init.lua<CR>" },
+  { from = "<leader>re", to = ":e ~/.config/nvim/init.lua<CR>" },
   { from = ",v", to = "v%" },
   { from = "<leader><esc>", to = "<nop>" },
 

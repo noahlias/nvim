@@ -12,6 +12,7 @@ return {
           enable = true,
           style = {
             { fg = "#806d9c" },
+            { fg = "#c21f30" },
           },
           --NOTE: Maybe this is useful
           textobject = "",
@@ -19,6 +20,9 @@ return {
         indent = {
           enable = true,
           chars = { "│" },
+          exclude_filetypes = {
+            ["copilot-chat"] = true,
+          },
         },
         line_num = {
           enable = false,
