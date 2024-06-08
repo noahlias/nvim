@@ -1,6 +1,11 @@
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+  return col ~= 0
+    and vim.api
+        .nvim_buf_get_lines(0, line - 1, line, true)[1]
+        :sub(col, col)
+        :match "%s"
+      == nil
 end
 local limitStr = function(str)
   if #str > 25 then
@@ -49,11 +54,27 @@ M.config = {
 local setCompHL = function()
   local fgdark = "#2E3440"
 
-  vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
-  vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#82AAFF", bg = "NONE", bold = true })
-  vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#7E8294", bg = "NONE", strikethrough = true })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemAbbrMatch",
+    { fg = "#82AAFF", bg = "NONE", bold = true }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemAbbrMatchFuzzy",
+    { fg = "#82AAFF", bg = "NONE", bold = true }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemAbbrDeprecated",
+    { fg = "#7E8294", bg = "NONE", strikethrough = true }
+  )
 
-  vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#808080", bg = "NONE", italic = true })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemMenu",
+    { fg = "#808080", bg = "NONE", italic = true }
+  )
   vim.api.nvim_set_hl(0, "CmpItemKindField", { fg = fgdark, bg = "#B5585F" })
   vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = fgdark, bg = "#B5585F" })
   vim.api.nvim_set_hl(0, "CmpItemKindEvent", { fg = fgdark, bg = "#B5585F" })
@@ -63,8 +84,16 @@ local setCompHL = function()
   vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = fgdark, bg = "#9FBD73" })
 
   vim.api.nvim_set_hl(0, "CmpItemKindConstant", { fg = fgdark, bg = "#D4BB6C" })
-  vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { fg = fgdark, bg = "#D4BB6C" })
-  vim.api.nvim_set_hl(0, "CmpItemKindReference", { fg = fgdark, bg = "#D4BB6C" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindConstructor",
+    { fg = fgdark, bg = "#D4BB6C" }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindReference",
+    { fg = fgdark, bg = "#D4BB6C" }
+  )
 
   vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = fgdark, bg = "#A377BF" })
   vim.api.nvim_set_hl(0, "CmpItemKindStruct", { fg = fgdark, bg = "#A377BF" })
@@ -81,11 +110,23 @@ local setCompHL = function()
 
   vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = fgdark, bg = "#6C8ED4" })
   vim.api.nvim_set_hl(0, "CmpItemKindValue", { fg = fgdark, bg = "#6C8ED4" })
-  vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { fg = fgdark, bg = "#6C8ED4" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindEnumMember",
+    { fg = fgdark, bg = "#6C8ED4" }
+  )
 
-  vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = fgdark, bg = "#58B5A8" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindInterface",
+    { fg = fgdark, bg = "#58B5A8" }
+  )
   vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = fgdark, bg = "#58B5A8" })
-  vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = fgdark, bg = "#58B5A8" })
+  vim.api.nvim_set_hl(
+    0,
+    "CmpItemKindTypeParameter",
+    { fg = fgdark, bg = "#58B5A8" }
+  )
 end
 local moveCursorBeforeComma = function()
   if vim.bo.filetype ~= "dart" then
@@ -151,9 +192,9 @@ M.configfunc = function()
       priority_weight = 2,
     },
     -- NOTE: some bug
-    -- experimental = {
-    --   ghost_text = true,
-    -- },
+    experimental = {
+      ghost_text = true,
+    },
     formatting = {
       fields = { "kind", "abbr", "menu" },
       maxwidth = 60,
