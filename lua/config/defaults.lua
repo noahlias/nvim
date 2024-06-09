@@ -59,7 +59,6 @@ if has('persistent_undo')
 endif
 ]]
 
--- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.md", command = "setlocal spell" })
 vim.api.nvim_create_autocmd(
   "BufEnter",
   { pattern = "*", command = "silent! lcd %:p:h" }
@@ -100,8 +99,6 @@ vim.g.snips_author = "noahlias"
 vim.g.python3_host_prog =
   "/opt/Homebrew/Caskroom/miniforge/base/envs/py3.10/python"
 vim.g.mkdp_browser = "chromium"
-vim.g.mkdp_browserfunc = "open "
-
 vim.g.mkdp_browserfunc = "open "
 
 vim.g.flutter_default_device = "macos"
