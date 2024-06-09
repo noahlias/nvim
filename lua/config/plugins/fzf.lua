@@ -130,6 +130,11 @@ return {
         },
       },
       previewers = {
+        bat = {
+          cmd = "bat",
+          theme = "gruvbox-dark",
+          args = "--color=always --style=numbers,changes",
+        },
         head = {
           cmd = "head",
           args = nil,
@@ -158,9 +163,9 @@ return {
       },
       files = {
         formatter = "path.filename_first",
-        -- previewer = { "bat", "-p", "--theme", "gruvbox-dark" }, -- uncomment to override previewer
         -- (name from 'previewers' table)
         -- set to 'false' to disable
+        previewer = "bat",
         prompt = "Files❯ ",
         multiprocess = true, -- run command in a separate process
         git_icons = true, -- show git icons?
