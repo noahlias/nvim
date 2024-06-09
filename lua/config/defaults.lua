@@ -60,7 +60,10 @@ endif
 ]]
 
 -- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = "*.md", command = "setlocal spell" })
-vim.api.nvim_create_autocmd("BufEnter", { pattern = "*", command = "silent! lcd %:p:h" })
+vim.api.nvim_create_autocmd(
+  "BufEnter",
+  { pattern = "*", command = "silent! lcd %:p:h" }
+)
 
 vim.cmd [[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
 
@@ -92,17 +95,17 @@ tnoremap <C-O> <C-\><C-N><C-O>
 
 vim.cmd [[hi NonText ctermfg=gray guifg=grey10]]
 
-local config_path = vim.fn.stdpath "config"
-local current_config_path = config_path .. "/lua/config/machine_specific.lua"
-if not vim.loop.fs_stat(current_config_path) then
-  local current_config_file = io.open(current_config_path, "wb")
-  local default_config_path = config_path .. "/default_config/_machine_specific_default.lua"
-  local default_config_file = io.open(default_config_path, "rb")
-  if default_config_file and current_config_file then
-    local content = default_config_file:read "*all"
-    current_config_file:write(content)
-    io.close(default_config_file)
-    io.close(current_config_file)
-  end
-end
-require "config.machine_specific"
+vim.g.snips_author = "noahlias"
+
+vim.g.python3_host_prog =
+  "/opt/Homebrew/Caskroom/miniforge/base/envs/py3.10/python"
+vim.g.mkdp_browser = "chromium"
+vim.g.mkdp_browserfunc = "open "
+
+vim.g.mkdp_browserfunc = "open "
+
+vim.g.flutter_default_device = "macos"
+vim.g.flutter_run_args = ""
+
+vim.g.codelldb_path =
+  "/Users/alias/.local/share/nvim/dapinstall/codelldb/extension/adapter/codelldb"
