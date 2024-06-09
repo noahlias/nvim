@@ -44,7 +44,7 @@ return {
           },
         },
         -- current_line_blame = false,
-        word_diff = true,
+        -- word_diff = true,
         attach_to_untracked = true,
         preview_config = {
           border = "rounded",
