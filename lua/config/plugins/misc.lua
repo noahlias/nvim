@@ -11,8 +11,14 @@ return {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-      window = { margin = { 1, 0, 0.03, 0.6 }, border = "single" },
-      layout = { height = { min = 4, max = 75 }, align = "right" },
+      window = {
+        margin = { 1, 0, 0.03, 0.75 },
+        border = "single",
+      },
+      layout = {
+        height = { min = 4, max = 75 },
+        align = "right",
+      },
     },
   },
   {
