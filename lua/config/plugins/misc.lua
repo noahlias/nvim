@@ -19,6 +19,7 @@ return {
         height = { min = 4, max = 75 },
         align = "right",
       },
+      show_keys = false,
     },
   },
   {
@@ -479,7 +480,11 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-lua/plenary.nvim",
     },
-    opts = {},
+    opts = {
+      stderr = {
+        enable = false,
+      },
+    },
   },
   {
     "lervag/vimtex",
