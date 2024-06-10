@@ -40,7 +40,7 @@
   "gp.nvim": { "branch": "main", "commit": "486a061d95a50e3c9a2e7c0309464fd32e3df590" },
   "guihua.lua": { "branch": "master", "commit": "225db770e36aae6a1e9e3a65578095c8eb4038d3" },
   "haskell-tools.nvim": { "branch": "master", "commit": "65d6993eba1a56bbd5211ef13a100d26ce3e644a" },
-  "hlchunk.nvim": { "branch": "main", "commit": "1754bb9fecb8ab4a68163b721ab3e1a744fcf4a7" },
+  "hlchunk.nvim": { "branch": "main", "commit": "a7cb0da6286156c4e601c5d0f47a82bda25b37a9" },
   "image.nvim": { "branch": "master", "commit": "a2a0849e0b3dbed90f9283603cedb683bda5d4d1" },
   "img-clip.nvim": { "branch": "main", "commit": "1924e20ab19afec9779109d083b6e5f8bee8fb17" },
   "kitty-scrollback.nvim": { "branch": "main", "commit": "dc101d0a8356db9c7290dfbfa82c27ec35e3b55a" },
