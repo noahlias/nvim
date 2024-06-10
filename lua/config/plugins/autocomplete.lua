@@ -191,9 +191,9 @@ M.configfunc = function()
       },
       priority_weight = 2,
     },
-    -- NOTE: some bug
+    -- BUG: some bug
     experimental = {
-      ghost_text = true,
+      ghost_text = false,
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
