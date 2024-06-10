@@ -37,10 +37,26 @@ return {
           FzfLuaSearch = { fg = color.base, bg = color.red },
 
           -- window_picker overrides
-          WindowPickerStatusLine = { fg = color.surface0, bg = color.red, style = { "bold" } },
-          WindowPickerStatusLineNC = { fg = color.surface0, bg = color.red, style = { "bold" } },
-          WindowPickerWinBar = { fg = color.surface0, bg = color.red, style = { "bold" } },
-          WindowPickerWinBarNC = { fg = color.surface0, bg = color.red, style = { "bold" } },
+          WindowPickerStatusLine = {
+            fg = color.surface0,
+            bg = color.red,
+            style = { "bold" },
+          },
+          WindowPickerStatusLineNC = {
+            fg = color.surface0,
+            bg = color.red,
+            style = { "bold" },
+          },
+          WindowPickerWinBar = {
+            fg = color.surface0,
+            bg = color.red,
+            style = { "bold" },
+          },
+          WindowPickerWinBarNC = {
+            fg = color.surface0,
+            bg = color.red,
+            style = { "bold" },
+          },
         }
       end,
       integrations = {
@@ -65,6 +81,7 @@ return {
         noice = true,
         notify = true,
         overseer = true,
+        neotest = true,
         treesitter_context = true,
         octo = true,
         symbols_outline = true,
