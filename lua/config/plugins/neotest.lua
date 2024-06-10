@@ -33,6 +33,7 @@ return {
             return name ~= "node_modules"
           end,
         },
+        require "rustaceanvim.neotest",
       },
       consumers = {
         overseer = require "neotest.consumers.overseer",
