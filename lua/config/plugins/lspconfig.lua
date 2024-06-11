@@ -133,13 +133,13 @@ M.config = {
       lspconfig.lua_ls.setup {}
       --- NOTE: This is for sourcekit lsp
       lspconfig.sourcekit.setup {
-        capabilities = {
-          workspace = {
-            didChangeWatchedFiles = {
-              dynamicRegistration = true,
-            },
-          },
-        },
+        -- capabilities = {
+        --   workspace = {
+        --     didChangeWatchedFiles = {
+        --       dynamicRegistration = true,
+        --     },
+        --   },
+        -- },
       }
       require("config.lsp.json").setup(lspconfig, lsp)
       require("config.lsp.flutter").setup(lsp)
