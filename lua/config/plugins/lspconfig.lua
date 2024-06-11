@@ -9,7 +9,7 @@ M.config = {
   },
   {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
       {
         "folke/trouble.nvim",
@@ -87,15 +87,14 @@ M.config = {
       local lsp = require("lsp-zero").preset {}
       M.lsp = lsp
 
-      lsp.ensure_installed {
+      require("mason").setup {}
+      require("mason-lspconfig").setup {
         -- 'tsserver',
         "gopls",
         "jsonls",
         "html",
         "clangd",
       }
-
-      -- F.configureInlayHints()
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps { buffer = bufnr }
@@ -128,13 +127,6 @@ M.config = {
         end,
       }
 
-      lsp.format_on_save {
-        format_opts = {
-          -- async = false,
-          -- timeout_ms = 10000,
-        },
-      }
-
       local lspconfig = require "lspconfig"
 
       -- require("config.lsp.lua").setup(lspconfig, lsp)
@@ -152,18 +144,6 @@ M.config = {
 
       lspconfig.ols.setup {}
       lsp.setup()
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
-      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-      for _, ls in ipairs(language_servers) do
-        require("lspconfig")[ls].setup {
-          capabilities = capabilities,
-          -- you can add other fields for setting up lsp server in this table
-        }
-      end
       require("fidget").setup {}
 
       local lsp_defaults = lspconfig.util.default_config
@@ -177,17 +157,6 @@ M.config = {
 
       F.configureDocAndSignature()
       F.configureKeybinds()
-
-      -- vim.api.nvim_create_autocmd("BufWritePre", {
-      -- 	pattern = "*",
-      -- 	callback = function()
-      -- 		if format_on_save_filetypes[vim.bo.filetype] then
-      -- 			local lineno = vim.api.nvim_win_get_cursor(0)
-      -- 			vim.lsp.buf.format({ async = false })
-      -- 			pcall(vim.api.nvim_win_set_cursor, 0, lineno)
-      -- 		end
-      -- 	end,
-      -- })
     end,
   },
 }
@@ -222,22 +191,6 @@ F.configureDocAndSignature = function()
     end,
     group = group,
   })
-  -- vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
-  -- 	pattern = "*",
-  -- 	command = "silent! lua vim.lsp.buf.signature_help()",
-  -- 	group = group,
-  -- })
-
-  -- F.signature_config = {
-  -- 	bind = false,
-  -- 	floating_window = true,
-  -- 	hint_inline = function() return false end,
-  -- 	handler_opts = {
-  -- 		border = "rounded"
-  -- 	}
-  -- }
-  -- local lspsignature = require('lsp_signature')
-  -- lspsignature.setup(F.signature_config)
 end
 
 local documentation_window_open_index = 0
