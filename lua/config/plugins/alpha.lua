@@ -2,6 +2,7 @@
 return {
   "goolord/alpha-nvim",
   init = function()
+    --- NOTE: This disable the tabline in dashboard load screen.
     vim.api.nvim_create_autocmd("User", {
       pattern = "AlphaReady",
       desc = "disable tabline for alpha",
@@ -46,15 +47,27 @@ return {
     }
 
     theta.buttons.val = {
-      { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
+      {
+        type = "text",
+        val = "Quick links",
+        opts = { hl = "SpecialComment", position = "center" },
+      },
       { type = "padding", val = 1 },
       dashboard.button("e", "󰈔  New file", "<Cmd>ene<CR>"),
       dashboard.button("Ctrl p", "󰈞  Find file"),
       dashboard.button("Ctrl h", "󰈏  Old files"),
       dashboard.button("Ctrl f", "󰊄  Live grep"),
       dashboard.button("l", "󰇯  Leetcode", "<Cmd>Leet<CR>"),
-      dashboard.button("c", "  Configuration", "<Cmd>edit ~/.config/nvim/init.lua<CR>"),
-      dashboard.button("f", "  File Browser", "<Cmd>Telescope file_browser<CR>"),
+      dashboard.button(
+        "c",
+        "  Configuration",
+        "<Cmd>edit ~/.config/nvim/init.lua<CR>"
+      ),
+      dashboard.button(
+        "f",
+        "  File Browser",
+        "<Cmd>Telescope file_browser<CR>"
+      ),
       dashboard.button("d", "  Database", "<Cmd>DBUIToggle<CR>"),
       dashboard.button("q", "󰅚  Quit", "<Cmd>qa<CR>"),
     }

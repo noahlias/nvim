@@ -20,7 +20,8 @@ return {
       },
       show_buffer_close_icons = false,
       show_close_icon = false,
-      always_show_bufferline = false,
+      ---NOTE: This is a workaround for the issue that bufferline doesn't show the bufferline when there is only one buffer
+      -- always_show_bufferline = false,
       enforce_regular_tabs = true,
       show_duplicate_prefix = false,
       tab_size = 16,
