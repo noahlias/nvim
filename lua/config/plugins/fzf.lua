@@ -162,10 +162,10 @@ return {
         },
       },
       files = {
-        formatter = "path.filename_first",
+        formatter = { "path.filename_first", 2 },
         -- (name from 'previewers' table)
         -- set to 'false' to disable
-        previewer = "bat",
+        -- previewer = "bat",
         prompt = "Files❯ ",
         multiprocess = true, -- run command in a separate process
         git_icons = true, -- show git icons?
