@@ -223,7 +223,7 @@ M.configfunc = function()
         local menu_source = (menu_table[entry.source.name] or complete_item)
         local menu = menu_source .. "_" .. menu_kind
         if strings[2] == "Snippet" then
-          menu = "[" .. menu_source .. "]"
+          menu = menu_source
         elseif entry.source.name == "nvim_lsp" then
           menu = menu_kind
         end
