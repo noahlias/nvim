@@ -162,7 +162,7 @@ return {
         },
       },
       files = {
-        formatter = { "path.filename_first", 2 },
+        formatter = { "path.filename_first" },
         -- (name from 'previewers' table)
         -- set to 'false' to disable
         -- previewer = "bat",
