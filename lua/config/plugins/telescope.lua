@@ -3,6 +3,7 @@ local M = {}
 
 M.config = {
   {
+    --- TODO: need to deprecate this plugin
     "nvim-telescope/telescope.nvim",
     -- tag = '0.1.1',
     dependencies = {
@@ -20,7 +21,11 @@ M.config = {
         builtin.diagnostics {
           severity_sort = true,
         }
-      end, { noremap = true, nowait = true, desc = "Workspace diagnostics" })
+      end, {
+        noremap = true,
+        nowait = true,
+        desc = "Workspace diagnostics",
+      })
 
       local ts = require "telescope"
       local actions = require "telescope.actions"
@@ -132,19 +137,12 @@ M.config = {
       ts.load_extension "fzf"
       ts.load_extension "simulators"
       ts.load_extension "noice"
-      -- ts.load_extension "possession"
 
       require("simulators").setup {
         android_emulator = false,
         apple_simulator = true,
       }
-      -- ts.load_extension("ui-select")
       ts.load_extension "flutter"
-      -- local tsdap = ts.extensions.dap
-      -- vim.keymap.set("n", "<leader>'v", tsdap.variables, m)
-      -- vim.keymap.set("n", "<leader>'a", tsdap.commands, m)
-      -- vim.keymap.set("n", "<leader>'b", tsdap.list_breakpoints, m)
-      -- vim.keymap.set("n", "<leader>'f", tsdap.frames, m)
     end,
   },
   {
