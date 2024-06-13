@@ -18,6 +18,14 @@ Because it inherits from the repositories I referenced.
 
 Maybe I can make it better in the future.
 
+## Data science
+
+There is a plugin `molten.nvim` for data science, you can use it to run python code in neovim.
+But I choose the `vscode` to run jupyter notebook, because it's more convenient.
+
+> [!NOTE]
+> Choose the right tool for the right job.
+
 ## References
 
 Referenced from the following repositories:
