@@ -97,7 +97,7 @@ vim.cmd [[hi NonText ctermfg=gray guifg=grey10]]
 vim.g.snips_author = "noahlias"
 
 vim.g.python3_host_prog =
-  "/opt/Homebrew/Caskroom/miniforge/base/envs/py3.10/python"
+  "/opt/Homebrew/Caskroom/miniforge/base/envs/py3.10/bin/python"
 vim.g.mkdp_browser = "chromium"
 vim.g.mkdp_browserfunc = "open "
 
