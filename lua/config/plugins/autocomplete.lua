@@ -217,8 +217,9 @@ M.configfunc = function()
           nvim_lua = "Lua",
           calc = "Calc",
           crates = "Crates",
+          ["copilot-chat"] = "CopilotChat",
+          ["vim-dadbod-completion"] = "SQL",
         }
-        menu_table["vim-dadbod-completion"] = "SQL"
         local menu_kind = strings[2] or ""
         local menu_source = (menu_table[entry.source.name] or complete_item)
         local menu = menu_source .. "_" .. menu_kind
