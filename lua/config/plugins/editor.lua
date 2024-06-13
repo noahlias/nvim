@@ -89,21 +89,46 @@ return {
           timer = 200,
         },
       }
-      vim.keymap.set("n", "st", substitute.operator, { noremap = true, desc = "substitute with motion" })
+      vim.keymap.set(
+        "n",
+        "st",
+        substitute.operator,
+        { noremap = true, desc = "substitute with motion" }
+      )
       vim.keymap.set("n", "sh", function()
         substitute.operator { motion = "e" }
       end, { noremap = true })
-      vim.keymap.set("x", "s", require("substitute.range").visual, { noremap = true })
-      vim.keymap.set("n", "ss", substitute.line, { noremap = true, desc = "substitute with line" })
+      vim.keymap.set(
+        "x",
+        "s",
+        require("substitute.range").visual,
+        { noremap = true }
+      )
+      vim.keymap.set(
+        "n",
+        "ss",
+        substitute.line,
+        { noremap = true, desc = "substitute with line" }
+      )
       vim.keymap.set("n", "sI", substitute.eol, { noremap = true })
-      vim.keymap.set("x", "s", substitute.visual, { noremap = true, desc = "substitute with visual" })
+      vim.keymap.set(
+        "x",
+        "s",
+        substitute.visual,
+        { noremap = true, desc = "substitute with visual" }
+      )
       vim.keymap.set(
         "n",
         "sx",
         require("substitute.exchange").operator,
         { noremap = true, desc = "exchange with motion" }
       )
-      vim.keymap.set("x", "X", require("substitute.exchange").visual, { noremap = true })
+      vim.keymap.set(
+        "x",
+        "X",
+        require("substitute.exchange").visual,
+        { noremap = true }
+      )
       vim.keymap.set(
         "n",
         "sxc",
@@ -175,9 +200,10 @@ return {
       -- },
     },
     init = function()
-      local set_foldcolumn_for_file = vim.api.nvim_create_augroup("set_foldcolumn_for_file", {
-        clear = true,
-      })
+      local set_foldcolumn_for_file =
+        vim.api.nvim_create_augroup("set_foldcolumn_for_file", {
+          clear = true,
+        })
       vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
         group = set_foldcolumn_for_file,
         callback = function()
@@ -199,6 +225,14 @@ return {
           end
         end,
       })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "copilot-chat" },
+        callback = function()
+          require("ufo").detach()
+          vim.opt_local.foldenable = false
+          vim.opt_local.foldcolumn = "0"
+        end,
+      })
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
@@ -208,7 +242,10 @@ return {
         local newVirtText = {}
         local totalLines = vim.api.nvim_buf_line_count(0)
         local foldedLines = endLnum - lnum
-        local suffix = ("  %d %d%%"):format(foldedLines, foldedLines / totalLines * 100)
+        local suffix = ("  %d %d%%"):format(
+          foldedLines,
+          foldedLines / totalLines * 100
+        )
         local sufWidth = vim.fn.strdisplaywidth(suffix)
         local targetWidth = width - sufWidth
         local curWidth = 0
@@ -230,7 +267,12 @@ return {
           end
           curWidth = curWidth + chunkWidth
         end
-        local rAlignAppndx = math.max(math.min(vim.api.nvim_win_get_width(0), width - 1) - curWidth - sufWidth, 0)
+        local rAlignAppndx = math.max(
+          math.min(vim.api.nvim_win_get_width(0), width - 1)
+            - curWidth
+            - sufWidth,
+          0
+        )
         suffix = (" "):rep(rAlignAppndx) .. suffix
         table.insert(newVirtText, { suffix, "MoreMsg" })
         return newVirtText
