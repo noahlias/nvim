@@ -158,7 +158,7 @@ return {
         formatter = { "path.filename_first" },
         -- (name from 'previewers' table)
         -- set to 'false' to disable
-        -- previewer = "bat",
+        previewer = "bat",
         prompt = "Files❯ ",
         cwd_prompt = false,
         multiprocess = true, -- run command in a separate process
