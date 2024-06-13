@@ -2,6 +2,7 @@
 return {
   "ibhagwan/fzf-lua",
   cmd = "FzfLua",
+  event = "VeryLazy",
   keys = {
     {
       "<c-p>",
@@ -81,14 +82,6 @@ return {
   },
   config = function()
     local fzf = require "fzf-lua"
-    -- vim.keymap.set('n', '<c-f>', function()
-    -- 	-- fzf.live_grep_resume({ multiprocess = true, debug = true })
-    -- 	fzf.grep({ search = "", fzf_opts = { ['--layout'] = 'default' } })
-    -- end, m)
-    -- vim.keymap.set('x', '<c-f>', function()
-    -- 	-- fzf.live_grep_resume({ multiprocess = true, debug = true })
-    -- 	fzf.grep_visual({ fzf_opts = { ['--layout'] = 'default' } })
-    -- end, m)
     fzf.setup {
       global_resume = true,
       global_resume_query = true,
@@ -167,6 +160,7 @@ return {
         -- set to 'false' to disable
         -- previewer = "bat",
         prompt = "Files❯ ",
+        cwd_prompt = false,
         multiprocess = true, -- run command in a separate process
         git_icons = true, -- show git icons?
         file_icons = true, -- show file icons?
