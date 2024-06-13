@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "rcarriga/nvim-notify",
+  event = "VeryLazy",
   config = function()
     local notify = require "notify"
     vim.notify = notify
@@ -29,11 +30,11 @@ return {
         previewer = false,
       }
     end, { noremap = true, silent = true, desc = "Notify Telescope" })
-    vim.keymap.set(
-      "n",
-      "<LEADER>c;",
-      notify.dismiss,
-      { noremap = true, silent = true, desc = "Notify dismiss" }
-    )
+    -- vim.keymap.set(
+    --   "n",
+    --   "<LEADER>c;",
+    --   notify.dismiss,
+    --   { noremap = true, silent = true, desc = "Notify dismiss" }
+    -- )
   end,
 }
