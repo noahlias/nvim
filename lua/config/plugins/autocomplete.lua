@@ -234,7 +234,6 @@ M.configfunc = function()
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
-      { name = "vim-dadbod-completion" },
       {
         name = "buffer",
         option = {
@@ -246,17 +245,15 @@ M.configfunc = function()
             return vim.tbl_keys(bufs)
           end,
         },
+        { name = "nvim_lua" },
       },
-      -- { name = "ultisnips" },
       { name = "lazydev", group_index = 0 },
-      { name = "snippets" },
     }, {
       { name = "path" },
-      { name = "nvim_lua" },
+      { name = "snippets", keyword_length = 2 },
       { name = "calc" },
       { name = "crates" },
-      -- { name = "luasnip" },
-      -- { name = 'tmux',    option = { all_panes = true, } },  -- this is kinda slow
+      { name = "vim-dadbod-completion" },
     }),
     mapping = cmp.mapping.preset.insert {
       ["<C-o>"] = cmp.mapping.complete(),
