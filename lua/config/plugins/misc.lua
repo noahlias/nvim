@@ -297,52 +297,52 @@ return {
     "dstein64/vim-startuptime",
     cmd = { "StartupTime" },
   },
-  {
-    "mikesmithgh/kitty-scrollback.nvim",
-    cmd = {
-      "KittyScrollbackGenerateKittens",
-      "KittyScrollbackCheckHealth",
-    },
-    event = { "User KittyScrollbackLaunch" },
-    opts = {
-      {
-        paste_window = {
-          winopts_overrides = function(winopts)
-            winopts.border = {
-              "╭",
-              "─",
-              "╮",
-              "│",
-              "┤",
-              "─",
-              "├",
-              "│",
-            }
-            return winopts
-          end,
-          footer_winopts_overrides = function(winopts)
-            winopts.border = {
-              "│",
-              " ",
-              "│",
-              "│",
-              "╯",
-              "─",
-              "╰",
-              "│",
-            }
-            return winopts
-          end,
-        },
-      },
-    },
-    callbacks = {
-      after_paste_window_ready = function(pastewin_data)
-        local winid = pastewin_data.paste_window.winid
-        vim.wo[winid].statuscolumn = ""
-      end,
-    },
-  },
+  -- {
+  --   "mikesmithgh/kitty-scrollback.nvim",
+  --   cmd = {
+  --     "KittyScrollbackGenerateKittens",
+  --     "KittyScrollbackCheckHealth",
+  --   },
+  --   event = { "User KittyScrollbackLaunch" },
+  --   opts = {
+  --     {
+  --       paste_window = {
+  --         winopts_overrides = function(winopts)
+  --           winopts.border = {
+  --             "╭",
+  --             "─",
+  --             "╮",
+  --             "│",
+  --             "┤",
+  --             "─",
+  --             "├",
+  --             "│",
+  --           }
+  --           return winopts
+  --         end,
+  --         footer_winopts_overrides = function(winopts)
+  --           winopts.border = {
+  --             "│",
+  --             " ",
+  --             "│",
+  --             "│",
+  --             "╯",
+  --             "─",
+  --             "╰",
+  --             "│",
+  --           }
+  --           return winopts
+  --         end,
+  --       },
+  --     },
+  --   },
+  --   callbacks = {
+  --     after_paste_window_ready = function(pastewin_data)
+  --       local winid = pastewin_data.paste_window.winid
+  --       vim.wo[winid].statuscolumn = ""
+  --     end,
+  --   },
+  -- },
   {
     "utilyre/sentiment.nvim",
     event = "VeryLazy", -- keep for lazy loading
@@ -509,57 +509,57 @@ return {
       }
     end,
   },
-  {
-    "benlubas/molten-nvim",
-    version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-    build = ":UpdateRemotePlugins",
-    -- event = "VeryLazy",
-    ft = { "python", "ipynb" },
-    dependencies = {
-      "3rd/image.nvim",
-    },
-    init = function()
-      vim.g.molten_image_provider = "image.nvim"
-      vim.g.molten_output_win_max_height = 20
-    end,
-    keys = {
-      {
-        "<leader>mi",
-        "<cmd>MoltenInit<CR>",
-        desc = "This command initializes a runtime for the current buffer.",
-      },
-      {
-        "<leader>mo",
-        "<cmd>MoltenEvaluateOperator<CR>",
-        desc = "Evaluate the text given by some operator.",
-      },
-      {
-        "<leader>ml",
-        "<cmd>MoltenEvaluateLine<CR>",
-        desc = "Evaluate the current line.",
-      },
-      {
-        "<leader>mv",
-        "<cmd>MoltenEvaluateVisual<CR>",
-        desc = "Evaluate the selected text.",
-      },
-      {
-        "<leader>mc",
-        "<cmd>MoltenEvaluateOperator<CR>",
-        desc = "Reevaluate the currently selected cell.",
-      },
-      {
-        "<leader>mr",
-        "<cmd>MoltenRestart!<CR>",
-        desc = "Shuts down and restarts the current kernel.",
-      },
-      {
-        "<leader>mx",
-        "<cmd>MoltenInterrupt<CR>",
-        desc = "Interrupts the currently running cell and does nothing if not cell is running.",
-      },
-    },
-  },
+  -- {
+  --   "benlubas/molten-nvim",
+  --   version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+  --   build = ":UpdateRemotePlugins",
+  --   -- event = "VeryLazy",
+  --   ft = { "python", "ipynb" },
+  --   dependencies = {
+  --     "3rd/image.nvim",
+  --   },
+  --   init = function()
+  --     vim.g.molten_image_provider = "image.nvim"
+  --     vim.g.molten_output_win_max_height = 20
+  --   end,
+  --   keys = {
+  --     {
+  --       "<leader>mi",
+  --       "<cmd>MoltenInit<CR>",
+  --       desc = "This command initializes a runtime for the current buffer.",
+  --     },
+  --     {
+  --       "<leader>mo",
+  --       "<cmd>MoltenEvaluateOperator<CR>",
+  --       desc = "Evaluate the text given by some operator.",
+  --     },
+  --     {
+  --       "<leader>ml",
+  --       "<cmd>MoltenEvaluateLine<CR>",
+  --       desc = "Evaluate the current line.",
+  --     },
+  --     {
+  --       "<leader>mv",
+  --       "<cmd>MoltenEvaluateVisual<CR>",
+  --       desc = "Evaluate the selected text.",
+  --     },
+  --     {
+  --       "<leader>mc",
+  --       "<cmd>MoltenEvaluateOperator<CR>",
+  --       desc = "Reevaluate the currently selected cell.",
+  --     },
+  --     {
+  --       "<leader>mr",
+  --       "<cmd>MoltenRestart!<CR>",
+  --       desc = "Shuts down and restarts the current kernel.",
+  --     },
+  --     {
+  --       "<leader>mx",
+  --       "<cmd>MoltenInterrupt<CR>",
+  --       desc = "Interrupts the currently running cell and does nothing if not cell is running.",
+  --     },
+  --   },
+  -- },
   --NOTE: add ascii diagram support
   {
     "jbyuki/venn.nvim",
@@ -631,15 +631,5 @@ return {
         "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
       },
     },
-  },
-  {
-    "GCBallesteros/jupytext.nvim",
-    config = function()
-      require("jupytext").setup {
-        style = "markdown",
-        output_extension = "md",
-        force_ft = "markdown",
-      }
-    end,
   },
 }
