@@ -202,7 +202,7 @@ M.configfunc = function()
       format = function(entry, vim_item)
         local kind = lspkind.cmp_format {
           mode = "symbol_text",
-          symbol_map = { Codeium = "" },
+          symbol_map = { Codeium = "", TypeParameter = " " },
         }(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. (strings[1] or "") .. " "
@@ -211,7 +211,6 @@ M.configfunc = function()
         local menu_table = {
           nvim_lsp = "LSP",
           snippets = "Snippet",
-          -- ultisnips = "UltiSnips",
           buffer = "Buffer",
           path = "Path",
           nvim_lua = "Lua",
@@ -223,11 +222,6 @@ M.configfunc = function()
         local menu_kind = strings[2] or ""
         local menu_source = (menu_table[entry.source.name] or complete_item)
         local menu = menu_source .. "_" .. menu_kind
-        if strings[2] == "Snippet" then
-          menu = menu_source
-        elseif entry.source.name == "nvim_lsp" then
-          menu = menu_kind
-        end
         kind.menu = menu
         return kind
       end,
