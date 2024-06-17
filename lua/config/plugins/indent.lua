@@ -3,7 +3,7 @@ local utils = require "utils.static"
 return {
   {
     "shellRaining/hlchunk.nvim",
-    enabled = false,
+    enabled = true,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("hlchunk").setup {
@@ -16,7 +16,8 @@ return {
         },
         --FIXME: Some bug in the new version
         indent = {
-          enable = false,
+          chars = { "│ " },
+          enable = true,
         },
         line_num = {
           enable = false,
@@ -35,6 +36,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
+    enabled = false,
     opts = {
       indent = {
         char = "▏", -- Thiner, not suitable when enable scope
