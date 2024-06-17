@@ -221,7 +221,7 @@ M.configfunc = function()
         }
         local menu_kind = strings[2] or ""
         local menu_source = (menu_table[entry.source.name] or complete_item)
-        local menu = menu_source .. "_" .. menu_kind
+        local menu = "[" .. menu_source .. "] " .. menu_kind
         kind.menu = menu
         return kind
       end,
