@@ -24,7 +24,7 @@ return {
       -- always_show_bufferline = false,
       enforce_regular_tabs = true,
       show_duplicate_prefix = false,
-      separator_style = "slope",
+      -- separator_style = "thick",
       tab_size = 16,
       padding = 0,
       sort_by = "tabs" or "insert_after_current",

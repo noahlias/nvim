@@ -8,7 +8,13 @@ local compileRun = function()
   -- check file type
   local ft = vim.bo.filetype
   if ft == "dart" then
-    vim.cmd(":FlutterRun -d " .. vim.g.flutter_default_device .. " " .. vim.g.flutter_run_args .. "<CR>")
+    vim.cmd(
+      ":FlutterRun -d "
+        .. vim.g.flutter_default_device
+        .. " "
+        .. vim.g.flutter_run_args
+        .. "<CR>"
+    )
   elseif ft == "markdown" then
     vim.cmd ":InstantMarkdownPreview"
   elseif ft == "lua" then
@@ -70,17 +76,26 @@ local chooseVisualFormatAndRun = function()
     "wipe",
   }
   -- local choice = vim.fn.inputlist(formats)
-  vim.ui.select(formats, { prompt = "Choose a visual format: " }, function(choice)
-    vim.cmd "w"
-    split()
-    if choice ~= nil then
-      vim.cmd("term cat % | tte " .. choice)
+  vim.ui.select(
+    formats,
+    { prompt = "Choose a visual format: " },
+    function(choice)
+      vim.cmd "w"
+      split()
+      if choice ~= nil then
+        vim.cmd("term cat % | tte " .. choice)
+      end
     end
-  end)
+  )
 end
 
 vim.keymap.set("n", "r", compileRun, { silent = true })
-vim.keymap.set("n", "<leader>tt", chooseVisualFormatAndRun, { silent = true, desc = "TTE with visual effects" })
+vim.keymap.set(
+  "n",
+  "<leader>tt",
+  chooseVisualFormatAndRun,
+  { silent = true, desc = "TTE with visual effects" }
+)
 
 vim.cmd [[
   augroup MarkdownCommands
