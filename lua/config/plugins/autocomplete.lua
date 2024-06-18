@@ -26,7 +26,7 @@ M.config = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-calc",
-    -- "andersevenrud/cmp-tmux",
+    "kdheepak/cmp-latex-symbols",
     {
       "onsails/lspkind.nvim",
       lazy = false,
@@ -261,6 +261,7 @@ M.configfunc = function()
           crates = "Crates",
           ["copilot-chat"] = "CopilotChat",
           ["vim-dadbod-completion"] = "SQL",
+          latex_symbols = "LaTeX",
         }
         local menu_kind = strings[2] or ""
         local menu_source = (menu_table[entry.source.name] or complete_item)
@@ -286,9 +287,15 @@ M.configfunc = function()
         { name = "nvim_lua" },
       },
       { name = "lazydev", group_index = 0 },
+      { name = "snippets", keyword_length = 2 },
     }, {
       { name = "path" },
-      { name = "snippets", keyword_length = 2 },
+      {
+        name = "latex_symbols",
+        option = {
+          strategy = 2, -- latex
+        },
+      },
       { name = "calc" },
       { name = "crates" },
       { name = "vim-dadbod-completion" },
