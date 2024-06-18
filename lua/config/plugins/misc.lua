@@ -1,3 +1,4 @@
+---@type LazyPluginSpec[]
 return {
   {
     "folke/which-key.nvim",
@@ -8,9 +9,6 @@ return {
       vim.o.timeoutlen = 300
     end,
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
       window = {
         margin = { 1, 0, 0.03, 0.75 },
         border = "single",
@@ -170,7 +168,6 @@ return {
         local bufnr = t.bufnr
         vim.keymap.set("t", "<Esc>", "<C-\\><C-N>", { buffer = bufnr })
       end,
-      --shell = vim.uv.os_uname().sysname == "Windows_NT" and "pwsh" or "fish",
       float_opts = {
         border = "rounded",
       },
@@ -603,26 +600,6 @@ return {
       )
     end,
   },
-  ------NOTE: just for try to use remote nvim
-  ---{
-  ---  "amitds1997/remote-nvim.nvim",
-  ---  enabled = false,
-  ---  version = "*", -- Pin to GitHub releases
-  ---  dependencies = {
-  ---    "nvim-lua/plenary.nvim", -- For standard functions
-  ---    "MunifTanjim/nui.nvim", -- To build the plugin UI
-  ---    "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
-  ---  },
-  ---  config = true,
-  ---},
-  -- {
-  --   "jedrzejboczar/possession.nvim",
-  --   event = "VeryLazy",
-  --   dependencies = "nvim-lua/plenary.nvim",
-  --   config = function()
-  --     require("possession").setup {}
-  --   end,
-  -- },
   -- NOTE: wonderful toggle plugin
   {
     "xiyaowong/transparent.nvim",
