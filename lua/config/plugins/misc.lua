@@ -614,6 +614,8 @@ return {
     cmd = "Screenkey",
     opts = {
       win_opts = {
+        ---NOTE: fix the position conflict with which-key
+        row = 10,
         border = "rounded",
       },
     },
