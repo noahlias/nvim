@@ -18,6 +18,8 @@ local M = {}
 M.config = {
   "hrsh7th/nvim-cmp",
   -- after = "SirVer/ultisnips",
+  version = false, -- last release is way too old
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -32,13 +34,6 @@ M.config = {
         require("lspkind").init()
       end,
     },
-    -- {
-    --   "quangnguyen30192/cmp-nvim-ultisnips",
-    --   config = function()
-    --     -- optional call to setup (see customization section)
-    --     require("cmp_nvim_ultisnips").setup {}
-    --   end,
-    -- },
     {
       "garymjr/nvim-snippets",
       dependencies = {
@@ -141,23 +136,70 @@ local moveCursorBeforeComma = function()
     end
   end, 100)
 end
+---@alias Placeholder {n:number, text:string}
+---@param snippet string
+---@param fn fun(placeholder:Placeholder):string
+---@return string
+local function snippet_replace(snippet, fn)
+  return snippet:gsub("%$%b{}", function(m)
+    local n, name = m:match "^%${(%d+):(.+)}$"
+    return n and fn { n = n, text = name } or m
+  end) or snippet
+end
+
+-- This function resolves nested placeholders in a snippet.
+---@param snippet string
+---@return string
+local function snippet_preview(snippet)
+  local ok, parsed = pcall(function()
+    return vim.lsp._snippet_grammar.parse(snippet)
+  end)
+  return ok and tostring(parsed)
+    or snippet_replace(snippet, function(placeholder)
+      return M.snippet_preview(placeholder.text)
+    end):gsub("%$0", "")
+end
 
 M.configfunc = function()
   local lspkind = require "lspkind"
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
   local cmp = require "cmp"
-  -- local cmp_ultisnips_mappings = require "cmp_nvim_ultisnips.mappings"
-  -- local luasnip = require("luasnip")
 
   setCompHL()
+
+  ---HACK: stolen from lazynvim
+  local parse = require("cmp.utils.snippet").parse
+  ---@diagnostic disable-next-line: duplicate-set-field
+  require("cmp.utils.snippet").parse = function(input)
+    local ok, ret = pcall(parse, input)
+    if ok then
+      return ret
+    end
+    return snippet_preview(input)
+  end
+
   cmp.setup {
     preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)
-        -- luasnip.lsp_expand(args.body)
-        -- vim.fn["UltiSnips#Anon"](args.body)
         -- NOTE: This has been injected by the nvim-snippets plugin not need to call it
-        vim.snippet.expand(args.body)
+        local _expand = function(snippet)
+          local session = vim.snippet.active() and vim.snippet._session or nil
+          local ok, err = pcall(vim.snippet.expand, snippet)
+          if not ok then
+            local fixed = M.snippet_fix(snippet)
+            ok = pcall(vim.snippet.expand, fixed)
+
+            local msg = ok
+                and "Failed to parse snippet,\nbut was able to fix it automatically."
+              or ("Failed to parse snippet.\n" .. err)
+          end
+          if session then
+            vim.snippet._session = session
+          end
+        end
+        _expand(args.body)
       end,
     },
     enabled = function()
@@ -166,7 +208,7 @@ M.configfunc = function()
       if buftype == "prompt" then
         return false
       end
-      return true and vim.bo.ft ~= "norg" and vim.bo.ft ~= "tex"
+      return true and vim.bo.ft ~= "norg"
     end,
     window = {
       completion = {
@@ -191,9 +233,10 @@ M.configfunc = function()
       },
       priority_weight = 2,
     },
-    -- BUG: some bug
     experimental = {
-      ghost_text = false,
+      ghost_text = {
+        hl_group = "CmpGhostText",
+      },
     },
     formatting = {
       fields = { "kind", "abbr", "menu" },
