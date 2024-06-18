@@ -129,7 +129,6 @@ M.config = {
 
       local lspconfig = require "lspconfig"
 
-      -- require("config.lsp.lua").setup(lspconfig, lsp)
       lspconfig.lua_ls.setup {}
       --- NOTE: This is for sourcekit lsp
       -- lspconfig.sourcekit.setup {
@@ -154,6 +153,7 @@ M.config = {
       require("config.lsp.r").setup(lspconfig, lsp)
 
       lspconfig.ols.setup {}
+      lspconfig.texlab.setup {}
       lsp.setup()
       require("fidget").setup {}
 
