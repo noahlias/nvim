@@ -11,45 +11,41 @@ return {
       },
       signs = {
         add = {
-          hl = "GitSignsAdd",
           text = "▎",
-          numhl = "GitSignsAddNr",
-          linehl = "GitSignsAddLn",
         },
         change = {
-          hl = "GitSignsChange",
           text = "░",
-          numhl = "GitSignsChangeNr",
-          linehl = "GitSignsChangeLn",
         },
         delete = {
-          hl = "GitSignsDelete",
           text = "_",
-          numhl = "GitSignsDeleteNr",
-          linehl = "GitSignsDeleteLn",
         },
         topdelete = {
-          hl = "GitSignsDelete",
           text = "▔",
-          numhl = "GitSignsDeleteNr",
-          linehl = "GitSignsDeleteLn",
         },
         changedelete = {
-          hl = "GitSignsChange",
           text = "▒",
-          numhl = "GitSignsChangeNr",
-          linehl = "GitSignsChangeLn",
         },
         untracked = {
-          hl = "GitSignsAdd",
           text = "┆",
-          numhl = "GitSignsAddNr",
-          linehl = "GitSignsAddLn",
         },
       },
       on_attach = function(bufnr)
         local gitsigns = require "gitsigns"
 
+        vim.api.nvim_set_hl(0, "GitSignsChangeLn", { link = "DiffText" })
+        vim.api.nvim_set_hl(0, "GitSignsDeleteLn", { link = "DiffDelete" })
+
+        vim.api.nvim_set_hl(0, "GitSignsAddInline", { link = "GitSignsAddLn" })
+        vim.api.nvim_set_hl(
+          0,
+          "GitSignsDeleteInline",
+          { link = "GitSignsDeleteLn" }
+        )
+        vim.api.nvim_set_hl(
+          0,
+          "GitSignsChangeInline",
+          { link = "GitSignsChangeLn" }
+        )
         -- Navigation
         vim.keymap.set("n", "]h", function()
           if vim.wo.diff then
