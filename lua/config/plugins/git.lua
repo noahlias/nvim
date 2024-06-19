@@ -134,7 +134,7 @@ return {
   },
   {
     "kdheepak/lazygit.nvim",
-    keys = { "<leader>gl" },
+    event = "VeryLazy",
     config = function()
       vim.g.lazygit_floating_window_scaling_factor = 1.0
       vim.g.lazygit_floating_window_winblend = 0
@@ -143,7 +143,7 @@ return {
         "n",
         "<leader>gl",
         ":LazyGit<CR>",
-        { noremap = true, silent = true }
+        { noremap = true, silent = true, desc = "LazyGit" }
       )
     end,
   },
