@@ -2,7 +2,7 @@
 return {
   {
     "Eandrju/cellular-automaton.nvim",
-    enabled = true,
+    enabled = false,
   },
   -- 	{
   -- 		'ryoppippi/bad-apple.vim',
