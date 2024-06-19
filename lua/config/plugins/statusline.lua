@@ -77,7 +77,7 @@ return {
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
-        statusline = { "alpha", "OverseerList" },
+        statusline = { "alpha", "OverseerList", "DiffviewFiles" },
       },
       always_divide_middle = true,
       globalstatus = false,
@@ -88,7 +88,9 @@ return {
       -- }
     },
     sections = {
-      lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+      lualine_a = {
+        { "mode", separator = { left = "" }, right_padding = 2 },
+      },
       lualine_b = {
         { "branch", icon = "" },
         {
@@ -117,7 +119,9 @@ return {
         "filetype",
       },
       lualine_y = { "diagnostics", "progress" },
-      lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
+      lualine_z = {
+        { "location", separator = { right = "" }, left_padding = 2 },
+      },
     },
     inactive_sections = {
       lualine_a = {},
