@@ -1,16 +1,6 @@
 ---@type LazyPluginSpec
 return {
   "stevearc/conform.nvim",
-  -- keys = {
-  --   {
-  --     "<leader>cf",
-  --     function()
-  --       require("conform").format { lsp_fallback = true }
-  --     end,
-  --     desc = "Format Document",
-  --     mode = { "n", "v" },
-  --   },
-  -- },
   config = function()
     require("conform").setup {
       format_on_save = {
@@ -20,7 +10,9 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         python = function(bufnr)
-          if require("conform").get_formatter_info("ruff_format", bufnr).available then
+          if
+            require("conform").get_formatter_info("ruff_format", bufnr).available
+          then
             return { "ruff_format" }
           else
             return { "isort", "black" }
@@ -58,7 +50,13 @@ return {
           command = "R",
           -- A list of strings, or a function that returns a list of strings
           -- Return a single string instead of a list to run the command in a shell
-          args = { "-s", "-e", "styler::style_file(commandArgs(TRUE)[1])", "--args", "$FILENAME" },
+          args = {
+            "-s",
+            "-e",
+            "styler::style_file(commandArgs(TRUE)[1])",
+            "--args",
+            "$FILENAME",
+          },
           stdin = false,
         },
       },

@@ -1,7 +1,8 @@
+---@type LazyPluginSpec[]
 return {
   {
     "Eandrju/cellular-automaton.nvim",
-    enabled = false,
+    enabled = true,
   },
   -- 	{
   -- 		'ryoppippi/bad-apple.vim',

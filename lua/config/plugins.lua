@@ -66,7 +66,7 @@ require("lazy").setup {
     require "config.plugins.go",
     require "config.plugins.surround",
     require "config.plugins.project",
-    require "config.plugins.wilder",
+    -- require "config.plugins.wilder",
     require "config.plugins.multi-cursor",
     require "config.plugins.copilot",
     require "config.plugins.markdown",
@@ -74,7 +74,7 @@ require("lazy").setup {
     require "config.plugins.indent",
     require "config.plugins.search",
     require "config.plugins.yank",
-    require "config.plugins.snippets",
+    -- require "config.plugins.snippets",
     require "config.plugins.window-management",
     require "config.plugins.undo",
     require "config.plugins.ft",
@@ -106,6 +106,8 @@ require("lazy").setup {
     -- NOTE: This plugin use for my personal use
     {
       "gleam-lang/gleam.vim",
+      ft = { "gleam" },
+      event = "BufReadPre *.gleam",
     },
     {
       "fladson/vim-kitty",
