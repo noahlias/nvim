@@ -14,8 +14,6 @@ return {
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
-      --BUG: https://github.com/pmizio/typescript-tools.nvim/issues/250
-      client.server_capabilities.semanticTokensProvider = false
 
       vim.keymap.set(
         "n",
