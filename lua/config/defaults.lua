@@ -105,7 +105,7 @@ vim.g.flutter_default_device = "macos"
 vim.g.flutter_run_args = ""
 
 vim.g.codelldb_path =
-  "/Users/alias/.local/share/nvim/dapinstall/codelldb/extension/adapter/codelldb"
+  "/Users/alias/.local/share/nvim/mason/packages/codelldb/codelldb"
 
 -- Copy text to clipboard using codeblock format ```{ft}{content}```
 vim.api.nvim_create_user_command("CopyCodeBlock", function(opts)

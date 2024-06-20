@@ -77,47 +77,87 @@ return {
     dapui.setup()
     require("nvim-dap-virtual-text").setup {}
 
-    -- dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-    -- dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-    -- dap.listeners.before.event_exited["dapui_config"] = dapui.close
-
-    vim.keymap.set("n", "<leader>'t", dap.toggle_breakpoint, { desc = "Toggle breakpoint", noremap = true })
-    vim.keymap.set("n", "<leader>'v", require("dap.ui.widgets").hover, { desc = "Hover", noremap = true })
+    vim.keymap.set(
+      "n",
+      "<leader>'t",
+      dap.toggle_breakpoint,
+      { desc = "Toggle breakpoint", noremap = true }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>'v",
+      require("dap.ui.widgets").hover,
+      { desc = "Hover", noremap = true }
+    )
     vim.keymap.set("n", "<leader>'n", function()
       compile()
       dap.continue()
     end, { desc = "Continue", noremap = true })
-    vim.keymap.set("n", "<leader>'s", dap.step_over, { desc = "Step over", noremap = true })
-    local widgets = require "dap.ui.widgets"
-    vim.keymap.set("n", "<leader>'q", dap.terminate, { desc = "Quit", noremap = true })
-    vim.keymap.set("n", "<leader>'u", dapui.toggle, { noremap = true, desc = "Toggle UI" })
+    vim.keymap.set(
+      "n",
+      "<leader>'s",
+      dap.step_over,
+      { desc = "Step over", noremap = true }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>'q",
+      dap.terminate,
+      { desc = "Quit", noremap = true }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>'u",
+      dapui.toggle,
+      { noremap = true, desc = "Toggle UI" }
+    )
 
-    vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
-    vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
-    vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#ffffff", bg = "#FE3C25" })
-
-    vim.fn.sign_define(
+    vim.api.nvim_set_hl(
+      0,
       "DapBreakpoint",
-      { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+      { ctermbg = 0, fg = "#993939", bg = "#31353f" }
     )
-    vim.fn.sign_define(
-      "DapBreakpointCondition",
-      { text = "ﳁ", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+    vim.api.nvim_set_hl(
+      0,
+      "DapLogPoint",
+      { ctermbg = 0, fg = "#61afef", bg = "#31353f" }
     )
-    vim.fn.sign_define(
-      "DapBreakpointRejected",
-      { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+    vim.api.nvim_set_hl(
+      0,
+      "DapStopped",
+      { ctermbg = 0, fg = "#ffffff", bg = "#FE3C25" }
     )
+
+    vim.fn.sign_define("DapBreakpoint", {
+      text = "",
+      texthl = "DapBreakpoint",
+      linehl = "DapBreakpoint",
+      numhl = "DapBreakpoint",
+    })
+    vim.fn.sign_define("DapBreakpointCondition", {
+      text = "ﳁ",
+      texthl = "DapBreakpoint",
+      linehl = "DapBreakpoint",
+      numhl = "DapBreakpoint",
+    })
+    vim.fn.sign_define("DapBreakpointRejected", {
+      text = "",
+      texthl = "DapBreakpoint",
+      linehl = "DapBreakpoint",
+      numhl = "DapBreakpoint",
+    })
     vim.fn.sign_define("DapLogPoint", {
       text = "",
       texthl = "DapLogPoint",
       linehl = "DapLogPoint",
       numhl = "DapLogPoint",
     })
-    vim.fn.sign_define(
-      "DapStopped",
-      { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
-    )
+    vim.fn.sign_define("DapStopped", {
+      text = "",
+      texthl = "DapStopped",
+      linehl = "DapStopped",
+      numhl = "DapStopped",
+    })
     -- NOTE: this plugin for neovim debug
     -- dap.defaults.fallback.external_terminal = {
     --   command = "/Applications/kitty.app/Contents/MacOS/kitty",
@@ -147,10 +187,24 @@ return {
         args = { "--port", "${port}" },
       },
     }
+    dap.adapters.lldb = {
+      type = "executable",
+      name = "lldb",
+      command = "lldb-dap",
+    }
     dap.configurations.cpp = {
       {
-        name = "Launch file",
+        name = "[Codelldb] Launch file",
         type = "codelldb",
+        request = "launch",
+        program = "${fileBasenameNoExtension}",
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        console = "integratedTerminal",
+      },
+      {
+        name = "[LLDB] Launch Executable",
+        type = "lldb",
         request = "launch",
         program = function()
           local exe = vim.g.c_debug_program or vim.fn.expand "%:r"
@@ -184,8 +238,6 @@ return {
         program = "${workspaceFolder}/_build/default/bin/main.bc",
       },
     }
-    local dap_install = require "dap-install"
-    dap_install.config("codelldb", {})
     ---@diagnostic disable-next-line: undefined-field
     require("overseer").enable_dap(true)
     require("dap.ext.vscode").json_decode = require("overseer.json").decode
