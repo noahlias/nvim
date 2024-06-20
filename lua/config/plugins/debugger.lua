@@ -197,18 +197,26 @@ return {
         name = "[Codelldb] Launch file",
         type = "codelldb",
         request = "launch",
-        program = "${fileBasenameNoExtension}",
+        program = function()
+          return vim.fn.input(
+            "Path to executable: ",
+            vim.fn.getcwd() .. "/",
+            "file"
+          )
+        end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
-        console = "integratedTerminal",
       },
       {
         name = "[LLDB] Launch Executable",
         type = "lldb",
         request = "launch",
         program = function()
-          local exe = vim.g.c_debug_program or vim.fn.expand "%:r"
-          return vim.fn.getcwd() .. "/" .. exe
+          return vim.fn.input(
+            "Path to executable: ",
+            vim.fn.getcwd() .. "/",
+            "file"
+          )
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
