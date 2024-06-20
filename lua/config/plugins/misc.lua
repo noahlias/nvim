@@ -150,6 +150,9 @@ return {
       ui = {
         enable = true,
       },
+      picker = {
+        name = "fzf-lua",
+      },
     },
   },
   {
