@@ -211,15 +211,16 @@ return {
         name = "[LLDB] Launch Executable",
         type = "lldb",
         request = "launch",
-        program = function()
-          return vim.fn.input(
-            "Path to executable: ",
-            vim.fn.getcwd() .. "/",
-            "file"
-          )
-        end,
+        program = require("utils.static").dap_pick_exec,
         cwd = "${workspaceFolder}",
         stopOnEntry = false,
+      },
+      {
+        name = "[LLDB] Attach to process",
+        type = "lldb",
+        request = "attach",
+        pid = require("utils.static").dap_pick_process, -- utility to pick process using fzf-lua
+        args = {},
       },
     }
 
