@@ -24,9 +24,10 @@ M.config = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-calc",
+    "hrsh7th/cmp-cmdline",
     "kdheepak/cmp-latex-symbols",
+    "lukas-reineke/cmp-under-comparator",
     {
       "onsails/lspkind.nvim",
       lazy = false,
@@ -220,18 +221,21 @@ M.configfunc = function()
       },
       documentation = cmp.config.window.bordered(),
     },
+    ---@diagnostic disable-next-line: missing-fields
     sorting = {
       comparators = {
-        -- label_comparator,
         cmp.config.compare.offset,
         cmp.config.compare.exact,
+        -- cmp.config.compare.scopes,
         cmp.config.compare.score,
+        require("cmp-under-comparator").under,
         cmp.config.compare.recently_used,
+        cmp.config.compare.locality,
         cmp.config.compare.kind,
+        -- cmp.config.compare.sort_text,
         cmp.config.compare.length,
         cmp.config.compare.order,
       },
-      priority_weight = 2,
     },
     experimental = {
       ghost_text = {
@@ -256,9 +260,9 @@ M.configfunc = function()
           snippets = "Snippet",
           buffer = "Buffer",
           path = "Path",
-          nvim_lua = "Lua",
           calc = "Calc",
           crates = "Crates",
+          cmdline = "CmdLine",
           ["copilot-chat"] = "CopilotChat",
           ["vim-dadbod-completion"] = "SQL",
           latex_symbols = "LaTeX",
@@ -284,7 +288,6 @@ M.configfunc = function()
             return vim.tbl_keys(bufs)
           end,
         },
-        { name = "nvim_lua" },
       },
       { name = "lazydev", group_index = 0 },
       { name = "snippets", keyword_length = 2 },
@@ -369,6 +372,25 @@ M.configfunc = function()
       },
     },
   }
+
+  cmp.setup.cmdline("/", {
+    completion = {
+      completeopt = "menu,menuone,noselect",
+    },
+    sources = {
+      { name = "buffer" },
+    },
+  })
+
+  cmp.setup.cmdline(":", {
+    completion = {
+      completeopt = "menu,menuone,noselect",
+    },
+    sources = {
+      { name = "path" },
+      { name = "cmdline" },
+    },
+  })
 end
 
 return M
