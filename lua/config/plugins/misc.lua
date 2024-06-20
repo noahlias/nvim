@@ -2,7 +2,7 @@
 return {
   {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    event = "BufReadPost",
     enabled = true,
     init = function()
       vim.o.timeout = true

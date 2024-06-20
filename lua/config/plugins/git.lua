@@ -2,7 +2,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
+    event = "BufReadPre",
     dependencies = "nvim-lua/plenary.nvim",
     opts = {
       attach_to_untracked = true,

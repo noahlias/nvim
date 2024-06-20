@@ -2,7 +2,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
+    event = "BufReadPost",
     priority = 1000,
     build = ":TSUpdate",
     dependencies = {
