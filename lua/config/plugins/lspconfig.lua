@@ -28,15 +28,15 @@ M.config = {
         event = {
           "Filetype",
         },
-        dependencies = {
-          {
-            "folke/neoconf.nvim",
-            event = "BufReadPre",
-            config = function()
-              require("neoconf").setup()
-            end,
-          },
-        },
+        -- dependencies = {
+        --   {
+        --     "folke/neoconf.nvim",
+        --     event = "BufReadPre",
+        --     config = function()
+        --       require("neoconf").setup()
+        --     end,
+        --   },
+        -- },
       },
       {
         "williamboman/mason.nvim",
