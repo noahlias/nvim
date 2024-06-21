@@ -65,6 +65,12 @@ return {
           text_align = "center",
           separator = true,
         },
+        {
+          filetype = "gitsigns.blame",
+          text = "Git Blame",
+          text_align = "center",
+          separator = true,
+        },
       },
     },
   },
