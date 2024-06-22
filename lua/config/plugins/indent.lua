@@ -1,33 +1,91 @@
----@type LazyPluginSpec
+local utils = require "utils.static"
+
+-- Highlight group from rainbow-delimiters
+local highlight = {
+  "RainbowDelimiterRed",
+  "RainbowDelimiterYellow",
+  "RainbowDelimiterBlue",
+  "RainbowDelimiterOrange",
+  "RainbowDelimiterGreen",
+  "RainbowDelimiterViolet",
+  "RainbowDelimiterCyan",
+}
+
+---@type LazyPluginSpec[]
 return {
-  "shellRaining/hlchunk.nvim",
-  enabled = true,
-  event = { "BufReadPre", "BufNewFile" },
-  config = function()
-    require("hlchunk").setup {
-      chunk = {
-        enable = true,
-        style = {
-          { fg = "#806d9c" },
-          { fg = "#c21f30" },
+  {
+    "shellRaining/hlchunk.nvim",
+    enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("hlchunk").setup {
+        chunk = {
+          enable = true,
+          style = {
+            { fg = "#806d9c" },
+            { fg = "#c21f30" },
+          },
         },
-      },
-      --FIXME: Some bug in the new version
+        --FIXME: Some bug in the new version
+        indent = {
+          chars = { "│ " },
+          enable = true,
+        },
+        line_num = {
+          enable = false,
+        },
+        blank = {
+          enable = false,
+        },
+        exclude_filetypes = {
+          ["copilot-chat"] = true,
+          ["neotest-outputpanel"] = true,
+          ["neotest-summary"] = true,
+        },
+      }
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+    enabled = false,
+    opts = {
       indent = {
-        chars = { "│ " },
-        enable = true,
+        char = "▏", -- Thiner, not suitable when enable scope
+        tab_char = "▏",
       },
-      line_num = {
-        enable = false,
+      scope = {
+        highlight = highlight,
+        enabled = false,
       },
-      blank = {
-        enable = false,
-      },
-      exclude_filetypes = {
-        ["copilot-chat"] = true,
-        ["neotest-outputpanel"] = true,
-        ["neotest-summary"] = true,
-      },
-    }
-  end,
+    },
+    config = function(_, opts)
+      local ibl = require "ibl"
+      local hooks = require "ibl.hooks"
+
+      ibl.setup(opts)
+      hooks.register(
+        hooks.type.SCOPE_HIGHLIGHT,
+        hooks.builtin.scope_highlight_from_extmark
+      )
+
+      -- Hide first level indent, using `foldsep` to show it
+      hooks.register(hooks.type.VIRTUAL_TEXT, function(_, bufnr, row, virt_text)
+        local win = vim.fn.bufwinid(bufnr)
+        local lnum = row + 1
+        local foldinfo = utils.fold_info(win, lnum)
+
+        if
+          virt_text[1]
+          and virt_text[1][1] == opts.indent.char
+          and foldinfo
+          and foldinfo.start == lnum
+        then
+          virt_text[1] = { " ", { "@ibl.whitespace.char.1" } }
+        end
+
+        return virt_text
+      end)
+    end,
+  },
 }
