@@ -77,6 +77,10 @@ return {
         dropbar = {
           enabled = true,
         },
+        colorful_winsep = {
+          enabled = false,
+          color = "red",
+        },
         gitsigns = false,
         noice = true,
         notify = true,
@@ -87,8 +91,8 @@ return {
         symbols_outline = true,
         illuminate = true,
         ufo = false,
-        which_key = true,
-        window_picker = true,
+        alpha = false,
+        which_key = false,
         indent_blankline = {
           enabled = true,
           colored_indent_levels = false,
