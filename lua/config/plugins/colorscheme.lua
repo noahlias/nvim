@@ -89,6 +89,10 @@ return {
         ufo = false,
         which_key = true,
         window_picker = true,
+        indent_blankline = {
+          enabled = true,
+          colored_indent_levels = false,
+        },
       },
     },
   },
