@@ -15,7 +15,7 @@ local highlight = {
 return {
   {
     "shellRaining/hlchunk.nvim",
-    enabled = true,
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("hlchunk").setup {
@@ -48,7 +48,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
-    enabled = false,
+    enabled = true,
     opts = {
       indent = {
         char = "▏", -- Thiner, not suitable when enable scope
