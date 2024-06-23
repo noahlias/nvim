@@ -101,8 +101,6 @@ M.config = {
         client.server_capabilities.semanticTokensProvider = nil
         require("config.plugins.autocomplete").configfunc()
         require("lsp_signature").on_attach(F.signature_config, bufnr)
-        -- FIX: it's too slow for me
-        -- vim.lsp.inlay_hint.enable()
 
         vim.diagnostic.config {
           severity_sort = true,
@@ -147,14 +145,23 @@ M.config = {
       require("config.lsp.python").setup(lspconfig, lsp)
       require("config.lsp.zig").setup(lspconfig, lsp)
       require("config.lsp.yaml").setup(lspconfig, lsp)
-      ---NOTE: This lsp not working
-      -- require("config.lsp.vue").setup(lspconfig, lsp)
       require("config.lsp.gleam").setup(lspconfig, lsp)
       require("config.lsp.r").setup(lspconfig, lsp)
 
       lspconfig.ols.setup {}
       lspconfig.texlab.setup {}
-      lspconfig.tailwindcss.setup {}
+      lspconfig.tailwindcss.setup {
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "javascriptreact",
+          "typescriptreact",
+          "vue",
+          "svelte",
+          "tmpl",
+        },
+      }
       lsp.setup()
       require("fidget").setup {}
 
