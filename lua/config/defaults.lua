@@ -17,6 +17,7 @@ vim.o.autoindent = true
 vim.o.list = true
 vim.o.listchars = "tab:|\\ ,trail:▫"
 vim.o.scrolloff = 4
+vim.o.sidescrolloff = 5
 vim.o.ttimeoutlen = 0
 vim.o.timeout = false
 vim.o.viewoptions = "cursor,folds,slash,unix"
@@ -42,8 +43,8 @@ vim.o.smartcase = true
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.inccommand = "split"
 -- vim.o.completeopt = "longest,noinsert,menuone,noselect,preview"
-vim.o.completeopt = "menu,menuone,noinsert,noselect,preview"
--- vim.o.completeopt = "menu,menuone,noinsert"
+-- vim.o.completeopt = "menu,menuone,noinsert,noselect,preview"
+vim.o.completeopt = "menu,menuone,noinsert"
 -- vim.o.lazyredraw = true
 vim.o.visualbell = true
 vim.o.colorcolumn = "81"
@@ -54,6 +55,15 @@ vim.g.maplocalleader = "  "
 vim.o.jumpoptions = "stack"
 vim.o.mousemoveevent = true
 vim.o.mouse = "a"
+--- popupmenu settings
+vim.o.pumblend = 12
+vim.o.pumheight = 12
+vim.opt.guicursor = {
+  "n-v-c-sm:block-Cursor/lCursor",
+  "i-ci-ve:ver25-Cursor/lCursor",
+  "r-cr-o:hor20-Cursor/lCursor",
+}
+
 -- vim.opt.conceallevel = 2
 vim.cmd [[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
