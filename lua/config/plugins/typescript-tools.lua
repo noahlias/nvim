@@ -5,7 +5,6 @@ return {
     "BufRead *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx,*.vue",
     "BufNewFile *.js,*.jsx,*.mjs,*.cjs,*ts,*tsx,*.vue",
   },
-
   dependencies = {
     "nvim-lua/plenary.nvim",
     "neovim/nvim-lspconfig",
@@ -60,15 +59,6 @@ return {
         { buffer = bufnr, desc = "File rename" }
       )
     end,
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-      "vue",
-    },
     settings = {
       tsserver_file_preferences = {
         includeInlayParameterNameHints = "all",
@@ -79,6 +69,8 @@ return {
         includeInlayFunctionLikeReturnTypeHints = true,
         includeInlayEnumMemberValueHints = true,
       },
+      ---NOTE: https://github.com/pmizio/typescript-tools.nvim/issues/260
+      separate_diagnostic_server = false,
       tsserver_plugins = {
         "@vue/typescript-plugin",
       },
