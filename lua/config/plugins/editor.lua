@@ -303,6 +303,7 @@ return {
       auto_resize_height = true,
       preview = {
         border = "rounded",
+        winbled = 0,
       },
     },
   },
