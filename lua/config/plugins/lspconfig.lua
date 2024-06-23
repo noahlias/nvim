@@ -154,6 +154,7 @@ M.config = {
 
       lspconfig.ols.setup {}
       lspconfig.texlab.setup {}
+      lspconfig.tailwindcss.setup {}
       lsp.setup()
       require("fidget").setup {}
 

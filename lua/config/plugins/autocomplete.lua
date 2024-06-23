@@ -21,6 +21,7 @@ M.config = {
   version = false, -- last release is way too old
   event = "InsertEnter",
   dependencies = {
+    "luckasRanarison/tailwind-tools.nvim",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lsp",
@@ -250,6 +251,7 @@ M.configfunc = function()
         local kind = lspkind.cmp_format {
           mode = "symbol_text",
           symbol_map = { Codeium = "", TypeParameter = " " },
+          before = require("tailwind-tools.cmp").lspkind_format,
         }(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. (strings[1] or "") .. " "
