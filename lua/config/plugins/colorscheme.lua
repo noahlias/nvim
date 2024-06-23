@@ -36,27 +36,8 @@ return {
           FzfLuaPreviewBorder = { fg = "#806d9c", bg = "NONE" },
           FzfLuaSearch = { fg = color.base, bg = color.red },
 
-          -- window_picker overrides
-          WindowPickerStatusLine = {
-            fg = color.surface0,
-            bg = color.red,
-            style = { "bold" },
-          },
-          WindowPickerStatusLineNC = {
-            fg = color.surface0,
-            bg = color.red,
-            style = { "bold" },
-          },
-          WindowPickerWinBar = {
-            fg = color.surface0,
-            bg = color.red,
-            style = { "bold" },
-          },
-          WindowPickerWinBarNC = {
-            fg = color.surface0,
-            bg = color.red,
-            style = { "bold" },
-          },
+          ---nvim-bqf overrides
+          BqfPreviewFloat = { bg = color.base, fg = color.text },
         }
       end,
       integrations = {
