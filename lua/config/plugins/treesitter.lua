@@ -38,6 +38,7 @@ return {
           "python",
           "dockerfile",
           "latex",
+          "tsx",
           "dap_repl",
         },
         highlight = {
