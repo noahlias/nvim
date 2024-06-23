@@ -31,7 +31,6 @@ vim.o.foldmethod = "indent"
 -- vim.o.foldenable = true
 -- vim.o.foldlevelstart = 99
 vim.o.formatoptions = vim.o.formatoptions:gsub("tc", "")
-vim.o.confirm = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.showmode = false
@@ -56,7 +55,7 @@ vim.o.jumpoptions = "stack"
 vim.o.mousemoveevent = true
 vim.o.mouse = "a"
 --- popupmenu settings
--- vim.o.pumblend = 12
+vim.o.pumblend = 12
 vim.o.pumheight = 12
 vim.opt.guicursor = {
   "n-v-c-sm:block-Cursor/lCursor",
