@@ -56,7 +56,7 @@ vim.o.jumpoptions = "stack"
 vim.o.mousemoveevent = true
 vim.o.mouse = "a"
 --- popupmenu settings
-vim.o.pumblend = 12
+-- vim.o.pumblend = 12
 vim.o.pumheight = 12
 vim.opt.guicursor = {
   "n-v-c-sm:block-Cursor/lCursor",
