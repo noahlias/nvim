@@ -1,10 +1,8 @@
 ---@type LazyPluginSpec
 return {
   "rest-nvim/rest.nvim",
-  dependencies = {
-    "vhyrro/luarocks.nvim",
-  },
   ft = { "http" },
+  enabled = false,
   init = function()
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "http",

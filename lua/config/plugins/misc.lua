@@ -53,22 +53,14 @@ return {
     end,
   },
   {
-    "vhyrro/luarocks.nvim",
-    ft = "norg",
-    priority = 1000,
-    config = true,
-  },
-  {
     "nvim-neorg/neorg",
     ft = "norg",
-    dependencies = { "luarocks.nvim", { "laher/neorg-exec" } },
     version = "*",
     config = function()
       require("neorg").setup {
         load = {
           ["core.defaults"] = {},
           ["core.concealer"] = {},
-          ["external.exec"] = {},
           ["core.dirman"] = {
             config = {
               workspaces = {
