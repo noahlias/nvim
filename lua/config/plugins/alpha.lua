@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "goolord/alpha-nvim",
+  event = "VimEnter",
   init = function()
     --- NOTE: This disable the tabline in dashboard load screen.
     vim.api.nvim_create_autocmd("User", {
