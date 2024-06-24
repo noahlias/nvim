@@ -392,6 +392,10 @@ M.configfunc = function()
       { name = "path" },
       { name = "cmdline" },
     },
+    ---@diagnostic disable-next-line: missing-fields
+    formatting = {
+      fields = { "kind", "abbr" },
+    },
   })
 end
 
