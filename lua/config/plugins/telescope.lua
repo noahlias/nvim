@@ -6,6 +6,7 @@ M.config = {
     --- TODO: need to deprecate this plugin
     "nvim-telescope/telescope.nvim",
     -- tag = '0.1.1',
+    build = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },

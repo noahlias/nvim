@@ -2,6 +2,7 @@
 return {
   "nvim-lua/plenary.nvim",
   lazy = true,
+  build = false,
   keys = {
     {
       "<leader>hpb",

@@ -31,6 +31,8 @@ return {
     {
       "mfussenegger/nvim-dap-python",
       ft = { "python" },
+      ---@diagnostic disable-next-line: assign-type-mismatch
+      build = false,
       config = function()
         require("dap-python").setup(
           -- vim.fs.joinpath(require("mason-registry").get_package("debugpy"):get_install_path(), "venv/bin/python")
