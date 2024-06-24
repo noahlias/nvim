@@ -209,6 +209,16 @@ return {
         end,
         close_on_exit = true,
       }
+      local serpl = require("toggleterm.terminal").Terminal:new {
+        cmd = "serpl",
+        hidden = true,
+        direction = "float",
+        float_opts = float_opts,
+        on_open = function(term)
+          vim.cmd "startinsert!"
+        end,
+        close_on_exit = true,
+      }
 
       return {
         { "<C-\\>" },
@@ -238,6 +248,13 @@ return {
             yazi:toggle()
           end,
           desc = "File Navigator",
+        },
+        {
+          "<leader>sp",
+          function()
+            serpl:toggle()
+          end,
+          desc = "Search And Replace",
         },
       }
     end,
