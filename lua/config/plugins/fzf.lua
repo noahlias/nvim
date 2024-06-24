@@ -83,6 +83,7 @@ return {
   config = function()
     local fzf = require "fzf-lua"
     fzf.setup {
+      "fzf-native",
       global_resume = true,
       global_resume_query = true,
       winopts = {
@@ -154,11 +155,10 @@ return {
           },
         },
       },
+      defaults = { formatter = { "path.filename_first" } },
       files = {
-        formatter = { "path.filename_first" },
         -- (name from 'previewers' table)
         -- set to 'false' to disable
-        previewer = "bat",
         prompt = "Files❯ ",
         cwd_prompt = false,
         multiprocess = true, -- run command in a separate process
@@ -172,6 +172,7 @@ return {
         -- default options are controlled by 'fd|rg|find|_opts'
         -- NOTE: 'find -printf' requires GNU find
         -- cmd            = "find . -type f -printf '%P\n'",
+        cmd = "fd --type f -H --exclude='.git'",
         find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
         rg_opts = "--color=never --files --hidden --follow -g '!.git'",
         fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude node_modules",
@@ -181,6 +182,7 @@ return {
         file_icons = true, -- show file icons?
         color_icons = true, -- colorize file|git icons
         sort_lastused = true, -- sort buffers() by last used
+        formatter = false,
       },
     }
   end,
