@@ -149,7 +149,7 @@ M.icons = setmetatable({
 		Constant          = ' ',
 		Constructor       = ' ',
 		ContinueStatement = '→ ',
-		Copilot           = ' ',
+		Copilot           = '  ',
 		Declaration       = '󰙠 ',
 		Delete            = '󰩺 ',
 		Desktop           = 'ﲾ ',
@@ -203,7 +203,7 @@ M.icons = setmetatable({
 		TypeParameter     = ' ',
 		Unit              = ' ',
 		Value             = ' ',
-		Variable          = '󰀫 ',
+		Variable          = ' ',
 		WhileStatement    = '󰑖 ',
 	},
 	ui = {
