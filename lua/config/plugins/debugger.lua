@@ -160,10 +160,18 @@ return {
       numhl = "DapStopped",
     })
     -- NOTE: this plugin for neovim debug
-    -- dap.defaults.fallback.external_terminal = {
-    --   command = "/Applications/kitty.app/Contents/MacOS/kitty",
-    --   args = { "--class", "kitty-dap", "--hold", "--detach", "nvim-dap", "-c", "DAP" },
-    -- }
+    dap.defaults.fallback.external_terminal = {
+      command = "/Applications/kitty.app/Contents/MacOS/kitty",
+      args = {
+        "--class",
+        "kitty-dap",
+        "--hold",
+        "--detach",
+        "nvim-dap",
+        "-c",
+        "DAP",
+      },
+    }
     --
     -- dap.adapters["nvim-lua"] = function(callback, config)
     --   callback {
