@@ -71,6 +71,12 @@ return {
           text_align = "center",
           separator = true,
         },
+        {
+          filetype = "leetcode.nvim",
+          text = "LeetCode",
+          text_align = "center",
+          separator = true,
+        },
       },
     },
   },
