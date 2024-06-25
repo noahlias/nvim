@@ -23,6 +23,13 @@ return {
     end,
   },
   {
+    ---NOTE: jj for fast escape to normal mode
+    "max397574/better-escape.nvim",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+  {
     "tamton-aquib/duck.nvim",
     enabled = false,
     config = function()
