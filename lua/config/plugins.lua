@@ -101,7 +101,6 @@ require("lazy").setup {
     require "config.plugins.jdtls",
     require "config.plugins.sql",
     require "config.plugins.comment",
-    require "config.plugins.rest",
     require "config.plugins.octo",
     require "config.plugins.tailwind",
     -- NOTE: This plugin use for my personal use
