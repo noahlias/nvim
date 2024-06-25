@@ -82,6 +82,7 @@ return {
           "OverseerList",
           "DiffviewFiles",
           "gitsigns.blame",
+          "leetcode.nvim",
         },
       },
       always_divide_middle = true,
