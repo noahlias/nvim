@@ -31,7 +31,6 @@ return {
     {
       "mfussenegger/nvim-dap-python",
       ft = { "python" },
-      ---@diagnostic disable-next-line: assign-type-mismatch
       build = false,
       config = function()
         require("dap-python").setup(

@@ -33,8 +33,8 @@
   "freeze.nvim": { "branch": "main", "commit": "6460f282b01d4dafd69fbd8d4a38da56572227bc" },
   "friendly-snippets": { "branch": "main", "commit": "682157939e57bd6a2c86277dfd4d6fbfce63dbac" },
   "fzf": { "branch": "master", "commit": "724f8a1d450e4929554cd882a0d25f05e336ba63" },
-  "fzf-lua": { "branch": "main", "commit": "1ec6eeda11c3a3dcd544e1c61ad4b8c9b49903c4" },
-  "gitsigns.nvim": { "branch": "main", "commit": "8df63f2ddc615feb71fd4aee45a4cee022876df1" },
+  "fzf-lua": { "branch": "main", "commit": "3b070d0cccf9aeecc4d2d9fb376849c6130b90ec" },
+  "gitsigns.nvim": { "branch": "main", "commit": "17e8fd66182c9ad79dc129451ad015af3d27529c" },
   "gleam.vim": { "branch": "main", "commit": "f9e82b70425dc0726ee173ecddf176ffa364e30d" },
   "go.nvim": { "branch": "master", "commit": "78c6d7b970a79c34dc0f35149f4bd845e09803d6" },
   "gp.nvim": { "branch": "main", "commit": "486a061d95a50e3c9a2e7c0309464fd32e3df590" },
@@ -43,7 +43,7 @@
   "image.nvim": { "branch": "master", "commit": "bdd5506be7fb39668692e30141f1637b691379af" },
   "img-clip.nvim": { "branch": "main", "commit": "1924e20ab19afec9779109d083b6e5f8bee8fb17" },
   "indent-blankline.nvim": { "branch": "master", "commit": "4036c8ae9cc29faf8e6443fa5b23e679db055d24" },
-  "lazy.nvim": { "branch": "main", "commit": "656d3d1f5b5910e50af3d67286999ff7088ebfb6" },
+  "lazy.nvim": { "branch": "main", "commit": "dea1f687fe6e15eb3098557a69d44231ebcb6cf5" },
   "lazydev.nvim": { "branch": "main", "commit": "6184ebbbc8045d70077659b7d30c705a588dc62f" },
   "lazygit.nvim": { "branch": "main", "commit": "ad3e1ea592f9d13e86e0d4e850224d9d78069508" },
   "lean.nvim": { "branch": "main", "commit": "3c0b48374146abd651da5623f3f73f96121a616f" },
@@ -135,7 +135,7 @@
   "vim-rooter": { "branch": "master", "commit": "45e53f01e4e1c4a3ee20814de232162713aff578" },
   "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" },
   "vim-visual-multi": { "branch": "master", "commit": "b84a6d42c1c10678928b0bf8327f378c8bc8af5a" },
-  "vimtex": { "branch": "master", "commit": "8ed94566e6fe3f5b163131dc374d224d2d320db7" },
+  "vimtex": { "branch": "master", "commit": "2dc2a5435809c13f6f4aa07964be4ef19a7864f5" },
   "which-key.nvim": { "branch": "main", "commit": "0099511294f16b81c696004fa6a403b0ae61f7a0" },
   "wildfire.vim": { "branch": "master", "commit": "dfcf48aad2e80c63272df67a1b81e37cbc443412" }
 }
