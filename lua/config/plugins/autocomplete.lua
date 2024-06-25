@@ -210,7 +210,7 @@ M.configfunc = function()
       if buftype == "prompt" then
         return false
       end
-      return true and vim.bo.ft ~= "norg"
+      return true
     end,
     window = {
       completion = {
