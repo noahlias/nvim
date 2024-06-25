@@ -2,12 +2,7 @@
 return {
   "goolord/alpha-nvim",
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "nvim-lua/plenary.nvim",
-    {
-      "juansalvatore/git-dashboard-nvim",
-      dependencies = { "nvim-lua/plenary.nvim" },
-    },
+    "juansalvatore/git-dashboard-nvim",
   },
   event = "VimEnter",
   init = function()
