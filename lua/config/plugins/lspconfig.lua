@@ -129,7 +129,7 @@ M.config = {
 
       lspconfig.lua_ls.setup {}
       --- NOTE: This is for sourcekit lsp
-      -- lspconfig.sourcekit.setup {
+      --  lspconfig.sourcekit.setup {
       --   -- capabilities = {
       --   --   workspace = {
       --   --     didChangeWatchedFiles = {
@@ -160,6 +160,21 @@ M.config = {
           "vue",
           "svelte",
           "tmpl",
+        },
+      }
+      lspconfig.ruff.setup {
+        on_attach = function(client, bufnr)
+          if client.name == "ruff" then
+            -- Disable hover in favor of Pyright
+            client.server_capabilities.hoverProvider = false
+          end
+        end,
+        cmd_env = { RUFF_TRACE = "messages" },
+        init_options = {
+          settings = {
+            logLevel = "debug",
+            logFile = "~/.local/state/nvim/ruff.log",
+          },
         },
       }
       lsp.setup()
