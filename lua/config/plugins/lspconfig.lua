@@ -4,10 +4,6 @@ local F = {}
 
 M.config = {
   {
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-  },
-  {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
     dependencies = {
