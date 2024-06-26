@@ -123,6 +123,9 @@ require("lazy").setup {
   -- checker = {
   --   enabled = true,
   -- },
+  rocks = {
+    enabled = false,
+  },
   performance = {
     cache = {
       enabled = true,

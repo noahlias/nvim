@@ -53,9 +53,15 @@ return {
     end,
   },
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
+  {
     "nvim-neorg/neorg",
     ft = "norg",
     version = "*",
+    dependencies = { "luarocks.nvim", { "laher/neorg-exec" } },
     config = function()
       require("neorg").setup {
         load = {
