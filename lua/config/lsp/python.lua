@@ -6,8 +6,12 @@ return {
       capabilities = capabilities,
       cmd = { "delance-langserver", "--stdio" },
       settings = {
+        pyright = {
+          disableOrganizeImports = true,
+        },
         python = {
           analysis = {
+            ignore = { "*" },
             typeCheckingMode = "off",
             inlayHints = {
               callArgumentNames = "partial",
