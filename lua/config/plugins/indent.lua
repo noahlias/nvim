@@ -1,16 +1,5 @@
 local utils = require "utils.static"
 
--- Highlight group from rainbow-delimiters
-local highlight = {
-  "RainbowDelimiterRed",
-  "RainbowDelimiterYellow",
-  "RainbowDelimiterBlue",
-  "RainbowDelimiterOrange",
-  "RainbowDelimiterGreen",
-  "RainbowDelimiterViolet",
-  "RainbowDelimiterCyan",
-}
-
 ---@type LazyPluginSpec[]
 return {
   {
@@ -55,8 +44,13 @@ return {
         tab_char = "▏",
       },
       scope = {
-        highlight = highlight,
         enabled = false,
+      },
+      exclude = {
+        filetypes = {
+          "markdown",
+          "copilot-chat",
+        },
       },
     },
     config = function(_, opts)
