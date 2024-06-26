@@ -566,9 +566,9 @@ return {
       -- toggle keymappings for venn using <leader>v
       vim.api.nvim_set_keymap(
         "n",
-        "<leader>v",
+        "<leader>ve",
         ":lua Toggle_venn()<CR>",
-        { noremap = true }
+        { noremap = true, desc = "Toggle venn" }
       )
     end,
   },
