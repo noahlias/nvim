@@ -3,7 +3,6 @@
   "DAPInstall.nvim": { "branch": "main", "commit": "8798b4c36d33723e7bba6ed6e2c202f84bb300de" },
   "NeoZoom.lua": { "branch": "main", "commit": "c97a0197548c1e9b559e4fa41ab3f7782c93e613" },
   "SchemaStore.nvim": { "branch": "main", "commit": "93ccaf12b9fb6df87d13da2782d83b34a3cbb893" },
-  "actions-preview.nvim": { "branch": "master", "commit": "9f52a01c374318e91337697ebed51c6fae57f8a4" },
   "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
   "antovim": { "branch": "master", "commit": "733d3d12ed034997fa05a3144979864fc0af738e" },
   "better-escape.nvim": { "branch": "master", "commit": "7e86edafb8c7e73699e0320f225464a298b96d12" },

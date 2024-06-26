@@ -54,6 +54,13 @@ return {
       end,
       desc = "Tab List",
     },
+    {
+      "<leader>la",
+      function()
+        require("fzf-lua").lsp_code_actions()
+      end,
+      desc = "Lsp code actions",
+    },
   },
   opts = {
     hls = {
@@ -87,8 +94,8 @@ return {
       global_resume = true,
       global_resume_query = true,
       winopts = {
-        height = 0.85,
-        width = 0.95,
+        height = 0.80,
+        width = 0.75,
         preview = {
           layout = "horizontal",
           scrollbar = "float",
