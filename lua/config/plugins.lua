@@ -50,7 +50,10 @@ require("lazy").setup {
   spec = {
     require("config.plugins.lspconfig").config,
     require "config.plugins.colorscheme",
+    require "config.plugins.alpha",
+    require "config.plugins.dressing",
     require "config.plugins.plenary",
+
     require "config.plugins.treesitter",
     require("config.plugins.telescope").config,
     require "config.plugins.fzf",
@@ -66,7 +69,6 @@ require("lazy").setup {
     require "config.plugins.go",
     require "config.plugins.surround",
     require "config.plugins.project",
-    -- require "config.plugins.wilder",
     require "config.plugins.multi-cursor",
     require "config.plugins.copilot",
     require "config.plugins.markdown",
@@ -74,7 +76,6 @@ require("lazy").setup {
     require "config.plugins.indent",
     require "config.plugins.search",
     require "config.plugins.yank",
-    -- require "config.plugins.snippets",
     require "config.plugins.window-management",
     require "config.plugins.undo",
     require "config.plugins.ft",
@@ -87,7 +88,6 @@ require("lazy").setup {
     require "config.plugins.outline",
     -- NOTE: AI plugins(copilot and gp and codieum)
     require "config.plugins.ai",
-    require "config.plugins.alpha",
     -- extra plugins
     require "config.plugins.rustacean",
     require "config.plugins.typescript-tools",

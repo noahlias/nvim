@@ -10,12 +10,10 @@ M.config = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "stevearc/dressing.nvim",
       "dimaportenko/telescope-simulators.nvim",
     },
     config = function()
       local builtin = require "telescope.builtin"
-      vim.keymap.set("n", "<c-_>", builtin.current_buffer_fuzzy_find, m)
       vim.keymap.set("n", "z=", builtin.spell_suggest, m)
 
       vim.keymap.set("n", "<leader>d", function()
@@ -120,19 +118,6 @@ M.config = {
           -- command_palette = command_palette,
         },
       }
-      require("dressing").setup {
-        select = {
-          get_config = function(opts)
-            if opts.kind == "codeaction" then
-              return {
-                backend = "telescope",
-                telescope = require("telescope.themes").get_cursor(),
-              }
-            end
-          end,
-        },
-      }
-
       ts.load_extension "neoclip"
       ts.load_extension "dap"
       ts.load_extension "fzf"
