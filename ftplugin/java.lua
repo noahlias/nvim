@@ -1,9 +1,14 @@
+local capabilities = require "config.capabilities"
 local jdtls = require "jdtls"
 local mason = require "mason-registry"
-local capabilities = require "config.capabilities"
 
 local opts = {
-  cmd = { vim.fs.joinpath(mason.get_package("jdtls"):get_install_path(), "/bin/jdtls") },
+  cmd = {
+    vim.fs.joinpath(
+      mason.get_package("jdtls"):get_install_path(),
+      "/bin/jdtls"
+    ),
+  },
   handlers = {
     ["language/status"] = function() end,
   },
@@ -40,5 +45,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     jdtls.start_or_attach(opts)
     vim.bo.tabstop = 4
+    vim.opt_local.colorcolumn = "100"
   end,
 })
