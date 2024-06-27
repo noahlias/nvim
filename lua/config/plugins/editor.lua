@@ -277,7 +277,21 @@ return {
         return newVirtText
       end
       opts["fold_virt_text_handler"] = handler
-      require("ufo").setup(opts)
+      local ufo = require "ufo"
+      ufo.setup(opts)
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        desc = "Setup Ufo `j` with LSP hover",
+        callback = function(args)
+          local bufnr = args.buf
+          vim.keymap.set("n", "<leader>hh", function()
+            local winid = ufo.peekFoldedLinesUnderCursor()
+            if not winid then
+              vim.lsp.buf.hover()
+            end
+          end, { buffer = bufnr, desc = "LSP: Signature help" })
+        end,
+      })
     end,
   },
   {
