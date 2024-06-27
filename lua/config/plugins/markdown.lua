@@ -9,8 +9,11 @@ return {
     end,
   },
   {
-    "OXY2DEV/markview.nvim",
+    -- "OXY2DEV/markview.nvim",
+    dir = "~/.config/nvim/dev/markview.nvim",
     ft = { "markdown" },
+    name = "markview",
+    dev = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("markview").setup()
