@@ -82,7 +82,6 @@ require("lazy").setup {
     require "config.plugins.fun",
     require "config.plugins.crates",
     require "config.plugins.winbar",
-    require "config.plugins.leap",
     require "config.plugins.misc",
     require "config.plugins.tree",
     require "config.plugins.outline",
