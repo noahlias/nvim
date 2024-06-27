@@ -62,6 +62,44 @@ return {
   --   end,
   -- },
   {
+    "chrisgrieser/nvim-rip-substitute",
+    event = "BufRead",
+    keys = {
+      {
+        "<leader>fs",
+        function()
+          require("rip-substitute").sub()
+        end,
+        mode = { "n", "x" },
+        desc = "rip substitute",
+      },
+    },
+    config = function()
+      -- default settings
+      require("rip-substitute").setup {
+        popupWin = {
+          border = "rounded",
+          matchCountHlGroup = "Keyword",
+          noMatchHlGroup = "ErrorMsg",
+          hideSearchReplaceLabels = false,
+        },
+        incrementalPreview = {
+          matchHlGroup = "IncSearch",
+          rangeBackdrop = {
+            enabled = true,
+            blend = 50, -- between 0 and 100
+          },
+        },
+        editingBehavior = {
+          -- Experimental. When typing `()` in the `search` line, automatically
+          -- adds `$n` to the `replace` line.
+          autoCaptureGroups = false,
+        },
+        notificationOnSuccess = true,
+      }
+    end,
+  },
+  {
     "nvim-pack/nvim-spectre",
     dependencies = {
       "nvim-lua/plenary.nvim",
