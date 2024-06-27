@@ -1,7 +1,7 @@
 
 # User Guide
 
-![](assets/dashboard_cat.png)
+![dash](assets/actual_dash.png)
 Install it
 
 ```console
@@ -38,8 +38,15 @@ Referenced from the following repositories:
 
 They are all great resources to learn from.
 
-> [!Note]
-> If you have any suggestions or improvements, please let me know.
+## Local plugins
+
+1. [git-dashboard-nvim](https://github.com/juansalvatore/git-dashboard-nvim)
+2. [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
+
+![markview](assets/markview.png)
+
+> [!TIP]
+> Enhanced markdown preview and dashboard.
 
 ## License
 
