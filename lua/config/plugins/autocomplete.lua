@@ -279,6 +279,7 @@ M.configfunc = function()
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
+      { name = "snippets" },
       {
         name = "buffer",
         option = {
@@ -292,7 +293,6 @@ M.configfunc = function()
         },
       },
       { name = "lazydev", group_index = 0 },
-      { name = "snippets", keyword_length = 2 },
     }, {
       { name = "path" },
       {
