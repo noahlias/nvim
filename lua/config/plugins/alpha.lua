@@ -2,7 +2,13 @@
 return {
   "goolord/alpha-nvim",
   dependencies = {
-    "juansalvatore/git-dashboard-nvim",
+    {
+      ---NOTE: fucking bug about nul
+      -- "juansalvatore/git-dashboard-nvim",
+      dir = "~/.config/nvim/dev/git-dashboard-nvim",
+      name = "git-dashboard-nvim",
+      dev = true,
+    },
   },
   event = "VimEnter",
   init = function()
