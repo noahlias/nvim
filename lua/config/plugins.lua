@@ -70,7 +70,6 @@ require("lazy").setup {
     require "config.plugins.surround",
     require "config.plugins.project",
     require "config.plugins.multi-cursor",
-    require "config.plugins.copilot",
     require "config.plugins.markdown",
     require "config.plugins.git",
     require "config.plugins.indent",
