@@ -11,10 +11,10 @@ git clone https://github.com/noahlias/nvim.git ~/.config/nvim
 ## Description
 
 > [!WARNING]
->It's only for me to use, but you can use it if you want.
-It's a simple neovim configuration with a dashboard and some plugins.
-And the project structure is messy, I'm sorry for that.
-Because it inherits from the repositories I referenced.
+> It's only for me to use, but you can use it if you want.
+  It's a simple neovim configuration with a dashboard and some plugins.
+  And the project structure is messy, I'm sorry for that.
+  Because it inherits from the repositories I referenced.
 
 Maybe I can make it better in the future.
 
