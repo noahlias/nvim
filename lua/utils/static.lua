@@ -231,6 +231,12 @@ M.icons = setmetatable({
 }, icons_mt)
 -- stylua: ignore end
 
+--- autocomplete icons
+M.complete_icons = {
+  TypeParameter = " ",
+  Codeium = " ",
+}
+
 -- FFI
 local ffi = require "ffi"
 

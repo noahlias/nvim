@@ -1,3 +1,5 @@
+local utils = require "utils.static"
+
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
@@ -31,7 +33,7 @@ M.config = {
     "lukas-reineke/cmp-under-comparator",
     {
       "onsails/lspkind.nvim",
-      lazy = false,
+      lazy = true,
       config = function()
         require("lspkind").init()
       end,
@@ -98,7 +100,7 @@ local setCompHL = function()
   vim.api.nvim_set_hl(0, "CmpItemKindModule", { fg = fgdark, bg = "#A377BF" })
   vim.api.nvim_set_hl(0, "CmpItemKindOperator", { fg = fgdark, bg = "#A377BF" })
 
-  vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = fgdark, bg = "#7E8294" })
+  vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = fgdark, bg = "#806d9c" })
   vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = fgdark, bg = "#7E8294" })
 
   vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = fgdark, bg = "#D4A959" })
@@ -250,7 +252,8 @@ M.configfunc = function()
       format = function(entry, vim_item)
         local kind = lspkind.cmp_format {
           mode = "symbol_text",
-          symbol_map = { Codeium = "", TypeParameter = " " },
+          maxwidth = 50,
+          symbol_map = utils.complete_icons,
           before = require("tailwind-tools.cmp").lspkind_format,
         }(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
