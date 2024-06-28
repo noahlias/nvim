@@ -15,7 +15,6 @@ vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
 vim.o.autoindent = true
 vim.o.list = true
-vim.o.listchars = "trail:▫"
 vim.o.scrolloff = 4
 vim.o.sidescrolloff = 5
 vim.o.ttimeoutlen = 0
