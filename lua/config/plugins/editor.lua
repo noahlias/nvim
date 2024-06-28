@@ -11,6 +11,7 @@ endfun
 inoremap <c-u> <ESC>:call <SID>MakePair()<CR>
 ]]
 
+---@type LazyPluginSpec[]
 return {
   {
     "RRethy/vim-illuminate",
