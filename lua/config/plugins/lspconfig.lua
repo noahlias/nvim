@@ -123,7 +123,28 @@ M.config = {
 
       local lspconfig = require "lspconfig"
 
-      lspconfig.lua_ls.setup {}
+      lspconfig.lua_ls.setup {
+        settings = {
+          Lua = {
+            runtime = {
+              version = "LuaJIT",
+            },
+            hint = {
+              enable = true,
+              setType = true,
+            },
+            codeLens = {
+              enable = true,
+            },
+            completion = {
+              callSnippet = "Replace",
+              postfix = ".",
+              showWord = "Disable",
+              workspaceWord = false,
+            },
+          },
+        },
+      }
       --- NOTE: This is for sourcekit lsp
       --  lspconfig.sourcekit.setup {
       --   -- capabilities = {
