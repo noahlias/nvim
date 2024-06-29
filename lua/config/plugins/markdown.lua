@@ -16,15 +16,8 @@ return {
     -- dev = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      ---@diagnostic disable-next-line: redundant-parameter
-      require("markview").setup {
-        highlight_groups = {
-          -- {
-          --   group_name = "markview_h1",
-          --   value = { bg = "#453244", fg = "#f38ba8" },
-          -- },
-        },
-      }
+      ---@diagnostic disable-next-line: missing-fields
+      require("markview").setup {}
     end,
   },
   {

@@ -82,6 +82,7 @@ return {
           matchCountHlGroup = "Keyword",
           noMatchHlGroup = "ErrorMsg",
           hideSearchReplaceLabels = false,
+          position = "top",
         },
         incrementalPreview = {
           matchHlGroup = "IncSearch",
