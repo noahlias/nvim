@@ -2,7 +2,6 @@ return {
   setup = function(lspconfig, lsp)
     local capabilities = require "config.capabilities"
     lspconfig.pyright.setup {
-      on_attach = function() end,
       capabilities = capabilities,
       cmd = { "delance-langserver", "--stdio" },
       settings = {
@@ -12,7 +11,7 @@ return {
         python = {
           analysis = {
             ignore = { "*" },
-            typeCheckingMode = "off",
+            typeCheckingMode = "basic",
             inlayHints = {
               callArgumentNames = "partial",
               functionReturnTypes = true,
