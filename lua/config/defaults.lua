@@ -101,10 +101,6 @@ vim.g.terminal_color_14 = "#9AEDFE"
 vim.cmd [[autocmd TermOpen term://* startinsert]]
 vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
 vim.cmd [[
-augroup NVIMRC
-    autocmd!
-    autocmd BufWritePost .vim.lua exec ":so %"
-augroup END
 tnoremap <C-N> <C-\><C-N>
 tnoremap <C-O> <C-\><C-N><C-O>
 ]]
@@ -112,7 +108,6 @@ tnoremap <C-O> <C-\><C-N><C-O>
 vim.cmd [[hi NonText ctermfg=gray guifg=grey10]]
 
 vim.g.snips_author = "noahlias"
-
 vim.g.python3_host_prog =
   "/opt/Homebrew/Caskroom/miniforge/base/envs/py3.10/bin/python"
 vim.g.mkdp_browser = "chromium"
