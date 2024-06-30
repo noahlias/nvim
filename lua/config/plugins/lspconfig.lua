@@ -167,9 +167,15 @@ M.config = {
 
       lspconfig.ols.setup {}
       lspconfig.texlab.setup {}
-      lspconfig.typst_lsp.setup {
+      lspconfig.tinymist.setup {
+        single_file_support = true,
+        root_dir = function()
+          return vim.fn.getcwd()
+        end,
         settings = {
+          --NOTE: maybe need to change this to auto export
           exportPdf = "never",
+          formatterMode = "typstyle",
         },
       }
       lspconfig.tailwindcss.setup {
