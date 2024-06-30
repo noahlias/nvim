@@ -46,7 +46,6 @@ return {
         [[g#<Cmd>lua require('hlslens').start()<CR>]],
         kopts
       )
-      vim.api.nvim_set_keymap("n", "<Leader><CR>", "<Cmd>noh<CR>", kopts)
     end,
   },
   -- {
