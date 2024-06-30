@@ -52,6 +52,7 @@ require("lazy").setup {
     require "config.plugins.colorscheme",
     require "config.plugins.alpha",
     require "config.plugins.dressing",
+    require "config.plugins.devicons",
     require "config.plugins.plenary",
 
     require "config.plugins.treesitter",
