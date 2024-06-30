@@ -3,10 +3,14 @@ return {
   "stevearc/conform.nvim",
   config = function()
     require("conform").setup {
-      format_on_save = {
-        timeout_ms = 1000,
-        lsp_fallback = true,
-      },
+      format_on_save = function(bufnr)
+        ---NOTE: disable autoformat for minifiles
+        local ignore_filetypes = { "minifiles" }
+        if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+          return
+        end
+        return { timeout_ms = 1000, lsp_format = "fallback" }
+      end,
       formatters_by_ft = {
         lua = { "stylua" },
         python = function(bufnr)
