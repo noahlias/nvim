@@ -102,7 +102,6 @@ vim.cmd [[autocmd TermOpen term://* startinsert]]
 vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
 vim.cmd [[
 tnoremap <C-N> <C-\><C-N>
-tnoremap <C-O> <C-\><C-N><C-O>
 ]]
 
 vim.cmd [[hi NonText ctermfg=gray guifg=grey10]]
