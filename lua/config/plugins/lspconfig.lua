@@ -167,6 +167,11 @@ M.config = {
 
       lspconfig.ols.setup {}
       lspconfig.texlab.setup {}
+      lspconfig.typst_lsp.setup {
+        settings = {
+          exportPdf = "never",
+        },
+      }
       lspconfig.tailwindcss.setup {
         filetypes = {
           "html",
