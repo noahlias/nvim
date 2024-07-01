@@ -41,6 +41,13 @@ return {
       desc = "Live grep",
     },
     {
+      "<leader>fn",
+      function()
+        require("fzf-lua").live_grep_native()
+      end,
+      desc = "Live grep native",
+    },
+    {
       "<leader>fr",
       function()
         require("fzf-lua").live_grep_resume()
