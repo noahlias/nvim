@@ -165,8 +165,23 @@ M.config = {
       require("config.lsp.gleam").setup(lspconfig, lsp)
       require("config.lsp.r").setup(lspconfig, lsp)
 
+      ---Odin LSP
       lspconfig.ols.setup {}
       lspconfig.texlab.setup {}
+      lspconfig.elixirls.setup {
+        server_capabilities = {
+          -- completionProvider = true,
+          -- definitionProvider = false,
+          documentFormattingProvider = false,
+        },
+      }
+
+      lspconfig.ocamllsp.setup {
+        settings = {
+          codelens = { enable = true },
+          inlayHints = { enable = true },
+        },
+      }
       lspconfig.tinymist.setup {
         single_file_support = true,
         root_dir = function()
