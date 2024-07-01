@@ -48,18 +48,6 @@ return {
       )
     end,
   },
-  -- {
-  --   "pechorin/any-jump.vim",
-  --   event = "BufRead",
-  --   enabled = false,
-  --   config = function()
-  --     vim.keymap.set("n", "j", ":AnyJump<CR>", { noremap = true })
-  --     vim.keymap.set("x", "j", ":AnyJumpVisual<CR>", { noremap = true })
-  --     vim.g.any_jump_disable_default_keybindings = true
-  --     vim.g.any_jump_window_width_ratio = 0.9
-  --     vim.g.any_jump_window_height_ratio = 0.9
-  --   end,
-  -- },
   {
     "chrisgrieser/nvim-rip-substitute",
     event = "BufRead",
