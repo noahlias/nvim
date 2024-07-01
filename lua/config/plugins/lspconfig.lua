@@ -165,6 +165,9 @@ M.config = {
       require("config.lsp.gleam").setup(lspconfig, lsp)
       require("config.lsp.r").setup(lspconfig, lsp)
 
+      -- TODO: need to add other languages server
+      --taplo
+      lspconfig.taplo.setup {}
       ---Odin LSP
       lspconfig.ols.setup {}
       lspconfig.texlab.setup {}
