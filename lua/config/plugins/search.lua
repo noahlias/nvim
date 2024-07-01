@@ -65,6 +65,7 @@ return {
       -- default settings
       require("rip-substitute").setup {
         popupWin = {
+          title = "Search & Replace",
           border = "rounded",
           matchCountHlGroup = "Keyword",
           noMatchHlGroup = "ErrorMsg",
