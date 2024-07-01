@@ -195,13 +195,9 @@ return {
         git_icons = true, -- show git icons?
         file_icons = true, -- show file icons?
         color_icons = true, -- colorize file|git icons
-        --NOTE: the .git folder shoul be the working directory
+        --NOTE: the .git folder should be the working directory
         cwd = require("fzf-lua").path.git_root(nil, true),
         -- executed command priority is 'cmd' (if exists)
-        -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
-        -- default options are controlled by 'fd|rg|find|_opts'
-        -- NOTE: 'find -printf' requires GNU find
-        -- cmd            = "find . -type f -printf '%P\n'",
         cmd = "fd --type f -H --exclude='.git'",
         find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
         rg_opts = "--color=never --files --hidden --follow -g '!.git'",
