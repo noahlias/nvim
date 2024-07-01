@@ -36,10 +36,18 @@ return {
     {
       "<c-f>",
       function()
-        require("fzf-lua").live_grep_native()
+        require("fzf-lua").live_grep()
       end,
       desc = "Live grep",
     },
+    {
+      "<leader>fr",
+      function()
+        require("fzf-lua").live_grep_resume()
+      end,
+      desc = "Live grep resume",
+    },
+
     {
       "<leader>fi",
       function()
@@ -93,6 +101,14 @@ return {
       "fzf-native",
       global_resume = true,
       global_resume_query = true,
+      grep = {
+        rg_glob = true,
+        rg_glob_fn = function(query, opts)
+          local regex, flags = query:match "^(.-)%s%-%-(.*)$"
+          -- If no separator is detected will return the original query
+          return (regex or query), flags
+        end,
+      },
       winopts = {
         height = 0.80,
         width = 0.75,
