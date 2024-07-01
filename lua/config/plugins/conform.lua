@@ -36,7 +36,7 @@ return {
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "markdownlint" },
-        sh = { "shellcheck", "shfmt" },
+        sh = { "shfmt" },
         r = { "my_styler" },
       },
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --

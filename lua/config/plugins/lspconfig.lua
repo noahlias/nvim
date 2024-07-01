@@ -178,6 +178,8 @@ M.config = {
           documentFormattingProvider = false,
         },
       }
+      ---bashls
+      lspconfig.bashls.setup {}
 
       lspconfig.ocamllsp.setup {
         settings = {
