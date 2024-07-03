@@ -71,47 +71,57 @@ return {
     --   },
     -- },
   },
+  keys = {
+    {
+      "<leader>'t",
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      desc = "Toggle breakpoint",
+    },
+    {
+      "<leader>'v",
+      function()
+        require("dap.ui.widgets").hover()
+      end,
+      desc = "Hover",
+    },
+    {
+      "<leader>'n",
+      function()
+        compile()
+        require("dap").continue()
+      end,
+      desc = "Continue",
+    },
+    {
+      "<leader>'s",
+      function()
+        require("dap").step_over()
+      end,
+      desc = "Step over",
+    },
+    {
+      "<leader>'q",
+      function()
+        require("dap").terminate()
+      end,
+      desc = "Quit",
+    },
+    {
+      "<leader>'u",
+      function()
+        require("dapui").toggle()
+      end,
+      desc = "Toggle UI",
+    },
+  },
   config = function()
     local dap = require "dap"
     local dapui = require "dapui"
 
     dapui.setup()
     require("nvim-dap-virtual-text").setup {}
-
-    vim.keymap.set(
-      "n",
-      "<leader>'t",
-      dap.toggle_breakpoint,
-      { desc = "Toggle breakpoint", noremap = true }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>'v",
-      require("dap.ui.widgets").hover,
-      { desc = "Hover", noremap = true }
-    )
-    vim.keymap.set("n", "<leader>'n", function()
-      compile()
-      dap.continue()
-    end, { desc = "Continue", noremap = true })
-    vim.keymap.set(
-      "n",
-      "<leader>'s",
-      dap.step_over,
-      { desc = "Step over", noremap = true }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>'q",
-      dap.terminate,
-      { desc = "Quit", noremap = true }
-    )
-    vim.keymap.set(
-      "n",
-      "<leader>'u",
-      dapui.toggle,
-      { noremap = true, desc = "Toggle UI" }
-    )
 
     vim.api.nvim_set_hl(
       0,
