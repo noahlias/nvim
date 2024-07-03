@@ -48,6 +48,7 @@ vim.keymap.set("n", "<leader>pl", ":Lazy<CR>", { noremap = true })
 ---@type LazyConfig
 require("lazy").setup {
   spec = {
+    require "config.plugins.lazydev",
     require("config.plugins.lspconfig").config,
     require "config.plugins.colorscheme",
     require "config.plugins.alpha",

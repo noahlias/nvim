@@ -3,6 +3,7 @@ local M = {}
 local F = {}
 
 M.config = {
+  ---@type LazyPluginSpec
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
@@ -24,15 +25,6 @@ M.config = {
         event = {
           "Filetype",
         },
-        -- dependencies = {
-        --   {
-        --     "folke/neoconf.nvim",
-        --     event = "BufReadPre",
-        --     config = function()
-        --       require("neoconf").setup()
-        --     end,
-        --   },
-        -- },
       },
       {
         "williamboman/mason.nvim",
@@ -54,23 +46,6 @@ M.config = {
             },
           }
         end,
-      },
-      {
-        {
-          "folke/lazydev.nvim",
-          ft = "lua", -- only load on lua files
-          opts = {
-            library = {
-              { path = "luvit-meta/library", words = { "vim%.uv" } },
-              "lazy.nvim",
-            },
-            -- debug = true,
-            enabled = function(root_dir)
-              return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
-            end,
-          },
-        },
-        { "Bilal2453/luvit-meta", lazy = true },
       },
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
       "ldelossa/nvim-dap-projects",
