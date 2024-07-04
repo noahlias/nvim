@@ -198,6 +198,8 @@ M.configfunc = function()
             local msg = ok
                 and "Failed to parse snippet,\nbut was able to fix it automatically."
               or ("Failed to parse snippet.\n" .. err)
+
+            vim.notify(msg, "error", { title = "Snippet Error" })
           end
           if session then
             vim.snippet._session = session
