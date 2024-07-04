@@ -22,6 +22,7 @@ M.config = {
   -- after = "SirVer/ultisnips",
   version = false, -- last release is way too old
   event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     "luckasRanarison/tailwind-tools.nvim",
     "hrsh7th/cmp-buffer",
