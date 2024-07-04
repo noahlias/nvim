@@ -9,6 +9,8 @@ return {
       vim.cmd [[
 			let g:copilot_filetypes = {
 	       \ 'TelescopePrompt': v:false,
+				 \ 'rip-substitute': v:false,
+				 \ 'mini-files': v:false,
 	     \ }
 			]]
     end,
