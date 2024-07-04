@@ -50,133 +50,79 @@ M.config = {
   },
 }
 
-local gruvbox_comphl = function()
-  local fgdark = "#2E3440"
-
-  local highlight = {
-    CmpItemAbbrMatch = {
-      bold = true,
-      fg = "#83a598",
-    },
-    CmpItemAbbrMatchFuzzy = {
-      fg = "#83a598",
-      bold = true,
-      bg = "NONE",
-    },
-    CmpItemKindKeyword = {
-      fg = fgdark,
-      bg = "#d3869b",
-    },
-    CmpItemKindEvent = {
-      bg = "#d3869b",
-    },
-    CmpItemMenu = {
-      fg = "#928374",
-      -- bg = "NONE",
-      italic = true,
-    },
-    CmpItemKindText = {
-      bg = "#fe8019",
-      fg = fgdark,
-    },
-    CmpItemKindVariable = {
-      bg = "#fe8019",
-      fg = fgdark,
-    },
-    CmpItemKindMethod = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindFunction = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindConstructor = {
-      bg = "#fabd2f",
-      fg = fgdark,
-    },
-    CmpItemKindUnit = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindField = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindClass = {
-      bg = "#fabd2f",
-      fg = fgdark,
-    },
-    CmpItemKindInterface = {
-      bg = "#fabd2f",
-      fg = fgdark,
-    },
-    CmpItemKindModule = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindProperty = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindValue = {
-      bg = "#fe8019",
-      fg = fgdark,
-    },
-    CmpItemKindEnum = {
-      fg = fgdark,
-      bg = "#fabd2f",
-    },
-    CmpItemKindOperator = {
-      bg = "#fabd2f",
-      fg = fgdark,
-    },
-    CmpItemKindTypeParameter = {
-      bg = "#fabd2f",
-      fg = fgdark,
-    },
-    CmpItemKindConstant = {
-      bg = "#fe8019",
-      fg = fgdark,
-    },
-    CmpItemKindReference = {
-      bg = "#d3869b",
-      fg = fgdark,
-    },
-    CmpItemKindColor = {
-      bg = "#d3869b",
-      fg = fgdark,
-    },
-    CmpItemKindSnippet = {
-      bg = "#b8bb26",
-      fg = fgdark,
-    },
-    CmpItemKindFile = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindFolder = {
-      bg = "#83a598",
-      fg = fgdark,
-    },
-    CmpItemKindEnumMember = {
-      bg = "#8ec07c",
-      fg = fgdark,
-    },
-    CmpItemAbbr = {
-      fg = "#fbf1c7",
-    },
-    CmpItemKindStruct = {
-      bg = "#fabd2f",
-      fg = fgdark,
-    },
-    CmpItemAbbrDeprecated = {
-      fg = "#ebdbb2",
-      bg = "NONE",
-      strikethrough = true,
-    },
+local catppuccin_comphl = function()
+  -- NOTE: THis inhrerits from catppuccin colorscheme
+  local C = {
+    rosewater = "#f5e0dc",
+    flamingo = "#f2cdcd",
+    pink = "#f5c2e7",
+    mauve = "#cba6f7",
+    red = "#f38ba8",
+    maroon = "#eba0ac",
+    peach = "#fab387",
+    yellow = "#f9e2af",
+    green = "#a6e3a1",
+    teal = "#94e2d5",
+    sky = "#89dceb",
+    sapphire = "#74c7ec",
+    blue = "#89b4fa",
+    lavender = "#b4befe",
+    text = "#cdd6f4",
+    subtext1 = "#bac2de",
+    subtext0 = "#a6adc8",
+    overlay2 = "#9399b2",
+    overlay1 = "#7f849c",
+    overlay0 = "#6c7086",
+    surface2 = "#585b70",
+    surface1 = "#45475a",
+    surface0 = "#313244",
+    base = "#1e1e2e",
+    mantle = "#181825",
+    crust = "#11111b",
   }
-  for group, colors in pairs(highlight) do
+
+  local fgdark = C.surface0
+  local cmp = {
+    CmpItemAbbr = { fg = C.overlay2 },
+    CmpItemAbbrDeprecated = {
+      fg = C.overlay0,
+      strikethrough = true,
+      bg = "NONE",
+    },
+    CmpItemKind = { fg = C.blue },
+    CmpItemMenu = { fg = C.text, bg = "NONE", italic = true },
+    CmpItemAbbrMatch = { fg = C.blue, bg = "NONE", bold = true },
+    CmpItemAbbrMatchFuzzy = { fg = C.blue, bg = "NONE", bold = true },
+
+    -- kind support
+    CmpItemKindSnippet = { bg = C.mauve, fg = fgdark },
+    CmpItemKindKeyword = { bg = C.red, fg = fgdark },
+    CmpItemKindText = { bg = C.teal, fg = fgdark },
+    CmpItemKindMethod = { bg = C.blue, fg = fgdark },
+    CmpItemKindConstructor = { bg = C.blue, fg = fgdark },
+    CmpItemKindFunction = { bg = C.blue, fg = fgdark },
+    CmpItemKindFolder = { bg = C.blue, fg = fgdark },
+    CmpItemKindModule = { bg = C.blue, fg = fgdark },
+    CmpItemKindConstant = { bg = C.peach, fg = fgdark },
+    CmpItemKindField = { bg = C.green, fg = fgdark },
+    CmpItemKindProperty = { bg = C.green, fg = fgdark },
+    CmpItemKindEnum = { bg = C.green, fg = fgdark },
+    CmpItemKindUnit = { bg = C.green, fg = fgdark },
+    CmpItemKindClass = { bg = C.yellow, fg = fgdark },
+    CmpItemKindVariable = { bg = C.flamingo, fg = fgdark },
+    CmpItemKindFile = { bg = C.blue, fg = fgdark },
+    CmpItemKindInterface = { bg = C.yellow, fg = fgdark },
+    CmpItemKindColor = { bg = C.red, fg = fgdark },
+    CmpItemKindReference = { bg = C.red, fg = fgdark },
+    CmpItemKindEnumMember = { bg = C.red, fg = fgdark },
+    CmpItemKindStruct = { bg = C.blue, fg = fgdark },
+    CmpItemKindValue = { bg = C.peach, fg = fgdark },
+    CmpItemKindEvent = { bg = C.blue, fg = fgdark },
+    CmpItemKindOperator = { bg = C.blue, fg = fgdark },
+    CmpItemKindTypeParameter = { bg = C.blue, fg = fgdark },
+    CmpItemKindCopilot = { bg = C.teal, fg = fgdark },
+  }
+  for group, colors in pairs(cmp) do
     vim.api.nvim_set_hl(0, group, colors)
   end
 end
@@ -223,7 +169,7 @@ M.configfunc = function()
   vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
   local cmp = require "cmp"
 
-  gruvbox_comphl()
+  catppuccin_comphl()
 
   ---HACK: stolen from lazynvim
   local parse = require("cmp.utils.snippet").parse
