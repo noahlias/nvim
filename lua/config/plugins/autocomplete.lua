@@ -90,7 +90,7 @@ local catppuccin_comphl = function()
       bg = "NONE",
     },
     CmpItemKind = { fg = C.blue },
-    CmpItemMenu = { fg = C.text, bg = "NONE", italic = true },
+    CmpItemMenu = { fg = C.text, bg = "NONE" },
     CmpItemAbbrMatch = { fg = C.blue, bg = "NONE", bold = true },
     CmpItemAbbrMatchFuzzy = { fg = C.blue, bg = "NONE", bold = true },
 
