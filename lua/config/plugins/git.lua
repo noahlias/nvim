@@ -4,6 +4,15 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     dependencies = "nvim-lua/plenary.nvim",
+    keys = {
+      {
+        "<leader>gB",
+        function()
+          require("gitsigns").blame()
+        end,
+        desc = "Blame",
+      },
+    },
     opts = {
       attach_to_untracked = true,
       preview_config = {
@@ -109,9 +118,12 @@ return {
         vim.keymap.set("n", "<leader>gb", function()
           gitsigns.blame_line { full = true }
         end, { buffer = bufnr, desc = "Blame line" })
-        vim.keymap.set("n", "<leader>gB", function()
-          gitsigns.blame()
-        end, { buffer = bufnr, desc = "Blame ALl" })
+        vim.keymap.set(
+          "n",
+          "<leader>tb",
+          gitsigns.toggle_current_line_blame,
+          { buffer = bufnr, desc = "Line Blame" }
+        )
 
         -- Text object
         vim.keymap.set(
@@ -135,6 +147,7 @@ return {
   {
     "kdheepak/lazygit.nvim",
     event = "VeryLazy",
+    cmd = "LazyGit",
     config = function()
       vim.g.lazygit_floating_window_scaling_factor = 1.0
       vim.g.lazygit_floating_window_winblend = 0
