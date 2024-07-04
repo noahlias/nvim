@@ -352,29 +352,25 @@ M.configfunc = function()
           end
         end,
       },
-      ["<Tab>"] = cmp.mapping {
-        i = function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-            moveCursorBeforeComma()
-          elseif has_words_before() then
-            cmp.complete()
-            moveCursorBeforeComma()
-          else
-            fallback()
-          end
-        end,
-      },
-      ["<S-Tab>"] = cmp.mapping {
-        i = function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
-            moveCursorBeforeComma()
-          else
-            fallback()
-          end
-        end,
-      },
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
+          moveCursorBeforeComma()
+        elseif has_words_before() then
+          cmp.complete()
+          moveCursorBeforeComma()
+        else
+          fallback()
+        end
+      end, { "i", "s", "c" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
+          moveCursorBeforeComma()
+        else
+          fallback()
+        end
+      end, { "i", "s", "c" }),
     },
   }
 
