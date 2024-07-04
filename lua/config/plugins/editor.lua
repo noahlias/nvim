@@ -52,7 +52,7 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     opts = {
       filetypes = { "*" },
       user_default_options = {
