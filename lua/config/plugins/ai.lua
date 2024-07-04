@@ -153,7 +153,7 @@ return {
         error_header = "", -- Header to use for errors
         window = {
           border = "rounded",
-          width = 0.382,
+          width = 0.32,
           selection = function(source)
             local select = require "CopilotChat.select"
             return select.visual(source) or select.buffer(source)
