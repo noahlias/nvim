@@ -126,6 +126,7 @@ require("lazy").setup {
   rocks = {
     enabled = false,
   },
+  install = { colorscheme = { "catppuccin" } },
   performance = {
     cache = {
       enabled = true,
