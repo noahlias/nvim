@@ -28,25 +28,25 @@ return {
       -- Chat
       {
         "<C-g>c",
-        "<Cmd>GpChatNew split<CR>",
+        "<Cmd>GpChatNew vsplit<CR>",
         mode = { "n", "i" },
         desc = "New Chat",
       },
       {
         "<C-g>c",
-        ":<C-u>'<,'>GpChatNew split<CR>",
+        ":<C-u>'<,'>GpChatNew vsplit<CR>",
         mode = { "v" },
         desc = "New Chat",
       },
       {
         "<C-g>t",
-        "<Cmd>GpChatToggle split<CR>",
+        "<Cmd>GpChatToggle vsplit<CR>",
         mode = { "n", "i" },
         desc = "Toggle Chat",
       },
       {
         "<C-g>t",
-        ":<C-u>'<,'>GpChatToggle split<CR>",
+        ":<C-u>'<,'>GpChatToggle vsplit<CR>",
         mode = { "v" },
         desc = "Toggle Chat",
       },
