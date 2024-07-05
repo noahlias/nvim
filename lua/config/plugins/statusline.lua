@@ -140,10 +140,10 @@ return {
     extensions = {
       "man",
       "quickfix",
-      "neo-tree",
       "toggleterm",
       "symbols-outline",
       "nvim-dap-ui",
+      "trouble",
       "mundo",
       "lazy",
       ---copilot-chat
