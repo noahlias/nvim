@@ -14,10 +14,13 @@ return {
     ft = { "markdown" },
     -- name = "markview",
     -- dev = true,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    commit = "df26311a451361f90b2fe4af1c738a38f61a6544",
+    enabled = true,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("markview").setup {}
+      require("markview").setup()
     end,
   },
   {
