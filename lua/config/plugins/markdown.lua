@@ -11,7 +11,6 @@ return {
   {
     "OXY2DEV/markview.nvim",
     ft = { "markdown" },
-    submodules = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
