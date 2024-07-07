@@ -48,7 +48,6 @@ M.config = {
         end,
       },
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
-      "ldelossa/nvim-dap-projects",
       "b0o/SchemaStore.nvim",
       -- "mjlbach/lsp_signature.nvim",
       "airblade/vim-rooter",
@@ -207,8 +206,6 @@ M.config = {
         lsp_defaults.capabilities,
         require("cmp_nvim_lsp").default_capabilities()
       )
-
-      require("nvim-dap-projects").search_project_config()
 
       F.configureDocAndSignature()
       F.configureKeybinds()

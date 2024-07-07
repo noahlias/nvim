@@ -27,7 +27,6 @@ return {
       },
     },
     "nvim-dap-virtual-text",
-    "nvim-telescope/telescope-dap.nvim",
     {
       "mfussenegger/nvim-dap-python",
       ft = { "python" },

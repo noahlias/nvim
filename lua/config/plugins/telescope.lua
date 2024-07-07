@@ -9,7 +9,6 @@ M.config = {
     build = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "dimaportenko/telescope-simulators.nvim",
     },
     config = function()
@@ -104,23 +103,8 @@ M.config = {
             },
           },
         },
-        extensions = {
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-          },
-          -- media_files = {
-          -- 	filetypes = { "pdf", "mp4", "png", "webp", "jpg", "jpeg" },
-          -- 	find_cmd = "rg"
-          -- },
-          -- command_palette = command_palette,
-        },
       }
       ts.load_extension "neoclip"
-      ts.load_extension "dap"
-      ts.load_extension "fzf"
       ts.load_extension "simulators"
       ts.load_extension "noice"
 
@@ -131,51 +115,6 @@ M.config = {
       ts.load_extension "flutter"
     end,
   },
-  -- {
-  --   "FeiyouG/commander.nvim",
-  --   keys = {
-  --     { "<c-q>", "<CMD>Telescope commander<CR>", mode = "n" },
-  --   },
-  --   config = function()
-  --     local commander = require "commander"
-  --     ---@diagnostic disable: missing-fields
-  --     commander.setup {
-  --       components = {
-  --         "DESC",
-  --         "KEYS",
-  --         "CMD",
-  --       },
-  --       sort_by = {
-  --         "DESC",
-  --         "KEYS",
-  --         "CAT",
-  --         "CMD",
-  --       },
-  --       integration = {
-  --         telescope = {
-  --           enable = true,
-  --           theme = require("telescope.themes").commander,
-  --         },
-  --         lazy = {
-  --           enable = true,
-  --         },
-  --       },
-  --     }
-  --     ---@diagnostic disable: missing-parameter
-  --     commander.add {
-  --       {
-  --         desc = "Run Simulator",
-  --         cmd = "<CMD>Telescope simulators run<CR>",
-  --         keys = { "n", "<leader>sr" },
-  --       },
-  --       {
-  --         desc = "Git diff",
-  --         cmd = "<CMD>Telescope git_status<CR>",
-  --         keys = { "n", "<leader>gs" },
-  --       },
-  --     }
-  --   end,
-  -- },
 }
 
 return M
