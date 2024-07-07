@@ -69,7 +69,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPost",
+    event = "VeryLazy",
     config = function()
       local tscontext = require "treesitter-context"
       tscontext.setup {

@@ -1,12 +1,21 @@
 ---@type LazyPluginSpec
 return {
   "luckasRanarison/tailwind-tools.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
-  event = {
-    "BufRead *.jsx,,*tsx,*.vue,*.html,*.css,*.scss,*.sass,*.less,*.stylus",
-    "BufNewFile *.jsx,*tsx,*.vue,*.html,*.css,*.scss,*.sass,*.less,*.stylus",
+  ft = {
+    "javascriptreact",
+    "typescriptreact",
+    "html",
+    "markdown",
+    "mdx",
+    "vue",
+    "svelte",
   },
-  config = function()
-    require("tailwind-tools").setup {}
+  opts = {
+    conceal = {
+      symbol = "…",
+    },
+  },
+  config = function(_, opts)
+    require("tailwind-tools").setup(opts)
   end,
 }

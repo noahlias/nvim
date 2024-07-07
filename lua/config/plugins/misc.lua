@@ -22,6 +22,7 @@ return {
   },
   {
     "folke/todo-comments.nvim",
+    event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
@@ -266,7 +267,6 @@ return {
         open = "alternate",
       },
     },
-    priority = 1001,
   },
   {
     "3rd/image.nvim",

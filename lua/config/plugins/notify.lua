@@ -30,11 +30,5 @@ return {
         previewer = false,
       }
     end, { noremap = true, silent = true, desc = "Notify Telescope" })
-    -- vim.keymap.set(
-    --   "n",
-    --   "<LEADER>c;",
-    --   notify.dismiss,
-    --   { noremap = true, silent = true, desc = "Notify dismiss" }
-    -- )
   end,
 }
