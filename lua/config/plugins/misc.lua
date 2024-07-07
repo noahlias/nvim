@@ -63,7 +63,7 @@ return {
     ft = "norg",
     version = "*",
     enabled = false,
-    dependencies = { "luarocks.nvim", { "laher/neorg-exec" } },
+    dependencies = { "luarocks.nvim" },
     config = function()
       require("neorg").setup {
         load = {
