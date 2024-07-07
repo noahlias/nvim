@@ -62,6 +62,7 @@ vim.opt.guicursor = {
   "r-cr-o:hor20-Cursor/lCursor",
 }
 
+vim.g.lsp_zero_extend_lspconfig = 0
 -- vim.opt.conceallevel = 2
 vim.cmd [[
 silent !mkdir -p $HOME/.config/nvim/tmp/backup

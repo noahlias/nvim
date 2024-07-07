@@ -42,7 +42,7 @@ M.config = {
     },
 
     config = function()
-      local lsp = require("lsp-zero").preset {}
+      local lsp = require "lsp-zero"
       M.lsp = lsp
 
       require("mason").setup {}
