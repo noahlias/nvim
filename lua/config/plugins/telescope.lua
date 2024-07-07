@@ -7,6 +7,7 @@ M.config = {
     "nvim-telescope/telescope.nvim",
     -- tag = '0.1.1',
     build = false,
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "dimaportenko/telescope-simulators.nvim",
