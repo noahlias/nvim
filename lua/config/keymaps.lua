@@ -8,7 +8,6 @@ local nmappings = {
   { from = "Q", to = ":q<CR>" },
   { from = ";", to = ":", mode = mode_nv },
   { from = "Y", to = '"+y', mode = mode_v },
-  { from = "`", to = "~", mode = mode_nv },
   -- copy to clipboard
   --[[ { from = '"+y',           to = "by",                                                                  mode = mode_v } ]]
 
