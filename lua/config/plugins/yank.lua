@@ -6,7 +6,13 @@ return {
     { "kkharji/sqlite.lua", module = "sqlite" },
   },
   config = function()
-    vim.keymap.set("n", "<leader>y", ":Telescope neoclip<CR>", { noremap = true })
+    ---TODO: change this to fzf-lua
+    vim.keymap.set(
+      "n",
+      "<leader>y",
+      ":Telescope neoclip<CR>",
+      { noremap = true }
+    )
     require("neoclip").setup {
       history = 1000,
       enable_persistent_history = true,

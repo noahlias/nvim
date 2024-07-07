@@ -7,7 +7,7 @@ M.config = {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
-    event = "LspAttach",
+    event = "Filetype",
     dependencies = {
       {
         "folke/trouble.nvim",
