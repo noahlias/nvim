@@ -271,6 +271,7 @@ return {
   {
     "3rd/image.nvim",
     enabled = true,
+    ft = { "markdown", "text", "typ", "norg" },
     init = function()
       package.path = package.path
         .. ";"
@@ -580,6 +581,7 @@ return {
   -- NOTE: wonderful toggle plugin
   {
     "xiyaowong/transparent.nvim",
+    cmd = "TransparentToggle",
     opts = {
       extra_groups = {
         "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo

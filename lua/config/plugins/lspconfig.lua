@@ -7,6 +7,7 @@ M.config = {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
+    event = "LspAttach",
     dependencies = {
       {
         "folke/trouble.nvim",
@@ -34,19 +35,6 @@ M.config = {
       },
       { "williamboman/mason-lspconfig.nvim" },
       { "hrsh7th/cmp-nvim-lsp" },
-      {
-        "j-hui/fidget.nvim",
-        event = "LspAttach",
-        config = function()
-          require("fidget").setup {
-            notification = {
-              window = {
-                winblend = 0,
-              },
-            },
-          }
-        end,
-      },
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
       "b0o/SchemaStore.nvim",
       -- "mjlbach/lsp_signature.nvim",

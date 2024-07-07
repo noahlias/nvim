@@ -55,6 +55,7 @@ require("lazy").setup {
     require "config.plugins.dressing",
     require "config.plugins.devicons",
     require "config.plugins.plenary",
+    require "config.plugins.fidget",
 
     require "config.plugins.treesitter",
     require("config.plugins.telescope").config,
