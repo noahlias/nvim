@@ -11,6 +11,7 @@ return {
 	       \ 'TelescopePrompt': v:false,
 				 \ 'rip-substitute': v:false,
 				 \ 'mini-files': v:false,
+				 \ 'copilot-chat' : v:false,
 	     \ }
 			]]
     end,
