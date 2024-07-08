@@ -155,6 +155,20 @@ return {
           filetype = { "ocaml" },
         },
       },
+      --haskell test single file
+      {
+        name = "Haskell test single file",
+        builder = function()
+          return {
+            cmd = { "stack", "runhaskell" },
+            cwd = vim.fn.expand "%:p:h",
+            args = { vim.fn.expand "%:p" },
+          }
+        end,
+        condition = {
+          filetype = { "haskell" },
+        },
+      },
     }
     for _, template in ipairs(templates) do
       overseer.register_template(template)
