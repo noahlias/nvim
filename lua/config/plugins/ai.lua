@@ -109,6 +109,46 @@ return {
           },
         },
         chat_topic_gen_model = "deepseek-chat",
+        style_chat_finder_border = "rounded",
+        style_chat_finder_margin_left = 5,
+        style_chat_finder_margin_right = 5,
+        style_chat_finder_margin_top = 5,
+        hooks = {
+          UnitTests = function(gp, params)
+            local template = "I have the following code from {{filename}}:\n\n"
+              .. "```{{filetype}}\n{{selection}}\n```\n\n"
+              .. "Please respond by writing table driven unit tests for the code above."
+            local agent = gp.get_command_agent()
+            gp.Prompt(
+              params,
+              gp.Target.enew,
+              nil,
+              agent.model,
+              template,
+              agent.system_prompt
+            )
+          end,
+          CodeReview = function(gp, params)
+            local template = "I have the following code from {{filename}}:\n\n"
+              .. "```{{filetype}}\n{{selection}}\n```\n\n"
+              .. "Please analyze for code smells and suggest improvements."
+            local agent = gp.get_chat_agent()
+            gp.Prompt(
+              params,
+              gp.Target.enew "markdown",
+              nil,
+              agent.model,
+              template,
+              agent.system_prompt
+            )
+          end,
+          Translator = function(gp, params)
+            local agent = gp.get_command_agent()
+            local chat_system_prompt =
+              "You are a Translator, please translate between English and Chinese."
+            gp.cmd.ChatNew(params, agent.model, chat_system_prompt)
+          end,
+        },
       }
       require("gp").setup(config)
       local function keymapOptions(desc)
