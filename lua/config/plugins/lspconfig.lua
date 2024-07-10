@@ -29,9 +29,6 @@ M.config = {
       },
       {
         "williamboman/mason.nvim",
-        build = function()
-          vim.cmd [[MasonInstall]]
-        end,
       },
       { "williamboman/mason-lspconfig.nvim" },
       { "hrsh7th/cmp-nvim-lsp" },
