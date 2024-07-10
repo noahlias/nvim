@@ -2,7 +2,7 @@
   "CopilotChat.nvim": { "branch": "canary", "commit": "82923efe22b604cf9c0cad0bb2a74aa9247755ab" },
   "DAPInstall.nvim": { "branch": "main", "commit": "8798b4c36d33723e7bba6ed6e2c202f84bb300de" },
   "NeoZoom.lua": { "branch": "main", "commit": "c97a0197548c1e9b559e4fa41ab3f7782c93e613" },
-  "SchemaStore.nvim": { "branch": "main", "commit": "d8d36b5b3f670983655bb3f5f0b4641c8c5dc4e6" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "2dedaa4d2eccee7d645b69b9f85a64bedd11d8a9" },
   "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
   "antovim": { "branch": "master", "commit": "733d3d12ed034997fa05a3144979864fc0af738e" },
   "bufferline.nvim": { "branch": "main", "commit": "99337f63f0a3c3ab9519f3d1da7618ca4f91cffe" },
