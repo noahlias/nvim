@@ -67,19 +67,45 @@ return {
     event = "VeryLazy",
     config = function()
       local config = {
-
-        openai_api_key = {
-          "gopass",
-          "show",
-          "-f",
-          "-o",
-          "websites/deepseek.com/noahlias",
+        providers = {
+          openai = {
+            endpoint = "https://api.deepseek.com/v1/chat/completions",
+            secret = {
+              "gopass",
+              "show",
+              "-f",
+              "-o",
+              "websites/deepseek.com/noahlias",
+            },
+          },
+          copilot = {
+            endpoint = "https://api.githubcopilot.com/chat/completions",
+            secret = {
+              "bash",
+              "-c",
+              "cat ~/.config/github-copilot/hosts.json | sed -e 's/.*oauth_token...//;s/\".*//'",
+            },
+          },
+          kimi = {
+            endpoint = "https://api.moonshot.cn/v1",
+            secret = {
+              "gopass",
+              "show",
+              "-f",
+              "-o",
+              "websites/kimi.com/noahlias",
+            },
+          },
         },
-        openai_api_endpoint = "https://api.deepseek.com/v1/chat/completions",
         agents = {
           {
+            name = "ChatGPT3-5",
+            disable = true,
+          },
+          {
             name = "ChatDeepseek",
-            chat = true,
+            chat = false,
+            provider = "openai",
             command = false,
             -- string with model name or table with model name and parameters
             model = { model = "deepseek-chat", temperature = 0.1, top_p = 1 },
@@ -96,12 +122,43 @@ return {
               .. "- Take a deep breath; You've got this!\n",
           },
           {
+            name = "GithubCopilot",
+            chat = true,
+            provider = "copilot",
+            command = true,
+            -- string with model name or table with model name and parameters
+            model = { model = "gpt-4", temperature = 0.1, top_p = 1 },
+            -- system prompt (use this to specify the persona/role of the AI)
+            system_prompt = "You are a general AI assistant.\n\n"
+              .. "The user provided the additional info about how they would like you to respond:\n\n"
+              .. "- If you're unsure don't guess and say you don't know instead.\n"
+              .. "- Ask question if you need clarification to provide better answer.\n"
+              .. "- Think deeply and carefully from first principles step by step.\n"
+              .. "- Zoom out first to see the big picture and then zoom in to details.\n"
+              .. "- Use Socratic method to improve your thinking and coding skills.\n"
+              .. "- Don't elide any code from your output if the answer requires coding.\n"
+              .. "- Please try to explain it in Chinese if possible.\n"
+              .. "- Take a deep breath; You've got this!\n",
+          },
+
+          {
             name = "CodeDeepseek",
             chat = false,
             command = true,
+            provider = "openai",
             -- string with model name or table with model name and parameters
             model = { model = "deepseek-coder", temperature = 0.8, top_p = 1 },
             -- system prompt (use this to specify the persona/role of the AI)
+            system_prompt = "You are an AI working as a code editor.\n\n"
+              .. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n"
+              .. "Please Don't add any extra comments or explanations.\n"
+              .. "START AND END YOUR ANSWER WITH:\n\n```",
+          },
+          {
+            name = "KimiChat",
+            chat = true,
+            command = true,
+            model = { model = "deepseek-chat", temperature = 0.1, top_p = 1 },
             system_prompt = "You are an AI working as a code editor.\n\n"
               .. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n"
               .. "Please Don't add any extra comments or explanations.\n"
