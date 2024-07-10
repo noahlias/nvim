@@ -107,6 +107,14 @@ return {
       },
       lualine_c = { dap_or_lsp },
       lualine_x = {
+        {
+          "vim.fn['zoom#statusline']()",
+          color = {
+            fg = "#ebdbb2",
+            gui = "italic",
+            bg = "#3c3836",
+          },
+        },
         recording,
         {
           name = "overseer-placeholder",
