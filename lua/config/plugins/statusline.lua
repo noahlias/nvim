@@ -109,10 +109,10 @@ return {
       lualine_x = {
         {
           "vim.fn['zoom#statusline']()",
+          icon = " ",
           color = {
-            fg = "#ebdbb2",
+            fg = "#cba6f7",
             gui = "italic",
-            bg = "#3c3836",
           },
         },
         recording,
