@@ -13,7 +13,7 @@ return {
     },
 
     {
-      "<c-w>",
+      "<leader>fb",
       function()
         require("fzf-lua").buffers()
       end,
@@ -63,7 +63,7 @@ return {
       desc = "Git status",
     },
     {
-      "<c-t>",
+      "<leader>ft",
       function()
         require("fzf-lua").tabs()
       end,
