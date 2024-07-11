@@ -35,7 +35,7 @@ M.config = {
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
       "b0o/SchemaStore.nvim",
       -- "mjlbach/lsp_signature.nvim",
-      "airblade/vim-rooter",
+      { "airblade/vim-rooter", event = "VeryLazy" },
     },
 
     config = function()

@@ -77,10 +77,11 @@ return {
       buftypes = {},
     },
   },
-  { "theniceboy/antovim", lazy = false },
-  { "gcmt/wildfire.vim", lazy = false },
+  { "theniceboy/antovim", event = "VeryLazy" },
+  { "gcmt/wildfire.vim", event = "VeryLazy" },
   {
     "gbprod/substitute.nvim",
+    event = "VeryLazy",
     config = function()
       local substitute = require "substitute"
       substitute.setup {

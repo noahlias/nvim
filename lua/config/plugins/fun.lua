@@ -7,7 +7,8 @@ return {
   {
     "NStefan002/donut.nvim",
     version = "*",
-    lazy = false,
+    cmd = "Donut",
+    event = "VeryLazy",
     config = function()
       require("donut").setup {
         timeout = 0, --- disable this plugin

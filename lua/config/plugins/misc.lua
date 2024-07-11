@@ -28,6 +28,7 @@ return {
   },
   {
     "andweeb/presence.nvim",
+    event = "VeryLazy",
     config = function()
       require("presence").setup {
         -- General options
@@ -538,6 +539,8 @@ return {
   --NOTE: add ascii diagram support
   {
     "jbyuki/venn.nvim",
+    -- enabled = false,
+    event = "VeryLazy",
     config = function()
       -- venn.nvim: enable or disable keymappings
       function _G.Toggle_venn()
@@ -574,7 +577,7 @@ return {
         "n",
         "<leader>ve",
         ":lua Toggle_venn()<CR>",
-        { noremap = true, desc = "Toggle venn" }
+        { noremap = true, desc = "Toggle venn", silent = true }
       )
     end,
   },

@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "AckslD/nvim-neoclip.lua",
+  event = "VeryLazy",
   dependencies = {
     "nvim-telescope/telescope.nvim",
     { "kkharji/sqlite.lua", module = "sqlite" },

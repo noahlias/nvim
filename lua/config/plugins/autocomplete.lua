@@ -33,7 +33,7 @@ M.config = {
     "lukas-reineke/cmp-under-comparator",
     {
       "onsails/lspkind.nvim",
-      lazy = true,
+      lazy = false,
       config = function()
         require("lspkind").init()
       end,
