@@ -135,6 +135,7 @@ M.config = {
           documentFormattingProvider = false,
         },
       }
+      lspconfig.svelte.setup {}
       ---bashls
       lspconfig.bashls.setup {}
 
