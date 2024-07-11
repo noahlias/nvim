@@ -39,6 +39,7 @@ return {
         markdown = { "markdownlint", "autocorrect" },
         sh = { "shfmt" },
         r = { "my_styler" },
+        toml = { "taplo" },
       },
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --
       formatters = {
