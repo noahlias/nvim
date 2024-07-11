@@ -104,7 +104,11 @@ vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
 vim.cmd [[
 tnoremap <C-N> <C-\><C-N>
 ]]
-
+vim.filetype.add {
+  extension = {
+    ["http"] = "http",
+  },
+}
 vim.cmd [[hi NonText ctermfg=gray guifg=grey10]]
 
 vim.g.snips_author = "noahlias"

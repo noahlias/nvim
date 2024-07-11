@@ -599,4 +599,12 @@ return {
       },
     },
   },
+  {
+    "mistweaverco/kulala.nvim",
+    event = "VeryLazy",
+    config = function()
+      local kulala = require "kulala"
+      kulala.setup {}
+    end,
+  },
 }
