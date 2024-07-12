@@ -53,7 +53,7 @@
   "lualine-copilot": { "branch": "main", "commit": "ea9e7000e82a89aac9d8434675dfed3da4ec1158" },
   "lualine.nvim": { "branch": "master", "commit": "6a40b530539d2209f7dc0492f3681c8c126647ad" },
   "luvit-meta": { "branch": "main", "commit": "ce76f6f6cdc9201523a5875a4471dcfe0186eb60" },
-  "markview.nvim": { "branch": "main", "commit": "b6e0fcb38d3593a898a1c66c5e245d68d28e9707" },
+  "markview.nvim": { "branch": "main", "commit": "3bdc38fa9a90e81e04ddcfdc4115b44a48bcacb9" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "37a336b653f8594df75c827ed589f1c91d91ff6c" },
   "mason.nvim": { "branch": "main", "commit": "f96a31855fa8aea55599cea412fe611b85a874ed" },
   "melange-nvim": { "branch": "master", "commit": "f626d41b9110e6ab853538d8b939979a0f1adfeb" },
