@@ -147,58 +147,12 @@ return {
     "kevinhwang91/nvim-ufo",
     dependencies = {
       "kevinhwang91/promise-async",
-      {
-        "luukvbaal/statuscol.nvim",
-        config = function()
-          ---NOTE: https://github.com/ofseed/nvim/blob/1abfedd821c313eae7e04558ecbd08a1953b055f/lua/plugins/ui/statuscol.lua#L4
-          local builtin = require "statuscol.builtin"
-          require("statuscol").setup {
-            bt_ignore = { "nofile", "terminal" },
-            ft_ignore = { "NeogitStatus" },
-            segments = {
-              {
-                sign = {
-                  name = { ".*" },
-                  text = { ".*" },
-                },
-                click = "v:lua.ScSa",
-              },
-              {
-                text = { builtin.lnumfunc },
-                condition = { builtin.not_empty },
-                click = "v:lua.ScLa",
-              },
-              {
-                sign = { namespace = { "gitsigns" }, colwidth = 1, wrap = true },
-                click = "v:lua.ScSa",
-              },
-              {
-                text = {
-                  function(args)
-                    args.fold.close = ""
-                    args.fold.open = ""
-                    args.fold.sep = " "
-                    -- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-                    return builtin.foldfunc(args)
-                  end,
-                },
-                condition = {
-                  function()
-                    return vim.o.foldcolumn ~= "0"
-                  end,
-                },
-                click = "v:lua.ScFa",
-              },
-            },
-          }
-        end,
-      },
     },
     event = "VeryLazy",
     opts = {
-      -- close_fold_kinds_for_ft = {
-      --   default = { "imports" },
-      -- },
+      close_fold_kinds_for_ft = {
+        default = { "imports" },
+      },
     },
     init = function()
       local set_foldcolumn_for_file =
@@ -283,7 +237,7 @@ return {
       ufo.setup(opts)
 
       vim.api.nvim_create_autocmd("LspAttach", {
-        desc = "Setup Ufo `j` with LSP hover",
+        desc = "Setup Ufo  with LSP hover",
         callback = function(args)
           local bufnr = args.buf
           vim.keymap.set("n", "<leader>hh", function()
@@ -321,5 +275,51 @@ return {
         winblend = 0,
       },
     },
+  },
+  {
+    "luukvbaal/statuscol.nvim",
+    opts = function()
+      ---NOTE: https://github.com/ofseed/nvim/blob/1abfedd821c313eae7e04558ecbd08a1953b055f/lua/plugins/ui/statuscol.lua#L4
+      local builtin = require "statuscol.builtin"
+      return {
+        bt_ignore = { "nofile", "terminal" },
+        ft_ignore = { "NeogitStatus" },
+        segments = {
+          {
+            sign = {
+              name = { ".*" },
+              text = { ".*" },
+            },
+            click = "v:lua.ScSa",
+          },
+          {
+            text = { builtin.lnumfunc },
+            condition = { builtin.not_empty },
+            click = "v:lua.ScLa",
+          },
+          {
+            sign = { namespace = { "gitsigns" }, colwidth = 1, wrap = true },
+            click = "v:lua.ScSa",
+          },
+          {
+            text = {
+              function(args)
+                args.fold.close = ""
+                args.fold.open = ""
+                args.fold.sep = " "
+                -- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+                return builtin.foldfunc(args)
+              end,
+            },
+            condition = {
+              function()
+                return vim.o.foldcolumn ~= "0"
+              end,
+            },
+            click = "v:lua.ScFa",
+          },
+        },
+      }
+    end,
   },
 }
