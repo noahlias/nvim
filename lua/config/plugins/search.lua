@@ -2,7 +2,7 @@
 return {
   {
     "kevinhwang91/nvim-hlslens",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufRead", "BufNewFile" },
     config = function()
       require("hlslens").setup {
         build_position_cb = function(plist, _, _, _)

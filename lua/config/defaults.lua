@@ -77,13 +77,6 @@ if has('persistent_undo')
 endif
 ]]
 
-vim.api.nvim_create_autocmd(
-  "BufEnter",
-  { pattern = "*", command = "silent! lcd %:p:h" }
-)
-
-vim.cmd [[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
-
 vim.g.terminal_color_0 = "#000000"
 vim.g.terminal_color_1 = "#FF5555"
 vim.g.terminal_color_2 = "#50FA7B"
@@ -99,8 +92,6 @@ vim.g.terminal_color_11 = "#F4F99D"
 vim.g.terminal_color_12 = "#CAA9FA"
 vim.g.terminal_color_13 = "#FF92D0"
 vim.g.terminal_color_14 = "#9AEDFE"
-vim.cmd [[autocmd TermOpen term://* startinsert]]
-vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
 vim.cmd [[
 tnoremap <C-N> <C-\><C-N>
 ]]
@@ -131,3 +122,46 @@ vim.api.nvim_create_user_command("CopyCodeBlock", function(opts)
   vim.fn.setreg("+", result)
   vim.notify "Text copied to clipboard"
 end, { range = true })
+
+---- autocmds
+local group = vim.api.nvim_create_augroup("scrollbar_set_git_colors", {})
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  callback = function()
+    vim.cmd [[
+hi! ScrollbarGitAdd guifg=#8CC85F
+hi! ScrollbarGitAddHandle guifg=#A0CF5D
+hi! ScrollbarGitChange guifg=#E6B450
+hi! ScrollbarGitChangeHandle guifg=#F0C454
+hi! ScrollbarGitDelete guifg=#F87070
+hi! ScrollbarGitDeleteHandle guifg=#FF7B7B ]]
+  end,
+  group = group,
+})
+
+local diagnostic_group =
+  vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+  pattern = "*",
+  callback = function()
+    vim.diagnostic.open_float {
+      scope = "cursor",
+      focusable = false,
+      zindex = 10,
+      close_events = {
+        "CursorMoved",
+        "CursorMovedI",
+        "BufHidden",
+        "InsertCharPre",
+        "InsertEnter",
+        "WinLeave",
+        "ModeChanged",
+      },
+    }
+  end,
+  group = diagnostic_group,
+})
+
+vim.cmd [[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
+vim.cmd [[autocmd TermOpen term://* startinsert]]
+vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]

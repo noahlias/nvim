@@ -35,7 +35,7 @@ M.config = {
       { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
       "b0o/SchemaStore.nvim",
       -- "mjlbach/lsp_signature.nvim",
-      { "airblade/vim-rooter", event = "VeryLazy" },
+      { "airblade/vim-rooter" },
     },
 
     config = function()
@@ -207,28 +207,6 @@ F.configureDocAndSignature = function()
       border = "rounded",
       zindex = 60,
     })
-  local group =
-    vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-  vim.api.nvim_create_autocmd({ "CursorHold" }, {
-    pattern = "*",
-    callback = function()
-      vim.diagnostic.open_float {
-        scope = "cursor",
-        focusable = false,
-        zindex = 10,
-        close_events = {
-          "CursorMoved",
-          "CursorMovedI",
-          "BufHidden",
-          "InsertCharPre",
-          "InsertEnter",
-          "WinLeave",
-          "ModeChanged",
-        },
-      }
-    end,
-    group = group,
-  })
 end
 
 local documentation_window_open_index = 0

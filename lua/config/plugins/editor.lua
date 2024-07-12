@@ -150,9 +150,9 @@ return {
     },
     event = "VeryLazy",
     opts = {
-      close_fold_kinds_for_ft = {
-        default = { "imports" },
-      },
+      -- close_fold_kinds_for_ft = {
+      --   default = { "imports" },
+      -- },
     },
     init = function()
       local set_foldcolumn_for_file =

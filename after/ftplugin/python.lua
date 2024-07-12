@@ -1,7 +1,7 @@
 vim.cmd "setlocal colorcolumn=81"
 
-vim.bo.shiftwidth = 4
-vim.bo.softtabstop = 4
-vim.bo.expandtab = true
-
-vim.cmd [[ autocmd FileType python setlocal textwidth=80 wrap linebreak ]]
+vim.opt_local.shiftwidth = 4
+vim.opt_local.softtabstop = 4
+vim.opt_local.expandtab = true
+vim.opt_local.wrap = true
+vim.opt_local.linebreak = true
