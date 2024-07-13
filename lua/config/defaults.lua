@@ -162,6 +162,5 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   group = diagnostic_group,
 })
 
-vim.cmd [[au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
 vim.cmd [[autocmd TermOpen term://* startinsert]]
 vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
