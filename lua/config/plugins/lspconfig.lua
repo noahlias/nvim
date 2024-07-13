@@ -11,7 +11,6 @@ M.config = {
     dependencies = {
       {
         "folke/trouble.nvim",
-        -- branch = "dev",
         opts = {
           use_diagnostic_signs = true,
           action_keys = {

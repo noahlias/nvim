@@ -35,7 +35,7 @@ return {
   },
   {
     "andweeb/presence.nvim",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     config = function()
       require("presence").setup {
         -- General options
@@ -96,7 +96,7 @@ return {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html",
     event = "VeryLazy",
-    enabled = true,
+    enabled = false,
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim", -- required by telescope
