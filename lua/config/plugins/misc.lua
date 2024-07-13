@@ -4,19 +4,20 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     enabled = true,
+    init = function()
+      vim.o.timeoutlen = 300
+    end,
     opts = {
-      delay = function(ctx)
-        return ctx.plugin and 0 or 300
-      end,
       spec = {
         {
           mode = { "n" },
-          { "<leader>t", group = "tabs" },
+          { "<leader>t", group = "tabs/terminal/trouble" },
           { "<leader>f", group = "file/find" },
           { "<leader>g", group = "git" },
           { "<leader>gh", group = "hunks" },
           { "<leader>s", group = "search" },
-          { "<leader>w", group = "windows" },
+          { "c-w", group = "windows" },
+          { "c-g", group = "ai" },
           { "[", group = "prev" },
           { "]", group = "next" },
           { "g", group = "goto" },
@@ -37,10 +38,8 @@ return {
       plugins = {
         marks = true, -- shows a list of your marks on ' and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-        -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-        -- No actual key bindings are created
         spelling = {
-          enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+          enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
           suggestions = 20, -- how many suggestions should be shown in the list?
         },
         presets = {

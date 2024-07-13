@@ -120,7 +120,7 @@ return {
         end, { buffer = bufnr, desc = "Blame line" })
         vim.keymap.set(
           "n",
-          "<leader>tb",
+          "<leader>gb",
           gitsigns.toggle_current_line_blame,
           { buffer = bufnr, desc = "Line Blame" }
         )

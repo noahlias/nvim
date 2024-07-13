@@ -13,19 +13,6 @@ M.config = {
       "dimaportenko/telescope-simulators.nvim",
     },
     config = function()
-      local builtin = require "telescope.builtin"
-      vim.keymap.set("n", "z=", builtin.spell_suggest, m)
-
-      vim.keymap.set("n", "<leader>d", function()
-        builtin.diagnostics {
-          severity_sort = true,
-        }
-      end, {
-        noremap = true,
-        nowait = true,
-        desc = "Workspace diagnostics",
-      })
-
       local ts = require "telescope"
       local actions = require "telescope.actions"
       M.ts = ts

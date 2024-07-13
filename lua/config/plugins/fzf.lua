@@ -69,6 +69,13 @@ return {
       end,
       desc = "Tab List",
     },
+    {
+      "<leader>fd",
+      function()
+        require("fzf-lua").lsp_workspace_diagnostics()
+      end,
+      desc = "LSP Workspace Diagnostics",
+    },
   },
   opts = {
     hls = {
@@ -103,7 +110,7 @@ return {
       global_resume_query = true,
       grep = {
         rg_glob = true,
-        rg_glob_fn = function(query, opts)
+        rg_glob_fn = function(query, _)
           local regex, flags = query:match "^(.-)%s%-%-(.*)$"
           -- If no separator is detected will return the original query
           return (regex or query), flags
