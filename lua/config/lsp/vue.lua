@@ -1,14 +1,12 @@
 return {
-  setup = function(lspconfig, lsp)
+  setup = function(lspconfig, _)
+    local capabilities = require "config.capabilities"
     lspconfig.volar.setup {
-      on_attach = function(client, bufnr)
+      on_attach = function(client, _)
         client.server_capabilities.documentFormattingProvider = false
       end,
-      init_options = {
-        typescript = {
-          tsdk = "/opt/Homebrew/lib/node_modules/typescript-language-server/lib",
-        },
-      },
+      capabilities = capabilities,
+      ft = { "vue" },
     }
   end,
 }

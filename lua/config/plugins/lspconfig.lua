@@ -123,6 +123,7 @@ M.config = {
       require("config.lsp.gleam").setup(lspconfig, lsp)
       require("config.lsp.r").setup(lspconfig, lsp)
       require("config.lsp.go").setup(lspconfig, lsp)
+      require("config.lsp.vue").setup(lspconfig, lsp)
 
       -- TODO: need to add other languages server
       ---Odin LSP
