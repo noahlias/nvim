@@ -79,7 +79,6 @@ local nmappings = {
   { from = "<leader>sw", to = ":set wrap<CR>" },
   { from = "<leader><CR>", to = ":nohlsearch<CR>" },
   { from = "<f10>", to = ":TSHighlightCapturesUnderCursor<CR>" },
-  { from = "<leader>o", to = "za" },
   {
     from = "<leader>pr",
     to = ":profile start profile.log<CR>:profile func *<CR>:profile file *<CR>",

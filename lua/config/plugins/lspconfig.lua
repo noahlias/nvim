@@ -11,12 +11,18 @@ M.config = {
     dependencies = {
       {
         "folke/trouble.nvim",
+        cmd = { "Trouble" },
         opts = {
           use_diagnostic_signs = true,
           action_keys = {
             close = "<esc>",
             previous = "u",
             next = "e",
+          },
+          modes = {
+            lsp = {
+              win = { position = "right" },
+            },
           },
         },
       },

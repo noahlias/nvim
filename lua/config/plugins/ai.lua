@@ -235,6 +235,7 @@ return {
     enabled = true,
     branch = "canary",
     event = "VeryLazy",
+    cmd = "CopilotChat",
     dependencies = {
       { "github/copilot.vim" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -302,6 +303,14 @@ return {
     end,
     keys = {
       -- Show prompts actions with telescope
+      { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
+      {
+        "<c-s>",
+        "<CR>",
+        ft = "copilot-chat",
+        desc = "Submit Prompt",
+        remap = true,
+      },
       {
         "<leader>ax",
         function()

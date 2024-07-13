@@ -5,6 +5,25 @@ return {
     event = "VeryLazy",
     enabled = true,
     opts = {
+      delay = function(ctx)
+        return ctx.plugin and 0 or 300
+      end,
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader>t", group = "tabs" },
+          { "<leader>f", group = "file/find" },
+          { "<leader>g", group = "git" },
+          { "<leader>gh", group = "hunks" },
+          { "<leader>s", group = "search" },
+          { "<leader>w", group = "windows" },
+          { "[", group = "prev" },
+          { "]", group = "next" },
+          { "g", group = "goto" },
+          { "gs", group = "surround" },
+          { "z", group = "fold" },
+        },
+      },
       preset = "helix",
       plugins = {
         marks = true, -- shows a list of your marks on ' and `
@@ -230,34 +249,34 @@ return {
       return {
         { "<C-\\>" },
         {
-          "<leader>a",
+          "<leader>ta",
           "<Cmd>ToggleTermToggleAll<CR>",
           mode = "n",
           desc = "All Terminal",
         },
         {
-          "<leader>pd",
+          "<leader>tl",
           function()
             lazydocker:toggle()
           end,
           desc = "Lazy Docker",
         },
         {
-          "<leader>pg",
+          "<leader>tg",
           function()
             gh_dash:toggle()
           end,
           desc = "GitHub Dash",
         },
         {
-          "<leader>n",
+          "<leader>tn",
           function()
             yazi:toggle()
           end,
           desc = "File Navigator",
         },
         {
-          "<leader>sp",
+          "<leader>tp",
           function()
             serpl:toggle()
           end,
