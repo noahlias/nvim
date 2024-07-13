@@ -10,7 +10,7 @@ return {
       end,
       spec = {
         {
-          mode = { "n", "v" },
+          mode = { "n" },
           { "<leader>t", group = "tabs" },
           { "<leader>f", group = "file/find" },
           { "<leader>g", group = "git" },
@@ -25,6 +25,15 @@ return {
         },
       },
       preset = "helix",
+      modes = {
+        n = true, -- Normal mode
+        i = true, -- Insert mode
+        x = false, -- Visual mode
+        s = false, -- Select mode
+        o = true, -- Operator pending mode
+        t = false, -- Terminal mode
+        c = false, -- Command mode
+      },
       plugins = {
         marks = true, -- shows a list of your marks on ' and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
