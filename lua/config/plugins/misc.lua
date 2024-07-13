@@ -4,9 +4,6 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     enabled = true,
-    init = function()
-      vim.o.timeoutlen = 300
-    end,
     opts = {
       spec = {
         {
