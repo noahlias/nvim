@@ -2,22 +2,29 @@
 return {
   {
     "folke/which-key.nvim",
-    event = "BufReadPost",
+    event = "VeryLazy",
     enabled = true,
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
     opts = {
-      window = {
-        margin = { 1, 0, 0.03, 0.75 },
-        border = "single",
+      preset = "helix",
+      plugins = {
+        marks = true, -- shows a list of your marks on ' and `
+        registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+        -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+        -- No actual key bindings are created
+        spelling = {
+          enabled = false, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+          suggestions = 20, -- how many suggestions should be shown in the list?
+        },
+        presets = {
+          operators = true, -- adds help for operators like d, y, ...
+          motions = true, -- adds help for motions
+          text_objects = true, -- help for text objects triggered after entering an operator
+          windows = true, -- default bindings on <c-w>
+          nav = true, -- misc bindings to work with windows
+          z = true, -- bindings for folds, spelling and others prefixed with z
+          g = true, -- bindings for prefixed with g
+        },
       },
-      layout = {
-        height = { min = 4, max = 75 },
-        align = "right",
-      },
-      show_keys = false,
     },
   },
   {
@@ -28,29 +35,28 @@ return {
   },
   {
     "andweeb/presence.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     config = function()
       require("presence").setup {
         -- General options
-        auto_update = true, -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
-        neovim_image_text = "Your mom", -- Text displayed when hovered over the Neovim image
-        main_image = "neovim", -- Main image display (either "neovim" or "file")
-        client_id = "793271441293967371", -- Use your own Discord application client id (not recommended)
-        log_level = nil, -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
-        debounce_timeout = 10, -- Number of seconds to debounce events (or calls to `:lua package.loaded.presence:update(<filename>, true)`)
-        enable_line_number = false, -- Displays the current line number instead of the current project
-        blacklist = {}, -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
-        buttons = true, -- Configure Rich Presence button(s), either a boolean to enable/disable, a static table (`{{ label = "<label>", url = "<url>" }, ...}`, or a function(buffer: string, repo_url: string|nil): table)
-        file_assets = {}, -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
-        show_time = true, -- Show the timer
-
-        editing_text = "Editing %s", -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
-        file_explorer_text = "Browsing %s", -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
-        git_commit_text = "Committing changes", -- Format string rendered when committing changes in git (either string or function(filename: string): string)
-        plugin_manager_text = "Managing plugins", -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)
-        reading_text = "Reading %s", -- Format string rendered when a read-only or unmodifiable file is loaded in the buffer (either string or function(filename: string): string)
-        workspace_text = "Working on %s", -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
-        line_number_text = "Line %s out of %s", -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
+        auto_update = true,
+        neovim_image_text = "Your mom",
+        main_image = "neovim",
+        client_id = "793271441293967371",
+        log_level = nil,
+        debounce_timeout = 10,
+        enable_line_number = false,
+        blacklist = {},
+        buttons = true,
+        file_assets = {},
+        show_time = true,
+        editing_text = "Editing %s",
+        file_explorer_text = "Browsing %s",
+        git_commit_text = "Committing changes",
+        plugin_manager_text = "Managing plugins",
+        reading_text = "Reading %s",
+        workspace_text = "Working on %s",
+        line_number_text = "Line %s out of %s",
       }
     end,
   },

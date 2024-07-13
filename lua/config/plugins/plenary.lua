@@ -20,10 +20,9 @@ return {
     },
   },
   config = function()
-    require("which-key").register({
-      ["hp"] = {
-        name = "+profile",
-      },
-    }, { prefix = "<leader>" })
+    local wk = require "which-key"
+    wk.add {
+      { "<leader>hp", group = "profile" },
+    }
   end,
 }
