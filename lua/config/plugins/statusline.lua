@@ -77,6 +77,7 @@ return {
           "DiffviewFiles",
           "gitsigns.blame",
           "leetcode.nvim",
+          "undotree",
         },
       },
       always_divide_middle = true,
