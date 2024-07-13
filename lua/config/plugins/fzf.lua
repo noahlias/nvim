@@ -69,13 +69,6 @@ return {
       end,
       desc = "Tab List",
     },
-    {
-      "<leader>la",
-      function()
-        require("fzf-lua").lsp_code_actions()
-      end,
-      desc = "Lsp code actions",
-    },
   },
   opts = {
     hls = {

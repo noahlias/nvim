@@ -323,4 +323,18 @@ return {
       }
     end,
   },
+  {
+    "luckasRanarison/clear-action.nvim",
+    event = "VeryLazy",
+    opts = {
+      signs = { enable = false },
+      mappings = {
+        code_action = {
+          key = "<leader>la",
+          mode = { "n" },
+          options = { desc = "CodeAction" },
+        },
+      },
+    },
+  },
 }
