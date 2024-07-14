@@ -31,7 +31,7 @@ M.config = {
           },
           layout_strategy = "horizontal",
           layout_config = {
-            width = 0.95,
+            width = 0.85,
             height = 0.85,
             prompt_position = "top",
             horizontal = {
@@ -45,8 +45,8 @@ M.config = {
             },
 
             vertical = {
-              width = 0.9,
-              height = 0.95,
+              width = 0.8,
+              height = 0.85,
               preview_height = 0.5,
             },
 

@@ -11,7 +11,6 @@ return {
       on_open = function(win)
         vim.api.nvim_win_set_config(win, { zindex = 100 })
       end,
-      background_color = "#202020",
       minimum_width = 50,
       render = "wrapped-compact",
       stages = "static",
@@ -27,7 +26,6 @@ return {
           -- preview_height = 0.1,
         },
         wrap_results = true,
-        previewer = false,
       }
     end, { noremap = true, silent = true, desc = "Notify Telescope" })
   end,
