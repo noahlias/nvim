@@ -12,7 +12,7 @@ return {
       "n",
       "<leader>my",
       ":Telescope neoclip<CR>",
-      { noremap = true }
+      { noremap = true, desc = "Open Yank History" }
     )
 
     local function is_whitespace(line)

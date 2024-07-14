@@ -46,11 +46,11 @@ local nmappings = {
   { from = "<c-a>", to = "<ESC>A", mode = mode_i },
 
   -- Window & splits
-  { from = "<leader>w", to = "<C-w>w" },
-  { from = "<leader>u", to = "<C-w>k" },
-  { from = "<leader>e", to = "<C-w>j" },
-  { from = "<leader>n", to = "<C-w>h" },
-  { from = "<leader>i", to = "<C-w>l" },
+  { from = "<leader>ww", to = "<C-w>w" },
+  { from = "<leader>wu", to = "<C-w>k" },
+  { from = "<leader>we", to = "<C-w>j" },
+  { from = "<leader>wn", to = "<C-w>h" },
+  { from = "<leader>wi", to = "<C-w>l" },
   { from = "qf", to = "<C-w>o" },
   { from = "s", to = "<nop>" },
   { from = "su", to = ":set nosplitbelow<CR>:split<CR>:set splitbelow<CR>" },
