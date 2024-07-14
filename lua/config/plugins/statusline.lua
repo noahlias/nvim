@@ -58,7 +58,7 @@ return {
   init = function()
     vim.o.laststatus = 0
   end,
-  event = "VeryLazy",
+  event = { "BufNewFile", "BufReadPre" },
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
     { "ofseed/lualine-copilot" },

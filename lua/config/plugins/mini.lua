@@ -3,7 +3,7 @@ return {
   {
     "echasnovski/mini.align",
     version = false,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     config = function()
       require("mini.align").setup()
     end,
@@ -11,7 +11,7 @@ return {
   {
     "echasnovski/mini.trailspace",
     enabled = true,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     version = false,
     config = function()
       local mini = require "mini.trailspace"
@@ -33,7 +33,7 @@ return {
   {
     "echasnovski/mini.splitjoin",
     version = false,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     config = function()
       require("mini.splitjoin").setup {
         mappings = {
@@ -46,7 +46,7 @@ return {
   },
   {
     "echasnovski/mini.move",
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     version = false,
     config = function()
       require("mini.move").setup {
@@ -73,7 +73,7 @@ return {
   {
     "echasnovski/mini.bracketed",
     version = false,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     config = function()
       require("mini.bracketed").setup {
         buffer = { suffix = "b", options = {} },
@@ -96,7 +96,7 @@ return {
   {
     "echasnovski/mini.jump2d",
     version = false,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     config = function()
       require("mini.jump2d").setup {
         mappings = {
@@ -108,7 +108,7 @@ return {
   {
     "echasnovski/mini.jump",
     version = false,
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     config = function()
       require("mini.jump").setup()
     end,
@@ -120,5 +120,15 @@ return {
     config = function()
       require("mini.icons").setup()
     end,
+    -- specs = {
+    --   { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    -- },
+    -- opts = {},
+    -- init = function()
+    --   package.preload["nvim-web-devicons"] = function()
+    --     require("mini.icons").mock_nvim_web_devicons()
+    --     return package.loaded["nvim-web-devicons"]
+    --   end
+    -- end,
   },
 }

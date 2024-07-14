@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "petertriho/nvim-scrollbar",
-  event = "BufEnter",
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "kevinhwang91/nvim-hlslens",
   },

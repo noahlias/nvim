@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "nvim-tree/nvim-web-devicons",
-  event = "VeryLazy",
+  event = { "BufNewFile", "BufReadPre" },
   config = function()
     require("nvim-web-devicons").setup {
       override_by_extension = {

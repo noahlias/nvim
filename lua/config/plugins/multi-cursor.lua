@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "mg979/vim-visual-multi",
-  event = "BufEnter",
+  event = { "BufReadPost", "BufNewFile" },
   init = function()
     vim.cmd [[
 let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}

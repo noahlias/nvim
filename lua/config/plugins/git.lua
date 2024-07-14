@@ -2,7 +2,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     dependencies = "nvim-lua/plenary.nvim",
     keys = {
       {

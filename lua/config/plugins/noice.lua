@@ -1,16 +1,7 @@
 ---@type LazyPluginSpec
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
-  init = function()
-    vim.o.cmdheight = 0
-
-    -- Make sure to load noice when notify is called
-    ---@diagnostic disable-next-line: duplicate-set-field
-    vim.notify = function(...)
-      require("noice").notify(...)
-    end
-  end,
+  event = { "BufNewFile", "BufReadPre" },
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
@@ -71,7 +62,7 @@ return {
         enabled = false,
       },
       hover = {
-        silent = true,
+        enabled = false,
       },
       signature = {
         enabled = false,

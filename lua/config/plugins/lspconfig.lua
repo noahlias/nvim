@@ -7,7 +7,7 @@ M.config = {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
-    event = "Filetype",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       {
         "folke/trouble.nvim",
@@ -28,16 +28,14 @@ M.config = {
       },
       {
         "neovim/nvim-lspconfig",
-        event = {
-          "Filetype",
-        },
+        event = { "BufReadPost", "BufNewFile" },
       },
       {
         "williamboman/mason.nvim",
       },
       { "williamboman/mason-lspconfig.nvim" },
       { "hrsh7th/cmp-nvim-lsp" },
-      { "ray-x/lsp_signature.nvim", event = "VeryLazy" },
+      { "ray-x/lsp_signature.nvim", event = "LspAttach" },
       "b0o/SchemaStore.nvim",
       -- "mjlbach/lsp_signature.nvim",
       { "airblade/vim-rooter" },

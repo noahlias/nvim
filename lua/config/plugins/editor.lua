@@ -148,7 +148,7 @@ return {
     dependencies = {
       "kevinhwang91/promise-async",
     },
-    event = "VeryLazy",
+    event = "BufReadPost",
     opts = {
       -- close_fold_kinds_for_ft = {
       --   default = { "imports" },
@@ -278,7 +278,7 @@ return {
   },
   {
     "luukvbaal/statuscol.nvim",
-    event = "BufEnter",
+    event = { "BufNewFile", "BufReadPre" },
     opts = function()
       ---NOTE: https://github.com/ofseed/nvim/blob/1abfedd821c313eae7e04558ecbd08a1953b055f/lua/plugins/ui/statuscol.lua#L4
       local builtin = require "statuscol.builtin"

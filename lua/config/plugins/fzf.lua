@@ -123,6 +123,16 @@ return {
           layout = "horizontal",
           scrollbar = "float",
         },
+        ---NOTE: ivy layout
+        -- split = "bo new",
+        -- preview = {
+        --   layout = "flex",
+        --   default = "builtin",
+        --   -- scrollbar = "float",
+        --   winopts = {
+        --     split = "vert new",
+        --   },
+        -- },
         -- fullscreen = true,
         vertical = "down:45%", -- up|down:size
         horizontal = "right:60%", -- right|left:size

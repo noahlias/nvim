@@ -2,7 +2,7 @@
 return {
   "Bekaboo/dropbar.nvim",
   event = {
-    "BufRead",
+    "BufReadPre",
     "BufNewFile",
   },
   config = function()
