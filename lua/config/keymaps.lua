@@ -80,7 +80,7 @@ local nmappings = {
   { from = "<leader><CR>", to = ":nohlsearch<CR>" },
   { from = "<f10>", to = ":TSHighlightCapturesUnderCursor<CR>" },
   {
-    from = "<leader>pr",
+    from = "<leader>mr",
     to = ":profile start profile.log<CR>:profile func *<CR>:profile file *<CR>",
   },
   { from = "<leader>re", to = ":e ~/.config/nvim/init.lua<CR>" },

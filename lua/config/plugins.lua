@@ -43,8 +43,6 @@ for _, v in ipairs(lazy_keys) do
   lazy_cmd[v.cmd].key = "<SPC>" .. v.key
   lazy_cmd[v.cmd].key_plugin = "<leader>" .. v.key
 end
-vim.keymap.set("n", "<leader>pl", ":Lazy<CR>", { noremap = true })
-
 ---@type LazyConfig
 require("lazy").setup {
   spec = {

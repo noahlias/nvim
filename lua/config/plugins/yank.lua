@@ -10,7 +10,7 @@ return {
     ---TODO: change this to fzf-lua but telescope has more futures
     vim.keymap.set(
       "n",
-      "<leader>y",
+      "<leader>my",
       ":Telescope neoclip<CR>",
       { noremap = true }
     )

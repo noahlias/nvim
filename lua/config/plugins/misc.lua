@@ -13,6 +13,12 @@ return {
           { "<leader>g", group = "git" },
           { "<leader>gh", group = "hunks" },
           { "<leader>s", group = "search" },
+          { "<leader>'", group = "debugger" },
+          { "<leader>l", group = "lsp" },
+          { "<leader>q", group = "quit" },
+          { "<leader>r", group = "build" },
+          { "<leader>T", group = "test" },
+          { "<leader>m", group = "misc" },
           { "c-w", group = "windows" },
           { "c-g", group = "ai" },
           { "[", group = "prev" },
@@ -597,7 +603,7 @@ return {
       -- toggle keymappings for venn using <leader>v
       vim.api.nvim_set_keymap(
         "n",
-        "<leader>ve",
+        "<leader>mv",
         ":lua Toggle_venn()<CR>",
         { noremap = true, desc = "Toggle venn", silent = true }
       )

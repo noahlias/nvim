@@ -53,7 +53,7 @@ return {
     event = "BufRead",
     keys = {
       {
-        "<leader>fs",
+        "<leader>sf",
         function()
           require("rip-substitute").sub()
         end,
@@ -95,7 +95,7 @@ return {
     },
     keys = {
       {
-        "<leader>F",
+        "<leader>fF",
         mode = "n",
         function()
           require("spectre").toggle()

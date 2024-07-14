@@ -258,7 +258,6 @@ F.configureKeybinds = function()
         nowait = true,
         desc = "Rename",
       })
-      vim.keymap.set("n", "<leader>,", vim.lsp.buf.code_action, opts)
       vim.keymap.set(
         "n",
         "<leader>td",
