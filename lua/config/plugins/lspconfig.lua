@@ -235,7 +235,7 @@ F.configureKeybinds = function()
     callback = function(event)
       local opts = { buffer = event.buf, noremap = true, nowait = true }
 
-      vim.keymap.set("n", "<leader>hh", show_documentation, {
+      vim.keymap.set("n", "<leader>lh", show_documentation, {
         buffer = event.buf,
         noremap = true,
         nowait = true,
@@ -289,7 +289,7 @@ F.configureKeybinds = function()
         }
       )
       -- keymap for toggle inlay hints
-      vim.keymap.set("n", "<leader>lh", function()
+      vim.keymap.set("n", "<leader>li", function()
         vim.lsp.inlay_hint.enable(
           not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf },
           { bufnr = event.buf }

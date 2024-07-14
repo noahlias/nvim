@@ -240,7 +240,7 @@ return {
         desc = "Setup Ufo  with LSP hover",
         callback = function(args)
           local bufnr = args.buf
-          vim.keymap.set("n", "<leader>hh", function()
+          vim.keymap.set("n", "<leader>lh", function()
             local winid = ufo.peekFoldedLinesUnderCursor()
             if not winid then
               vim.lsp.buf.hover()
