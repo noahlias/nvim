@@ -138,6 +138,6 @@
   "vim-zoom": { "branch": "master", "commit": "01c737005312c09e0449d6518decf8cedfee32c7" },
   "vimtex": { "branch": "master", "commit": "80c9bc179784c30192d482741a43f176c859daa1" },
   "virt-column.nvim": { "branch": "master", "commit": "b62b4ef0774d19452d4ed18e473e824c7a756f2f" },
-  "which-key.nvim": { "branch": "main", "commit": "f8a9e777e3b1cd2c0d818f1a0350f39bb73bc1b0" },
+  "which-key.nvim": { "branch": "main", "commit": "9a73d6a0b0d5f456a9768d434a83d6d4cdb83efa" },
   "wildfire.vim": { "branch": "master", "commit": "dfcf48aad2e80c63272df67a1b81e37cbc443412" }
 }
