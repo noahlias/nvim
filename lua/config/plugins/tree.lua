@@ -7,7 +7,7 @@ return {
     require("mini.files").setup()
     vim.keymap.set(
       "n",
-      "<leader>e",
+      "<leader>te",
       "<cmd>lua MiniFiles.open()<CR>",
       { desc = "File Explorer" }
     )

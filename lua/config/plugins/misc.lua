@@ -59,7 +59,7 @@ return {
   },
   {
     "andweeb/presence.nvim",
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     config = function()
       require("presence").setup {
         -- General options
