@@ -2,7 +2,7 @@
 return {
   {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    event = { "BufNewFile", "BufReadPre" },
     enabled = true,
     opts = {
       spec = {
@@ -292,6 +292,7 @@ return {
   },
   {
     "willothy/flatten.nvim",
+    event = { "BufNewFile", "BufReadPost" },
     opts = {
       nest_if_no_args = true,
       window = {
@@ -343,10 +344,8 @@ return {
   },
   {
     "dstein64/vim-startuptime",
+    event = "VeryLazy",
     cmd = { "StartupTime" },
-    init = function()
-      vim.g.startuptime_tries = 10
-    end,
   },
   {
     "utilyre/sentiment.nvim",
@@ -434,14 +433,7 @@ return {
       theme = "catppuccin-mocha",
       config = "full",
     },
-    init = function()
-      vim.keymap.set(
-        "v",
-        "<leader>fr",
-        ":Freeze<cr>",
-        { silent = true, desc = "Freeze selection" }
-      )
-    end,
+    cmd = "Freeze",
   },
   {
     "HakonHarnes/img-clip.nvim",
@@ -473,7 +465,7 @@ return {
   -- },
   {
     "mrcjkb/haskell-tools.nvim",
-    event = "BufRead *.hs",
+    event = { "BufNewFile *.hs", "BufReadPost *.hs" },
     version = "^3", -- Recommended
     lazy = false,
   },
