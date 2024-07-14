@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "canary", "commit": "82923efe22b604cf9c0cad0bb2a74aa9247755ab" },
+  "CopilotChat.nvim": { "branch": "canary", "commit": "6f143f210efd1f16d97c077b945c76b7d5fd0f8b" },
   "DAPInstall.nvim": { "branch": "main", "commit": "8798b4c36d33723e7bba6ed6e2c202f84bb300de" },
   "SchemaStore.nvim": { "branch": "main", "commit": "37274739232b6a888be7c6ca5f1a2d58510a9a84" },
   "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
@@ -55,7 +55,7 @@
   "lualine-copilot": { "branch": "main", "commit": "ea9e7000e82a89aac9d8434675dfed3da4ec1158" },
   "lualine.nvim": { "branch": "master", "commit": "6a40b530539d2209f7dc0492f3681c8c126647ad" },
   "luvit-meta": { "branch": "main", "commit": "ce76f6f6cdc9201523a5875a4471dcfe0186eb60" },
-  "markview.nvim": { "branch": "main", "commit": "fca6d732085c52637a03b594922f8c8e2d831823" },
+  "markview.nvim": { "branch": "main", "commit": "d1b1162544c40071895664eaba903bd663d63208" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "37a336b653f8594df75c827ed589f1c91d91ff6c" },
   "mason.nvim": { "branch": "main", "commit": "f96a31855fa8aea55599cea412fe611b85a874ed" },
   "melange-nvim": { "branch": "master", "commit": "f626d41b9110e6ab853538d8b939979a0f1adfeb" },
