@@ -11,7 +11,7 @@ return {
           { "<leader>t", group = "tabs/terminal/trouble" },
           { "<leader>f", group = "file/find" },
           { "<leader>g", group = "git" },
-          { "<leader>gh", group = "hunks" },
+          { "<leader>gd", group = "git diffview" },
           { "<leader>w", group = "windows" },
           { "<leader>s", group = "search" },
           { "<leader>'", group = "debugger" },
@@ -389,13 +389,17 @@ return {
       "DiffviewFileHistory",
     },
     keys = {
-      { "<leader>gdo", "<Cmd>DiffviewOpen<CR>", desc = "Open" },
-      { "<leader>gdc", "<Cmd>DiffviewClose<CR>", desc = "Close" },
-      { "<leader>gdh", "<Cmd>DiffviewFileHistory<CR>", desc = "Open History" },
+      { "<leader>gdo", "<Cmd>DiffviewOpen<CR>", desc = "GitDiff Open" },
+      { "<leader>gdc", "<Cmd>DiffviewClose<CR>", desc = "GitDiff Close" },
+      {
+        "<leader>gdh",
+        "<Cmd>DiffviewFileHistory<CR>",
+        desc = "GitDiff Open History",
+      },
       {
         "<leader>gdf",
         "<Cmd>DiffviewFileHistory %<CR>",
-        desc = "Current History",
+        desc = "GitDiff Current History",
       },
     },
     opts = function()
