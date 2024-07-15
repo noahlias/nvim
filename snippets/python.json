@@ -1,8 +1,4 @@
 {
-  "main": {
-    "prefix": ["ifm"],
-    "body": ["if __name__ == '__main__':", "  ${0}"]
-  },
   "data science import": {
     "prefix": ["dsi"],
     "body": [
@@ -10,7 +6,7 @@
       "import pandas as pd",
       "import matplotlib.pyplot as plt",
       "import seaborn as sns",
-      " ${0}"
+      "${0}"
     ]
   }
 }
