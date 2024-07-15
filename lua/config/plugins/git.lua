@@ -148,16 +148,18 @@ return {
     "kdheepak/lazygit.nvim",
     event = "VeryLazy",
     cmd = "LazyGit",
-    config = function()
-      vim.g.lazygit_floating_window_scaling_factor = 1.0
-      vim.g.lazygit_floating_window_winblend = 0
-      vim.g.lazygit_use_neovim_remote = true
-      vim.keymap.set(
-        "n",
+    keys = {
+      {
         "<leader>gl",
         ":LazyGit<CR>",
-        { noremap = true, silent = true, desc = "LazyGit" }
-      )
+        desc = "LazyGit",
+      },
+    },
+    config = function()
+      ---NOTE: maybe this will be decrepated by toggleterm
+      vim.g.lazygit_floating_window_scaling_factor = 0.9
+      vim.g.lazygit_floating_window_winblend = 0
+      vim.g.lazygit_use_neovim_remote = true
     end,
   },
   {
