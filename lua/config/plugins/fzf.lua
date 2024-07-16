@@ -77,37 +77,36 @@ return {
       desc = "LSP Workspace Diagnostics",
     },
   },
-  opts = {
-    hls = {
-      normal = "NormalFloat",
-      border = "FloatBorder",
-      title = "FloatTitle",
-      preview_normal = "NormalFloat",
-      preview_border = "FloatBorder",
-      preview_title = "FloatTitle",
-    },
-    fzf_colors = {
-      ["fg"] = { "fg", "CursorLine" },
-      ["bg"] = { "bg", "NormalFloat" },
-      ["hl"] = { "fg", "Statement" },
-      ["fg+"] = { "fg", "NormalFloat" },
-      ["bg+"] = { "bg", "CursorLine" },
-      ["hl+"] = { "fg", "Statement" },
-      ["info"] = { "fg", "PreProc" },
-      ["prompt"] = { "fg", "Conditional" },
-      ["pointer"] = { "fg", "Exception" },
-      ["marker"] = { "fg", "Keyword" },
-      ["spinner"] = { "fg", "Label" },
-      ["header"] = { "fg", "Comment" },
-      ["gutter"] = { "bg", "NormalFloat" },
-    },
-  },
   config = function()
     local fzf = require "fzf-lua"
     fzf.setup {
       "fzf-native",
       global_resume = true,
       global_resume_query = true,
+      hls = {
+        normal = "NormalFloat",
+        border = "FloatBorder",
+        title = "FloatTitle",
+        preview_normal = "NormalFloat",
+        preview_border = "FloatBorder",
+        preview_title = "FloatTitle",
+      },
+      fzf_colors = {
+        ["fg"] = { "fg", "CursorLine" },
+        ["bg"] = { "bg", "NormalFloat" },
+        ["hl"] = { "fg", "Statement" },
+        ["fg+"] = { "fg", "NormalFloat" },
+        ["bg+"] = { "bg", "CursorLine" },
+        ["hl+"] = { "fg", "Statement" },
+        ["info"] = { "fg", "PreProc" },
+        ["prompt"] = { "fg", "Conditional" },
+        ["pointer"] = { "fg", "Exception" },
+        ["marker"] = { "fg", "Keyword" },
+        ["spinner"] = { "fg", "Label" },
+        ["header"] = { "fg", "Comment" },
+        ["gutter"] = { "bg", "NormalFloat" },
+      },
+
       grep = {
         rg_glob = true,
         rg_glob_fn = function(query, _)
