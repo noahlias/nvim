@@ -296,9 +296,9 @@ M.configfunc = function()
           end,
         },
       },
+      { name = "path" },
       { name = "lazydev", group_index = 0 },
     }, {
-      { name = "path" },
       {
         name = "latex_symbols",
         option = {
