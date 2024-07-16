@@ -17,6 +17,23 @@ return {
     end,
   },
   {
+    "chrishrb/gx.nvim",
+    submodules = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "gx",
+        function()
+          vim.cmd.Browse()
+        end,
+      },
+    },
+    cmd = {
+      "Browse",
+    },
+    opts = {},
+  },
+  {
     "chrisgrieser/nvim-early-retirement",
     config = true,
     event = "VeryLazy",
