@@ -21,4 +21,22 @@ return {
     config = true,
     event = "VeryLazy",
   },
+  {
+    "max397574/better-escape.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("better_escape").setup {
+        ---NOTE: only work in insertmode
+        default_mappings = false,
+        mappings = {
+          i = {
+            j = {
+              k = "<Esc>",
+              j = "<Esc>",
+            },
+          },
+        },
+      }
+    end,
+  },
 }
