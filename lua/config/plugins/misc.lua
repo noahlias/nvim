@@ -39,6 +39,9 @@ return {
         t = false, -- Terminal mode
         c = false, -- Command mode
       },
+      disable = {
+        ft = { "lazy" },
+      },
       plugins = {
         marks = true, -- shows a list of your marks on ' and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
