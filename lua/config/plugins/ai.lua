@@ -175,34 +175,20 @@ return {
               .. "```{{filetype}}\n{{selection}}\n```\n\n"
               .. "Please respond by writing table driven unit tests for the code above."
             local agent = gp.get_command_agent()
-            gp.Prompt(
-              params,
-              gp.Target.enew,
-              nil,
-              agent.model,
-              template,
-              agent.system_prompt
-            )
+            gp.Prompt(params, gp.Target.vnew, agent, template)
           end,
           CodeReview = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
               .. "```{{filetype}}\n{{selection}}\n```\n\n"
               .. "Please analyze for code smells and suggest improvements."
             local agent = gp.get_chat_agent()
-            gp.Prompt(
-              params,
-              gp.Target.enew "markdown",
-              nil,
-              agent.model,
-              template,
-              agent.system_prompt
-            )
+            gp.Prompt(params, gp.Target.enew "markdown", agent, template)
           end,
           Translator = function(gp, params)
-            local agent = gp.get_command_agent()
             local chat_system_prompt =
               "You are a Translator, please translate between English and Chinese."
-            gp.cmd.ChatNew(params, agent.model, chat_system_prompt)
+            local agent = gp.get_chat_agent "GithubCopilot"
+            gp.cmd.ChatNew(params, chat_system_prompt, agent)
           end,
         },
       }
