@@ -117,7 +117,7 @@ return {
         agents = {
           {
             name = "ChatDeepseek",
-            chat = false,
+            chat = true,
             provider = "openai",
             command = false,
             model = { model = "deepseek-chat", temperature = 0.1, top_p = 1 },
@@ -125,7 +125,7 @@ return {
           },
           {
             name = "GithubCopilot",
-            chat = true,
+            chat = false,
             provider = "copilot",
             command = true,
             model = { model = "gpt-4", temperature = 0.1, top_p = 1 },
