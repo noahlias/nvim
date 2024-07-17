@@ -16,10 +16,10 @@ return {
           { "<leader>s", group = "search" },
           { "<leader>'", group = "debugger" },
           { "<leader>l", group = "lsp format" },
-          { "<leader>q", group = "quit" },
+          { "<leader>q", group = "session" },
           { "<leader>r", group = "build" },
           { "<leader>T", group = "tests" },
-          { "<leader>m", group = "misc session" },
+          { "<leader>m", group = "misc" },
           { "c-w", group = "windows" },
           { "c-g", group = "ai" },
           { "[", group = "prev" },
@@ -649,5 +649,40 @@ return {
         },
       }
     end,
+  },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    keys = {
+      {
+        "<leader>qs",
+        function()
+          require("persistence").load()
+        end,
+        desc = "Restore Session",
+      },
+      {
+        "<leader>ql",
+        function()
+          require("persistence").load { last = true }
+        end,
+        desc = "Restore Last Session",
+      },
+      {
+        "<leader>qS",
+        function()
+          require("persistence").select()
+        end,
+        desc = "Select Session",
+      },
+      {
+        "<leader>qd",
+        function()
+          require("persistence").stop()
+        end,
+        desc = "Don't Save Current Session",
+      },
+    },
+    opts = {},
   },
 }

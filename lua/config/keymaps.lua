@@ -109,9 +109,9 @@ local function run_vim_shortcut(shortcut)
 end
 
 -- close win below
-vim.keymap.set("n", "<leader>q", function()
+vim.keymap.set("n", "<leader>qq", function()
   local wins = vim.api.nvim_tabpage_list_wins(0)
   if #wins > 1 then
     run_vim_shortcut [[<C-w>j:q<CR>]]
   end
-end, { noremap = true, silent = true })
+end, { desc = "Quit with close", noremap = true, silent = true })
