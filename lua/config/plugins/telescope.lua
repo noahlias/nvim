@@ -101,6 +101,7 @@ M.config = {
         apple_simulator = true,
       }
       ts.load_extension "flutter"
+      ts.load_extension "lazygit"
     end,
   },
 }
