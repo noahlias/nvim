@@ -272,6 +272,7 @@ M.configfunc = function()
           ["copilot-chat"] = "CopilotChat",
           ["vim-dadbod-completion"] = "SQL",
           latex_symbols = "LaTeX",
+          obsidian = "Obsidian",
         }
         local menu_kind = strings[2] or ""
         local menu_source = (menu_table[entry.source.name] or complete_item)
