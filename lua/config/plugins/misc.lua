@@ -30,14 +30,8 @@ return {
         },
       },
       preset = "helix",
-      modes = {
-        n = true, -- Normal mode
-        i = true, -- Insert mode
-        x = false, -- Visual mode
-        s = false, -- Select mode
-        o = true, -- Operator pending mode
-        t = false, -- Terminal mode
-        c = false, -- Command mode
+      triggers = {
+        { "<auto>", mode = "nixsotc" },
       },
       plugins = {
         marks = true, -- shows a list of your marks on ' and `
