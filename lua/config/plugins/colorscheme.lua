@@ -71,6 +71,7 @@ return {
         octo = true,
         symbols_outline = true,
         illuminate = true,
+        nvim_surround = true,
         ufo = false,
         alpha = false,
         which_key = true,
