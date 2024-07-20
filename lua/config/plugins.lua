@@ -106,7 +106,7 @@ require("lazy").setup {
     {
       "gleam-lang/gleam.vim",
       ft = { "gleam" },
-      event = "BufReadPre *.gleam",
+      event = "BufReadPre *.gleam, BufNewFile *.gleam",
     },
     {
       "fladson/vim-kitty",

@@ -22,6 +22,12 @@ return {
           cterm_color = "30",
           name = "Typst",
         },
+        ["gleam"] = {
+          icon = "",
+          color = "#ffaff3",
+          cterm_color = "219",
+          name = "Gleam",
+        },
       },
     }
   end,
