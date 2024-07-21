@@ -91,8 +91,6 @@ local nmappings = {
   -- { from = "R",             to = ":Joshuto<CR>" },
 }
 
-vim.keymap.set("n", "q", "<nop>", { noremap = true })
-vim.keymap.set("n", ",q", "q", { noremap = true })
 for _, mapping in ipairs(nmappings) do
   vim.keymap.set(
     mapping.mode or "n",
@@ -115,3 +113,33 @@ vim.keymap.set("n", "<leader>qq", function()
     run_vim_shortcut [[<C-w>j:q<CR>]]
   end
 end, { desc = "Quit with close", noremap = true, silent = true })
+
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
+  pattern = {
+    -- "PlenaryTestPopup",
+    "grug-far",
+    "help",
+    "lspinfo",
+    "notify",
+    "qf",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+    "neotest-output",
+    "checkhealth",
+    "neotest-summary",
+    "neotest-output-panel",
+    "dbout",
+    "gitsigns.blame",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", {
+      buffer = event.buf,
+      silent = true,
+      desc = "Quit buffer",
+    })
+  end,
+})
