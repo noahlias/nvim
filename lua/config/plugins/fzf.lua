@@ -83,14 +83,6 @@ return {
       "fzf-native",
       global_resume = true,
       global_resume_query = true,
-      hls = {
-        normal = "NormalFloat",
-        border = "FloatBorder",
-        title = "FloatTitle",
-        preview_normal = "NormalFloat",
-        preview_border = "FloatBorder",
-        preview_title = "FloatTitle",
-      },
       fzf_colors = {
         ["fg"] = { "fg", "CursorLine" },
         ["bg"] = { "bg", "NormalFloat" },
