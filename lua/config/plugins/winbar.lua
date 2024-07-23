@@ -7,10 +7,6 @@ return {
   },
   config = function()
     local api = require "dropbar.api"
-    -- vim.keymap.set("n", "<Leader>;", api.pick)
-    -- vim.keymap.set('n', '[c', api.goto_context_start)
-    -- vim.keymap.set('n', ']c', api.select_next_context)
-    --
     local confirm = function()
       local menu = api.get_current_dropbar_menu()
       if not menu then
