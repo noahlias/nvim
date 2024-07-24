@@ -20,8 +20,6 @@ return {
           { "<leader>r", group = "build" },
           { "<leader>T", group = "tests" },
           { "<leader>m", group = "misc" },
-          { "c-w", group = "windows" },
-          { "c-g", group = "ai" },
           { "[", group = "prev" },
           { "]", group = "next" },
           { "g", group = "goto" },
