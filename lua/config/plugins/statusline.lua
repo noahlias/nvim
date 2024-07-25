@@ -43,13 +43,25 @@ local function dap()
   return ""
 end
 
+local function osv()
+  ---@diagnostic disable-next-line: redefined-local
+  local osv = package.loaded["osv"]
+  if osv and osv.is_running() then
+    return "Running as debugger"
+  end
+  return ""
+end
+
 local function dap_or_lsp()
-  if dap() ~= "" then
+  if osv() ~= "" then
+    return osv()
+  elseif dap() ~= "" then
     return dap()
   else
     return lsp()
   end
 end
+
 ---@type LazyPluginSpec
 return {
   "nvim-lualine/lualine.nvim",
@@ -90,7 +102,12 @@ return {
     },
     sections = {
       lualine_a = {
-        { "mode", separator = { left = "" }, right_padding = 2 },
+        {
+          "mode",
+          icon = "",
+          separator = { left = "" },
+          right_padding = 2,
+        },
       },
       lualine_b = {
         { "branch", icon = "" },
@@ -119,9 +136,14 @@ return {
         -- "filesize",
         "filetype",
       },
-      lualine_y = { "diagnostics", "progress" },
+      lualine_y = { "diagnostics", { "progress", icon = "" } },
       lualine_z = {
-        { "location", separator = { right = "" }, left_padding = 2 },
+        {
+          "location",
+          icon = "",
+          separator = { right = "" },
+          left_padding = 2,
+        },
       },
     },
     inactive_sections = {
