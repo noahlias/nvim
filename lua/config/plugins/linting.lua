@@ -16,6 +16,7 @@ return {
     for name, linter in pairs(opts.linters) do
       if type(linter) == "table" and type(lint.linters[name]) == "table" then
         lint.linters[name] =
+          ---@diagnostic disable-next-line: param-type-mismatch
           vim.tbl_deep_extend("force", lint.linters[name], linter)
         if type(linter.prepend_args) == "table" then
           lint.linters[name].args = lint.linters[name].args or {}
@@ -71,7 +72,9 @@ return {
         return linter
           and not (
             type(linter) == "table"
+            ---@diagnostic disable-next-line: undefined-field
             and linter.condition
+            ---@diagnostic disable-next-line: undefined-field
             and not linter.condition(ctx)
           )
       end, names)
