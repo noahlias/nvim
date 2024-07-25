@@ -320,7 +320,7 @@ M.configfunc = function()
           before = require("tailwind-tools.cmp").lspkind_format,
         }(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        kind.kind = " " .. (strings[1] or "") .. " "
+        kind.kind = " " .. (strings[1] or "󰉿") .. " "
         -- HACK: Add some padding to the kind field
         local complete_item = limitStr(entry:get_completion_item().detail or "")
         local menu_table = {
@@ -336,7 +336,7 @@ M.configfunc = function()
           latex_symbols = "LaTeX",
           obsidian = "Obsidian",
         }
-        local menu_kind = strings[2] or ""
+        local menu_kind = strings[2] or "Text"
         local menu_source = (menu_table[entry.source.name] or complete_item)
         local menu = "[" .. menu_source .. "] " .. menu_kind
         kind.menu = menu

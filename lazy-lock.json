@@ -6,7 +6,7 @@
   "antovim": { "branch": "master", "commit": "733d3d12ed034997fa05a3144979864fc0af738e" },
   "bufferline.nvim": { "branch": "main", "commit": "2e3c8cc5a57ddd32f1edd2ffd2ccb10c09421f6c" },
   "bullets.vim": { "branch": "master", "commit": "448ad2a159c5f2540f6c9738f3bb9e6f15a41734" },
-  "catppuccin": { "branch": "main", "commit": "4374588df4e99d403a359cda2ddececcf645d8a9" },
+  "catppuccin": { "branch": "main", "commit": "10eda02ea4faa7d1f94e77a3410a4ae91c25c5f5" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "a8500531c4ed3a207e744a374ea038744a0f93eb" },
   "clear-action.nvim": { "branch": "master", "commit": "2854c3fda5720c7e53b5a9537774fae212224484" },
   "cmake-tools.nvim": { "branch": "master", "commit": "4be3c229fe932043fd83ad52fdf0ba9af7297789" },
