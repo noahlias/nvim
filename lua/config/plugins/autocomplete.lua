@@ -252,12 +252,13 @@ M.configfunc = function()
                 and "Failed to parse snippet,\nbut was able to fix it automatically."
               or ("Failed to parse snippet.\n" .. err)
             -- LazyVim[ok and "warn" or "error"]
-            local log = vim.health[ok and "warn" or "error"]
-            log(
+            vim.notify(
               ([[%s
 ```%s
 %s
 ```]]):format(msg, vim.bo.filetype, snippet),
+              ---@diagnostic disable-next-line: param-type-mismatch
+              ok and "warning" or "error",
               { title = "vim.snippet" }
             )
           end
