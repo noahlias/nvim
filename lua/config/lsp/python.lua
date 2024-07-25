@@ -10,7 +10,6 @@ return {
         },
         python = {
           analysis = {
-            ignore = { "*" },
             typeCheckingMode = "basic",
             inlayHints = {
               callArgumentNames = "partial",
