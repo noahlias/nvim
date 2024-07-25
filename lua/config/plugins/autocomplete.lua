@@ -159,8 +159,62 @@ local function snippet_preview(snippet)
   end)
   return ok and tostring(parsed)
     or snippet_replace(snippet, function(placeholder)
-      return M.snippet_preview(placeholder.text)
+      return snippet_preview(placeholder.text)
     end):gsub("%$0", "")
+end
+
+-- This function replaces nested placeholders in a snippet with LSP placeholders.
+local function snippet_fix(snippet)
+  local texts = {} ---@type table<number, string>
+  return snippet_replace(snippet, function(placeholder)
+    texts[placeholder.n] = texts[placeholder.n]
+      or snippet_preview(placeholder.text)
+    return "${" .. placeholder.n .. ":" .. texts[placeholder.n] .. "}"
+  end)
+end
+---@param entry cmp.Entry
+local function auto_brackets(entry)
+  local cmp = require "cmp"
+  local Kind = cmp.lsp.CompletionItemKind
+  local item = entry:get_completion_item()
+  if vim.tbl_contains({ Kind.Function, Kind.Method }, item.kind) then
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    local prev_char = vim.api.nvim_buf_get_text(
+      0,
+      cursor[1] - 1,
+      cursor[2],
+      cursor[1] - 1,
+      cursor[2] + 1,
+      {}
+    )[1]
+    if prev_char ~= "(" and prev_char ~= ")" then
+      local keys =
+        vim.api.nvim_replace_termcodes("()<left>", false, false, true)
+      vim.api.nvim_feedkeys(keys, "i", true)
+    end
+  end
+end -- This function adds missing documentation to snippets.
+-- The documentation is a preview of the snippet.
+---@param window cmp.CustomEntriesView|cmp.NativeEntriesView
+local function add_missing_snippet_docs(window)
+  local cmp = require "cmp"
+  local Kind = cmp.lsp.CompletionItemKind
+  local entries = window:get_entries()
+  for _, entry in ipairs(entries) do
+    if entry:get_kind() == Kind.Snippet then
+      local item = entry:get_completion_item()
+      if not item.documentation and item.insertText then
+        item.documentation = {
+          kind = cmp.lsp.MarkupKind.Markdown,
+          value = string.format(
+            "```%s\n%s\n```",
+            vim.bo.filetype,
+            snippet_preview(item.insertText)
+          ),
+        }
+      end
+    end
+  end
 end
 
 M.configfunc = function()
@@ -191,14 +245,21 @@ M.configfunc = function()
           local session = vim.snippet.active() and vim.snippet._session or nil
           local ok, err = pcall(vim.snippet.expand, snippet)
           if not ok then
-            local fixed = M.snippet_fix(snippet)
+            local fixed = snippet_fix(snippet)
             ok = pcall(vim.snippet.expand, fixed)
 
             local msg = ok
                 and "Failed to parse snippet,\nbut was able to fix it automatically."
               or ("Failed to parse snippet.\n" .. err)
-
-            vim.notify(msg, "error", { title = "Snippet Error" })
+            -- LazyVim[ok and "warn" or "error"]
+            local log = vim.health[ok and "warn" or "error"]
+            log(
+              ([[%s
+```%s
+%s
+```]]):format(msg, vim.bo.filetype, snippet),
+              { title = "vim.snippet" }
+            )
           end
           if session then
             vim.snippet._session = session
@@ -398,6 +459,15 @@ M.configfunc = function()
       fields = { "kind", "abbr" },
     },
   })
+
+  cmp.event:on("confirm_done", function(event)
+    if vim.tbl_contains({}, vim.bo.filetype) then
+      auto_brackets(event.entry)
+    end
+  end)
+  cmp.event:on("menu_opened", function(event)
+    add_missing_snippet_docs(event.window)
+  end)
 end
 
 return M
