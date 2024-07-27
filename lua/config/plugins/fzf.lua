@@ -3,6 +3,7 @@ return {
   "ibhagwan/fzf-lua",
   cmd = "FzfLua",
   event = "VeryLazy",
+  dependencies = { "echasnovski/mini.icons" },
   keys = {
     {
       "<c-p>",
@@ -194,7 +195,7 @@ return {
         cwd_prompt = false,
         multiprocess = true, -- run command in a separate process
         git_icons = true, -- show git icons?
-        file_icons = true, -- show file icons?
+        file_icons = "mini", -- show file icons?
         color_icons = true, -- colorize file|git icons
         --NOTE: the .git folder should be the working directory
         cwd = require("fzf-lua").path.git_root(nil, true),
