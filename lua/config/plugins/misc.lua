@@ -680,4 +680,13 @@ return {
     },
     opts = {},
   },
+  {
+    "leath-dub/snipe.nvim",
+    event = "VeryLazy",
+    config = function()
+      local snipe = require "snipe"
+      snipe.setup()
+      vim.keymap.set("n", "gb", snipe.toggle_buffer_menu())
+    end,
+  },
 }

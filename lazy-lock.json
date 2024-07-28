@@ -115,6 +115,7 @@
   "rustaceanvim": { "branch": "master", "commit": "2788549b4afab25ca1b8ca9eb24a62403ca280d8" },
   "screenkey.nvim": { "branch": "main", "commit": "6c9b5a8a38d56f425a44bb8e4d3d49e6bb0cfa7d" },
   "sentiment.nvim": { "branch": "main", "commit": "ecde8d877881bb78fdb90060c0991e76770dbdbc" },
+  "snipe.nvim": { "branch": "main", "commit": "1cbcdf34de32c867583af09690a0de6377f0a2a4" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "statuscol.nvim": { "branch": "main", "commit": "d6f7f5437c5404d958b88bb73e0721b1c0e09223" },
   "substitute.nvim": { "branch": "main", "commit": "97f49d16f8eea7967d41db4f657dd63af53eeba1" },
