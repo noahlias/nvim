@@ -28,6 +28,10 @@ return {
     local dashboard = require "alpha.themes.dashboard"
     local theta = require "alpha.themes.theta"
     theta.header.val = default_dashboard
+    theta.header.opts = {
+      hl = "Function",
+      position = "center",
+    }
     theta.buttons.val = {
       {
         type = "text",
