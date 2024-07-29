@@ -58,7 +58,7 @@ return {
           require("rip-substitute").sub()
         end,
         mode = { "n", "x" },
-        desc = "rip substitute",
+        desc = "File Search & Replace",
       },
     },
     config = function()
@@ -88,23 +88,23 @@ return {
       }
     end,
   },
-  {
-    "nvim-pack/nvim-spectre",
-    enabled = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
-      {
-        "<leader>fF",
-        mode = "n",
-        function()
-          require("spectre").toggle()
-        end,
-        desc = "Project find and replace",
-      },
-    },
-  },
+  -- {
+  --   "nvim-pack/nvim-spectre",
+  --   enabled = false,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   keys = {
+  --     {
+  --       "<leader>fF",
+  --       mode = "n",
+  --       function()
+  --         require("spectre").toggle()
+  --       end,
+  --       desc = "Project find and replace",
+  --     },
+  --   },
+  -- },
   {
     "MagicDuck/grug-far.nvim",
     opts = { headerMaxWidth = 80 },
@@ -123,7 +123,7 @@ return {
           }
         end,
         mode = { "n", "v" },
-        desc = "Search and Replace",
+        desc = "Project Search and Replace",
       },
     },
   },

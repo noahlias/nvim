@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "canary", "commit": "8a8a60fea57f5caf9f67d4385c5326669b516027" },
+  "CopilotChat.nvim": { "branch": "canary", "commit": "4a5e07185b37d3132e5541d8fa42aa874b774476" },
   "DAPInstall.nvim": { "branch": "main", "commit": "8798b4c36d33723e7bba6ed6e2c202f84bb300de" },
   "SchemaStore.nvim": { "branch": "main", "commit": "6eb8cee613518fb065d23a81d01eeb42365d59c1" },
   "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
@@ -35,9 +35,9 @@
   "fzf-lua": { "branch": "main", "commit": "0c7cd0169cb8433f4f3b102bf6d4c0c7e0a20446" },
   "git-conflict.nvim": { "branch": "main", "commit": "45cde6f0acf26d0e4b64acfa45349dd1da01e577" },
   "gitsigns.nvim": { "branch": "main", "commit": "f074844b60f9e151970fbcdbeb8a2cd52b6ef25a" },
-  "gleam.vim": { "branch": "main", "commit": "f9e82b70425dc0726ee173ecddf176ffa364e30d" },
+  "gleam.vim": { "branch": "main", "commit": "5bf985a1a98ab00ad6ffc338085b4a4893617e2f" },
   "go.nvim": { "branch": "master", "commit": "0817545e247149e53c4a86f1c228f9733731e264" },
-  "gp.nvim": { "branch": "main", "commit": "048e3016954bc7f4ddb06169862f0333f5de05f2" },
+  "gp.nvim": { "branch": "main", "commit": "df7eb5bd0f85689eac2ce42f0252157a0fd389f3" },
   "grug-far.nvim": { "branch": "main", "commit": "16091184639ca7f2c76734e3a8641d388aebc4e7" },
   "guihua.lua": { "branch": "master", "commit": "225db770e36aae6a1e9e3a65578095c8eb4038d3" },
   "gx.nvim": { "branch": "main", "commit": "d921f21f200113fd3201194aa9dddb033e83768a" },
