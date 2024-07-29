@@ -231,7 +231,6 @@ return {
       local opts = {
         show_fold = false,
         show_help = false,
-        model = "gpt-4",
         auto_follow_cursor = true,
         auto_inert_mode = true,
         question_header = "  " .. vim.g.snips_author .. " ", -- Header to use for user questions
