@@ -237,7 +237,7 @@ return {
         hidden = true,
         direction = "float",
         float_opts = float_opts,
-        on_open = function(term)
+        on_open = function(_)
           vim.cmd "startinsert!"
         end,
         close_on_exit = true,
