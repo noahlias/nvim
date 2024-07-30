@@ -31,7 +31,9 @@ vim.o.formatoptions = vim.o.formatoptions:gsub("tc", "")
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.showmode = false
-vim.o.title = true
+if vim.fn.getenv "TERM_PROGRAM" ~= "WezTerm" then
+  vim.o.title = true
+end
 vim.o.linebreak = true
 vim.o.breakindent = true
 vim.o.ignorecase = true
