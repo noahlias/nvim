@@ -319,7 +319,7 @@ M.configfunc = function()
           symbol_map = utils.complete_icons,
           before = require("tailwind-tools.cmp").lspkind_format,
         }(entry, vim_item)
-        local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        local strings = vim.split(kind.kind or "", "%s", { trimempty = true })
         kind.kind = " " .. (strings[1] or "󰉿") .. " "
         -- HACK: Add some padding to the kind field
         local complete_item = limitStr(entry:get_completion_item().detail or "")
