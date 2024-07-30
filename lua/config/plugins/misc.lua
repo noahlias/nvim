@@ -680,6 +680,7 @@ return {
       floating_window_scaling_factor = 0.85,
       use_ya_for_events_reading = true,
       use_yazi_client_id_flag = true,
+      open_for_directories = true,
       keymaps = {
         replace_in_directory = "<c-q>",
       },
