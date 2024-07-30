@@ -232,16 +232,6 @@ return {
         direction = "float",
         float_opts = float_opts,
       }
-      local yazi = require("toggleterm.terminal").Terminal:new {
-        cmd = "yazi",
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-        on_open = function(term)
-          vim.cmd "startinsert!"
-        end,
-        close_on_exit = true,
-      }
       local serpl = require("toggleterm.terminal").Terminal:new {
         cmd = "serpl",
         hidden = true,
@@ -274,13 +264,6 @@ return {
             gh_dash:toggle()
           end,
           desc = "GitHub Dash",
-        },
-        {
-          "<leader>tn",
-          function()
-            yazi:toggle()
-          end,
-          desc = "File Navigator",
         },
         {
           "<leader>tp",
@@ -688,5 +671,41 @@ return {
       snipe.setup()
       vim.keymap.set("n", "gb", snipe.create_buffer_menu_toggler())
     end,
+  },
+  ---@type LazySpec
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    opts = {
+      floating_window_scaling_factor = 0.85,
+      keymaps = {
+        replace_in_directory = "<c-q>",
+      },
+    },
+    keys = {
+      {
+        "<leader>tn",
+        function()
+          require("yazi").yazi()
+        end,
+        desc = "Open the file manager",
+      },
+      {
+        "<leader>tw",
+        function()
+          require("yazi").yazi(nil, vim.fn.getcwd())
+        end,
+        desc = "Open the file manager working directory",
+      },
+      {
+        "<c-m>",
+        function()
+          -- NOTE: requires a version of yazi that includes
+          -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
+          require("yazi").toggle()
+        end,
+        desc = "Resume the last yazi session",
+      },
+    },
   },
 }
