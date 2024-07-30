@@ -36,7 +36,7 @@ return {
         -- vue = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
-        markdown = { "markdownlint", "autocorrect" },
+        markdown = { "markdownlint", "autocorrect", "prettier" },
         sh = { "shfmt" },
         r = { "my_styler" },
         toml = { "taplo" },
