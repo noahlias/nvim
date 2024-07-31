@@ -234,6 +234,7 @@ M.icons = setmetatable({
 --- autocomplete icons
 M.complete_icons = {
   TypeParameter = " ",
+  Text = " ",
   Codeium = " ",
 }
 
