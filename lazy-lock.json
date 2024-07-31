@@ -38,7 +38,7 @@
   "gleam.vim": { "branch": "main", "commit": "ad6c328d6460763ca6a338183f7f1bd54137ce80" },
   "go.nvim": { "branch": "master", "commit": "86844a54b909f14229342ea540c5b68bddaf8431" },
   "gp.nvim": { "branch": "main", "commit": "df7eb5bd0f85689eac2ce42f0252157a0fd389f3" },
-  "grug-far.nvim": { "branch": "main", "commit": "6b30ef08464903ad6bcc77b906134c90fc1bc44d" },
+  "grug-far.nvim": { "branch": "main", "commit": "f0651a190a6148a1c2a1b62d3727af81fce35d6c" },
   "guihua.lua": { "branch": "master", "commit": "225db770e36aae6a1e9e3a65578095c8eb4038d3" },
   "gx.nvim": { "branch": "main", "commit": "d921f21f200113fd3201194aa9dddb033e83768a" },
   "haskell-tools.nvim": { "branch": "master", "commit": "65d6993eba1a56bbd5211ef13a100d26ce3e644a" },

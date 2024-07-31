@@ -50,6 +50,7 @@ return {
         "<Cmd>edit ~/.config/nvim/init.lua<CR>"
       ),
       dashboard.button("d", "  Database", "<Cmd>DBUIToggle<CR>"),
+      dashboard.button("Space q s", "  Restore Session"),
       dashboard.button("q", "󰅚  Quit", "<Cmd>qa<CR>"),
     }
 
