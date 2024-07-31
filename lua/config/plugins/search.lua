@@ -4,11 +4,7 @@ return {
     "kevinhwang91/nvim-hlslens",
     event = { "BufRead", "BufNewFile" },
     config = function()
-      require("hlslens").setup {
-        build_position_cb = function(plist, _, _, _)
-          require("scrollbar.handlers.search").handler.show(plist.start_pos)
-        end,
-      }
+      require("hlslens").setup {}
       local opts = { noremap = true, silent = true }
       vim.api.nvim_set_keymap(
         "n",
@@ -88,23 +84,6 @@ return {
       }
     end,
   },
-  -- {
-  --   "nvim-pack/nvim-spectre",
-  --   enabled = false,
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   keys = {
-  --     {
-  --       "<leader>fF",
-  --       mode = "n",
-  --       function()
-  --         require("spectre").toggle()
-  --       end,
-  --       desc = "Project find and replace",
-  --     },
-  --   },
-  -- },
   {
     "MagicDuck/grug-far.nvim",
     opts = { headerMaxWidth = 80 },
