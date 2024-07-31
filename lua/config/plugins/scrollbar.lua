@@ -5,7 +5,6 @@ return {
   config = function()
     require("scrollbar").setup {
       show = true,
-      max_lines = 50000,
       handle = {
         text = " ",
         color = "#928374",
@@ -18,7 +17,7 @@ return {
       handlers = {
         cursor = false,
         diagnostic = true,
-        gitsigns = true,
+        gitsigns = false,
         handle = true,
         search = true,
       },
