@@ -142,6 +142,7 @@ return {
     },
     config = function(_, opts)
       require("gitsigns").setup(opts)
+      require("scrollbar.handlers.gitsigns").setup()
     end,
   },
   {
