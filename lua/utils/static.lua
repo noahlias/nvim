@@ -232,10 +232,34 @@ M.icons = setmetatable({
 -- stylua: ignore end
 
 --- autocomplete icons
+--- -- NOTE: inhrerits from lspkind.nvim and add TypeParameter and Codeium
 M.complete_icons = {
   TypeParameter = " ",
-  Text = " ",
   Codeium = " ",
+  Text = "󰉿",
+  Method = "󰆧",
+  Function = "󰊕",
+  Constructor = "",
+  Field = "󰜢",
+  Variable = "󰀫",
+  Class = "󰠱",
+  Interface = "",
+  Module = "",
+  Property = "󰜢",
+  Unit = "󰑭",
+  Value = "󰎠",
+  Enum = "",
+  Keyword = "󰌋",
+  Snippet = "",
+  Color = "󰏘",
+  File = "󰈙",
+  Reference = "󰈇",
+  Folder = "󰉋",
+  EnumMember = "",
+  Constant = "󰏿",
+  Struct = "󰙅",
+  Event = "",
+  Operator = "󰆕",
 }
 
 -- FFI
