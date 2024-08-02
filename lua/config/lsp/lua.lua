@@ -7,17 +7,18 @@ return {
           runtime = {
             version = "LuaJIT",
           },
-          diagnostics = {
-            globals = {
-              "vim",
-              "require",
-            },
+          hint = {
+            enable = true,
+            setType = true,
           },
-          workspace = {
-            checkThirdParty = false,
+          codeLens = {
+            enable = true,
           },
           completion = {
             callSnippet = "Replace",
+            postfix = ".",
+            showWord = "Disable",
+            workspaceWord = false,
           },
         },
       },
