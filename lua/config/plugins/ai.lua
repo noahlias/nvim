@@ -166,6 +166,7 @@ return {
         },
         chat_topic_gen_model = "deepseek-chat",
         style_chat_finder_border = "rounded",
+        chat_template = require("gp.defaults").short_chat_template,
         style_chat_finder_margin_left = 5,
         style_chat_finder_margin_right = 5,
         style_chat_finder_margin_top = 5,
