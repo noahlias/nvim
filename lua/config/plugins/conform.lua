@@ -36,13 +36,21 @@ return {
         -- vue = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
-        markdown = { "markdownlint", "autocorrect", "prettier" },
+        markdown = { "autocorrect", "prettier", "markdownlint-cli2" },
         sh = { "shfmt" },
         r = { "my_styler" },
         toml = { "taplo" },
       },
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --
       formatters = {
+        ["markdownlint-cli2"] = {
+          condition = function(_, ctx)
+            local diag = vim.tbl_filter(function(d)
+              return d.source == "markdownlint"
+            end, vim.diagnostic.get(ctx.buf))
+            return #diag > 0
+          end,
+        },
         isort = {
           command = "/Users/alias/.rye/shims/isort",
         },

@@ -8,10 +8,12 @@ git clone https://github.com/noahlias/nvim.git ~/.config/nvim
 
 ## Description
 
-> [!WARNING] It's only for me to use, but you can use it if you want. It's a
-> simple neovim configuration with a dashboard and some plugins. And the project
-> structure is messy, I'm sorry for that. Because it inherits from the
-> repositories I referenced.
+> [!WARNING]
+>
+> It's only for me to use, but you can use it if you want. It's a simple neovim
+> configuration with a dashboard and some plugins. And the project structure is
+> messy, I'm sorry for that. Because it inherits from the repositories I
+> referenced.
 
 Maybe I can make it better in the future.
 
@@ -21,7 +23,9 @@ There is a plugin `molten.nvim` for data science, you can use it to run python
 code in neovim. But I choose the `vscode` to run jupyter notebook, because it's
 more convenient.
 
-> [!NOTE] Choose the right tool for the right job.
+> [!NOTE]
+>
+> Choose the right tool for the right job.
 
 ## References
 
@@ -42,7 +46,9 @@ They are all great resources to learn from.
 
 ![markview](assets/markview.png)
 
-> [!TIP] Enhanced markdown preview and dashboard.
+> [!TIP]
+>
+> Enhanced markdown preview and dashboard.
 
 ## License
 

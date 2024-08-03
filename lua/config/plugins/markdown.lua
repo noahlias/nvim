@@ -9,11 +9,22 @@ return {
     end,
   },
   {
-    "OXY2DEV/markview.nvim",
-    ft = { "markdown" },
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
+    "MeanderingProgrammer/markdown.nvim",
+    opts = {
+      file_types = { "markdown", "norg", "rmd", "org" },
+      code = {
+        sign = false,
+        width = "block",
+        right_pad = 1,
+      },
+      heading = {
+        sign = false,
+        icons = {},
+      },
     },
-    opts = {},
+    ft = { "markdown", "norg", "rmd", "org" },
+    config = function(_, opts)
+      require("render-markdown").setup(opts)
+    end,
   },
 }
