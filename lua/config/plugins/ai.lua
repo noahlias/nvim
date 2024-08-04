@@ -128,7 +128,7 @@ return {
             chat = false,
             provider = "copilot",
             command = true,
-            model = { model = "gpt-4", temperature = 0.1, top_p = 1 },
+            model = { model = "gpt-4o", temperature = 0.1, top_p = 1 },
             system_prompt = system_prompt,
           },
           {
@@ -150,6 +150,30 @@ return {
             command = true,
             model = {
               model = "qwen2",
+              temperature = 0.1,
+              top_p = 1,
+            },
+            system_prompt = system_prompt,
+          },
+          {
+            name = "Gemma2",
+            chat = true,
+            provider = "ollama",
+            command = true,
+            model = {
+              model = "gemma2:9b",
+              temperature = 0.1,
+              top_p = 1,
+            },
+            system_prompt = system_prompt,
+          },
+          {
+            name = "CodeQwen",
+            chat = true,
+            provider = "ollama",
+            command = true,
+            model = {
+              model = "codeqwen",
               temperature = 0.1,
               top_p = 1,
             },

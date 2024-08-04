@@ -6,7 +6,7 @@ return {
     events = { "BufWritePost", "BufReadPost", "InsertLeave" },
     linters_by_ft = {
       python = { "mypy" },
-      markdown = { "markdownlint-cli2" },
+      -- markdown = { "markdownlint-cli2" },
       yaml = { "github_action_lint" },
     },
     linters = {
