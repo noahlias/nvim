@@ -7,7 +7,7 @@ return {
     signs_on_startup = {
       "conflicts",
       -- "cursor",
-      "diagnostics",
+      -- "diagnostics",
       "folds",
       "loclist",
       "marks",
