@@ -242,6 +242,13 @@ return {
         end,
         close_on_exit = true,
       }
+      local bili = require("toggleterm.terminal").Terminal:new {
+        cmd = "bili",
+        hidden = true,
+        direction = "float",
+        float_opts = float_opts,
+        close_on_exit = true,
+      }
 
       return {
         { "<C-\\>" },
@@ -271,6 +278,13 @@ return {
             serpl:toggle()
           end,
           desc = "Search And Replace",
+        },
+        {
+          "<leader>tb",
+          function()
+            bili:toggle()
+          end,
+          desc = "Bili Danmaku",
         },
       }
     end,
