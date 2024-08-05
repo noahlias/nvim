@@ -161,7 +161,7 @@ return {
             provider = "ollama",
             command = true,
             model = {
-              model = "gemma2:9b",
+              model = "gemma2:2b",
               temperature = 0.1,
               top_p = 1,
             },
