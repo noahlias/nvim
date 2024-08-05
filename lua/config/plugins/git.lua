@@ -189,8 +189,32 @@ return {
     event = { "BufNewFile", "BufReadPre" },
     opts = {
       symbols = {
-        merge_commit = "M",
-        commit = "*",
+        merge_commit = "",
+        commit = "",
+        merge_commit_end = "",
+        commit_end = "",
+
+        -- Advanced symbols
+        GVER = "",
+        GHOR = "",
+        GCLD = "",
+        GCRD = "╭",
+        GCLU = "",
+        GCRU = "",
+        GLRU = "",
+        GLRD = "",
+        GLUD = "",
+        GRUD = "",
+        GFORKU = "",
+        GFORKD = "",
+        GRUDCD = "",
+        GRUDCU = "",
+        GLUDCD = "",
+        GLUDCU = "",
+        GLRDCL = "",
+        GLRDCR = "",
+        GLRUCL = "",
+        GLRUCR = "",
       },
       format = {
         timestamp = "%H:%M:%S %d-%m-%Y",
@@ -212,7 +236,7 @@ return {
       {
         "<leader>gg",
         function()
-          require("gitgraph").draw({}, { all = true, max_count = 5000 })
+          require("gitgraph").draw({}, { all = true, max_count = 2000 })
         end,
         desc = "GitGraph - Draw",
       },
