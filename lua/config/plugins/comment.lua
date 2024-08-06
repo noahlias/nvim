@@ -8,6 +8,7 @@ return {
       zig = "// %s",
       css = "/* %s */",
       gleam = "// %s",
+      http = "# %s",
       graphql = "# %s",
       hcl = "# %s",
       html = "<!-- %s -->",
