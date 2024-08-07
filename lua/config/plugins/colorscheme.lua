@@ -29,13 +29,6 @@ return {
           TelescopePromptTitle = { fg = color.base, bg = color.red },
           TelescopeResultsTitle = { fg = color.mantle, bg = color.lavender },
 
-          --- fzf-lua overrides
-          FzfLuaTitle = { fg = color.base, bg = color.blue },
-          FzfLuaPreviewTitle = { fg = color.base, bg = color.green },
-          FzfLuaBorder = { fg = color.blue, bg = "NONE" },
-          FzfLuaPreviewBorder = { fg = "#806d9c", bg = "NONE" },
-          FzfLuaSearch = { fg = color.base, bg = color.red },
-
           ---nvim-bqf overrides
           BqfPreviewFloat = { bg = color.base, fg = color.text },
         }
@@ -65,6 +58,7 @@ return {
         gitsigns = false,
         noice = true,
         notify = true,
+        fzf = true,
         overseer = true,
         neotest = true,
         treesitter_context = true,
