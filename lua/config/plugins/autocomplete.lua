@@ -320,7 +320,11 @@ M.configfunc = function()
           before = require("tailwind-tools.cmp").lspkind_format,
         }(entry, vim_item)
         local strings = vim.split(kind.kind or "", "%s", { trimempty = true })
-        kind.kind = " " .. (strings[1] or "󰉿") .. " "
+        if utils.complete_icons[vim_item.kind] then
+          kind.kind = " " .. (strings[1] or "󰉿") .. " "
+        else
+          kind.kind = " 󰉿 "
+        end
         -- HACK: Add some padding to the kind field
         local complete_item = limitStr(entry:get_completion_item().detail or "")
         local menu_table = {
