@@ -151,7 +151,7 @@ return {
           },
           {
             name = "GithubCopilot",
-            chat = false,
+            chat = true,
             provider = "copilot",
             command = true,
             model = { model = "gpt-4o", temperature = 0.1, top_p = 1 },
