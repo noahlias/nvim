@@ -92,6 +92,16 @@ return {
               "websites/deepseek.com/noahlias",
             },
           },
+          github_llm = {
+            endpoint = "https://models.inference.ai.azure.com/chat/completions",
+            secret = {
+              "gopass",
+              "show",
+              "-f",
+              "-o",
+              "websites/github.com/noahlias",
+            },
+          },
           copilot = {
             endpoint = "https://api.githubcopilot.com/chat/completions",
             secret = {
@@ -121,6 +131,22 @@ return {
             provider = "openai",
             command = false,
             model = { model = "deepseek-chat", temperature = 0.1, top_p = 1 },
+            system_prompt = system_prompt,
+          },
+          {
+            name = "GithubGpt4o",
+            chat = true,
+            provider = "github_llm",
+            command = true,
+            model = { model = "gpt-4o", temperature = 0.1, top_p = 1 },
+            system_prompt = system_prompt,
+          },
+          {
+            name = "GithubGpt4o-mini",
+            chat = true,
+            provider = "github_llm",
+            command = true,
+            model = { model = "gpt-4o-mini", temperature = 0.1, top_p = 1 },
             system_prompt = system_prompt,
           },
           {
