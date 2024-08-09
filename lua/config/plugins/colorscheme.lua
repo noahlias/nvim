@@ -59,6 +59,7 @@ return {
         noice = true,
         notify = true,
         fzf = true,
+        dadbod_ui = true,
         overseer = true,
         neotest = true,
         treesitter_context = true,
