@@ -587,10 +587,11 @@ return {
       )
     end,
   },
-  -- NOTE: wonderful toggle plugin
+  ---NOTE: not useful
   {
     "xiyaowong/transparent.nvim",
     cmd = "TransparentToggle",
+    enabled = false,
     opts = {
       extra_groups = {
         "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
