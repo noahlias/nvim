@@ -31,7 +31,7 @@
   "flutter-tools.nvim": { "branch": "main", "commit": "3c22e5d173367d6f12c84e19d0d8a1ed596cf2a1" },
   "freeze.nvim": { "branch": "main", "commit": "6460f282b01d4dafd69fbd8d4a38da56572227bc" },
   "friendly-snippets": { "branch": "main", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
-  "fzf": { "branch": "master", "commit": "303d04106a4bb8914080a2ac1162f2d2acf2d97e" },
+  "fzf": { "branch": "master", "commit": "e28f5aa45baf20ffdba469e11a998d3016c8cb42" },
   "fzf-lua": { "branch": "main", "commit": "64a305a2490e48c44be9f5a489e01b995dd58c92" },
   "git-conflict.nvim": { "branch": "main", "commit": "45cde6f0acf26d0e4b64acfa45349dd1da01e577" },
   "gitsigns.nvim": { "branch": "main", "commit": "562dc47189ad3c8696dbf460d38603a74d544849" },
@@ -146,5 +146,5 @@
   "virt-column.nvim": { "branch": "master", "commit": "b62b4ef0774d19452d4ed18e473e824c7a756f2f" },
   "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" },
   "wildfire.vim": { "branch": "master", "commit": "dfcf48aad2e80c63272df67a1b81e37cbc443412" },
-  "yazi.nvim": { "branch": "main", "commit": "46bac67b86c7e70539a946b4e2bededd6779932d" }
+  "yazi.nvim": { "branch": "main", "commit": "9ac5eaf27099864c7e4d408ecd2ddf638f8f3325" }
 }

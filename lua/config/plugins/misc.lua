@@ -677,6 +677,7 @@ return {
       use_ya_for_events_reading = true,
       use_yazi_client_id_flag = true,
       open_for_directories = true,
+      open_multiple_tabs = true,
       keymaps = {
         replace_in_directory = "<c-q>",
       },
