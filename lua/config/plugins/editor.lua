@@ -27,8 +27,10 @@ return {
         large_file_cutoff = 10000,
         should_enable = function(bufnr)
           local win = vim.fn.bufwinid(bufnr)
+          local filetype = vim.bo[bufnr].filetype
           -- Very bad performance in diff-mode
-          if vim.wo[win].diff then
+          -- NOTE: disable illuminate in alpha buffer
+          if vim.wo[win].diff or filetype == "alpha" then
             return false
           end
           return true
