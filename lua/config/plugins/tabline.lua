@@ -66,7 +66,7 @@ return {
           separator = true,
         },
         {
-          filetype = "gitsigns.blame",
+          filetype = "gitsigns-blame",
           text = "Git Blame",
           text_align = "center",
           separator = true,
