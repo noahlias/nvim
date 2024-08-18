@@ -676,9 +676,6 @@ return {
       floating_window_scaling_factor = 0.85,
       -- open_for_directories = true,
       open_multiple_tabs = true,
-      keymaps = {
-        replace_in_directory = "<c-q>",
-      },
     },
     keys = {
       {
