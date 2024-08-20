@@ -7,6 +7,11 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   opts = {
     options = {
+      hover = {
+        enabled = true,
+        delay = 0,
+        reveal = { "close" },
+      },
       mode = "tabs",
       diagnostics = "nvim_lsp",
       diagnostics_indicator = function(count, level, _, _)
@@ -24,10 +29,9 @@ return {
       -- always_show_bufferline = false,
       enforce_regular_tabs = true,
       show_duplicate_prefix = false,
+      always_show_bufferline = true,
+      sort_by = "tabs",
       -- separator_style = "thick",
-      tab_size = 16,
-      padding = 0,
-      sort_by = "tabs" or "insert_after_current",
       offsets = {
         {
           filetype = "copilot-chat",
