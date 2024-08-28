@@ -674,7 +674,7 @@ return {
     event = "VeryLazy",
     opts = {
       floating_window_scaling_factor = 0.85,
-      -- open_for_directories = true,
+      open_for_directories = true,
       open_multiple_tabs = true,
     },
     keys = {
