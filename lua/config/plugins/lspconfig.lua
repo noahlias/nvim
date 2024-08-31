@@ -149,7 +149,6 @@ M.config = {
           "typescriptreact",
           "vue",
           "svelte",
-          "tmpl",
         },
       }
       lspconfig.ruff.setup {
