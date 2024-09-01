@@ -29,6 +29,7 @@ M.config = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-calc",
     "hrsh7th/cmp-cmdline",
+    "micangl/cmp-vimtex",
     "kdheepak/cmp-latex-symbols",
     "lukas-reineke/cmp-under-comparator",
     {
@@ -337,6 +338,7 @@ M.configfunc = function()
           calc = "Calc",
           crates = "Crates",
           cmdline = "CmdLine",
+          vimtex = "VimTeX",
           ["copilot-chat"] = "CopilotChat",
           ["vim-dadbod-completion"] = "SQL",
           latex_symbols = "LaTeX",
@@ -377,6 +379,7 @@ M.configfunc = function()
           strategy = 2, -- latex
         },
       },
+      { name = "vimtex" },
       { name = "calc" },
       { name = "crates" },
       { name = "vim-dadbod-completion" },
