@@ -24,7 +24,6 @@ local opts = {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     jdtls.setup_dap { hotcodereplace = "auto" }
-    require("jdtls.setup").add_commands()
   end,
   init_options = {
     bundles = {
