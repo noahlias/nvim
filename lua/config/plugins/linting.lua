@@ -8,6 +8,7 @@ return {
       python = { "mypy" },
       -- markdown = { "markdownlint-cli2" },
       yaml = { "github_action_lint" },
+      sql = { "sqlfluff" },
     },
     linters = {
       github_action_lint = {
