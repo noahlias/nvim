@@ -136,7 +136,7 @@
   "vim-dadbod-completion": { "branch": "master", "commit": "880f7e9f2959e567c718d52550f9fae1aa07aa81" },
   "vim-dadbod-ui": { "branch": "master", "commit": "aa003f514ba0b1250ba0f284f031d011bb9e83e8" },
   "vim-flog": { "branch": "master", "commit": "e7a0e9f6f26d154b1e550de94414ea71e354c563" },
-  "vim-fugitive": { "branch": "master", "commit": "1d18c696c4284e9ce9467a5c04d3adf8af43f994" },
+  "vim-fugitive": { "branch": "master", "commit": "d4877e54cef67f5af4f950935b1ade19ed6b7370" },
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vim-instant-markdown": { "branch": "master", "commit": "2913d5fd8357bd5f57de842f01d914bd35fe7b14" },
   "vim-kitty": { "branch": "main", "commit": "9cc594a634308aa3bfaf3da5b5e741da1c0144c1" },

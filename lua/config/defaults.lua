@@ -164,3 +164,11 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 
 vim.cmd [[autocmd TermOpen term://* startinsert]]
 vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
+
+vim.filetype.add {
+  extension = {
+    c3 = "c3",
+    c3i = "c3",
+    c3t = "c3",
+  },
+}

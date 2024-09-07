@@ -10,6 +10,15 @@ return {
       "LiadOz/nvim-dap-repl-highlights",
     },
     config = function()
+      local parser_config =
+        require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.c3 = {
+        install_info = {
+          url = "https://github.com/c3lang/tree-sitter-c3",
+          files = { "src/parser.c", "src/scanner.c" },
+          branch = "main",
+        },
+      }
       require("nvim-dap-repl-highlights").setup()
       ---@diagnostic disable-next-line: missing-fields
       require("nvim-treesitter.configs").setup {
