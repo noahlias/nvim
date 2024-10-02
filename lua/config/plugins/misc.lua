@@ -250,6 +250,13 @@ return {
         close_on_exit = true,
       }
 
+      local lowfi = require("toggleterm.terminal").Terminal:new {
+        cmd = "lowfi",
+        hidden = true,
+        direction = "float",
+        float_opts = float_opts,
+        close_on_exit = true,
+      }
       return {
         { "<C-\\>" },
         {
@@ -283,6 +290,13 @@ return {
           "<leader>tb",
           function()
             bili:toggle()
+          end,
+          desc = "Bili Danmaku",
+        },
+        {
+          "<leader>ti",
+          function()
+            lowfi:toggle()
           end,
           desc = "Bili Danmaku",
         },
