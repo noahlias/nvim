@@ -717,4 +717,18 @@ return {
       },
     },
   },
+  { "nvchad/volt", lazy = true },
+  {
+    "nvchad/minty",
+    lazy = true,
+    keys = {
+      {
+        "<leader>mc",
+        function()
+          require("minty.huefy").open()
+        end,
+        desc = "Open color picker",
+      },
+    },
+  },
 }
