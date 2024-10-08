@@ -122,6 +122,8 @@ M.config = {
       lspconfig.svelte.setup {}
       ---bashls
       lspconfig.bashls.setup {}
+      --kulala_ls
+      lspconfig.kulala_ls.setup {}
 
       lspconfig.ocamllsp.setup {
         settings = {
