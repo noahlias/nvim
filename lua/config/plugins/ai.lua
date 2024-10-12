@@ -415,7 +415,7 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
-    enabled = false,
+    enabled = true,
     version = false, -- set this if you want to always pull the latest change
     opts = {
       -- add any opts here
@@ -430,7 +430,7 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "echasnovski/mini.icons",
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
