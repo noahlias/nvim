@@ -12,7 +12,7 @@ return {
     priority = 1000,
     opts = {
       term_colors = true,
-      transparent_background = true,
+      transparent_background = false,
       custom_highlights = function(color)
         return {
           MsgSeparator = { bg = color.mantle },
@@ -56,7 +56,6 @@ return {
           color = "red",
         },
         gitsigns = false,
-        kitty = false,
         noice = true,
         notify = true,
         fzf = true,
