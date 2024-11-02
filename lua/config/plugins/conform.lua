@@ -2,6 +2,16 @@
 return {
   "stevearc/conform.nvim",
   event = "VeryLazy",
+  keys = {
+    {
+      "<leader>fo",
+      function()
+        require("conform").format { lsp_fallback = true, async = true }
+      end,
+      desc = "Format Document",
+      mode = { "n", "v" },
+    },
+  },
   config = function()
     require("conform").setup {
       format_on_save = function(bufnr)
@@ -53,13 +63,13 @@ return {
           end,
         },
         isort = {
-          command = "/Users/alias/.rye/shims/isort",
+          command = "~/.rye/shims/isort",
         },
         black = {
-          command = "/Users/alias/.rye/shims/black",
+          command = "~/.rye/shims/black",
         },
         ruff = {
-          command = "/Users/alias/.rye/shims/ruff",
+          command = "~/.rye/shims/ruff",
         },
         my_styler = {
           command = "R",
