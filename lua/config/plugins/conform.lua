@@ -20,6 +20,9 @@ return {
         if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
           return
         end
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
         return { timeout_ms = 1000, lsp_format = "fallback" }
       end,
       formatters_by_ft = {
