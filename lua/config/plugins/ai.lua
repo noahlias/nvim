@@ -154,7 +154,11 @@ return {
             chat = true,
             provider = "copilot",
             command = true,
-            model = { model = "gpt-4o", temperature = 0.1, top_p = 1 },
+            model = {
+              model = "claude-3.5-sonnet",
+              temperature = 0.1,
+              top_p = 1,
+            },
             system_prompt = system_prompt,
           },
           {
