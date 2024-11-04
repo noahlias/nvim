@@ -7,6 +7,7 @@ return {
       cpp = "// %s",
       zig = "// %s",
       css = "/* %s */",
+      ql = "/* %s */",
       gleam = "// %s",
       http = "# %s",
       graphql = "# %s",
