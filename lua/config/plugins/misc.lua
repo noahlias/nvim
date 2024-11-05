@@ -738,6 +738,8 @@ return {
   },
   {
     "3rd/diagram.nvim",
+    event = "VeryLazy",
+    ft = "markdown",
     dependencies = {
       "3rd/image.nvim",
     },
