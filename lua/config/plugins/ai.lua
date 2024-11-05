@@ -174,12 +174,12 @@ return {
             system_prompt = system_prompt,
           },
           {
-            name = "Qwen2",
+            name = "Qwen2.5",
             chat = true,
             provider = "ollama",
             command = true,
             model = {
-              model = "qwen2",
+              model = "qwen2.5",
               temperature = 0.1,
               top_p = 1,
             },
