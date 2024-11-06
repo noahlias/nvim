@@ -745,4 +745,12 @@ return {
     },
     opts = {},
   },
+  {
+    "fei6409/log-highlight.nvim",
+    event = "VeryLazy",
+    ft = "log",
+    config = function()
+      require("log-highlight").setup {}
+    end,
+  },
 }

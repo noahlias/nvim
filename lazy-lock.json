@@ -54,6 +54,7 @@
   "lazygit.nvim": { "branch": "main", "commit": "56760339a81cd1540d5a72fd9d93010a2677b55d" },
   "lean.nvim": { "branch": "main", "commit": "de515ccaf139f766087b0fa38af30e1bfa448ee7" },
   "leetcode.nvim": { "branch": "master", "commit": "6a2e54ff13027fb3ce46b61a0e721eccc020ec80" },
+  "log-highlight.nvim": { "branch": "main", "commit": "cd948cad8150475ac1ace5515d0ae206a9aad3f2" },
   "lsp-zero.nvim": { "branch": "v3.x", "commit": "56db3d5ce5476b183783160e6045f7337ba12b83" },
   "lsp_signature.nvim": { "branch": "master", "commit": "fc38521ea4d9ec8dbd4c2819ba8126cea743943b" },
   "lspkind.nvim": { "branch": "master", "commit": "a700f1436d4a938b1a1a93c9962dc796afbaef4d" },
