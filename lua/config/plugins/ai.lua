@@ -428,6 +428,12 @@ return {
         model = "claude-3.5-sonnet",
         -- max_tokens = 4096,
       },
+      windows = {
+        width = 40,
+        sidebar_header = {
+          enabled = false, -- true, false to enable/disable the header
+        },
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
