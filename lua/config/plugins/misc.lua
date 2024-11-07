@@ -424,6 +424,12 @@ return {
         hooks = {
           diff_buf_win_enter = function(_, winid)
             vim.wo[winid].wrap = false
+            vim.opt_local.foldlevel = 99
+            vim.opt_local.foldenable = false
+          end,
+          diff_buf_read = function(_)
+            vim.opt_local.foldlevel = 99
+            vim.opt_local.foldenable = false
           end,
         },
         keymaps = {
