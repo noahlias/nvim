@@ -428,6 +428,7 @@ return {
         model = "claude-3.5-sonnet",
         -- max_tokens = 4096,
       },
+      hints = { enabled = false },
       windows = {
         width = 40,
         sidebar_header = {
