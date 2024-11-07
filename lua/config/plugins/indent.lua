@@ -38,6 +38,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
     enabled = true,
+    pin = true,
     opts = {
       indent = {
         char = "▏", -- Thiner, not suitable when enable scope
