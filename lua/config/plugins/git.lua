@@ -193,6 +193,7 @@ return {
       graph_style = "kitty",
       integrations = {
         diffview = true,
+        fzf_lua = true,
       },
       sections = {
         stashes = {
