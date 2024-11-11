@@ -8,5 +8,9 @@
       "import seaborn as sns",
       "${0}"
     ]
+  },
+  "type ignore": {
+    "prefix": ["ti"],
+    "body": ["# type: ignore"]
   }
 }
