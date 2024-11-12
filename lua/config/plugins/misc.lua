@@ -615,13 +615,7 @@ return {
   {
     "NStefan002/screenkey.nvim",
     cmd = "Screenkey",
-    opts = {
-      win_opts = {
-        ---NOTE: fix the position conflict with which-key
-        row = 10,
-        border = "rounded",
-      },
-    },
+    opts = {},
   },
   {
     "mistweaverco/kulala.nvim",
