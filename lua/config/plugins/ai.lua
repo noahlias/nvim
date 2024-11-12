@@ -420,12 +420,13 @@ return {
     event = "VeryLazy",
     -- lazy = false,
     enabled = true,
-    version = false, -- set this if you want to always pull the latest change
     opts = {
       -- add any opts here
       provider = "copilot",
       copilot = {
         model = "claude-3.5-sonnet",
+        --- NOTE: it will hang my neovim process fuck you !
+        timeout = 10000,
         -- max_tokens = 4096,
       },
       hints = { enabled = false },
