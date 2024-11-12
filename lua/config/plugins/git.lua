@@ -167,6 +167,7 @@ return {
     "akinsho/git-conflict.nvim",
     event = "VeryLazy",
     opts = {
+      disable_diagnostics = true,
       default_mappings = {
         ours = "co",
         theirs = "ct",
