@@ -15,6 +15,7 @@ return {
     },
     opts = {
       attach_to_untracked = true,
+      word_diff = true,
       preview_config = {
         border = "rounded",
       },
