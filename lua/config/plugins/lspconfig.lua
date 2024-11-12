@@ -132,6 +132,13 @@ M.config = {
           inlayHints = { enable = true },
         },
       }
+
+      -- NOTE: This language server is not working properly
+      -- lspconfig.taplo.setup {
+      --   settings = {},
+      --   filetypes = { "toml" },
+      --   root_dir = require("lspconfig.util").root_pattern("*.toml", ".git"),
+      -- }
       lspconfig.tinymist.setup {
         single_file_support = true,
         root_dir = function()
