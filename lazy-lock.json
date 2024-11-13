@@ -35,7 +35,7 @@
   "freeze.nvim": { "branch": "main", "commit": "6460f282b01d4dafd69fbd8d4a38da56572227bc" },
   "friendly-snippets": { "branch": "main", "commit": "de8fce94985873666bd9712ea3e49ee17aadb1ed" },
   "fzf": { "branch": "master", "commit": "215ab48222ac5fa8855c1e5bbf56742276b57324" },
-  "fzf-lua": { "branch": "main", "commit": "6fbf7a9ee29e1e3e4cfd1af5c6406042e776883d" },
+  "fzf-lua": { "branch": "main", "commit": "8af7f00a11fbeb33a88cf95c951460eb8b1fb531" },
   "git-conflict.nvim": { "branch": "main", "commit": "4dc906855751096aaeba2edde7c2cdc7bb881c98" },
   "gitsigns.nvim": { "branch": "main", "commit": "4daf7022f1481edf1e8fb9947df13bb07c18e89a" },
   "gleam.vim": { "branch": "main", "commit": "ad6c328d6460763ca6a338183f7f1bd54137ce80" },
