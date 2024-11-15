@@ -1,4 +1,4 @@
-vim.cmd "setlocal colorcolumn=81"
+vim.cmd "setlocal colorcolumn=101"
 
 vim.opt_local.shiftwidth = 4
 vim.opt_local.softtabstop = 4
