@@ -1,10 +1,10 @@
 {
   "CopilotChat.nvim": { "branch": "canary", "commit": "76bfba5cd8915ff55554e0649809bec0207b6a83" },
   "DAPInstall.nvim": { "branch": "main", "commit": "8798b4c36d33723e7bba6ed6e2c202f84bb300de" },
-  "SchemaStore.nvim": { "branch": "main", "commit": "8ae7ed5b8a58ad36136d9b440205cef552bd0e41" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "f8d6e9068861888651f68958521b1958314aac41" },
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "antovim": { "branch": "master", "commit": "733d3d12ed034997fa05a3144979864fc0af738e" },
-  "avante.nvim": { "branch": "main", "commit": "839a8ee25a84f813545440c4c798edd25bfd68a9" },
+  "avante.nvim": { "branch": "main", "commit": "8bbcd64550fa4c5c709e9e5e1bf415e701b8f04e" },
   "bufferline.nvim": { "branch": "main", "commit": "5c528bee3dd797d5bd6bae5f229411939b25b203" },
   "bullets.vim": { "branch": "master", "commit": "2253f970e54320dbd76fd6bb4f5a0bf2436ce232" },
   "catppuccin": { "branch": "main", "commit": "637d99e638bc6f1efedac582f6ccab08badac0c6" },
