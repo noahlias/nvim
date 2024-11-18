@@ -291,6 +291,10 @@ return {
         question_header = "  " .. vim.g.snips_author .. " ", -- Header to use for user questions
         answer_header = "  Copilot ", -- Header to use for AI answers
         error_header = "", -- Header to use for errors
+        chat_autocomplete = true,
+        model = "claude-3.5-sonnet",
+        log_level = "info",
+        context = "buffer",
         window = {
           border = "rounded",
           width = 0.45,
@@ -340,7 +344,6 @@ return {
       })
 
       require("CopilotChat").setup(opts)
-      require("CopilotChat.integrations.cmp").setup()
     end,
     keys = {
       -- Show prompts actions with telescope
@@ -468,9 +471,9 @@ return {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
-          file_types = { "markdown", "Avante" },
+          file_types = { "markdown", "Avante", "copilot-chat" },
         },
-        ft = { "markdown", "Avante" },
+        ft = { "markdown", "Avante", "copilot-chat" },
       },
     },
   },
