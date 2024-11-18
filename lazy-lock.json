@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "canary", "commit": "d177720ad3a0880f3b077c6fffd3dc0975363862" },
+  "CopilotChat.nvim": { "branch": "canary", "commit": "78901925c9742b8f56a74adcaa36ffb425ecb735" },
   "DAPInstall.nvim": { "branch": "main", "commit": "8798b4c36d33723e7bba6ed6e2c202f84bb300de" },
   "SchemaStore.nvim": { "branch": "main", "commit": "a7ad1f6205500d1369382e2e43df4e60eeae7cb6" },
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
@@ -85,7 +85,7 @@
   "nvim-autopairs": { "branch": "master", "commit": "b464658e9b880f463b9f7e6ccddd93fb0013f559" },
   "nvim-bqf": { "branch": "main", "commit": "1b24dc6050c34e8cd377b6b4cd6abe40509e0187" },
   "nvim-cmp": { "branch": "main", "commit": "f17d9b4394027ff4442b298398dfcaab97e40c4f" },
-  "nvim-colorizer.lua": { "branch": "master", "commit": "f134063618a65cad4d7415fddbd96ff7e0c5b4ae" },
+  "nvim-colorizer.lua": { "branch": "master", "commit": "22a3b4c70641802587a6a0994894225e7815398b" },
   "nvim-dap": { "branch": "master", "commit": "29d1f8814fa4fcc194ec574de998a42a22ebbe4a" },
   "nvim-dap-go": { "branch": "main", "commit": "6aa88167ea1224bcef578e8c7160fe8afbb44848" },
   "nvim-dap-python": { "branch": "master", "commit": "3e3dd98d4d83715c9e0e429b4a5da7bd706e6ceb" },
