@@ -448,7 +448,8 @@ return {
     event = "VeryLazy",
     opts = {
       theme = "catppuccin-mocha",
-      config = "user",
+      config = "full",
+      ["font.family"] = "JetBrainsMono Nerd Font",
     },
     cmd = "Freeze",
   },
