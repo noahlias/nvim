@@ -80,7 +80,7 @@ return {
           -- adds `$n` to the `replace` line.
           autoCaptureGroups = false,
         },
-        notificationOnSuccess = true,
+        notification = { OnSuccess = true },
       }
     end,
   },
