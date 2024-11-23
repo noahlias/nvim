@@ -752,4 +752,32 @@ return {
       require("log-highlight").setup {}
     end,
   },
+  {
+    "linux-cultist/venv-selector.nvim",
+    event = "VeryLazy",
+    branch = "regexp",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-telescope/telescope.nvim",
+      "mfussenegger/nvim-dap-python",
+    },
+    config = function()
+      require("venv-selector").setup {
+        -- Your options go here
+        -- name = "venv",
+        -- auto_refresh = false
+        stay_on_this_version = true,
+        settings = {
+          search = {
+            cwd = false,
+            anaconda_base = {
+              command = "fd /bin/python$ /opt/Homebrew/Caskroom/miniforge/base/ --full-path --color never -E /proc -E /pkgs/ -I -a -L",
+              type = "anaconda",
+            },
+          },
+        },
+      }
+    end,
+    cmd = { "VenvSelect", "VenvSelectCached" },
+  },
 }
