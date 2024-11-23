@@ -756,6 +756,7 @@ return {
     "linux-cultist/venv-selector.nvim",
     event = "VeryLazy",
     branch = "regexp",
+    ft = "python",
     dependencies = {
       "neovim/nvim-lspconfig",
       "nvim-telescope/telescope.nvim",
@@ -778,6 +779,5 @@ return {
         },
       }
     end,
-    cmd = { "VenvSelect", "VenvSelectCached" },
   },
 }
