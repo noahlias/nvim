@@ -68,6 +68,7 @@ return {
         illuminate = true,
         nvim_surround = true,
         grug_far = true,
+        copilot_vim = true,
         ufo = false,
         alpha = false,
         which_key = true,
