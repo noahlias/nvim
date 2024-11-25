@@ -29,7 +29,7 @@ return {
           "dap_repl",
           "dart",
           "dockerfile",
-          "gitingore",
+          "gitignore",
           "go",
           "haskell",
           "html",
