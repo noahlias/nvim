@@ -15,12 +15,44 @@ return {
   config = function()
     require("conform").setup {
       format_on_save = function(bufnr)
-        ---NOTE: disable autoformat for minifiles
-        local ignore_filetypes = { "minifiles" }
-        if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+        if
+          vim.g.disable_autoformat == false
+          and vim.b[bufnr].disable_autoformat == false
+        then
+          return { timeout_ms = 1000, lsp_format = "fallback" }
+        end
+
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        -- Get disabled workspace paths from environment variables
+        local function get_disabled_workspaces()
+          local paths = {}
+          -- Read from NVIM_DISABLED_FORMAT_PATHS environment variable
+          -- Paths should be separated by colons (:) like PATH variable
+          local env_paths = vim.env.NVIM_DISABLED_FORMAT_PATHS
+          if env_paths then
+            for path in string.gmatch(env_paths, "[^:]+") do
+              -- Expand ~ to home directory if present
+              path = path:gsub("^~", vim.env.HOME or "")
+              table.insert(paths, path)
+            end
+          end
+          return paths
+        end
+
+        -- Check if current file is in a disabled workspace
+        local current_file = vim.api.nvim_buf_get_name(bufnr)
+        local disabled_workspaces = get_disabled_workspaces()
+        for _, path in ipairs(disabled_workspaces) do
+          if current_file:find(path, 1, true) then
+            return
+          end
+        end
+        ---NOTE: disable autoformat for minifiles
+
+        local ignore_filetypes = { "minifiles" }
+        if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
           return
         end
         return { timeout_ms = 1000, lsp_format = "fallback" }
