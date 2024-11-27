@@ -189,3 +189,7 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
   desc = "Re-enable autoformat-on-save",
 })
+
+vim.api.nvim_create_user_command("ReplaceNewline", function()
+  vim.cmd [[%s/\\n/\r/g]]
+end, { desc = "Replace \\n with a newline character" })
