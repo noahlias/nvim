@@ -29,6 +29,8 @@ vim.o.foldmethod = "indent"
 -- vim.o.foldlevelstart = 99
 vim.o.formatoptions = vim.o.formatoptions:gsub("tc", "")
 vim.o.splitright = true
+vim.o.sessionoptions =
+  "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.o.splitbelow = true
 vim.o.showmode = false
 if vim.fn.getenv "TERM_PROGRAM" ~= "WezTerm" then
