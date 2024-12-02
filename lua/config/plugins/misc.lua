@@ -707,7 +707,13 @@ return {
     dependencies = {
       "3rd/image.nvim",
     },
-    opts = {},
+    opts = {
+      renderer_options = {
+        plantuml = {
+          charset = "utf-8",
+        },
+      },
+    },
   },
   {
     "fei6409/log-highlight.nvim",
