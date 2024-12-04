@@ -649,7 +649,35 @@ return {
         desc = "Open Snipe buffer menu",
       },
     },
-    opts = {},
+    opts = {
+      ui = {
+        max_height = -1, -- -1 means dynamic height
+        -- Where to place the ui window
+        -- Can be any of "topleft", "bottomleft", "topright", "bottomright", "center", "cursor" (sets under the current cursor pos)
+        position = "topleft",
+        -- Override options passed to `nvim_open_win`
+        -- Be careful with this as snipe will not validate
+        -- anything you override here. See `:h nvim_open_win`
+        -- for config options
+        open_win_override = {
+          -- title = "My Window Title",
+          border = "rounded", -- use "rounded" for rounded border
+        },
+
+        -- Preselect the currently open buffer
+        preselect_current = false,
+
+        -- Set a function to preselect the currently open buffer
+        -- E.g, `preselect = require("snipe").preselect_by_classifier("#")` to
+        -- preselect alternate buffer (see :h ls and look at the "Indicators")
+        preselect = nil, -- function (bs: Buffer[] [see lua/snipe/buffer.lua]) -> int (index)
+
+        -- Changes how the items are aligned: e.g. "<tag> foo    " vs "<tag>    foo"
+        -- Can be "left", "right" or "file-first"
+        -- NOTE: "file-first" buts the file name first and then the directory name
+        text_align = "left",
+      },
+    },
   },
   ---@type LazySpec
   {
