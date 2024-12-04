@@ -31,9 +31,7 @@ return {
       "mfussenegger/nvim-dap-python",
       ft = { "python" },
       config = function()
-        require("dap-python").setup(
-          -- vim.fs.joinpath(require("mason-registry").get_package("debugpy"):get_install_path(), "venv/bin/python")
-        )
+        require("dap-python").setup "python3"
         --- NOTE: This is for Python
         table.insert(require("dap").configurations.python, {
           name = "Launch file with repl highlights",
@@ -41,6 +39,29 @@ return {
           request = "launch",
           program = "${file}",
           repl_lang = "python",
+        })
+        table.insert(require("dap").configurations.python, {
+          type = "python",
+          request = "attach",
+          name = "Remote Python: Attach",
+          port = 5678,
+          host = "127.0.0.1",
+          mode = "remote",
+          cwd = vim.fn.getcwd(),
+          pathMappings = {
+            {
+              localRoot = function()
+                return vim.fn.input(
+                  "Local code folder > ",
+                  vim.fn.getcwd(),
+                  "file"
+                )
+              end,
+              remoteRoot = function()
+                return vim.fn.input("Container code folder > ", "/", "file")
+              end,
+            },
+          },
         })
       end,
     },
