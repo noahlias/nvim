@@ -781,7 +781,8 @@ return {
   },
   {
     "rmagatti/auto-session",
-    lazy = false,
+    event = "VeryLazy",
+    -- lazy = false,
     keys = {
       -- Will use Telescope if installed or a vim.ui.select picker otherwise
       { "<leader>sr", "<cmd>SessionSearch<CR>", desc = "Session search" },
@@ -800,6 +801,7 @@ return {
       -- The following are already the default values, no need to provide them if these are already the settings you want.
       bypass_save_filetypes = { "alpha", "dashboard" },
       suppressed_dirs = { "~/Downloads", "/" },
+      auto_restore = false,
       session_lens = {
         -- If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first
         load_on_setup = true,
