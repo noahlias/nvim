@@ -9,6 +9,25 @@ end
 --- @type LazyPluginSpec
 return {
   "mfussenegger/nvim-dap",
+  init = function()
+    vim.fn.sign_define(
+      "DapBreakpoint",
+      { text = "", texthl = "DiagnosticError" }
+    )
+    vim.fn.sign_define(
+      "DapBreakpointCondition",
+      { text = "", texthl = "DiagnosticError" }
+    )
+    vim.fn.sign_define(
+      "DapLogPoint",
+      { text = "", texthl = "DiagnosticInfo" }
+    )
+    vim.fn.sign_define(
+      "DapStopped",
+      { text = "", texthl = "Constant", linehl = "debugPC" }
+    )
+    vim.fn.sign_define("DapBreakpointRejected", { text = "" })
+  end,
   dependencies = {
     {
       "ravenxrz/DAPInstall.nvim",
@@ -92,13 +111,6 @@ return {
   },
   keys = {
     {
-      "<leader>'t",
-      function()
-        require("dap").toggle_breakpoint()
-      end,
-      desc = "Toggle breakpoint",
-    },
-    {
       "<leader>'v",
       function()
         require("dap.ui.widgets").hover()
@@ -119,6 +131,50 @@ return {
         require("dap").step_over()
       end,
       desc = "Step over",
+    },
+    --step into
+    {
+      "<leader>'i",
+      function()
+        require("dap").step_into()
+      end,
+      desc = "Step into",
+    },
+    -- step out
+    {
+      "<leader>'o",
+      function()
+        require("dap").step_out()
+      end,
+      desc = "Step out",
+    },
+    {
+      "<leader>'b",
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      desc = "Toggle breakpoint",
+    },
+    {
+      "<leader>'r",
+      function()
+        require("dap").repl.toggle()
+      end,
+      desc = "Toggle repl",
+    },
+    {
+      "<leader>'l",
+      function()
+        require("dap").run_last()
+      end,
+      desc = "Run last",
+    },
+    {
+      "<leader>'d",
+      function()
+        require("dap").disconnect()
+      end,
+      desc = "Disconnect",
     },
     {
       "<leader>'q",
@@ -142,52 +198,6 @@ return {
     dapui.setup()
     require("nvim-dap-virtual-text").setup {}
 
-    vim.api.nvim_set_hl(
-      0,
-      "DapBreakpoint",
-      { ctermbg = 0, fg = "#993939", bg = "#31353f" }
-    )
-    vim.api.nvim_set_hl(
-      0,
-      "DapLogPoint",
-      { ctermbg = 0, fg = "#61afef", bg = "#31353f" }
-    )
-    vim.api.nvim_set_hl(
-      0,
-      "DapStopped",
-      { ctermbg = 0, fg = "#ffffff", bg = "#FE3C25" }
-    )
-
-    vim.fn.sign_define("DapBreakpoint", {
-      text = "",
-      texthl = "DapBreakpoint",
-      linehl = "DapBreakpoint",
-      numhl = "DapBreakpoint",
-    })
-    vim.fn.sign_define("DapBreakpointCondition", {
-      text = "ﳁ",
-      texthl = "DapBreakpoint",
-      linehl = "DapBreakpoint",
-      numhl = "DapBreakpoint",
-    })
-    vim.fn.sign_define("DapBreakpointRejected", {
-      text = "",
-      texthl = "DapBreakpoint",
-      linehl = "DapBreakpoint",
-      numhl = "DapBreakpoint",
-    })
-    vim.fn.sign_define("DapLogPoint", {
-      text = "",
-      texthl = "DapLogPoint",
-      linehl = "DapLogPoint",
-      numhl = "DapLogPoint",
-    })
-    vim.fn.sign_define("DapStopped", {
-      text = "",
-      texthl = "DapStopped",
-      linehl = "DapStopped",
-      numhl = "DapStopped",
-    })
     -- NOTE: this plugin for neovim debug
     dap.defaults.fallback.external_terminal = {
       command = "/Applications/kitty.app/Contents/MacOS/kitty",
