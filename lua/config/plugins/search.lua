@@ -90,7 +90,7 @@ return {
     cmd = "GrugFar",
     keys = {
       {
-        "<leader>sr",
+        "<leader>sg",
         function()
           local is_visual = vim.fn.mode():lower():find "v"
           if is_visual then -- needed to make visual selection work

@@ -706,25 +706,17 @@ return {
     keys = {
       {
         "<leader>tn",
-        function()
-          require("yazi").yazi()
-        end,
+        "<cmd>Yazi<cr>",
         desc = "Open the file manager",
       },
       {
         "<leader>tw",
-        function()
-          require("yazi").yazi(nil, vim.fn.getcwd())
-        end,
+        "<cmd>Yazi cwd<cr>",
         desc = "Open the file manager working directory",
       },
       {
         "<c-m>",
-        function()
-          -- NOTE: requires a version of yazi that includes
-          -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
-          require("yazi").toggle()
-        end,
+        "<cmd>Yazi toggle<cr>",
         desc = "Resume the last yazi session",
       },
     },
