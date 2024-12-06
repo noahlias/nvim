@@ -148,6 +148,7 @@ return {
   {
     "kdheepak/lazygit.nvim",
     event = "VeryLazy",
+    enabled = false,
     cmd = "LazyGit",
     keys = {
       {

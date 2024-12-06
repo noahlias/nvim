@@ -257,6 +257,14 @@ return {
         float_opts = float_opts,
         close_on_exit = true,
       }
+      --- lazygit
+      local lazygit = require("toggleterm.terminal").Terminal:new {
+        cmd = "lazygit",
+        hidden = true,
+        direction = "float",
+        float_opts = float_opts,
+        close_on_exit = true,
+      }
       return {
         { "<C-\\>" },
         {
@@ -264,6 +272,13 @@ return {
           "<Cmd>ToggleTermToggleAll<CR>",
           mode = "n",
           desc = "All Terminal",
+        },
+        {
+          "<leader>gl",
+          function()
+            lazygit:toggle()
+          end,
+          desc = "Lazy Git",
         },
         {
           "<leader>tl",
