@@ -40,7 +40,7 @@ return {
           highlight = "CopilotChatHeader",
         },
         {
-          filetype = "Outline",
+          filetype = "aerial",
           text = "Outline",
           text_align = "center",
           separator = true,

@@ -90,6 +90,7 @@ return {
           "gitsigns.blame",
           "leetcode.nvim",
           "undotree",
+          "aerial",
         },
       },
       always_divide_middle = true,
