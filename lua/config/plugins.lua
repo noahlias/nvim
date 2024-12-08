@@ -103,12 +103,6 @@ require("lazy").setup {
     require "config.plugins.comment",
     require "config.plugins.octo",
     require "config.plugins.tailwind",
-    -- NOTE: This plugin use for my personal use
-    {
-      "gleam-lang/gleam.vim",
-      ft = { "gleam" },
-      event = "BufReadPre *.gleam, BufNewFile *.gleam",
-    },
     {
       "fladson/vim-kitty",
       event = { "BufReadPre kitty.conf" },

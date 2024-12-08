@@ -55,6 +55,12 @@ return {
           "vimdoc",
           "yaml",
           "zig",
+          "ocaml",
+          "odin",
+          "glsl",
+          "gleam",
+          "julia",
+          "r",
         },
         highlight = {
           enable = true,
