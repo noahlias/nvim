@@ -20,6 +20,9 @@ return {
             showWord = "Disable",
             workspaceWord = false,
           },
+          diagnostics = {
+            disable = { "missing-fields" },
+          },
         },
       },
     }
