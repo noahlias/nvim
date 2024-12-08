@@ -331,7 +331,7 @@ return {
   {
     "3rd/image.nvim",
     enabled = true,
-    ft = { "markdown", "text", "typ", "norg" },
+    ft = { "markdown", "text", "norg" },
     init = function()
       package.path = package.path
         .. ";"
@@ -359,6 +359,10 @@ return {
           download_remote_images = true,
           only_render_image_at_cursor = true,
           filetypes = { "norg" },
+        },
+        typst = {
+          enabled = false,
+          filetypes = { "typst" },
         },
       },
       max_width = 100,
