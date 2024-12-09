@@ -106,6 +106,9 @@ return {
         {
           "mode",
           icon = "",
+          fmt = function(mode)
+            return mode:sub(1, 3):upper()
+          end,
           separator = { left = "" },
           right_padding = 2,
         },
