@@ -12,7 +12,7 @@ return {
           analysis = {
             typeCheckingMode = "basic",
             inlayHints = {
-              callArgumentNames = "partial",
+              callArgumentNames = "off",
               functionReturnTypes = true,
               pytestParameters = true,
               variableTypes = true,
