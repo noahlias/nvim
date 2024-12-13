@@ -19,8 +19,10 @@ return {
         require "neotest-go",
         require "neotest-python" {
           dap = {
-            -- justMyCode = false,
+            justMyCode = false,
           },
+          runner = "pytest",
+          pytest_discover_instances = true,
         },
         require "neotest-zig" {
           dap = {

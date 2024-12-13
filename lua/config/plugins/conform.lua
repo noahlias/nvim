@@ -81,6 +81,7 @@ return {
         -- vue = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
+        just = { "just" },
         markdown = { "autocorrect", "prettier", "markdownlint-cli2" },
         sh = { "shfmt" },
         r = { "my_styler" },
