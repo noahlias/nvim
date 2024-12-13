@@ -779,6 +779,7 @@ return {
         -- name = "venv",
         -- auto_refresh = false
         stay_on_this_version = true,
+        dap_enabled = true,
         settings = {
           search = {
             cwd = false,
