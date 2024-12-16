@@ -61,6 +61,7 @@ return {
           "gleam",
           "julia",
           "r",
+          "just",
         },
         highlight = {
           enable = true,
