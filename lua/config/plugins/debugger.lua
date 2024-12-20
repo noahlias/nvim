@@ -62,6 +62,15 @@ return {
         table.insert(require("dap").configurations.python, {
           type = "python",
           request = "attach",
+          name = "Local Python: Attach",
+          port = 5678,
+          host = "127.0.0.1",
+          cwd = vim.fn.getcwd(),
+        })
+
+        table.insert(require("dap").configurations.python, {
+          type = "python",
+          request = "attach",
           name = "Remote Python: Attach",
           port = 5678,
           host = "127.0.0.1",
