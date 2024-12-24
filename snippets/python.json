@@ -12,5 +12,9 @@
   "type ignore": {
     "prefix": ["ti"],
     "body": ["# type: ignore"]
+  },
+  "async def": {
+    "prefix": ["adef"],
+    "body": ["async def ${1:function_name}(${2:args}):", "\t${0}"]
   }
 }
