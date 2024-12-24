@@ -141,7 +141,7 @@ M.config = {
               spell_check = true,
               spelled_numbers = false,
               an_a = true,
-              sentence_capitalization = true,
+              sentence_capitalization = false,
               unclosed_quotes = true,
               wrong_quotes = false,
               long_sentences = true,
@@ -154,9 +154,6 @@ M.config = {
               linking_verbs = false,
               avoid_curses = true,
               terminating_conjunctions = true,
-            },
-            codeActions = {
-              forceStable = true,
             },
           },
         },
