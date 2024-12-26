@@ -838,4 +838,5 @@ return {
     },
   },
   -- lua with lazy.nvim
+  { "wakatime/vim-wakatime", event = "VeryLazy" },
 }
