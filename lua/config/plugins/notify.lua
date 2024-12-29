@@ -12,13 +12,13 @@ return {
         vim.api.nvim_win_set_config(win, { zindex = 100 })
       end,
       minimum_width = 50,
-      render = "wrapped-compact",
+      render = "wrapped-default",
       stages = "static",
       timeout = 3000,
       top_down = true,
     }
     vim.keymap.set("n", ",;", function()
-      require("telescope").extensions.notify.notify {
+      require("notify.integrations.fzf").open {
         layout_strategy = "vertical",
         layout_config = {
           width = 0.7,
@@ -27,6 +27,6 @@ return {
         },
         wrap_results = true,
       }
-    end, { noremap = true, silent = true, desc = "Notify Telescope" })
+    end, { noremap = true, silent = true, desc = "Notify Fzf" })
   end,
 }
