@@ -86,7 +86,6 @@ return {
         sh = { "shfmt" },
         r = { "my_styler" },
         toml = { "taplo" },
-        sql = { "sqlfluff" },
       },
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --
       formatters = {
