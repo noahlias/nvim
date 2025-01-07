@@ -127,7 +127,7 @@ return {
         agents = {
           {
             name = "ChatDeepseek",
-            chat = true,
+            chat = false,
             provider = "openai",
             command = false,
             model = { model = "deepseek-chat", temperature = 0.1, top_p = 1 },
@@ -167,7 +167,7 @@ return {
             provider = "googleai",
             command = true,
             model = {
-              model = "gemini-1.5-pro-latest",
+              model = "gemini-2.0-flash-exp",
               temperature = 0.1,
               top_p = 1,
             },
@@ -179,31 +179,7 @@ return {
             provider = "ollama",
             command = true,
             model = {
-              model = "qwen2.5",
-              temperature = 0.1,
-              top_p = 1,
-            },
-            system_prompt = system_prompt,
-          },
-          {
-            name = "Gemma2",
-            chat = true,
-            provider = "ollama",
-            command = true,
-            model = {
-              model = "gemma2:2b",
-              temperature = 0.1,
-              top_p = 1,
-            },
-            system_prompt = system_prompt,
-          },
-          {
-            name = "CodeQwen",
-            chat = true,
-            provider = "ollama",
-            command = true,
-            model = {
-              model = "codeqwen",
+              model = "qwen2.5-coder",
               temperature = 0.1,
               top_p = 1,
             },
@@ -211,7 +187,7 @@ return {
           },
           {
             name = "CodeDeepseek",
-            chat = false,
+            chat = true,
             command = true,
             provider = "openai",
             model = { model = "deepseek-coder", temperature = 0.8, top_p = 1 },
@@ -278,6 +254,7 @@ return {
     branch = "main",
     event = "VeryLazy",
     cmd = "CopilotChat",
+    build = "make tiktoken",
     dependencies = {
       { "github/copilot.vim" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -334,6 +311,12 @@ return {
         "CopilotChatSeparator",
         { fg = "#7a8d76", bg = "none" }
       )
+      vim.api.nvim_set_hl(
+        0,
+        "CopilotChatHeader",
+        { fg = "#89b4fb", bg = "none" }
+      )
+
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = "copilot-chat",
         callback = function()
