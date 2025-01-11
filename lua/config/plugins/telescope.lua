@@ -91,16 +91,13 @@ M.config = {
           },
         },
       }
-      ts.load_extension "neoclip"
       ts.load_extension "simulators"
-      ts.load_extension "noice"
 
       require("simulators").setup {
         android_emulator = false,
         apple_simulator = true,
       }
       ts.load_extension "flutter"
-      -- ts.load_extension "lazygit"
     end,
   },
 }

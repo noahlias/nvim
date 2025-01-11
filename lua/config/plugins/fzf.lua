@@ -158,7 +158,6 @@ return {
       previewers = {
         bat = {
           cmd = "bat",
-          theme = "gruvbox-dark",
           args = "--color=always --style=numbers,changes",
         },
         head = {

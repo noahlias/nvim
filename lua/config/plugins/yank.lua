@@ -3,16 +3,15 @@ return {
   "AckslD/nvim-neoclip.lua",
   event = "VeryLazy",
   dependencies = {
-    "nvim-telescope/telescope.nvim",
+    "ibhagwan/fzf-lua",
     { "kkharji/sqlite.lua", module = "sqlite" },
   },
   config = function()
-    ---TODO: change this to fzf-lua but telescope has more futures
     vim.keymap.set(
       "n",
       "<leader>my",
-      ":Telescope neoclip<CR>",
-      { noremap = true, desc = "Open Yank History" }
+      ":lua require('neoclip.fzf')()<CR>",
+      { noremap = true, desc = "Open Yank History", silent = true }
     )
 
     local function is_whitespace(line)
@@ -34,16 +33,11 @@ return {
         return not all(data.event.regcontents, is_whitespace)
       end,
       keys = {
-        telescope = {
-          i = {
-            select = "<c-y>",
-            paste = "<cr>",
-            paste_behind = "<c-g>",
-            replay = "<c-q>", -- replay a macro
-            delete = "<c-d>", -- delete an entry
-            edit = "<c-k>", -- edit an entry
-            custom = {},
-          },
+        fzf = {
+          select = "default",
+          paste = "ctrl-p",
+          paste_behind = "ctrl-k",
+          custom = {},
         },
       },
     }

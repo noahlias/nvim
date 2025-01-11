@@ -87,6 +87,12 @@ return {
           text_align = "center",
           separator = true,
         },
+        {
+          filetype = "octo",
+          text = "Octo",
+          text_align = "center",
+          separator = true,
+        },
       },
     },
   },
