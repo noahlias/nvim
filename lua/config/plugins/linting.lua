@@ -9,6 +9,7 @@ return {
       -- markdown = { "markdownlint-cli2" },
       yaml = { "github_action_lint" },
       sql = { "sqlfluff" },
+      mysql = { "sqlfluff" },
     },
     linters = {
       github_action_lint = {

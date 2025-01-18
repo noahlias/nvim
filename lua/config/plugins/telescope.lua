@@ -91,6 +91,7 @@ M.config = {
           },
         },
       }
+      ts.load_extension "noice"
       ts.load_extension "simulators"
 
       require("simulators").setup {

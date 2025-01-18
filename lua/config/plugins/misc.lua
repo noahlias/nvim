@@ -755,6 +755,15 @@ return {
         plantuml = {
           charset = "utf-8",
         },
+        mermaid = {
+          theme = "forest",
+        },
+        d2 = {
+          theme_id = 1,
+        },
+        gnuplot = {
+          theme = "light",
+        },
       },
     },
   },
