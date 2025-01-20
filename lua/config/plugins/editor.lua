@@ -328,6 +328,7 @@ return {
   {
     "luckasRanarison/clear-action.nvim",
     event = "VeryLazy",
+    pin = true,
     opts = {
       signs = { enable = false },
       mappings = {

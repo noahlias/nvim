@@ -137,6 +137,13 @@ M.config = {
         filetypes = { "markdown", "norg", "text" },
         settings = {
           ["harper-ls"] = {
+            codeActions = {
+              forceStable = true,
+            },
+            markdown = {
+              ignore_link_title = true,
+            },
+            isolateEnglish = false,
             linters = {
               spell_check = true,
               spelled_numbers = false,
