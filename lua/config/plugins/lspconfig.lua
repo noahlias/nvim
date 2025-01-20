@@ -134,12 +134,18 @@ M.config = {
       }
 
       lspconfig.harper_ls.setup {
-        filetypes = { "markdown", "norg", "text" },
+        filetypes = {
+          "markdown",
+          "python",
+          "go",
+          "c",
+          "rust",
+          "haskell",
+          "typ",
+          "lua",
+        },
         settings = {
           ["harper-ls"] = {
-            codeActions = {
-              forceStable = true,
-            },
             markdown = {
               ignore_link_title = true,
             },
