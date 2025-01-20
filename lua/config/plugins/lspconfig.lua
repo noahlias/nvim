@@ -141,7 +141,7 @@ M.config = {
           "c",
           "rust",
           "haskell",
-          "typ",
+          "typst",
           "lua",
         },
         settings = {
