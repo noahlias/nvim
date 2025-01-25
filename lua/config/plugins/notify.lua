@@ -12,7 +12,7 @@ return {
         vim.api.nvim_win_set_config(win, { zindex = 100 })
       end,
       minimum_width = 50,
-      render = "wrapped-default",
+      render = "simple",
       stages = "static",
       timeout = 3000,
       top_down = true,
