@@ -197,7 +197,7 @@ return {
         file_icons = "mini", -- show file icons?
         color_icons = true, -- colorize file|git icons
         --NOTE: the .git folder should be the working directory
-        cwd = require("fzf-lua").path.git_root(nil, true),
+        cwd = require("fzf-lua").path.git_root({}, true),
         -- executed command priority is 'cmd' (if exists)
         cmd = "fd --type f -H --exclude='.git'",
         find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
