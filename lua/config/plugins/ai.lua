@@ -409,6 +409,14 @@ return {
     opts = {
       -- add any opts here
       provider = "copilot",
+      vendors = {
+        deepseek = {
+          __inherited_from = "openai",
+          api_key_name = "cmd:gopass show -f -o websites/deepseek.com/noahlias",
+          endpoint = "https://api.deepseek.com",
+          model = "deepseek-coder",
+        },
+      },
       copilot = {
         model = "claude-3.5-sonnet",
         --- NOTE: it will hang my neovim process fuck you !
