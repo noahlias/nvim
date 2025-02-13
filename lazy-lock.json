@@ -114,7 +114,7 @@
   "octo.nvim": { "branch": "master", "commit": "940d7af617015fd5c65f707a267d3daa29be480e" },
   "outline.nvim": { "branch": "main", "commit": "6c44527837ff7ac1cd054dc365a721e881020a2e" },
   "overseer.nvim": { "branch": "master", "commit": "fae72477853a9cac141b2c95a726ebc00ef4a88a" },
-  "parinfer-rust": { "branch": "master", "commit": "e02b0280111f82facbe19c854a374d713d37ac17" },
+  "parinfer-rust": { "branch": "master", "commit": "55bec1e3d4f127527c5c2e507fac96cc934aed6e" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
