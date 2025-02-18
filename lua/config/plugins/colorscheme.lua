@@ -58,6 +58,7 @@ return {
         gitsigns = false,
         noice = true,
         notify = true,
+        avante = true,
         fzf = true,
         dadbod_ui = true,
         overseer = true,
@@ -71,6 +72,7 @@ return {
         copilot_vim = true,
         ufo = false,
         alpha = false,
+        aerial = true,
         which_key = true,
         indent_blankline = {
           enabled = true,
