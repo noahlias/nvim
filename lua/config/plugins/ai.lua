@@ -269,7 +269,7 @@ return {
         answer_header = "  Copilot ", -- Header to use for AI answers
         error_header = "", -- Header to use for errors
         chat_autocomplete = true,
-        model = "claude-3.5-sonnet",
+        model = "claude-3.7-sonnet",
         log_level = "info",
         context = "buffer",
         window = {
@@ -418,7 +418,7 @@ return {
         },
       },
       copilot = {
-        model = "claude-3.5-sonnet",
+        model = "claude-3.7-sonnet",
         --- NOTE: it will hang my neovim process fuck you !
         timeout = 10000,
         -- max_tokens = 4096,

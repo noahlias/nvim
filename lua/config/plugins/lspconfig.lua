@@ -137,12 +137,6 @@ M.config = {
         filetypes = {
           "markdown",
           "python",
-          "go",
-          "c",
-          "rust",
-          "haskell",
-          "typst",
-          "lua",
         },
         settings = {
           ["harper-ls"] = {
