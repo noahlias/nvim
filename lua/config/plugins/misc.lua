@@ -178,7 +178,7 @@ return {
         time_format = "%H:%M",
       },
       ui = {
-        enable = true,
+        enable = false,
       },
       picker = {
         name = "fzf-lua",

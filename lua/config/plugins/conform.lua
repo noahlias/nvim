@@ -86,6 +86,7 @@ return {
         sh = { "shfmt" },
         r = { "my_styler" },
         toml = { "taplo" },
+        http = { "kulala-fmt" },
       },
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --
       formatters = {
