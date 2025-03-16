@@ -1,3 +1,11 @@
+local function toggle_diffview(cmd)
+  if next(require("diffview.lib").views) == nil then
+    vim.cmd(cmd)
+  else
+    vim.cmd "DiffviewClose"
+  end
+end
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -414,11 +422,18 @@ return {
       "DiffviewFileHistory",
     },
     keys = {
-      { "<leader>gdo", "<Cmd>DiffviewOpen<CR>", desc = "GitDiff Open" },
-      { "<leader>gdc", "<Cmd>DiffviewClose<CR>", desc = "GitDiff Close" },
+      {
+        "<leader>gdo",
+        function()
+          toggle_diffview "DiffviewOpen"
+        end,
+        desc = "GitDiff Open",
+      },
       {
         "<leader>gdh",
-        "<Cmd>DiffviewFileHistory<CR>",
+        function()
+          toggle_diffview "DiffviewFileHistory"
+        end,
         desc = "GitDiff Open History",
       },
       {
