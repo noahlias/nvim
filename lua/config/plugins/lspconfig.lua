@@ -132,6 +132,7 @@ M.config = {
           inlayHints = { enable = true },
         },
       }
+      lspconfig.vtsls.setup {}
 
       lspconfig.harper_ls.setup {
         filetypes = {

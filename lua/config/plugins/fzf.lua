@@ -21,6 +21,13 @@ return {
       desc = "Buffers",
     },
     {
+      "<leader>la",
+      function()
+        require("fzf-lua").lsp_code_actions()
+      end,
+      desc = "Code actions",
+    },
+    {
       "<c-h>",
       function()
         require("fzf-lua").oldfiles()
@@ -107,6 +114,9 @@ return {
           -- If no separator is detected will return the original query
           return (regex or query), flags
         end,
+      },
+      code_actions = {
+        previewer = "codeaction_native",
       },
       winopts = {
         height = 0.80,

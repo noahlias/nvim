@@ -326,21 +326,6 @@ return {
     end,
   },
   {
-    "luckasRanarison/clear-action.nvim",
-    event = "VeryLazy",
-    pin = true,
-    opts = {
-      signs = { enable = false },
-      mappings = {
-        code_action = {
-          key = "<leader>la",
-          mode = { "n" },
-          options = { desc = "CodeAction" },
-        },
-      },
-    },
-  },
-  {
     "stevearc/quicker.nvim",
     event = "FileType qf",
     ---@module "quicker"

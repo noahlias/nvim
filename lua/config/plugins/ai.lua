@@ -357,27 +357,6 @@ return {
         desc = "CopilotChat - Quick chat",
         mode = { "n", "v" },
       },
-      {
-        "<leader>ah",
-        function()
-          local actions = require "CopilotChat.actions"
-          require("CopilotChat.integrations.fzflua").pick(
-            actions.help_actions()
-          )
-        end,
-        desc = "CopilotChat - Help actions",
-      },
-      -- Show prompts actions with fzf-lua
-      {
-        "<leader>ap",
-        function()
-          local actions = require "CopilotChat.actions"
-          require("CopilotChat.integrations.fzflua").pick(
-            actions.prompt_actions()
-          )
-        end,
-        desc = "CopilotChat - Prompt actions",
-      },
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
@@ -465,6 +444,66 @@ return {
           file_types = { "markdown", "Avante", "copilot-chat" },
         },
         ft = { "markdown", "Avante", "copilot-chat" },
+      },
+    },
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      -- codecompanion
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = "codecompanion",
+        callback = function()
+          vim.opt_local.relativenumber = false
+          vim.opt_local.number = false
+          vim.opt_local.fillchars = "eob: "
+        end,
+      })
+      require("codecompanion").setup {}
+    end,
+  },
+  --  NOTE: not bad plugin for digest
+  {
+    "0xrusowsky/nvim-ctx-ingest",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-web-devicons", -- required for file icons
+    },
+    opts = {
+      max_file_size = 10 * 1024 * 1024, -- 10MB max file size
+      ignore_patterns = {
+        "%.env",
+        "^%.git/",
+        "%.svn/",
+        "%.hg/",
+        "node_modules/",
+        "target/",
+        "dist/",
+        "build/",
+        "%.pyc$",
+        "__pycache__/",
+        "%.egg%-info/",
+        "%.vscode/",
+        "%.idea/",
+        "%.DS_Store$",
+        "%.gitignore",
+        "%.lock",
+        -- Add your own patterns here
+      },
+
+      gitignore = {
+        respect = true, -- Whether to respect .gitignore patterns
+        auto_add = true, -- Whether to add output file to .gitignore
+      },
+
+      output = {
+        save_file = true, -- Whether to save digest to file
+        copy_clipboard = true, -- Whether to copy to clipboard
       },
     },
   },
