@@ -62,6 +62,90 @@ local function dap_or_lsp()
   end
 end
 
+-- Store cached Python versions for each virtual environment
+local python_version_cache = {}
+
+local function actiavte_venv()
+  local venv_selector = package.loaded["venv-selector"]
+  if not venv_selector then
+    return "No venv-selector"
+  end
+
+  local venv = venv_selector.venv()
+  local python_path = venv_selector.python()
+
+  if not venv then
+    return "Select Venv"
+  end
+
+  local venv_parts = vim.fn.split(venv, "/")
+  local venv_name = venv_parts[#venv_parts]
+
+  -- Check if we already have cached version
+  if python_version_cache[venv] then
+    return string.format("%s (%s)", python_version_cache[venv], venv_name)
+  end
+
+  -- Display without version while we fetch it asynchronously
+  local display = string.format("(%s)", venv_name)
+
+  -- Only proceed if we have the python path
+  if python_path then
+    -- Use a simpler synchronous approach that won't block the UI for long
+    vim.system({
+      python_path,
+      "-c",
+      'import sys; print("{}.{}.{}".format(*sys.version_info[:3]))',
+    }, {
+      timeout = 500, -- 500ms timeout to prevent UI blocking
+    }, function(obj)
+      if obj.code == 0 and obj.stdout then
+        local version = obj.stdout:gsub("[\r\n]", "")
+        if version:match "^%d+%.%d+%.%d+$" then
+          python_version_cache[venv] = version
+          vim.schedule(function()
+            vim.cmd "redrawstatus"
+          end)
+        end
+      end
+    end)
+  end
+
+  return display
+end
+
+local venv_color = function()
+  local venv = package.loaded["venv-selector"]
+    and package.loaded["venv-selector"].venv()
+  if not venv then
+    return { fg = "#888888", gui = "italic" } -- Gray for no venv
+  end
+
+  -- Get version from cache if available
+  local version = python_version_cache[venv]
+  if not version then
+    return { fg = "#50FA7B", gui = "bold" } -- Default color if version not yet loaded
+  end
+
+  -- Color scheme based on Python major.minor version
+  local colors = {
+    ["2.7"] = { fg = "#FFD700", gui = "bold" }, -- Gold for Python 2.7
+    ["3.6"] = { fg = "#1E90FF", gui = "bold" }, -- DodgerBlue for 3.6
+    ["3.7"] = { fg = "#6A5ACD", gui = "bold" }, -- SlateBlue for 3.7
+    ["3.8"] = { fg = "#FF6347", gui = "bold" }, -- Tomato for 3.8
+    ["3.9"] = { fg = "#9370DB", gui = "bold" }, -- MediumPurple for 3.9
+    ["3.10"] = { fg = "#20B2AA", gui = "bold" }, -- LightSeaGreen for 3.10
+    ["3.11"] = { fg = "#FF8C00", gui = "bold" }, -- DarkOrange for 3.11
+    ["3.12"] = { fg = "#DA70D6", gui = "bold" }, -- Orchid for 3.12
+  }
+
+  -- Extract major.minor version (e.g., "3.10" from "3.10.4")
+  local major_minor = version:match "^(%d+%.%d+)"
+
+  -- Return the color for this version, or default green if not in our map
+  return colors[major_minor] or { fg = "#50FA7B", gui = "bold" }
+end
+
 ---@type LazyPluginSpec
 return {
   "nvim-lualine/lualine.nvim",
@@ -139,6 +223,21 @@ return {
         "copilot",
         -- "filesize",
         "filetype",
+        {
+          name = "venv",
+          function()
+            return actiavte_venv()
+          end,
+          icon = "",
+          color = function()
+            return venv_color()
+          end,
+          separator = { left = "│", right = "" },
+          padding = { left = 1, right = 1 },
+          cond = function()
+            return vim.bo.filetype == "python"
+          end,
+        },
       },
       lualine_y = { "diagnostics", { "progress", icon = "" } },
       lualine_z = {

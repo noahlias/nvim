@@ -792,7 +792,7 @@ return {
   },
   {
     "linux-cultist/venv-selector.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     branch = "regexp",
     ft = "python",
     dependencies = {

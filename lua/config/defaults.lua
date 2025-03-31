@@ -195,3 +195,6 @@ end, {
 vim.api.nvim_create_user_command("ReplaceNewline", function()
   vim.cmd [[%s/\\n/\r/g]]
 end, { desc = "Replace \\n with a newline character" })
+
+---@diagnostic disable-next-line: duplicate-set-field
+vim.deprecate = function() end
