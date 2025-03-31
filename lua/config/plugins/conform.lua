@@ -87,6 +87,7 @@ return {
         r = { "my_styler" },
         toml = { "taplo" },
         http = { "kulala-fmt" },
+        mysql = { "sqruff" },
       },
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --
       formatters = {
@@ -106,6 +107,10 @@ return {
         },
         ruff = {
           command = "~/.rye/shims/ruff",
+        },
+        sqruff = {
+          command = "sqruff",
+          require_cwd = false,
         },
         my_styler = {
           command = "R",

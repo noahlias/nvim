@@ -24,7 +24,7 @@
   "cmp-vimtex": { "branch": "master", "commit": "5283bf9108ef33d41e704027b9ef22437ce7a15b" },
   "codecompanion.nvim": { "branch": "main", "commit": "fc9509884b23adbd26938611d6ba53464b7c8d0c" },
   "colorful-winsep.nvim": { "branch": "main", "commit": "4ac6a8cab5866ec3de3f5e3bc202e0c682d4d806" },
-  "conform.nvim": { "branch": "master", "commit": "9e434d78751dcdcaef048b62555914ed4a2b7b61" },
+  "conform.nvim": { "branch": "master", "commit": "b1a75324ddf96b7bb84963a297b1ed334db087c0" },
   "copilot.vim": { "branch": "release", "commit": "a9228e015528c9307890c48083c925eb98a64a79" },
   "crates.nvim": { "branch": "main", "commit": "fd2bbca7aa588f24ffc3517831934b4c4a9588e9" },
   "dart-vim-plugin": { "branch": "master", "commit": "4bdc04e2540edf90fda2812434c11d19dc04bc8f" },
