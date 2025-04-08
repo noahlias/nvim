@@ -167,6 +167,18 @@ return {
   {
     "akinsho/git-conflict.nvim",
     event = "VeryLazy",
+    keys = {
+      {
+        "<leader>gf",
+        "<CMD>GitConflictRefresh<CR>",
+        desc = "GitConflict Refresh",
+      },
+      {
+        "<leader>gq",
+        "<CMD>GitConflictListQf<CR>",
+        desc = "GitConflict Quickfix",
+      },
+    },
     opts = {
       disable_diagnostics = true,
       default_mappings = {
