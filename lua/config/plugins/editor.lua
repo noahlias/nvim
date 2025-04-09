@@ -30,7 +30,11 @@ return {
           local filetype = vim.bo[bufnr].filetype
           -- Very bad performance in diff-mode
           -- NOTE: disable illuminate in alpha buffer
-          if win == -1 or filetype == "alpha" or (win and vim.wo[win].diff) then
+          if
+            win == -1
+            or filetype == "alpha"
+            or (vim.api.nvim_win_is_valid(win) and vim.wo[win].diff)
+          then
             return false
           end
           return true
