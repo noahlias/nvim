@@ -27,10 +27,10 @@ return {
       icons.lua = { Package = icons.Control }
       local opts = {
         attach_mode = "global",
-        backends = { "lsp", "treesitter", "markdown", "man" },
+        backends = { "lsp", "treesitter", "asciidoc", "markdown", "man" },
         show_guides = true,
         layout = {
-          lt_direction = "prefer_left",
+          default_direction = "prefer_left",
           resize_to_content = false,
           min_width = 40,
           win_opts = {
