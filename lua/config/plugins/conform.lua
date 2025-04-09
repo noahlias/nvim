@@ -84,10 +84,12 @@ return {
         just = { "just" },
         markdown = { "autocorrect", "prettier", "markdownlint-cli2" },
         sh = { "shfmt" },
-        r = { "my_styler" },
+        r = { "r_format" },
         toml = { "taplo" },
         http = { "kulala-fmt" },
         mysql = { "sqruff" },
+        -- New API
+        ["_"] = { "trim_whitespace", lsp_format = "last" },
       },
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --
       formatters = {
@@ -112,7 +114,7 @@ return {
           command = "sqruff",
           require_cwd = false,
         },
-        my_styler = {
+        r_format = {
           command = "R",
           -- A list of strings, or a function that returns a list of strings
           -- Return a single string instead of a list to run the command in a shell
