@@ -164,6 +164,14 @@ return {
       end,
       desc = "Toggle breakpoint",
     },
+    -- add condition breakpoint
+    {
+      "<leader>'c",
+      function()
+        require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
+      end,
+      desc = "Set conditional breakpoint",
+    },
     {
       "<leader>'r",
       function()
