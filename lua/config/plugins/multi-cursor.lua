@@ -2,6 +2,7 @@
 return {
   "mg979/vim-visual-multi",
   event = { "BufReadPost", "BufNewFile" },
+  enabled = false,
   init = function()
     vim.cmd [[
 let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}

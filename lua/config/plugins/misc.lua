@@ -868,5 +868,5 @@ return {
   },
   -- lua with lazy.nvim
   { "wakatime/vim-wakatime", event = "VeryLazy" },
-  { "eraserhd/parinfer-rust", build = "cargo build --release" },
+  -- { "eraserhd/parinfer-rust", build = "cargo build --release" },
 }
