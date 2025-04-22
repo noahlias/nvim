@@ -64,6 +64,19 @@ vim.opt.guicursor = {
   "r-cr-o:hor20-Cursor/lCursor",
 }
 
+vim.opt.fillchars = {
+  diff = "╱",
+}
+
+vim.opt.diffopt = {
+  "internal",
+  "filler",
+  "closeoff",
+  "context:12",
+  "algorithm:histogram",
+  "linematch:200",
+  "indent-heuristic",
+}
 vim.g.lsp_zero_extend_lspconfig = 0
 -- vim.opt.conceallevel = 2
 vim.cmd [[
@@ -198,3 +211,143 @@ end, { desc = "Replace \\n with a newline character" })
 
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.deprecate = function() end
+
+vim.api.nvim_create_user_command("Translate", function(opts)
+  local word = opts.args
+  if word == "" then
+    word = vim.fn.expand "<cword>"
+  end
+
+  local stdout = vim.loop.new_pipe(false)
+  local stderr = vim.loop.new_pipe(false)
+  local handle
+  local timer
+
+  -- Set up translation virtual text namespace
+  local ns_id = vim.api.nvim_create_namespace "translation_virt"
+  local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
+
+  -- Clear previous virtual text first
+  vim.api.nvim_buf_clear_namespace(0, ns_id, 0, -1)
+
+  local output = {}
+  local errout = {}
+
+  -- Function to clean up resources
+  local function cleanup()
+    if timer then
+      timer:stop()
+      timer:close()
+      timer = nil
+    end
+    if handle and not handle:is_closing() then
+      handle:kill(9) -- SIGKILL
+      handle:close()
+    end
+    if stdout and not stdout:is_closing() then
+      stdout:read_stop()
+      stdout:close()
+    end
+    if stderr and not stderr:is_closing() then
+      stderr:read_stop()
+      stderr:close()
+    end
+  end
+
+  -- Create a timer for timeout
+  timer = vim.loop.new_timer()
+  timer:start(5000, 0, function() -- 5 second timeout
+    vim.schedule(function()
+      cleanup()
+      vim.notify("Translation timed out after 5 seconds", vim.log.levels.WARN)
+    end)
+  end)
+
+  handle = vim.loop.spawn("ydict", {
+    args = { word },
+    stdio = { nil, stdout, stderr },
+  }, function(code)
+    -- Called when process exits
+    cleanup()
+
+    vim.schedule(function()
+      if code == 0 and #output > 0 then
+        -- Add virtual lines with translation results
+        local virt_lines = {}
+        for i = 1, #output do
+          if output[i] and output[i] ~= "" then
+            table.insert(virt_lines, { { output[i], "Comment" } })
+          end
+        end
+
+        if #virt_lines > 0 then
+          vim.api.nvim_buf_set_extmark(0, ns_id, line_nr, 0, {
+            virt_lines = virt_lines,
+            virt_lines_above = false,
+          })
+
+          -- Clear virtual lines after a few seconds if needed
+          vim.defer_fn(function()
+            vim.api.nvim_buf_clear_namespace(0, ns_id, 0, -1)
+          end, 5000) -- Clear after 10 seconds
+        end
+      elseif #errout > 0 then
+        vim.notify(
+          "Translation error: " .. table.concat(errout, "\n"),
+          vim.log.levels.ERROR
+        )
+      end
+    end)
+  end)
+
+  if not handle then
+    vim.notify("Failed to start ydict process", vim.log.levels.ERROR)
+    if timer then
+      timer:stop()
+      timer:close()
+    end
+    return
+  end
+
+  stdout:read_start(function(err, data)
+    if stdout:is_closing() then
+      return
+    end
+
+    if err then
+      vim.schedule(function()
+        vim.notify(
+          "Error reading translation output: " .. err,
+          vim.log.levels.ERROR
+        )
+      end)
+      return
+    end
+    if data then
+      for line in data:gmatch "[^\r\n]+" do
+        table.insert(output, line)
+      end
+    end
+  end)
+
+  stderr:read_start(function(err, data)
+    if stderr:is_closing() then
+      return
+    end
+
+    if err then
+      vim.schedule(function()
+        vim.notify("Error reading stderr: " .. err, vim.log.levels.ERROR)
+      end)
+      return
+    end
+    if data then
+      for line in data:gmatch "[^\r\n]+" do
+        table.insert(errout, line)
+      end
+    end
+  end)
+end, {
+  nargs = "?",
+  desc = "Translate word under cursor or provided word using ydict",
+})

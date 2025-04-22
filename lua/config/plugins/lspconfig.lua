@@ -204,8 +204,19 @@ M.config = {
         cmd_env = { RUFF_TRACE = "messages" },
         init_options = {
           settings = {
-            logLevel = "debug",
             logFile = "~/.local/state/nvim/ruff.log",
+          },
+        },
+      }
+      lspconfig.ruby_lsp.setup {
+        filetypes = { "ruby" },
+        init_options = {
+          formatter = "standard",
+          linters = { "standard" },
+        },
+        addonSettings = {
+          ["Ruby LSP Rails"] = {
+            enablePendingMigrationsPrompt = false,
           },
         },
       }

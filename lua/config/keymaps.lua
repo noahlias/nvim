@@ -86,6 +86,7 @@ local nmappings = {
   { from = "<leader>re", to = ":e ~/.config/nvim/init.lua<CR>" },
   { from = ",v", to = "v%" },
   { from = "<leader><esc>", to = "<nop>" },
+  { from = "<leader>tr", to = ":Translate<CR>" },
 
   -- Joshuto
   -- { from = "R",             to = ":Joshuto<CR>" },
@@ -113,3 +114,6 @@ vim.keymap.set("n", "<leader>qq", function()
     run_vim_shortcut [[<C-w>j:q<CR>]]
   end
 end, { desc = "Quit with close", noremap = true, silent = true })
+
+-- duplicate line and comment
+vim.keymap.set("n", "ycc", "yygccp", { remap = true })

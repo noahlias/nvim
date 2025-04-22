@@ -88,6 +88,7 @@ return {
         toml = { "taplo" },
         http = { "kulala-fmt" },
         mysql = { "sqruff" },
+        ruby = { "rubyfmt" },
         -- New API
         ["_"] = { "trim_whitespace", lsp_format = "last" },
       },

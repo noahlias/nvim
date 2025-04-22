@@ -542,10 +542,10 @@ return {
   },
   -- {
   --   "benlubas/molten-nvim",
-  --   version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
   --   build = ":UpdateRemotePlugins",
   --   -- event = "VeryLazy",
   --   ft = { "python", "ipynb" },
+  --   enabled = false,
   --   dependencies = {
   --     "3rd/image.nvim",
   --   },
@@ -568,16 +568,6 @@ return {
   --       "<leader>ml",
   --       "<cmd>MoltenEvaluateLine<CR>",
   --       desc = "Evaluate the current line.",
-  --     },
-  --     {
-  --       "<leader>mv",
-  --       "<cmd>MoltenEvaluateVisual<CR>",
-  --       desc = "Evaluate the selected text.",
-  --     },
-  --     {
-  --       "<leader>mc",
-  --       "<cmd>MoltenEvaluateOperator<CR>",
-  --       desc = "Reevaluate the currently selected cell.",
   --     },
   --     {
   --       "<leader>mr",
@@ -720,6 +710,9 @@ return {
   {
     "mikavilpas/yazi.nvim",
     event = "VeryLazy",
+    init = function()
+      vim.g.loaded_netrwPlugin = 1
+    end,
     opts = {
       floating_window_scaling_factor = 0.85,
       open_for_directories = true,
@@ -844,6 +837,7 @@ return {
         "~/Downloads/m/misc/projects/thinker_project/*",
       },
       auto_restore = true,
+      purge_after_minutes = 10080,
       session_lens = {
         -- If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first
         load_on_setup = true,
