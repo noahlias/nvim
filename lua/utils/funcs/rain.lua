@@ -68,13 +68,11 @@ M.rain = function()
           vim.api.nvim_buf_del_extmark(buf, ns, id)
           return
         end
-        vim.api.nvim_buf_set_extmark(
-          buf,
-          ns,
-          d.l,
-          d.c,
-          { virt_text = { { CHAR, "Identifier" } }, virt_text_pos = "overlay", id = id }
-        )
+        vim.api.nvim_buf_set_extmark(buf, ns, d.l, d.c, {
+          virt_text = { { CHAR, "Identifier" } },
+          virt_text_pos = "overlay",
+          id = id,
+        })
         d.l = d.l + 1
         d.c = d.c + 1
         vim.defer_fn(startDrop, 35)

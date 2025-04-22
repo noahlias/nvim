@@ -81,7 +81,8 @@ local chooseVisualFormatAndRun = function()
     { prompt = "Choose a visual format: " },
     function(choice)
       vim.cmd "w"
-      split()
+      vim.cmd "set splitright"
+      vim.cmd "vsp"
       if choice ~= nil then
         vim.cmd("term cat % | tte " .. choice)
       end
