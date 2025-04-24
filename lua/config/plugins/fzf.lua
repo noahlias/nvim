@@ -21,13 +21,6 @@ return {
       desc = "Buffers",
     },
     {
-      "<leader>la",
-      function()
-        require("fzf-lua").lsp_code_actions()
-      end,
-      desc = "Code actions",
-    },
-    {
       "<c-h>",
       function()
         require("fzf-lua").oldfiles()

@@ -336,4 +336,16 @@ return {
     ---@type quicker.SetupOptions
     opts = {},
   },
+  {
+    "Chaitanyabsprip/fastaction.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        "<leader>la",
+        "<cmd>lua require('fastaction').code_action()<CR>",
+        desc = "Code Action",
+      },
+    },
+    opts = {},
+  },
 }
