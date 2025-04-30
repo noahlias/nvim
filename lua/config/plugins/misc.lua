@@ -139,15 +139,9 @@ return {
     },
     opts = {
       -- configuration goes here
-      image_support = true,
+      image_support = false,
       lang = "python3",
-      description = {
-        widht = "100%",
-      },
       injector = {
-        ["python3"] = {
-          before = true,
-        },
         ["cpp"] = {
           before = {
             "#include <iostream>",
@@ -489,10 +483,23 @@ return {
   },
   {
     "HakonHarnes/img-clip.nvim",
-    ft = { "markdwon", "tex", "typ" },
     cmd = {
       "PasteImage",
     },
+    cond = function()
+      local filetype = vim.bo.filetype
+      local filetypes = {
+        "markdown",
+        "tex",
+        "typst",
+      }
+      for _, ft in ipairs(filetypes) do
+        if ft == filetype then
+          return true
+        end
+      end
+      return false
+    end,
     event = "VeryLazy",
     opts = {},
   },
@@ -832,7 +839,14 @@ return {
     opts = {
       -- ⚠️ This will only work if Telescope.nvim is installed
       -- The following are already the default values, no need to provide them if these are already the settings you want.
-      bypass_save_filetypes = { "alpha", "dashboard" },
+      bypass_save_filetypes = {
+        "alpha",
+        "dashboard",
+        "copilot-chat",
+        "buftype",
+        "nofile",
+        "diff",
+      },
       allowed_dirs = {
         "~/Downloads/m/misc/projects/thinker_project/*",
       },

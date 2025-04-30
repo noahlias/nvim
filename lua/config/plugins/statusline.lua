@@ -129,14 +129,15 @@ local venv_color = function()
 
   -- Color scheme based on Python major.minor version
   local colors = {
-    ["2.7"] = { fg = "#FFD700", gui = "bold" }, -- Gold for Python 2.7
-    ["3.6"] = { fg = "#1E90FF", gui = "bold" }, -- DodgerBlue for 3.6
-    ["3.7"] = { fg = "#6A5ACD", gui = "bold" }, -- SlateBlue for 3.7
     ["3.8"] = { fg = "#FF6347", gui = "bold" }, -- Tomato for 3.8
     ["3.9"] = { fg = "#9370DB", gui = "bold" }, -- MediumPurple for 3.9
     ["3.10"] = { fg = "#20B2AA", gui = "bold" }, -- LightSeaGreen for 3.10
     ["3.11"] = { fg = "#FF8C00", gui = "bold" }, -- DarkOrange for 3.11
     ["3.12"] = { fg = "#DA70D6", gui = "bold" }, -- Orchid for 3.12
+    -- 3.13/3.14
+    ["3.13"] = { fg = "#FF4500", gui = "bold" }, -- OrangeRed for 3.13
+    ["3.14"] = { fg = "#ADFF2F", gui = "bold" }, -- GreenYellow for 3.14
+    ["default"] = { fg = "#50FA7B", gui = "bold" }, -- Default color
   }
 
   -- Extract major.minor version (e.g., "3.10" from "3.10.4")
