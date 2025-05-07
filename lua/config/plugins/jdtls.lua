@@ -7,15 +7,13 @@ return {
   },
   opts = function()
     -- local jdtls = require "jdtls"
-    local mason = require "mason-registry"
     local capabilities = require "config.capabilities"
+
+    local mason_path = vim.fs.joinpath(vim.fn.stdpath "data", "mason")
 
     return {
       cmd = {
-        vim.fs.joinpath(
-          mason.get_package("jdtls"):get_install_path(),
-          "/bin/jdtls"
-        ),
+        vim.fs.joinpath(mason_path, "packages", "jdtls", "bin", "jdtls"),
       },
       root_dir = vim.fs.dirname(
         vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
@@ -36,12 +34,13 @@ return {
       capabilities = capabilities,
       init_options = {
         bundles = {
-          vim.fn.glob(
-            vim.fs.joinpath(
-              mason.get_package("java-debug-adapter"):get_install_path(),
-              "extension/server/com.microsoft.java.debug.plugin-*.jar"
-            ),
-            true
+          vim.fs.joinpath(
+            mason_path,
+            "packages",
+            "jdtls",
+            "extension",
+            "server",
+            "com.microsoft.java.test.plugin-*.jar"
           ),
         },
       },

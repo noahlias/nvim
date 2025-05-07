@@ -127,6 +127,7 @@ return {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html",
     event = "VeryLazy",
+    lazy = "leetcode.nvim" ~= vim.fn.argv(0, -1),
     enabled = true,
     dependencies = {
       "nvim-telescope/telescope.nvim",
@@ -141,6 +142,14 @@ return {
       -- configuration goes here
       image_support = false,
       lang = "python3",
+      arg = "leetcode.nvim",
+      hooks = {
+        ["question_enter"] = {
+          function()
+            vim.g.copilot_enabled = false
+          end,
+        },
+      },
       injector = {
         ["cpp"] = {
           before = {
@@ -253,7 +262,7 @@ return {
       }
 
       local lowfi = require("toggleterm.terminal").Terminal:new {
-        cmd = "lowfi",
+        cmd = "genact",
         hidden = true,
         direction = "float",
         float_opts = float_opts,

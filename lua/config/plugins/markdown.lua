@@ -15,7 +15,7 @@ return {
       "echasnovski/mini.icons",
     },
     opts = {
-      file_types = { "markdown", "norg", "rmd", "org" },
+      file_types = { "markdown", "norg", "rmd", "org", "codecompanion" },
       code = {
         sign = false,
         width = "block",
@@ -26,7 +26,7 @@ return {
         icons = {},
       },
     },
-    ft = { "markdown", "norg", "rmd", "org" },
+    ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
     config = function(_, opts)
       require("render-markdown").setup(opts)
     end,

@@ -33,7 +33,6 @@ M.config = {
       {
         "williamboman/mason.nvim",
       },
-      { "williamboman/mason-lspconfig.nvim" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "ray-x/lsp_signature.nvim", event = "LspAttach" },
       "b0o/SchemaStore.nvim",
@@ -46,13 +45,6 @@ M.config = {
       M.lsp = lsp
 
       require("mason").setup {}
-      require("mason-lspconfig").setup {
-        -- 'tsserver',
-        "gopls",
-        "jsonls",
-        "html",
-        "clangd",
-      }
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps { buffer = bufnr }
