@@ -101,11 +101,20 @@ M.config = {
       require("config.lsp.vue").setup(lspconfig, lsp)
       require("config.lsp.swift").setup(lspconfig, lsp)
 
+      local mason_package_path = vim.fn.stdpath "data" .. "/mason/packages/"
+
       -- TODO: need to add other languages server
       ---Odin LSP
       lspconfig.ols.setup {}
       lspconfig.texlab.setup {}
       lspconfig.elixirls.setup {
+        cmd = {
+          vim.fs.joinpath(
+            mason_package_path,
+            "elixir-ls",
+            "language_server.sh"
+          ),
+        },
         server_capabilities = {
           -- completionProvider = true,
           -- definitionProvider = false,
