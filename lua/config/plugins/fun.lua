@@ -35,7 +35,7 @@ return {
   },
   {
     "chrisgrieser/nvim-early-retirement",
-    enabled = false,
+    enabled = true,
     config = true,
     event = "VeryLazy",
   },

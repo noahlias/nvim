@@ -818,7 +818,6 @@ return {
         dap_enabled = true,
         settings = {
           search = {
-            cwd = false,
             anaconda_base = {
               command = "fd /bin/python$ /opt/Homebrew/Caskroom/miniforge/base/ --full-path --color never -E /proc -E /pkgs/ -I -a -L",
               type = "anaconda",
@@ -886,4 +885,36 @@ return {
   -- lua with lazy.nvim
   { "wakatime/vim-wakatime", event = "VeryLazy" },
   -- { "eraserhd/parinfer-rust", build = "cargo build --release" },
+  {
+    "scalameta/nvim-metals",
+    event = {
+      "BufReadPost *.scala",
+      "BufNewFile *.scala",
+      "BufReadPost *.sbt",
+      "BufNewFile *.sbt",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    ft = { "scala", "sbt" },
+    opts = function()
+      local metals_config = require("metals").bare_config()
+      metals_config.on_attach = function(client, bufnr)
+        -- your on_attach function
+      end
+
+      return metals_config
+    end,
+    config = function(self, metals_config)
+      local nvim_metals_group =
+        vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = self.ft,
+        callback = function()
+          require("metals").initialize_or_attach(metals_config)
+        end,
+        group = nvim_metals_group,
+      })
+    end,
+  },
 }
