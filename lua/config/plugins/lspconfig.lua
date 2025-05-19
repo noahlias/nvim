@@ -59,6 +59,7 @@ M.config = {
           virtual_text = false,
           update_in_insert = false,
           float = true,
+          virtual_lines = false,
         }
       end)
 

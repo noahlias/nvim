@@ -162,6 +162,13 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
     vim.diagnostic.open_float {
       scope = "cursor",
       focusable = false,
+      format = function(diagnostic)
+        return ("%s: %s [%s]"):format(
+          diagnostic.source,
+          diagnostic.message,
+          diagnostic.code
+        )
+      end,
       zindex = 10,
       close_events = {
         "CursorMoved",

@@ -59,6 +59,16 @@ return {
           program = "${file}",
           repl_lang = "python",
         })
+        --- NOTE: This is for python debug for not just mycode
+        table.insert(require("dap").configurations.python, {
+          name = "Launch file Just My Code false",
+          type = "python",
+          request = "launch",
+          program = "${file}",
+          repl_lang = "python",
+          justMyCode = false,
+        })
+
         table.insert(require("dap").configurations.python, {
           type = "python",
           request = "attach",

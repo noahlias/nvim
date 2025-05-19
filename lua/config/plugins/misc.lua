@@ -495,20 +495,7 @@ return {
     cmd = {
       "PasteImage",
     },
-    cond = function()
-      local filetype = vim.bo.filetype
-      local filetypes = {
-        "markdown",
-        "tex",
-        "typst",
-      }
-      for _, ft in ipairs(filetypes) do
-        if ft == filetype then
-          return true
-        end
-      end
-      return false
-    end,
+    ft = { "markdown", "typst", "tex" },
     event = "VeryLazy",
     opts = {},
   },
