@@ -51,24 +51,25 @@ M.config = {
         client.server_capabilities.semanticTokensProvider = nil
         require("config.plugins.autocomplete").configfunc()
         require("lsp_signature").on_attach(F.signature_config, bufnr)
+        local diagnostic_signs = require("utils.static").icons.diagnostics
 
         vim.diagnostic.config {
           severity_sort = true,
           underline = true,
-          signs = true,
+          signs = {
+            text = {
+              [vim.diagnostic.severity.ERROR] = diagnostic_signs.DiagnosticSignError,
+              [vim.diagnostic.severity.WARN] = diagnostic_signs.DiagnosticSignWarn,
+              [vim.diagnostic.severity.HINT] = diagnostic_signs.DiagnosticSignHint,
+              [vim.diagnostic.severity.INFO] = diagnostic_signs.DiagnosticSignInfo,
+            },
+          },
           virtual_text = false,
           update_in_insert = false,
           float = true,
           virtual_lines = false,
         }
       end)
-
-      lsp.set_sign_icons {
-        error = "✘",
-        warn = "▲",
-        hint = "⚑",
-        info = "»",
-      }
 
       lsp.set_server_config {
         on_init = function(client)

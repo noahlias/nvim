@@ -202,10 +202,10 @@ return {
         --NOTE: the .git folder should be the working directory
         cwd = require("fzf-lua").path.git_root({}, true),
         -- executed command priority is 'cmd' (if exists)
-        cmd = "fd --type f -H --exclude='.git'",
+        cmd = "fd --type f -H --exclude='.git' --exclude='node_modules' --exclude='target'",
         find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
         rg_opts = "--color=never --files --hidden --follow -g '!.git'",
-        fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude node_modules",
+        fd_opts = "--color=never --type f --hidden --follow --exclude .git --exclude node_modules --exclude target",
       },
       buffers = {
         prompt = "Buffers❯ ",
