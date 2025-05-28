@@ -131,7 +131,7 @@ M.icons = setmetatable({
 		StackFrameCurrent = ' ',
 	},
 	diagnostics = {
-		DiagnosticSignError = ' ',
+		DiagnosticSignError = '󰅚 ',
 		DiagnosticSignHint  = '󰌶 ',
 		DiagnosticSignInfo  = '󰋽 ',
 		DiagnosticSignOk    = ' ',
