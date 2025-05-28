@@ -10,7 +10,7 @@ local function lsp()
       return client.name ~= "GitHub Copilot"
     end)
     :map(function(client)
-      return " " .. client.name
+      return " " .. client.name
     end)
     :totable()
   local info = table.concat(clients, " ")
