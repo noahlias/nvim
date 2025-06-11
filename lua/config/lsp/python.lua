@@ -11,6 +11,7 @@ return {
         python = {
           analysis = {
             typeCheckingMode = "basic",
+            autoImportCompletions = true,
             inlayHints = {
               callArgumentNames = "off",
               functionReturnTypes = true,

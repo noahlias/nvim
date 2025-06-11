@@ -384,16 +384,21 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     -- lazy = false,
-    enabled = true,
+    enabled = false,
     opts = {
       -- add any opts here
-      provider = "copilot",
-      vendors = {
+      providers = {
         deepseek = {
           __inherited_from = "openai",
           api_key_name = "cmd:gopass show -f -o websites/deepseek.com/noahlias",
           endpoint = "https://api.deepseek.com",
           model = "deepseek-coder",
+        },
+        copilot = {
+          __inherited_from = "github_llm",
+          api_key_name = "cmd:cat ~/.config/github-copilot/hosts.json | sed -e 's/.*oauth_token...//;s/\".*//'",
+          endpoint = "https://api.githubcopilot.com",
+          model = "claude-3.7-sonnet",
         },
       },
       copilot = {
@@ -456,6 +461,25 @@ return {
     },
     config = function()
       -- codecompanion
+      vim.keymap.set(
+        { "n", "v" },
+        "<leader>ac",
+        "<cmd>CodeCompanionActions<cr>",
+        { noremap = true, silent = true }
+      )
+      vim.keymap.set(
+        { "n", "v" },
+        "<leader>at",
+        "<cmd>CodeCompanionChat Toggle<cr>",
+        { noremap = true, silent = true }
+      )
+      vim.keymap.set(
+        "v",
+        "<leader>aa",
+        "<cmd>CodeCompanionChat Add<cr>",
+        { noremap = true, silent = true }
+      )
+
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = "codecompanion",
         callback = function()
@@ -464,7 +488,17 @@ return {
           vim.opt_local.fillchars = "eob: "
         end,
       })
-      require("codecompanion").setup {}
+      require("codecompanion").setup {
+        send = {
+          callback = function(chat)
+            vim.cmd "stopinsert"
+            chat:add_buf_message { role = "llm", content = "" }
+            chat:submit()
+          end,
+          index = 1,
+          description = "Send",
+        },
+      }
     end,
   },
   --  NOTE: not bad plugin for digest

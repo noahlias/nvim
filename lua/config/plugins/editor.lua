@@ -187,7 +187,7 @@ return {
         end,
       })
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "copilot-chat" },
+        pattern = { "copilot-chat", "json.kulala_ui", "codecompanion" },
         callback = function()
           require("ufo").detach()
           vim.opt_local.foldenable = false
