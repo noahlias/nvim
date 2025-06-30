@@ -223,6 +223,7 @@ M.config = {
           },
         },
       }
+      lspconfig.glsl_analyzer.setup {}
       lsp.setup()
       require("fidget").setup {}
 

@@ -22,6 +22,7 @@ return {
           { "<leader>gd", group = "git diffview" },
           { "<leader>w", group = "windows" },
           { "<leader>s", group = "search" },
+          { "<leader>n", group = "Lsp" },
           { "<leader>'", group = "debugger" },
           { "<leader>l", group = "lsp format" },
           { "<leader>q", group = "session" },
@@ -841,6 +842,7 @@ return {
         "buftype",
         "nofile",
         "diff",
+        "quickfix",
       },
       allowed_dirs = {
         "~/Downloads/m/misc/projects/thinker_project/*",
@@ -903,5 +905,29 @@ return {
         group = nvim_metals_group,
       })
     end,
+  },
+  {
+    "EvWilson/spelunk.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- For window drawing utilities
+      "nvim-treesitter/nvim-treesitter", -- Optional: for showing grammar context
+    },
+    opts = {
+      -- Configuration options for spelunk.nvim
+      enable_persist = true, -- Enable persistent spelunking across sessions
+      -- Additional options can be added here
+    },
+  },
+  {
+    "axkirillov/unified.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+    },
+  },
+  {
+    "nvimdev/visualizer.nvim",
+    event = "VeryLazy",
   },
 }

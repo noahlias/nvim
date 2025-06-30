@@ -82,6 +82,7 @@ return {
         mysql = { "sqruff" },
         ruby = { "rubyfmt" },
         rust = { "rustfmt" },
+        cpp = { "clang_format" },
         -- New API
         ["_"] = { "trim_whitespace", lsp_format = "last" },
       },
