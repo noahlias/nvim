@@ -277,6 +277,14 @@ return {
         float_opts = float_opts,
         close_on_exit = true,
       }
+      --- gemini cli
+      local gemini = require("toggleterm.terminal").Terminal:new {
+        cmd = "gemini",
+        hidden = true,
+        direction = "vertical",
+        float_opts = float_opts,
+        close_on_exit = true,
+      }
       return {
         { "<C-\\>" },
         {
@@ -326,6 +334,13 @@ return {
             lowfi:toggle()
           end,
           desc = "Bili Danmaku",
+        },
+        {
+          "<leader>gc",
+          function()
+            gemini:toggle()
+          end,
+          desc = "Gemini CLI",
         },
       }
     end,
@@ -917,13 +932,6 @@ return {
       -- Configuration options for spelunk.nvim
       enable_persist = true, -- Enable persistent spelunking across sessions
       -- Additional options can be added here
-    },
-  },
-  {
-    "axkirillov/unified.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- your configuration comes here
     },
   },
   {

@@ -16,6 +16,7 @@ return {
         "--header-insertion-decorators",
         "--function-arg-placeholders",
         "--completion-style=detailed",
+        "--clang-tidy",
       },
       filetypes = { "c", "cpp", "objc", "objcpp" },
       capabilities = capabilities,

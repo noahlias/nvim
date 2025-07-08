@@ -368,4 +368,20 @@ return {
       })
     end,
   },
+  {
+    "Wansmer/symbol-usage.nvim",
+    event = "BufReadPre", -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+    keys = {
+      {
+        "<leader>ss",
+        function()
+          require("symbol-usage").toggle()
+        end,
+        desc = "Toggle Symbol Usage",
+      },
+    },
+    config = function()
+      require("symbol-usage").setup {}
+    end,
+  },
 }
