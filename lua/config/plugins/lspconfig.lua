@@ -208,6 +208,7 @@ M.config = {
         init_options = {
           settings = {
             logFile = "~/.local/state/nvim/ruff.log",
+            organizeImports = true,
           },
         },
       }

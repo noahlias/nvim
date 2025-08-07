@@ -498,6 +498,15 @@ return {
           index = 1,
           description = "Send",
         },
+        adapters = {
+          deepseek = function()
+            return require("codecompanion.adapters").extend("deepseek", {
+              env = {
+                api_key = "cmd:gopass show -f -o websites/deepseek.com/noahlias",
+              },
+            })
+          end,
+        },
       }
     end,
   },

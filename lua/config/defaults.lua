@@ -358,3 +358,7 @@ end, {
   nargs = "?",
   desc = "Translate word under cursor or provided word using ydict",
 })
+
+vim.keymap.set("n", "gs", function()
+  require("config.plugins.togglewords").toggle()
+end, { desc = "Toggle words" })

@@ -83,7 +83,6 @@ return {
       buftypes = {},
     },
   },
-  { "theniceboy/antovim", event = "VeryLazy" },
   { "gcmt/wildfire.vim", event = "VeryLazy" },
   {
     "gbprod/substitute.nvim",

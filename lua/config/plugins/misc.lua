@@ -165,7 +165,7 @@ return {
     },
   },
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
@@ -197,6 +197,12 @@ return {
       },
       completion = {
         nvim_cmp = true,
+      },
+      footer = {
+        enabled = true,
+        format = "{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars",
+        hl_group = "Comment",
+        separator = string.rep("-", 80),
       },
     },
   },
@@ -414,7 +420,7 @@ return {
         included_buftypes = {
           [""] = true,
         },
-        excluded_filetypes = { "norg" },
+        excluded_filetypes = { "norg", "http" },
         delay = 50,
         limit = 100,
         pairs = {
@@ -887,7 +893,8 @@ return {
     },
   },
   -- lua with lazy.nvim
-  { "wakatime/vim-wakatime", event = "VeryLazy" },
+  -- -- TODO: bug with too many files opened
+  { "wakatime/vim-wakatime", event = "VeryLazy", enabled = false },
   -- { "eraserhd/parinfer-rust", build = "cargo build --release" },
   {
     "scalameta/nvim-metals",
@@ -937,5 +944,30 @@ return {
   {
     "nvimdev/visualizer.nvim",
     event = "VeryLazy",
+  },
+  {
+    "pxwg/math-conceal.nvim",
+    event = "VeryLazy",
+    build = "make lua51",
+    opts = {
+      enabled = true,
+      conceal = {
+        "greek",
+        "script",
+        "math",
+        "font",
+        "delim",
+        "phy",
+      },
+      ft = { "tex", "latex", "markdown", "typst" },
+    },
+  },
+
+  {
+    "ethersync/ethersync-nvim",
+    keys = { { "<leader>j", "<cmd>EthersyncJumpToCursor<cr>" } },
+    -- maybe add some cond when i used in some directory not in this
+    enabled = false,
+    lazy = false,
   },
 }

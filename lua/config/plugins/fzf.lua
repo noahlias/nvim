@@ -77,11 +77,19 @@ return {
       end,
       desc = "LSP Workspace Diagnostics",
     },
+    {
+      "<leader>fg",
+      function()
+        require("fzf-lua").global()
+      end,
+      desc = "Buffer And Files Global",
+    },
   },
   config = function()
     local fzf = require "fzf-lua"
     fzf.setup {
       "fzf-native",
+      "hide",
       global_resume = true,
       global_resume_query = true,
       fzf_colors = {
