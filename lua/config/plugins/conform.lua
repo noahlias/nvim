@@ -78,7 +78,7 @@ return {
         sh = { "shfmt" },
         r = { "r_format" },
         toml = { "taplo" },
-        http = { "kulala-fmt" },
+        -- http = { "kulala-fmt" },
         mysql = { "sqruff" },
         ruby = { "rubyfmt" },
         rust = { "rustfmt" },
@@ -89,21 +89,9 @@ return {
       -- NOTE: mayebe need to fix this with path variable  <04/25, 2024, noahlias> --
       formatters = {
         ["markdownlint-cli2"] = {
-          condition = function(_, ctx)
-            local diag = vim.tbl_filter(function(d)
-              return d.source == "markdownlint"
-            end, vim.diagnostic.get(ctx.buf))
-            return #diag > 0
-          end,
-        },
-        isort = {
-          command = "~/.rye/shims/isort",
-        },
-        black = {
-          command = "~/.rye/shims/black",
-        },
-        ruff = {
-          command = "~/.rye/shims/ruff",
+          command = "markdownlint-cli2",
+          args = { "--stdin" },
+          require_cwd = false,
         },
         sqruff = {
           command = "sqruff",

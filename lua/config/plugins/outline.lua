@@ -30,7 +30,7 @@ return {
         backends = { "lsp", "treesitter", "asciidoc", "markdown", "man" },
         show_guides = true,
         layout = {
-          default_direction = "prefer_left",
+          default_direction = "prefer_right",
           resize_to_content = false,
           min_width = 40,
           win_opts = {
