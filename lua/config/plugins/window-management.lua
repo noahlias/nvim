@@ -2,8 +2,13 @@
 return {
   {
     "nvim-zh/colorful-winsep.nvim",
-    config = true,
-    event = { "WinNew" },
+    enabled = false,
+    event = { "WinNew", "WinLeave" },
+    opts = {
+      animate = {
+        enabled = false,
+      },
+    },
   },
   {
     "dhruvasagar/vim-zoom",

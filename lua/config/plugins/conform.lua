@@ -83,6 +83,7 @@ return {
         ruby = { "rubyfmt" },
         rust = { "rustfmt" },
         cpp = { "clang_format" },
+        cmake = { "cmake_format" },
         -- New API
         ["_"] = { "trim_whitespace", lsp_format = "last" },
       },
@@ -91,6 +92,11 @@ return {
         ["markdownlint-cli2"] = {
           command = "markdownlint-cli2",
           args = { "--stdin" },
+          require_cwd = false,
+        },
+        cmake_format = {
+          command = "cmake-format",
+          args = { "-" },
           require_cwd = false,
         },
         sqruff = {

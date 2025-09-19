@@ -123,6 +123,7 @@ return {
         substitute.visual,
         { noremap = true, desc = "substitute with visual" }
       )
+      --- exchange operator
       vim.keymap.set(
         "n",
         "sx",
@@ -144,7 +145,12 @@ return {
 
       -- NOTE: This is the same to move line up and down
       ---NOTE: I use the mini.move to change position
-      -- vim.keymap.set("n", "sxx", require("substitute.exchange").line, { noremap = true, desc = "exchange with line" })
+      vim.keymap.set(
+        "n",
+        "sxx",
+        require("substitute.exchange").line,
+        { noremap = true, desc = "exchange with line" }
+      )
     end,
   },
   {

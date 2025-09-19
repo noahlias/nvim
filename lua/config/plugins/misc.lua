@@ -291,6 +291,14 @@ return {
         float_opts = float_opts,
         close_on_exit = true,
       }
+      --- codex
+      local codex = require("toggleterm.terminal").Terminal:new {
+        cmd = " codex --sandbox danger-full-access -m gpt-5-codex -c 'model_reasoning_summary_format=experimental' -c 'model_reasoning_effort=medium' --search",
+        hidden = true,
+        direction = "vertical",
+        float_opts = float_opts,
+        close_on_exit = true,
+      }
       return {
         { "<C-\\>" },
         {
@@ -347,6 +355,13 @@ return {
             gemini:toggle()
           end,
           desc = "Gemini CLI",
+        },
+        {
+          "<leader>tx",
+          function()
+            codex:toggle()
+          end,
+          desc = "Codex AI",
         },
       }
     end,
@@ -811,7 +826,6 @@ return {
   {
     "linux-cultist/venv-selector.nvim",
     -- event = "VeryLazy",
-    branch = "regexp",
     ft = "python",
     dependencies = {
       "neovim/nvim-lspconfig",
@@ -969,5 +983,27 @@ return {
     -- maybe add some cond when i used in some directory not in this
     enabled = false,
     lazy = false,
+  },
+  {
+    "rafcamlet/nvim-luapad",
+    event = "VeryLazy",
+    config = function()
+      require("luapad").setup {
+        count_limit = 150000,
+        error_indicator = false,
+        eval_on_move = true,
+        error_highlight = "WarningMsg",
+        split_orientation = "horizontal",
+        on_init = function()
+          print "Hello from Luapad!"
+        end,
+        context = {
+          the_answer = 42,
+          shout = function(str)
+            return (string.upper(str) .. "!")
+          end,
+        },
+      }
+    end,
   },
 }
