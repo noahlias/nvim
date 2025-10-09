@@ -7,7 +7,7 @@ local function lsp()
       return client.attached_buffers[buf]
     end)
     :filter(function(client)
-      return client.name ~= "GitHub Copilot"
+      return client.name ~= "copilot"
     end)
     :map(function(client)
       return " " .. client.name
@@ -158,7 +158,7 @@ return {
   event = { "BufNewFile", "BufReadPre" },
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
-    { "ofseed/lualine-copilot" },
+    -- { "ofseed/lualine-copilot" },
   },
   opts = {
     options = {
@@ -224,7 +224,24 @@ return {
             return ""
           end,
         },
-        "copilot",
+        {
+          name = "sidekick-status",
+          function()
+            return " "
+          end,
+          color = function()
+            local status = require("sidekick.status").get()
+            if status then
+              return status.kind == "Error" and "DiagnosticError"
+                or status.busy and "DiagnosticWarn"
+                or "Special"
+            end
+          end,
+          cond = function()
+            local status = require "sidekick.status"
+            return status.get() ~= nil
+          end,
+        },
         -- "filesize",
         "filetype",
         {
@@ -270,25 +287,25 @@ return {
       "trouble",
       "mundo",
       "lazy",
-      ---copilot-chat
-      {
-        sections = {
-          lualine_z = {
-            {
-              "filename",
-              fmt = function()
-                return "GitHub Copilot"
-              end,
-              icon = " ",
-              color = { fg = "none", bg = "#806d9c" },
-            },
-          },
-          lualine_a = {
-            { "mode" },
-          },
-        },
-        filetypes = { "copilot-chat" },
-      },
+      ---  ---copilot-chat
+      ---  {
+      ---    sections = {
+      ---      lualine_z = {
+      ---        {
+      ---          "filename",
+      ---          fmt = function()
+      ---            return "GitHub Copilot"
+      ---          end,
+      ---          icon = " ",
+      ---          color = { fg = "none", bg = "#806d9c" },
+      ---        },
+      ---      },
+      ---      lualine_a = {
+      ---        { "mode" },
+      ---      },
+      ---    },
+      ---    filetypes = { "copilot-chat" },
+      ---  },
     },
   },
 }

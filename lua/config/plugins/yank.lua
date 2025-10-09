@@ -28,7 +28,8 @@ return {
     end
     require("neoclip").setup {
       history = 1000,
-      enable_persistent_history = true,
+      -- TODO: Some bug with vimleavepre and sqlite causes a delay on exit
+      enable_persistent_history = false,
       filter = function(data)
         return not all(data.event.regcontents, is_whitespace)
       end,
