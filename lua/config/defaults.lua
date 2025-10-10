@@ -362,15 +362,3 @@ end, {
 vim.keymap.set("n", "gs", function()
   require("config.plugins.togglewords").toggle()
 end, { desc = "Toggle words" })
---- NOTE: copilot inline completion
-vim.lsp.enable "copilot"
-vim.lsp.inline_completion.enable()
-vim.keymap.set("i", "<C-C>", function()
-  if not vim.lsp.inline_completion.get() then
-    return "<C-C>"
-  end
-end, {
-  expr = true,
-  replace_keycodes = true,
-  desc = "Get the current inline completion",
-})
