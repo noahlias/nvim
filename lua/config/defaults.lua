@@ -118,8 +118,6 @@ vim.filetype.add {
 vim.cmd [[hi NonText ctermfg=gray guifg=grey10]]
 
 vim.g.snips_author = "noahlias"
--- vim.g.python3_host_prog =
---   "/opt/Homebrew/Caskroom/miniforge/base/envs/py3.10/bin/python"
 vim.g.mkdp_browser = "chromium"
 vim.g.mkdp_browserfunc = "open "
 
@@ -362,3 +360,8 @@ end, {
 vim.keymap.set("n", "gs", function()
   require("config.plugins.togglewords").toggle()
 end, { desc = "Toggle words" })
+
+-- difftool
+vim.cmd [[packadd nvim.difftool]]
+-- undotree
+vim.cmd [[packadd nvim.undotree]]

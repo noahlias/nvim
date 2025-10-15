@@ -199,7 +199,7 @@ return {
         nvim_cmp = true,
       },
       footer = {
-        enabled = true,
+        enabled = false,
         format = "{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars",
         hl_group = "Comment",
         separator = string.rep("-", 80),
@@ -856,11 +856,12 @@ return {
     lazy = false,
     keys = {
       -- Will use Telescope if installed or a vim.ui.select picker otherwise
-      { "<leader>sr", "<cmd>SessionSearch<CR>", desc = "Session search" },
-      { "<leader>sv", "<cmd>SessionSave<CR>", desc = "Save session" },
+      { "<leader>sr", "<cmd>AutoSession search<CR>", desc = "Session search" },
+      { "<leader>sv", "<cmd>AutoSession save<CR>", desc = "Save session" },
+      { "<leader>sd", "<cmd>AutoSession delete<CR>", desc = "Delete session" },
       {
         "<leader>sa",
-        "<cmd>SessionToggleAutoSave<CR>",
+        "<cmd>AutoSession toggle<CR>",
         desc = "Toggle autosave",
       },
     },
@@ -908,7 +909,7 @@ return {
   },
   -- lua with lazy.nvim
   -- -- TODO: bug with too many files opened
-  { "wakatime/vim-wakatime", event = "VeryLazy", enabled = false },
+  { "wakatime/vim-wakatime", event = "VeryLazy", enabled = true },
   -- { "eraserhd/parinfer-rust", build = "cargo build --release" },
   {
     "scalameta/nvim-metals",
