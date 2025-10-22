@@ -283,22 +283,6 @@ return {
         float_opts = float_opts,
         close_on_exit = true,
       }
-      --- gemini cli
-      local gemini = require("toggleterm.terminal").Terminal:new {
-        cmd = "gemini",
-        hidden = true,
-        direction = "vertical",
-        float_opts = float_opts,
-        close_on_exit = true,
-      }
-      --- codex
-      local codex = require("toggleterm.terminal").Terminal:new {
-        cmd = " codex --sandbox danger-full-access -m gpt-5-codex -c 'model_reasoning_summary_format=experimental' -c 'model_reasoning_effort=medium' --search",
-        hidden = true,
-        direction = "vertical",
-        float_opts = float_opts,
-        close_on_exit = true,
-      }
       return {
         { "<C-\\>" },
         {
@@ -348,20 +332,6 @@ return {
             lowfi:toggle()
           end,
           desc = "Bili Danmaku",
-        },
-        {
-          "<leader>gc",
-          function()
-            gemini:toggle()
-          end,
-          desc = "Gemini CLI",
-        },
-        {
-          "<leader>tx",
-          function()
-            codex:toggle()
-          end,
-          desc = "Codex AI",
         },
       }
     end,

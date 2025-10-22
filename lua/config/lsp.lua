@@ -166,6 +166,9 @@ vim.lsp.enable {
   "elixirls",
   "r_language_server",
   "gopls",
+  "julials",
+  "buf",
+  "jsonnet_ls",
 }
 -- vim.lsp.inlay_hint.enable()
 if vim.lsp.inline_completion then

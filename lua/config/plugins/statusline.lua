@@ -306,6 +306,27 @@ return {
       ---    },
       ---    filetypes = { "copilot-chat" },
       ---  },
+      ---- sidekick-cli-status
+      {
+        sections = {
+          lualine_x = {
+            {
+              name = "sidekick-cli-status",
+              function()
+                local status = require("sidekick.status").cli()
+                return " " .. (#status > 1 and #status or "")
+              end,
+              color = function()
+                return "Special"
+              end,
+            },
+          },
+          lualine_a = {
+            { "mode" },
+          },
+        },
+        filetypes = { "sidekick_terminal" },
+      },
     },
   },
 }

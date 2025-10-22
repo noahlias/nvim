@@ -148,6 +148,37 @@ require "plugin.compile_run"
 
 -- NOTE: Some funny
 local rain = require "utils.funcs.rain"
+-- camel_case and snake_case convert
+
+local string_util = require "utils.funcs.string"
+-- use key shortcut to toggle camel_case and snake_case
+vim.keymap.set("n", "<leader>tcc", function()
+  local line = vim.api.nvim_get_current_line()
+  local converted = string_util.snake_to_camel(line)
+  if converted then
+    vim.api.nvim_set_current_line(converted)
+  end
+end, { noremap = true, silent = true, desc = "Convert snakeCase to camelCase" })
+
+vim.keymap.set(
+  "n",
+  "<leader>tcs",
+  function()
+    local line = vim.api.nvim_get_current_line()
+    local converted = string_util.camel_to_snake(line)
+    if converted then
+      vim.api.nvim_set_current_line(converted)
+    end
+  end,
+  { noremap = true, silent = true, desc = "Convert camelCase to snake_case" }
+)
+vim.keymap.set("n", "<leader>sp", function()
+  vim.ui.input({ prompt = "Split line by: " }, function(input)
+    if input then
+      string_util.split_line(input)
+    end
+  end)
+end, { noremap = true, silent = true, desc = "Split line by given separator" })
 
 vim.api.nvim_create_user_command("Rain", rain.toggle_rain, {})
 

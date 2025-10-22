@@ -71,7 +71,7 @@ return {
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
         -- vue = { "prettier" },
-        json = { "prettier" },
+        json = { "jq" },
         yaml = { "prettier" },
         just = { "just" },
         markdown = { "autocorrect", "prettier", "markdownlint-cli2" },
