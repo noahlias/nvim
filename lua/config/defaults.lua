@@ -152,36 +152,6 @@ hi! ScrollbarGitDeleteHandle guifg=#FF7B7B ]]
   group = group,
 })
 
-local diagnostic_group =
-  vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
-  pattern = "*",
-  callback = function()
-    vim.diagnostic.open_float {
-      scope = "cursor",
-      focusable = false,
-      format = function(diagnostic)
-        return ("%s: %s [%s]"):format(
-          diagnostic.source,
-          diagnostic.message,
-          diagnostic.code
-        )
-      end,
-      zindex = 10,
-      close_events = {
-        "CursorMoved",
-        "CursorMovedI",
-        "BufHidden",
-        "InsertCharPre",
-        "InsertEnter",
-        "WinLeave",
-        "ModeChanged",
-      },
-    }
-  end,
-  group = diagnostic_group,
-})
-
 vim.cmd [[autocmd TermOpen term://* startinsert]]
 vim.cmd [[autocmd TermOpen term://* setlocal nonumber norelativenumber]]
 
@@ -335,6 +305,7 @@ vim.api.nvim_create_user_command("Translate", function(opts)
     end
   end)
 
+  print "hi"
   stderr:read_start(function(err, data)
     if stderr:is_closing() then
       return

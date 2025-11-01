@@ -1,3 +1,33 @@
+local diagnostic_group =
+  vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+  pattern = "*",
+  callback = function()
+    vim.diagnostic.open_float {
+      scope = "cursor",
+      focusable = false,
+      format = function(diagnostic)
+        return ("%s: %s [%s]"):format(
+          diagnostic.source,
+          diagnostic.message,
+          diagnostic.code
+        )
+      end,
+      zindex = 10,
+      close_events = {
+        "CursorMoved",
+        "CursorMovedI",
+        "BufHidden",
+        "InsertCharPre",
+        "InsertEnter",
+        "WinLeave",
+        "ModeChanged",
+      },
+    }
+  end,
+  group = diagnostic_group,
+})
+
 local diagnostic_signs = require("utils.static").icons.diagnostics
 vim.diagnostic.config {
   severity_sort = true,

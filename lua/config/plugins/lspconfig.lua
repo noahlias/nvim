@@ -48,9 +48,7 @@ M.config = {
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps { buffer = bufnr }
-        client.server_capabilities.semanticTokensProvider = nil
         require("config.plugins.autocomplete").configfunc()
-        require("lsp_signature").on_attach(F.signature_config, bufnr)
       end)
 
       lsp.set_server_config {
