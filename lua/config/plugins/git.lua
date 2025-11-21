@@ -225,6 +225,7 @@ return {
     cmd = {
       "G",
       "Git",
+      "Gdiffsplit",
     },
   },
   {
@@ -265,6 +266,24 @@ return {
           require("gitlab").open_in_browser()
         end,
         desc = "Open in Browser",
+      },
+      --- review
+      {
+        "<leader>gC",
+        function()
+          require("gitlab").review()
+        end,
+        desc = "Open Code Review",
+      },
+      --- create comment
+      --- in visual mode to comment on selected lines
+      {
+        "<leader>gc",
+        function()
+          require("gitlab").create_comment()
+        end,
+        desc = "Create Comment",
+        mode = { "n", "v" },
       },
     },
     build = function()

@@ -177,14 +177,7 @@ return {
   keys = {
     { "<leader>rr", "<cmd>OverseerRun<CR>", desc = "OverseerRun" },
     { "<leader>rl", "<cmd>OverseerToggle<CR>", desc = "OverseerList" },
-    { "<leader>rb", "<cmd>OverseerBuild<CR>", desc = "OverseerBuild" },
     { "<leader>ra", "<cmd>OverseerTaskAction<CR>", desc = "OverseerAction" },
-    { "<leader>ri", "<cmd>OverseerInfo<CR>", desc = "OverseerInfo" },
     { "<leader>rt", "<cmd>OverseerToggle<CR>", desc = "OverseerToggle" },
-    {
-      "<leader>rc",
-      "<cmd>OverseerClearCache<CR>",
-      desc = "Overseer Clear cache",
-    },
   },
 }

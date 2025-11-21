@@ -3,5 +3,25 @@
     "prefix": "ct",
     "body": "cout << ${1} << endl;",
     "description": "cout"
+  },
+  "qDebug": {
+    "prefix": "qd",
+    "body": "qDebug() << ${1};",
+    "description": "qDebug"
+  },
+  "connect_new": {
+    "prefix": "conn",
+    "body": "connect(${1:sender}, &${2:SenderClass}::${3:signal}, ${4:receiver}, &${5:ReceiverClass}::${6:slot});",
+    "description": "Qt5/6 connect (C++11)"
+  },
+  "qstring": {
+    "prefix": "qs",
+    "body": "QString ${1:str} = QStringLiteral(\"${2:text}\");",
+    "description": "QString with Literal"
+  },
+  "foreach": {
+    "prefix": "qfe",
+    "body": "for (const auto &${1:var} : ${2:container}) {\n\t${3}\n}",
+    "description": "Qt/C++11 range-based for loop"
   }
 }

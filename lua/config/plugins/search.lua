@@ -70,10 +70,7 @@ return {
         },
         incrementalPreview = {
           matchHlGroup = "IncSearch",
-          rangeBackdrop = {
-            enabled = true,
-            blend = 50, -- between 0 and 100
-          },
+          rangeBackdropBrightness = 50,
         },
         editingBehavior = {
           -- Experimental. When typing `()` in the `search` line, automatically

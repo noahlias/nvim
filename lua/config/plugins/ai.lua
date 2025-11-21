@@ -568,6 +568,18 @@ return {
           description = "Send",
         },
         adapters = {
+          acp = {
+            gemini_cli = function()
+              return require("codecompanion.adapters").extend("gemini_cli", {
+                defaults = {
+                  auth_method = "gemini-api-key", -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
+                },
+                env = {
+                  GEMINI_API_KEY = "gopass show -f -o websites/gemini.com/noahlias",
+                },
+              })
+            end,
+          },
           deepseek = function()
             return require("codecompanion.adapters").extend("deepseek", {
               env = {
@@ -625,6 +637,19 @@ return {
     opts = {
       -- add any options here
       cli = {
+        tools = {
+          amp = {
+            cmd = { "amp" },
+            keys = {
+              submit = {
+                "<c-s>",
+                function(t)
+                  t:send "\n"
+                end,
+              },
+            },
+          },
+        },
         mux = {
           backend = "tmux",
           enabled = false,
@@ -659,12 +684,34 @@ return {
         desc = "Sidekick Toggle CLI",
       },
       {
+        "<leader>ad",
+        function()
+          require("sidekick.cli").close()
+        end,
+        desc = "Detach a CLI Session",
+      },
+      {
         "<leader>ap",
         function()
           require("sidekick.cli").prompt()
         end,
         desc = "Sidekick Ask Prompt",
         mode = { "n", "x" },
+      },
+      {
+        "<leader>av",
+        function()
+          require("sidekick.cli").send { msg = "{selection}" }
+        end,
+        mode = { "x" },
+        desc = "Send Visual Selection",
+      },
+      {
+        "<leader>ac",
+        function()
+          require("sidekick.cli").toggle { name = "codex", focus = true }
+        end,
+        desc = "Sidekick Toggle Codex",
       },
     },
   },

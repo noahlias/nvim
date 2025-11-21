@@ -28,6 +28,9 @@ return {
       bottom_search = true,
       lsp_doc_border = true,
     },
+    notify = {
+      enabled = false,
+    },
     cmdline = {
       view = "cmdline_popup",
       format = {
