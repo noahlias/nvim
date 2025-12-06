@@ -8,12 +8,13 @@ return {
   enabled = true,
   opts = function()
     return {
-      strategy = {
-        "toggleterm",
-        quit_on_exit = "success",
-        open_on_start = false,
-      },
       dap = false,
+      output = {
+        -- Use a terminal buffer to display output. If false, a normal buffer is used
+        use_terminal = true,
+        -- If true, don't clear the buffer when a task restarts
+        preserve_output = false,
+      },
       form = {
         border = custom.border,
       },
@@ -25,8 +26,6 @@ return {
       },
       component_aliases = {
         default = {
-          { "display_duration", detail_level = 2 },
-          "on_output_summarize",
           "on_exit_set_status",
           "on_complete_notify",
           "on_complete_dispose",
