@@ -20,5 +20,9 @@ return {
     "elixir",
     "clojure",
     "markdown",
+    "yaml",
+    "typst",
+    "toml",
+    "latex",
   },
 }

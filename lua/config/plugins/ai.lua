@@ -362,98 +362,6 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
-  -- NOTE: temporaily disable this plugin  <04/26, 2024, noahlias> --
-  {
-    "Exafunction/codeium.nvim",
-    enabled = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      require("codeium").setup {}
-    end,
-  },
-  -- TODO: cody integrations  <04/27, 2024, noahlias> --
-  {
-    "sourcegraph/sg.nvim",
-    enabled = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]]
-    },
-  },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    -- lazy = false,
-    enabled = false,
-    opts = {
-      -- add any opts here
-      providers = {
-        deepseek = {
-          __inherited_from = "openai",
-          api_key_name = "cmd:gopass show -f -o websites/deepseek.com/noahlias",
-          endpoint = "https://api.deepseek.com",
-          model = "deepseek-coder",
-        },
-        copilot = {
-          __inherited_from = "github_llm",
-          api_key_name = "cmd:cat ~/.config/github-copilot/hosts.json | sed -e 's/.*oauth_token...//;s/\".*//'",
-          endpoint = "https://api.githubcopilot.com",
-          model = "claude-3.7-sonnet",
-        },
-      },
-      copilot = {
-        model = "claude-3.7-sonnet",
-        --- NOTE: it will hang my neovim process fuck you !
-        timeout = 10000,
-        -- max_tokens = 4096,
-      },
-      hints = { enabled = false },
-      windows = {
-        width = 40,
-        sidebar_header = {
-          enabled = false, -- true, false to enable/disable the header
-        },
-      },
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.icons",
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante", "copilot-chat" },
-        },
-        ft = { "markdown", "Avante", "copilot-chat" },
-      },
-    },
-  },
   {
     "olimorris/codecompanion.nvim",
     event = "VeryLazy",
@@ -492,6 +400,7 @@ return {
         end,
       })
       require("codecompanion").setup {
+        ignore_warnings = true,
         extensions = {
           history = {
             enabled = true,
@@ -566,6 +475,13 @@ return {
           end,
           index = 1,
           description = "Send",
+        },
+        memory = {
+          opts = {
+            chat = {
+              enabled = true,
+            },
+          },
         },
         adapters = {
           acp = {
