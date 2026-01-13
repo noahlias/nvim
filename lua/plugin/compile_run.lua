@@ -38,6 +38,9 @@ local compileRun = function()
   elseif ft == "hurl" then
     split()
     vim.cmd "term hurl %"
+  elseif ft == "c" then
+    split()
+    vim.cmd "term cc -std=c99 % -o %:r && ./%:r"
   end
 end
 

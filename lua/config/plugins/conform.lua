@@ -83,7 +83,9 @@ return {
         ruby = { "rubyfmt" },
         rust = { "rustfmt" },
         cpp = { "clang_format" },
+        c = { "clang_format" },
         cmake = { "cmake_format" },
+        typst = { "tinymist" },
         -- New API
         ["_"] = { "trim_whitespace", lsp_format = "last" },
       },

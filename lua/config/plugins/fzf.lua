@@ -107,7 +107,6 @@ return {
         ["header"] = { "fg", "Comment" },
         ["gutter"] = { "bg", "NormalFloat" },
       },
-
       grep = {
         rg_glob = true,
         rg_glob_fn = function(query, _)

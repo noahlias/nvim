@@ -141,7 +141,7 @@ return {
     },
     opts = {
       -- configuration goes here
-      image_support = false,
+      image_support = true,
       lang = "python3",
       arg = "leetcode.nvim",
       hooks = {
@@ -423,6 +423,17 @@ return {
     event = "VeryLazy",
     build = function()
       require("typst-preview").update()
+    end,
+    opts = function()
+      local env = vim.env
+      local in_kitty = env.TERM == "xterm-kitty"
+        or env.KITTY_WINDOW_ID
+        or env.KITTYSOCKET
+        or env.KITTY_LISTEN_ON
+      return {
+        -- only use kitty split when we are actually inside kitty
+        open_cmd = in_kitty and "typst-awrit-open %s",
+      }
     end,
   },
   {
@@ -931,28 +942,10 @@ return {
     event = "VeryLazy",
   },
   {
-    "pxwg/math-conceal.nvim",
-    event = "VeryLazy",
-    build = "make lua51",
-    opts = {
-      enabled = true,
-      conceal = {
-        "greek",
-        "script",
-        "math",
-        "font",
-        "delim",
-        "phy",
-      },
-      ft = { "tex", "latex", "markdown", "typst" },
-    },
-  },
-
-  {
-    "ethersync/ethersync-nvim",
-    keys = { { "<leader>j", "<cmd>EthersyncJumpToCursor<cr>" } },
+    "teamtype/teamtype-nvim",
+    keys = { { "<leader>ej", "<cmd>TeamtypeJumpToCursor<cr>" } },
     -- maybe add some cond when i used in some directory not in this
-    enabled = false,
+    enabled = true,
     lazy = false,
   },
   {
@@ -981,5 +974,113 @@ return {
     "XXiaoA/atone.nvim",
     cmd = "Atone",
     opts = {}, -- your configuration here
+  },
+  {
+    "mistricky/codesnap.nvim",
+    event = "VeryLazy",
+    enabled = true,
+    keys = {
+      {
+        "<leader>fs",
+        function()
+          -- "<cmd>CodeSnap python<cr>",
+          -- use file type to save dynamic use
+          local _buf = vim.api.nvim_get_current_buf()
+          local filetype = vim.bo[_buf].filetype
+          vim.cmd("CodeSnap " .. filetype)
+        end,
+        desc = "Take a code snapshot",
+        mode = { "n", "v" },
+      },
+    },
+    opts = {
+      show_line_number = true,
+      highlight_color = "#ffffff20",
+      show_workspace = false,
+      bg_theme = "default",
+      snapshot_config = {
+        -- theme = "Catppuccin Mocha",
+        -- themes_folders = {
+        --   "~/.config/codesnap/remote_themes/",
+        -- },
+        window = {
+          mac_window_bar = true,
+          shadow = {
+            radius = 20,
+            color = "#00000040",
+          },
+          margin = {
+            x = 82,
+            y = 82,
+          },
+          border = {
+            width = 1,
+            color = "#ffffff30",
+          },
+          title_config = {
+            color = "#ffffff",
+            font_family = "Monaspace Radon",
+          },
+        },
+        fonts_folders = { "~/Library/Fonts" },
+        line_number_color = "#495162",
+        background = "#FFFFFF",
+        code_config = {
+          font_family = "Monaspace Radon",
+          breadcrumbs = {
+            enable = true,
+            separator = "/",
+            color = "#80848b",
+            font_family = "Monaspace Radon",
+          },
+        },
+      },
+    },
+  },
+  {
+    "esmuellert/vscode-diff.nvim",
+    event = "VeryLazy",
+    dependencies = { "MunifTanjim/nui.nvim" },
+  },
+  {
+    "keaising/im-select.nvim",
+    lazy = false,
+    opts = {
+      default_im_select = "com.apple.keylayout.ABC",
+      default_command = "ims-mac",
+    },
+  },
+  {
+    "hat0uma/csvview.nvim",
+    ---@module "csvview"
+    ---@type CsvView.Options
+    opts = {
+      parser = { comments = { "#", "//" } },
+      keymaps = {
+        -- Text objects for selecting fields
+        textobject_field_inner = { "if", mode = { "o", "x" } },
+        textobject_field_outer = { "af", mode = { "o", "x" } },
+        -- Excel-like navigation:
+        -- Use <Tab> and <S-Tab> to move horizontally between fields.
+        -- Use <Enter> and <S-Enter> to move vertically between rows and place the cursor at the end of the field.
+        -- Note: In terminals, you may need to enable CSI-u mode to use <S-Tab> and <S-Enter>.
+        jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
+        jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
+        jump_next_row = { "<Enter>", mode = { "n", "v" } },
+        jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
+      },
+    },
+    cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle", "CsvViewInfo" },
+  },
+  {
+    "clabby/difftastic.nvim",
+    enabled = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      require("difftastic-nvim").setup {
+        vcs = "git",
+        download = true, -- Auto-download pre-built binary
+      }
+    end,
   },
 }

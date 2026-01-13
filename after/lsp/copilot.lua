@@ -24,5 +24,6 @@ return {
     "typst",
     "toml",
     "latex",
+    "cmake",
   },
 }

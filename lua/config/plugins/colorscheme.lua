@@ -5,6 +5,26 @@ return {
     enabled = false,
   },
   {
+    "blazkowolf/gruber-darker.nvim",
+    enabled = false,
+    opts = {
+      bold = true,
+      invert = {
+        signs = false,
+        tabline = false,
+        visual = false,
+      },
+      italic = {
+        strings = true,
+        comments = true,
+        operators = false,
+        folds = true,
+      },
+      undercurl = false,
+      underline = false,
+    },
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     enabled = true,

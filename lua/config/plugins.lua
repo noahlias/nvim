@@ -149,6 +149,7 @@ require "plugin.compile_run"
 -- NOTE: Some funny
 local rain = require "utils.funcs.rain"
 -- camel_case and snake_case convert
+local moon = require "utils.funcs.moon"
 
 local string_util = require "utils.funcs.string"
 -- use key shortcut to toggle camel_case and snake_case
@@ -182,4 +183,14 @@ end, { noremap = true, silent = true, desc = "Split line by given separator" })
 
 vim.api.nvim_create_user_command("Rain", rain.toggle_rain, {})
 
+vim.api.nvim_create_user_command("Moon", function(cmd_opts)
+  if cmd_opts.args == "" then
+    moon.show(os.time())
+  else
+    moon.date(cmd_opts.args)
+  end
+end, {
+  nargs = "?",
+  desc = "Show moon phase viewer (optional: YYYY-MM-DD)",
+})
 -- require "plugin.custom_commands"

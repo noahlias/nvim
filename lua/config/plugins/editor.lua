@@ -344,6 +344,7 @@ return {
   {
     "Chaitanyabsprip/fastaction.nvim",
     event = "VeryLazy",
+    enabled = false,
     keys = {
       {
         "<leader>la",
@@ -352,6 +353,46 @@ return {
       },
     },
     opts = {},
+  },
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      -- optional picker via fzf-lua
+      { "ibhagwan/fzf-lua" },
+    },
+    keys = {
+      {
+        "<leader>la",
+        "<cmd>lua require('tiny-code-action').code_action()<CR>",
+        desc = "Code Action",
+      },
+    },
+
+    event = "LspAttach",
+    opts = {
+      --- The backend to use, currently only "vim", "delta", "difftastic", "diffsofancy" are supported
+      backend = "difftastic",
+      picker = "fzf-lua",
+      format_title = function(action, client)
+        if action.kind then
+          return string.format("%s (%s)", action.title, action.kind)
+        end
+        return action.title
+      end,
+      backend_opts = {
+        difftastic = {
+          header_lines_to_remove = 1,
+
+          -- The arguments to pass to difftastic
+          args = {
+            "--color=always",
+            "--display=inline",
+            "--syntax-highlight=on",
+          },
+        },
+      },
+    },
   },
   {
     "bassamsdata/namu.nvim",

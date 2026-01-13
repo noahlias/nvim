@@ -23,15 +23,16 @@ return {
     keys = {
       {
         "gx",
-        function()
-          vim.cmd.Browse()
-        end,
+        "<cmd>Browse<CR>",
+        mode = { "n", "x" },
       },
     },
     cmd = {
       "Browse",
     },
-    opts = {},
+    opts = {
+      open_browser_app = "gx-open",
+    },
   },
   {
     "chrisgrieser/nvim-early-retirement",

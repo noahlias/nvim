@@ -115,19 +115,17 @@ return {
       },
       sign = { enabled = false },
       code = {
-        -- general
-        width = "block",
-        min_width = 80,
-        -- borders
+        -- sign = false,
         border = "thin",
+        position = "right",
+        width = "block",
+        above = "▁",
+        below = "▔",
+        language_left = "█",
+        language_right = "█",
+        language_border = "▁",
         left_pad = 1,
         right_pad = 1,
-        -- language info
-        position = "right",
-        language_icon = true,
-        language_name = true,
-        -- avoid making headings ugly
-        highlight_inline = "RenderMarkdownCodeInfo",
       },
       checkbox = {
         unchecked = {

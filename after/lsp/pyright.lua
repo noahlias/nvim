@@ -26,6 +26,7 @@ return {
         diagnosticMode = "workspace",
         typeCheckingMode = "standard",
         autoImportCompletions = true,
+        autoFormatStrings = true,
         diagnosticSeverityOverrides = {
           deprecateTypingAliases = false,
         },
