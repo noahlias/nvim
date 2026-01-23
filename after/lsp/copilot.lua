@@ -25,5 +25,8 @@ return {
     "toml",
     "latex",
     "cmake",
+    "ocaml",
+    "mysql",
+    "sql",
   },
 }

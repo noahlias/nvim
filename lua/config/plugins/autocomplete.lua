@@ -36,6 +36,7 @@ M.config = {
     {
       "onsails/lspkind.nvim",
       lazy = false,
+      pin = true,
       config = function()
         require("lspkind").init()
       end,

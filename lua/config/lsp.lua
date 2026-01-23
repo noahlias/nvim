@@ -201,6 +201,7 @@ vim.lsp.enable {
   "jsonnet_ls",
   "kotlin_language_server",
   "neocmake",
+  "qmlls",
 }
 -- vim.lsp.inlay_hint.enable()
 if vim.lsp.inline_completion then

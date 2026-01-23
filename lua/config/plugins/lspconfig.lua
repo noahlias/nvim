@@ -1,7 +1,5 @@
 local M = {}
 
-local F = {}
-
 M.config = {
   ---@type LazyPluginSpec
   {

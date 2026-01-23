@@ -2,11 +2,11 @@
 return {
   {
     "nvim-zh/colorful-winsep.nvim",
-    enabled = false,
+    enabled = true,
     event = { "WinNew", "WinLeave" },
     opts = {
       animate = {
-        enabled = false,
+        enabled = true,
       },
     },
   },

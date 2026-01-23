@@ -18,6 +18,11 @@ return {
         showWord = "Disable",
         workspaceWord = false,
       },
+      workspace = {
+        library = {
+          vim.env.VIMRUNTIME,
+        },
+      },
       diagnostics = {
         disable = { "missing-fields" },
       },

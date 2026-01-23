@@ -368,12 +368,11 @@ return {
         desc = "Code Action",
       },
     },
-
     event = "LspAttach",
     opts = {
       --- The backend to use, currently only "vim", "delta", "difftastic", "diffsofancy" are supported
       backend = "difftastic",
-      picker = "fzf-lua",
+      -- picker = "fzf-lua",
       format_title = function(action, client)
         if action.kind then
           return string.format("%s (%s)", action.title, action.kind)
