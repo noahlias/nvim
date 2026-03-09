@@ -2,6 +2,9 @@
 return {
   "goolord/alpha-nvim",
   event = "VimEnter",
+  enabled = function()
+    return vim.fn.argc(-1) == 0
+  end,
   config = function()
     local alpha = require "alpha"
     local theta = require "alpha.themes.theta"

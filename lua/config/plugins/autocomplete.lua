@@ -36,14 +36,7 @@ M.config = {
     "micangl/cmp-vimtex",
     "kdheepak/cmp-latex-symbols",
     "lukas-reineke/cmp-under-comparator",
-    {
-      "onsails/lspkind.nvim",
-      lazy = false,
-      pin = true,
-      config = function()
-        require("lspkind").init()
-      end,
-    },
+    { "onsails/lspkind.nvim", pin = true },
     {
       "garymjr/nvim-snippets",
       dependencies = {
@@ -225,6 +218,7 @@ end
 
 M.configfunc = function()
   local lspkind = require "lspkind"
+  lspkind.init()
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
   local cmp = require "cmp"

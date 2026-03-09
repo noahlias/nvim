@@ -6,6 +6,17 @@ local function toggle_diffview(cmd)
   end
 end
 
+local toggleterm_terminals = {}
+
+local function toggle_cached_terminal(name, opts)
+  local terminal = toggleterm_terminals[name]
+  if not terminal then
+    terminal = require("toggleterm.terminal").Terminal:new(opts)
+    toggleterm_terminals[name] = terminal
+  end
+  terminal:toggle()
+end
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -67,7 +78,7 @@ return {
   },
   {
     "andweeb/presence.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    event = "VeryLazy",
     config = function()
       require("presence").setup {
         -- General options
@@ -163,6 +174,46 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("leetcode").setup(opts)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "leetcode.nvim",
+        callback = function(ev)
+          vim.api.nvim_buf_create_user_command(
+            ev.buf,
+            "LeetCookieFromChrome",
+            function()
+              local ok, helper = pcall(require, "utils.leetcode_cookie")
+              if not ok then
+                vim.notify(
+                  "LeetCode cookie helper missing",
+                  vim.log.levels.ERROR
+                )
+                return
+              end
+
+              local success, err = helper.set_from_chrome()
+              if not success then
+                vim.notify(
+                  "LeetCode cookie update failed: " .. err,
+                  vim.log.levels.ERROR
+                )
+                return
+              end
+
+              local ok_cmd, cmd = pcall(require, "leetcode.command")
+              if ok_cmd then
+                pcall(cmd.start_user_session)
+              end
+
+              vim.notify "LeetCode cookie updated from Chrome"
+            end,
+            { desc = "LeetCode cookie from Chrome" }
+          )
+        end,
+      })
+    end,
   },
   {
     "obsidian-nvim/obsidian.nvim",
@@ -171,13 +222,12 @@ return {
     ft = "markdown",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      --FIX: problem with snippet not works
-      "hrsh7th/nvim-cmp",
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
       "3rd/image.nvim",
     },
     opts = {
+      legacy_commands = false,
       workspaces = {
         {
           name = "personal",
@@ -196,11 +246,11 @@ return {
         name = "fzf-lua",
       },
       completion = {
-        nvim_cmp = true,
+        blink = true,
       },
       footer = {
         enabled = false,
-        format = "{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars",
+        format = "{BBacklinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars",
         hl_group = "Comment",
         separator = string.rep("-", 80),
       },
@@ -231,110 +281,108 @@ return {
       shade_terminals = false,
       shade_filetypes = { "none", "fzf" },
     },
-    keys = function()
-      local float_opts = {
-        border = "rounded",
-      }
-
-      local lazydocker = require("toggleterm.terminal").Terminal:new {
-        cmd = "lazydocker",
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-      }
-      local gh_dash = require("toggleterm.terminal").Terminal:new {
-        -- https://github.com/dlvhdr/gh-dash/issues/316
-        env = { LANG = "en_US.UTF-8" },
-        cmd = "gh dash",
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-      }
-      local serpl = require("toggleterm.terminal").Terminal:new {
-        cmd = "serpl",
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-        on_open = function(_)
-          vim.cmd "startinsert!"
+    keys = {
+      { "<C-\\>" },
+      {
+        "<leader>ta",
+        "<Cmd>ToggleTermToggleAll<CR>",
+        mode = "n",
+        desc = "All Terminal",
+      },
+      {
+        "<leader>gl",
+        function()
+          toggle_cached_terminal("lazygit", {
+            cmd = "lazygit",
+            hidden = true,
+            direction = "float",
+            float_opts = { border = "rounded" },
+            close_on_exit = true,
+          })
         end,
-        close_on_exit = true,
-      }
-      local bili = require("toggleterm.terminal").Terminal:new {
-        cmd = "bili",
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-        close_on_exit = true,
-      }
-
-      local lowfi = require("toggleterm.terminal").Terminal:new {
-        cmd = "genact",
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-        close_on_exit = true,
-      }
-      --- lazygit
-      local lazygit = require("toggleterm.terminal").Terminal:new {
-        cmd = "lazygit",
-        hidden = true,
-        direction = "float",
-        float_opts = float_opts,
-        close_on_exit = true,
-      }
-      return {
-        { "<C-\\>" },
-        {
-          "<leader>ta",
-          "<Cmd>ToggleTermToggleAll<CR>",
-          mode = "n",
-          desc = "All Terminal",
-        },
-        {
-          "<leader>gl",
-          function()
-            lazygit:toggle()
-          end,
-          desc = "Lazy Git",
-        },
-        {
-          "<leader>tl",
-          function()
-            lazydocker:toggle()
-          end,
-          desc = "Lazy Docker",
-        },
-        {
-          "<leader>tg",
-          function()
-            gh_dash:toggle()
-          end,
-          desc = "GitHub Dash",
-        },
-        {
-          "<leader>tp",
-          function()
-            serpl:toggle()
-          end,
-          desc = "Search And Replace",
-        },
-        {
-          "<leader>tb",
-          function()
-            bili:toggle()
-          end,
-          desc = "Bili Danmaku",
-        },
-        {
-          "<leader>ti",
-          function()
-            lowfi:toggle()
-          end,
-          desc = "Bili Danmaku",
-        },
-      }
-    end,
+        desc = "Lazy Git",
+      },
+      {
+        "<leader>tl",
+        function()
+          toggle_cached_terminal("lazydocker", {
+            cmd = "lazydocker",
+            hidden = true,
+            direction = "float",
+            float_opts = { border = "rounded" },
+          })
+        end,
+        desc = "Lazy Docker",
+      },
+      {
+        "<leader>tg",
+        function()
+          toggle_cached_terminal("gh_dash", {
+            env = { LANG = "en_US.UTF-8" },
+            cmd = "gh dash",
+            hidden = true,
+            direction = "float",
+            float_opts = { border = "rounded" },
+          })
+        end,
+        desc = "GitHub Dash",
+      },
+      {
+        "<leader>tp",
+        function()
+          toggle_cached_terminal("serpl", {
+            cmd = "serpl",
+            hidden = true,
+            direction = "float",
+            float_opts = { border = "rounded" },
+            on_open = function(_)
+              vim.cmd "startinsert!"
+            end,
+            close_on_exit = true,
+          })
+        end,
+        desc = "Search And Replace",
+      },
+      {
+        "<leader>tb",
+        function()
+          toggle_cached_terminal("bili", {
+            cmd = "bili",
+            hidden = true,
+            direction = "float",
+            float_opts = { border = "rounded" },
+            close_on_exit = true,
+          })
+        end,
+        desc = "Bili Danmaku",
+      },
+      {
+        "<leader>ti",
+        function()
+          toggle_cached_terminal("genact", {
+            cmd = "genact",
+            hidden = true,
+            direction = "float",
+            float_opts = { border = "rounded" },
+            close_on_exit = true,
+          })
+        end,
+        desc = "Bili Danmaku",
+      },
+      {
+        "<leader>tx",
+        function()
+          toggle_cached_terminal("sqlit", {
+            cmd = "sqlit",
+            hidden = true,
+            direction = "float",
+            float_opts = { border = "rounded" },
+            close_on_exit = true,
+          })
+        end,
+        desc = "SQLite Interface",
+      },
+    },
   },
   {
     "willothy/flatten.nvim",
@@ -521,7 +569,6 @@ return {
     "mrcjkb/haskell-tools.nvim",
     event = { "BufNewFile *.hs", "BufReadPost *.hs" },
     version = "^3", -- Recommended
-    lazy = false,
   },
   {
     "Julian/lean.nvim",
@@ -868,7 +915,7 @@ return {
       purge_after_minutes = 10080,
       session_lens = {
         -- If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first
-        load_on_setup = true,
+        load_on_setup = false,
         previewer = false,
         mappings = {
           -- Mode can be a string or a table, e.g. {"i", "n"} for both insert and normal mode
@@ -943,10 +990,10 @@ return {
   },
   {
     "teamtype/teamtype-nvim",
+    event = "VeryLazy",
     keys = { { "<leader>ej", "<cmd>TeamtypeJumpToCursor<cr>" } },
     -- maybe add some cond when i used in some directory not in this
     enabled = true,
-    lazy = false,
   },
   {
     "rafcamlet/nvim-luapad",
@@ -1121,5 +1168,16 @@ return {
         url = "https://godbolt.org", -- can be changed to a different godbolt instance
       }
     end,
+  },
+  {
+    "nemanjamalesija/smart-paste.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
+  {
+    "aikhe/wrapped.nvim",
+    dependencies = { "nvzone/volt", "nvim-lua/plenary.nvim" },
+    cmd = { "NvimWrapped" },
+    opts = {},
   },
 }

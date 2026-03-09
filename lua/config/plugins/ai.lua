@@ -600,6 +600,14 @@ return {
         desc = "Sidekick Toggle CLI",
       },
       {
+        "<c-.>",
+        function()
+          require("sidekick.cli").toggle()
+        end,
+        desc = "Sidekick Toggle",
+        mode = { "n", "t", "i", "x" },
+      },
+      {
         "<leader>ad",
         function()
           require("sidekick.cli").close()
@@ -622,13 +630,18 @@ return {
         mode = { "x" },
         desc = "Send Visual Selection",
       },
-      {
-        "<leader>ac",
-        function()
-          require("sidekick.cli").toggle { name = "codex", focus = true }
-        end,
-        desc = "Sidekick Toggle Codex",
-      },
+    },
+  },
+  {
+    "sudo-tee/opencode.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("opencode").setup {
+        preferred_picker = "fzf",
+      }
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
     },
   },
 }
