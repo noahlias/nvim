@@ -3,9 +3,8 @@ local M = {}
 M.config = {
   ---@type LazyPluginSpec
   {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
-    lazy = false,
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       {
         "folke/trouble.nvim",
@@ -25,48 +24,28 @@ M.config = {
         },
       },
       {
-        "neovim/nvim-lspconfig",
-        lazy = false,
-      },
-      {
         "williamboman/mason.nvim",
       },
       { "hrsh7th/cmp-nvim-lsp" },
       { "ray-x/lsp_signature.nvim", event = "LspAttach" },
       "b0o/SchemaStore.nvim",
-      -- "mjlbach/lsp_signature.nvim",
-      { "airblade/vim-rooter" },
     },
 
     config = function()
-      local lsp = require "lsp-zero"
-      M.lsp = lsp
-
       require("mason").setup {}
 
-      lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps { buffer = bufnr }
-        require("config.plugins.autocomplete").configfunc()
-      end)
-
-      lsp.set_server_config {
-        on_init = function(client)
-          client.server_capabilities.semanticTokensProvider = nil
-        end,
-      }
-
       local lspconfig = require "lspconfig"
-
-      lsp.setup()
       local lsp_defaults = lspconfig.util.default_config
       lsp_defaults.capabilities = vim.tbl_deep_extend(
         "force",
         lsp_defaults.capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
+        require "config.capabilities"
       )
+      lsp_defaults.on_init = function(client)
+        client.server_capabilities.semanticTokensProvider = nil
+      end
 
       require "config.lsp"
-      require("fidget").setup {}
     end,
   },
 }
