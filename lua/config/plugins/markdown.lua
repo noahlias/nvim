@@ -212,7 +212,14 @@ return {
       -- https://github.com/MeanderingProgrammer/render-markdown.nvim/issues/509
       win_options = { concealcursor = { rendered = "nvc" } },
     },
-    ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
+    ft = {
+      "markdown",
+      "norg",
+      "rmd",
+      "org",
+      "codecompanion",
+      "opencode_output",
+    },
     config = function(_, opts)
       require("render-markdown").setup(opts)
     end,

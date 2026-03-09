@@ -28,5 +28,7 @@ return {
     "ocaml",
     "mysql",
     "sql",
+    "just",
   },
+  exit_timeout = 0,
 }

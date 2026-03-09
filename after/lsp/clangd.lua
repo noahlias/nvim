@@ -11,7 +11,7 @@ return {
     "--header-insertion=never",
     "-j=4",
     "--inlay-hints",
-    "--header-insertion-decorators",
+    "--header-insertion-decorators=0",
     "--function-arg-placeholders",
     "--completion-style=detailed",
     "--clang-tidy",

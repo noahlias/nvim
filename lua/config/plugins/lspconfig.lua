@@ -5,7 +5,7 @@ M.config = {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
     dependencies = {
       {
         "folke/trouble.nvim",
@@ -26,7 +26,7 @@ M.config = {
       },
       {
         "neovim/nvim-lspconfig",
-        event = { "BufReadPost", "BufNewFile" },
+        lazy = false,
       },
       {
         "williamboman/mason.nvim",
@@ -58,14 +58,15 @@ M.config = {
       local lspconfig = require "lspconfig"
 
       lsp.setup()
-      require("fidget").setup {}
-
       local lsp_defaults = lspconfig.util.default_config
       lsp_defaults.capabilities = vim.tbl_deep_extend(
         "force",
         lsp_defaults.capabilities,
         require("cmp_nvim_lsp").default_capabilities()
       )
+
+      require "config.lsp"
+      require("fidget").setup {}
     end,
   },
 }

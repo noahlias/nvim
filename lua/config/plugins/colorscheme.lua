@@ -31,6 +31,11 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
+      flavour = "auto", -- latte, frappe, macchiato, mocha
+      background = { -- :h background
+        light = "latte",
+        dark = "mocha",
+      },
       term_colors = true,
       transparent_background = false,
       custom_highlights = function(color)
