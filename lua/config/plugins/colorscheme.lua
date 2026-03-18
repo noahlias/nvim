@@ -99,6 +99,7 @@ return {
         alpha = false,
         aerial = true,
         which_key = true,
+        render_markdown = true,
         indent_blankline = {
           enabled = true,
           colored_indent_levels = false,

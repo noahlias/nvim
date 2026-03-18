@@ -1180,4 +1180,26 @@ return {
     cmd = { "NvimWrapped" },
     opts = {},
   },
+  {
+    "kevinhwang91/nvim-fundo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    build = function()
+      require("fundo").install()
+    end,
+    lazy = false,
+    init = function()
+      vim.opt.undofile = true
+    end,
+    config = function()
+      require("fundo").setup()
+    end,
+  },
+  {
+    "HarshK97/diffmantic.nvim",
+    config = function()
+      require("diffmantic").setup()
+    end,
+  },
 }

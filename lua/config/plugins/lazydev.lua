@@ -7,8 +7,12 @@ return {
       library = {
         { path = "luvit-meta/library", words = { "vim%.uv" } },
         {
+          path = "nvim-lspconfig",
+          words = { "lspconfig" },
+        },
+        {
           path = "lazy.nvim",
-          words = { "LazyPluginSpec", "LazyPluginConfig" },
+          words = { "Lazy.*Spec" },
         },
       },
       -- debug = true,

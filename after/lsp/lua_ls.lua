@@ -1,6 +1,7 @@
 ---@type vim.lsp.Config
 return {
   settings = {
+    ---@type lspconfig.settings.lua_ls
     Lua = {
       runtime = {
         version = "LuaJIT",
