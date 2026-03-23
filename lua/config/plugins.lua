@@ -70,6 +70,7 @@ require("lazy").setup {
     require "config.plugins.go",
     require "config.plugins.surround",
     require "config.plugins.project",
+    require "config.plugins.projecteuler",
     require "config.plugins.multi-cursor",
     require "config.plugins.markdown",
     require "config.plugins.git",

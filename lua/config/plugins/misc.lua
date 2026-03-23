@@ -80,6 +80,18 @@ return {
     "andweeb/presence.nvim",
     event = "VeryLazy",
     config = function()
+      local function get_disabled_presence_workspaces()
+        local paths = {}
+        local env_paths = vim.env.NVIM_DISABLED_FORMAT_PATHS
+        if env_paths then
+          for path in string.gmatch(env_paths, "[^:]+") do
+            local expanded_path = path:gsub("^~", vim.env.HOME or "")
+            table.insert(paths, expanded_path)
+          end
+        end
+        return paths
+      end
+
       require("presence").setup {
         -- General options
         auto_update = true,
@@ -89,7 +101,7 @@ return {
         log_level = nil,
         debounce_timeout = 10,
         enable_line_number = false,
-        blacklist = {},
+        blacklist = get_disabled_presence_workspaces(),
         buttons = true,
         file_assets = {},
         show_time = true,
