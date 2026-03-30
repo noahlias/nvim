@@ -336,3 +336,4 @@ end, { desc = "Toggle words" })
 vim.cmd [[packadd nvim.difftool]]
 -- undotree
 vim.cmd [[packadd nvim.undotree]]
+vim.opt.fillchars:append { eob = " " }

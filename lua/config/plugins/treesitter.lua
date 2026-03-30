@@ -1,8 +1,163 @@
+local ensure_installed = {
+  "bash",
+  "c",
+  "cpp",
+  "dap_repl",
+  "dart",
+  "dockerfile",
+  "gitignore",
+  "go",
+  "haskell",
+  "html",
+  "java",
+  "javascript",
+  "json",
+  "jsonc",
+  "just",
+  "latex",
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "norg",
+  "ocaml",
+  "odin",
+  "org",
+  "prisma",
+  "python",
+  "query",
+  "r",
+  "rust",
+  "toml",
+  "tsx",
+  "typescript",
+  "typst",
+  "vim",
+  "vimdoc",
+  "yaml",
+  "zig",
+  "glsl",
+  "gleam",
+  "julia",
+}
+
+local function highlight_disabled(bufnr)
+  if vim.bo[bufnr].filetype == "latex" then
+    return true
+  end
+
+  local name = vim.api.nvim_buf_get_name(bufnr)
+  if name == "" then
+    return false
+  end
+
+  local stat = vim.uv.fs_stat(name)
+  return stat ~= nil and stat.size > 256 * 1024
+end
+
+local function parser_installed(lang)
+  return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true) > 0
+end
+
+local function ensure_parser_installed(lang, available)
+  if vim.tbl_contains(available, lang) then
+    require("nvim-treesitter").install(lang)
+  end
+end
+
+local function maybe_install_missing_parsers()
+  local treesitter = require "nvim-treesitter"
+  local installed = {}
+  for _, lang in ipairs(treesitter.get_installed()) do
+    installed[lang] = true
+  end
+
+  local available = treesitter.get_available()
+  local missing = {}
+  for _, lang in ipairs(ensure_installed) do
+    if not installed[lang] and vim.tbl_contains(available, lang) then
+      table.insert(missing, lang)
+    end
+  end
+
+  if #missing > 0 then
+    treesitter.install(missing, { summary = true })
+  end
+end
+
+local function start_treesitter(bufnr)
+  if highlight_disabled(bufnr) then
+    return
+  end
+
+  local lang = vim.treesitter.language.get_lang(vim.bo[bufnr].filetype)
+  if not lang or lang == "" then
+    return
+  end
+
+  if not parser_installed(lang) then
+    local available = vim.g.ts_available or require("nvim-treesitter").get_available()
+    vim.g.ts_available = available
+    ensure_parser_installed(lang, available)
+    return
+  end
+
+  vim.treesitter.start(bufnr, lang)
+end
+
+local function visual_select(range)
+  local srow, scol, erow, ecol = unpack(range)
+  local other_end = false
+
+  local vcol, vrow = vim.fn.col "v", vim.fn.line "v"
+  local ccol, crow = vim.fn.col ".", vim.fn.line "."
+  if vrow > crow or (vrow == crow and vcol > ccol) then
+    other_end = true
+  end
+
+  if ecol == 0 then
+    erow = erow - 1
+    ecol = #vim.fn.getline(erow + 1) + 1
+  end
+
+  vim.fn.setpos("'<", { 0, srow + 1, scol + 1, 0 })
+  vim.fn.setpos("'>", { 0, erow + 1, ecol, 0 })
+  if other_end then
+    vim.cmd.normal { "gvo", bang = true }
+  else
+    vim.cmd.normal { "gv", bang = true }
+  end
+end
+
+local function select_current_node()
+  local node = vim.treesitter.get_node { ignore_injections = false }
+  if not node then
+    return
+  end
+
+  vim.cmd.normal { "v", bang = true }
+  visual_select { node:range() }
+end
+
+local function set_incremental_selection_keymaps()
+  local select = require "vim.treesitter._select"
+  vim.keymap.set("n", "<c-n>", select_current_node, { silent = true })
+  vim.keymap.set("x", "<c-n>", function()
+    select.select_parent(vim.v.count1)
+  end, { silent = true })
+  vim.keymap.set("x", "<c-h>", function()
+    select.select_child(vim.v.count1)
+  end, { silent = true })
+  vim.keymap.set("x", "<c-l>", function()
+    select.select_parent(vim.v.count1)
+  end, { silent = true })
+end
+
 ---@type LazyPluginSpec[]
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPost",
+    branch = "main",
+    lazy = false,
     priority = 1000,
     build = ":TSUpdate",
     dependencies = {
@@ -10,8 +165,12 @@ return {
       "LiadOz/nvim-dap-repl-highlights",
     },
     config = function()
-      local parser_config =
-        require("nvim-treesitter.parsers").get_parser_configs()
+      local treesitter = require "nvim-treesitter"
+      treesitter.setup {
+        install_dir = vim.fs.joinpath(vim.fn.stdpath "data", "site"),
+      }
+
+      local parser_config = require "nvim-treesitter.parsers"
       parser_config.c3 = {
         install_info = {
           url = "https://github.com/c3lang/tree-sitter-c3",
@@ -19,72 +178,31 @@ return {
           branch = "main",
         },
       }
+
       require("nvim-dap-repl-highlights").setup()
-      ---@diagnostic disable-next-line: missing-fields
-      require("nvim-treesitter.configs").setup {
-        ensure_installed = {
-          "bash",
-          "c",
-          "cpp",
-          "dap_repl",
-          "dart",
-          "dockerfile",
-          "gitignore",
-          "go",
-          "haskell",
-          "html",
-          "java",
-          "javascript",
-          "json",
-          "jsonc",
-          "latex",
-          "lua",
-          "markdown",
-          "markdown_inline",
-          "norg",
-          "org",
-          "prisma",
-          "python",
-          "query",
-          "rust",
-          "toml",
-          "tsx",
-          "typescript",
-          "typst",
-          "vim",
-          "vimdoc",
-          "yaml",
-          "zig",
-          "ocaml",
-          "odin",
-          "glsl",
-          "gleam",
-          "julia",
-          "r",
-          "just",
+      set_incremental_selection_keymaps()
+      maybe_install_missing_parsers()
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "*",
+        callback = function(args)
+          start_treesitter(args.buf)
+        end,
+      })
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("nvim-treesitter-textobjects").setup {
+        select = {
+          lookahead = true,
         },
-        highlight = {
-          enable = true,
-          -- additional_vim_regex_highlighting = false,
-          -- use_languagetree = false,
-          disable = function(_, bufnr)
-            local buf_name = vim.api.nvim_buf_get_name(bufnr)
-            local file_size =
-              vim.api.nvim_call_function("getfsize", { buf_name })
-            return file_size > 256 * 1024 or vim.bo.ft == "latex"
-          end,
-        },
-        ident = {
-          enable = false,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<c-n>",
-            node_incremental = "<c-n>",
-            node_decremental = "<c-h>",
-            scope_incremental = "<c-l>",
-          },
+        move = {
+          set_jumps = true,
         },
       }
     end,
