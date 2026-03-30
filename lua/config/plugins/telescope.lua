@@ -1,4 +1,3 @@
-local m = { noremap = true, nowait = true }
 local M = {}
 
 M.config = {

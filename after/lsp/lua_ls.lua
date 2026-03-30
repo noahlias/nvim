@@ -22,7 +22,11 @@ return {
       workspace = {
         library = {
           vim.env.VIMRUNTIME,
+          vim.fs.joinpath(vim.fn.stdpath "config", "lua"),
+          vim.fs.joinpath(vim.fn.stdpath "config", "after"),
+          vim.fs.joinpath(vim.fn.stdpath "data", "lazy", "nvim-lspconfig", "lua"),
         },
+        checkThirdParty = false,
       },
       diagnostics = {
         disable = { "missing-fields" },

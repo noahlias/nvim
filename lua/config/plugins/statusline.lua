@@ -36,17 +36,17 @@ end
 
 local function dap()
   ---@diagnostic disable-next-line: redefined-local
-  local dap = package.loaded["dap"]
-  if dap then
-    return dap.status()
+  local dap_state = package.loaded["dap"]
+  if dap_state then
+    return dap_state.status()
   end
   return ""
 end
 
 local function osv()
   ---@diagnostic disable-next-line: redefined-local
-  local osv = package.loaded["osv"]
-  if osv and osv.is_running() then
+  local osv_state = package.loaded["osv"]
+  if osv_state and osv_state.is_running() then
     return "Running as debugger"
   end
   return ""

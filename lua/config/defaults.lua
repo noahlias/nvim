@@ -193,8 +193,8 @@ vim.api.nvim_create_user_command("Translate", function(opts)
     word = vim.fn.expand "<cword>"
   end
 
-  local stdout = vim.loop.new_pipe(false)
-  local stderr = vim.loop.new_pipe(false)
+  local stdout = assert(vim.loop.new_pipe(false))
+  local stderr = assert(vim.loop.new_pipe(false))
   local handle
   local timer
 
@@ -230,7 +230,7 @@ vim.api.nvim_create_user_command("Translate", function(opts)
   end
 
   -- Create a timer for timeout
-  timer = vim.loop.new_timer()
+  timer = assert(vim.loop.new_timer())
   timer:start(5000, 0, function() -- 5 second timeout
     vim.schedule(function()
       cleanup()
@@ -305,7 +305,6 @@ vim.api.nvim_create_user_command("Translate", function(opts)
     end
   end)
 
-  print "hi"
   stderr:read_start(function(err, data)
     if stderr:is_closing() then
       return

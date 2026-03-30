@@ -61,35 +61,26 @@ local preview_opts = {
 
 -- To instead override globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+local lsp_handlers = require "vim.lsp.handlers"
 ---@diagnostic disable-next-line: duplicate-set-field
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = vim.tbl_deep_extend("keep", opts, preview_opts)
-  opts.border = opts.border or "rounded"
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+  local float_opts = assert(vim.tbl_deep_extend("keep", opts or {}, preview_opts))
+  float_opts.border = float_opts.border or "rounded"
+  return orig_util_open_floating_preview(contents, syntax, float_opts, ...)
 end
 
-local documentation_window_open_index = 0
 local function show_documentation()
-  documentation_window_open_index = documentation_window_open_index + 1
-  local current_index = documentation_window_open_index
-  ---@diagnostic disable-next-line: lowercase-global
-  documentation_window_open = true
-  vim.defer_fn(function()
-    if current_index == documentation_window_open_index then
-      ---@diagnostic disable-next-line: lowercase-global
-      documentation_window_open = false
-    end
-  end, 500)
   vim.lsp.buf.hover()
 end
 
-vim.lsp.handlers["textDocument/signatureHelp"] =
-  vim.lsp.with(vim.lsp.handlers.signature_help, {
-    -- silent = true,
+vim.lsp.handlers["textDocument/signatureHelp"] = function(err, result, ctx, config)
+  local signature_opts = vim.tbl_extend("keep", config or {}, {
     focusable = false,
     border = "rounded",
     zindex = 60,
   })
+  return lsp_handlers.signature_help(err, result, ctx, signature_opts)
+end
 
 --- Configure keybindings when the LSP attaches to a buffer
 vim.api.nvim_create_autocmd("LspAttach", {

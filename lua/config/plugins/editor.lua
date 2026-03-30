@@ -374,7 +374,7 @@ return {
       --- The backend to use, currently only "vim", "delta", "difftastic", "diffsofancy" are supported
       backend = "difftastic",
       -- picker = "fzf-lua",
-      format_title = function(action, client)
+      format_title = function(action, _)
         if action.kind then
           return string.format("%s (%s)", action.title, action.kind)
         end

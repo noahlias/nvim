@@ -3,7 +3,6 @@ return {
   filetypes = { "python" },
   cmd = { "delance-langserver", "--stdio" },
   settings = {
-    ---@type lspconfig.settings.pyright
     capabilities = {
       textDocument = {
         publishDiagnostics = {

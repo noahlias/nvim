@@ -9,7 +9,7 @@ return {
         tools = {},
         -- LSP configuration
         server = {
-          on_attach = function(client, bufnr)
+          on_attach = function(_, bufnr)
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
           end,
           default_settings = {

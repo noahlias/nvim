@@ -31,7 +31,7 @@ return {
         },
         require "neotest-vitest" {
           ---@diagnostic disable-next-line: unused-local
-          filter_dir = function(name, rel_path, root)
+          filter_dir = function(name, _, _)
             return name ~= "node_modules"
           end,
         },

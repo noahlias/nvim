@@ -668,7 +668,7 @@ return {
     event = "VeryLazy",
     config = function()
       -- venn.nvim: enable or disable keymappings
-      function _G.Toggle_venn()
+      local function toggle_venn()
         local venn_enabled = vim.inspect(vim.b.venn_enabled)
         local opts = { noremap = true, silent = true }
         if venn_enabled == "nil" then
@@ -698,12 +698,11 @@ return {
         end
       end
       -- toggle keymappings for venn using <leader>v
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>mv",
-        ":lua Toggle_venn()<CR>",
-        { noremap = true, desc = "Toggle venn", silent = true }
-      )
+      vim.keymap.set("n", "<leader>mv", toggle_venn, {
+        noremap = true,
+        desc = "Toggle venn",
+        silent = true,
+      })
     end,
   },
   ---NOTE: not useful
@@ -965,7 +964,7 @@ return {
     ft = { "scala", "sbt" },
     opts = function()
       local metals_config = require("metals").bare_config()
-      metals_config.on_attach = function(client, bufnr)
+      metals_config.on_attach = function(_, _)
         -- your on_attach function
       end
 
