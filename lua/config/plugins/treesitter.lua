@@ -1,6 +1,7 @@
 local ensure_installed = {
   "bash",
   "c",
+  "c3",
   "cpp",
   "dap_repl",
   "dart",
@@ -95,7 +96,8 @@ local function start_treesitter(bufnr)
   end
 
   if not parser_installed(lang) then
-    local available = vim.g.ts_available or require("nvim-treesitter").get_available()
+    local available = vim.g.ts_available
+      or require("nvim-treesitter").get_available()
     vim.g.ts_available = available
     ensure_parser_installed(lang, available)
     return
@@ -169,16 +171,6 @@ return {
       treesitter.setup {
         install_dir = vim.fs.joinpath(vim.fn.stdpath "data", "site"),
       }
-
-      local parser_config = require "nvim-treesitter.parsers"
-      parser_config.c3 = {
-        install_info = {
-          url = "https://github.com/c3lang/tree-sitter-c3",
-          files = { "src/parser.c", "src/scanner.c" },
-          branch = "main",
-        },
-      }
-
       require("nvim-dap-repl-highlights").setup()
       set_incremental_selection_keymaps()
       maybe_install_missing_parsers()
