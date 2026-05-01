@@ -17,6 +17,63 @@ local function toggle_cached_terminal(name, opts)
   terminal:toggle()
 end
 
+local function is_dap_view_window(win)
+  return vim.w[win].dapview_win or vim.w[win].dapview_win_term
+end
+
+local function dap_view_tabpage_windows()
+  local wins = {}
+
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    local bufnr = vim.api.nvim_win_get_buf(win)
+    local buftype = vim.bo[bufnr].buftype
+
+    if
+      not is_dap_view_window(win)
+      and vim.tbl_contains({ "", "help", "prompt", "quickfix", "terminal" }, buftype)
+    then
+      table.insert(wins, win)
+    end
+  end
+
+  return wins
+end
+
+local function dap_view_position(prev)
+  if prev and vim.o.columns < 140 then
+    return "below"
+  end
+
+  local user_windows = dap_view_tabpage_windows()
+  if vim.o.columns >= 150 and #user_windows <= 1 then
+    return "right"
+  end
+
+  return "below"
+end
+
+local function dap_view_size(position)
+  if position == "right" then
+    return vim.o.columns >= 190 and 0.42 or 0.48
+  end
+
+  if vim.o.lines >= 55 then
+    return 0.34
+  end
+
+  return 0.40
+end
+
+local function dap_view_terminal_position(position)
+  return position == "right" and "below" or "right"
+end
+
+local function dap_view_label(full, short)
+  return function(width)
+    return width < 82 and short or full
+  end
+end
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -1192,6 +1249,74 @@ return {
     opts = {},
   },
   {
+    url = "https://codeberg.org/Jorenar/nvim-dap-disasm.git",
+    dependencies = {
+      "igorlfs/nvim-dap-view",
+    },
+    config = true,
+  },
+  {
+    "igorlfs/nvim-dap-view",
+    lazy = false,
+    version = "1.*",
+    ---@module 'dap-view'
+    ---@type dapview.Config
+    opts = {
+      auto_toggle = true,
+      follow_tab = true,
+      switchbuf = "usetab,uselast",
+      winbar = {
+        default_section = "watches",
+        sections = {
+          "watches",
+          "scopes",
+          "exceptions",
+          "repl",
+          "sessions",
+          "breakpoints",
+          "threads",
+          "disassembly",
+          "console",
+        },
+        show_keymap_hints = false,
+        base_sections = {
+          breakpoints = {
+            label = dap_view_label("Breakpoints", "Breaks"),
+            keymap = "B",
+          },
+          console = { label = "Console", keymap = "C" },
+          exceptions = {
+            label = dap_view_label("Exceptions", "Except"),
+            keymap = "E",
+          },
+          repl = { label = "REPL", keymap = "R" },
+          scopes = { label = "Scopes", keymap = "S" },
+          sessions = {
+            label = dap_view_label("Sessions", "Sess"),
+            keymap = "K",
+          },
+          threads = { label = "Threads", keymap = "T" },
+          watches = { label = "Watches", keymap = "W" },
+        },
+        controls = {
+          enabled = true,
+          position = "right",
+        },
+      },
+      windows = {
+        position = dap_view_position,
+        size = dap_view_size,
+        terminal = {
+          position = dap_view_terminal_position,
+          size = 0.38,
+          hide = {
+            "delve",
+          },
+        },
+      },
+    },
+  },
+  {
     "kevinhwang91/nvim-fundo",
     dependencies = {
       "kevinhwang91/promise-async",
@@ -1212,5 +1337,10 @@ return {
     config = function()
       require("diffmantic").setup()
     end,
+  },
+  {
+    "Imngzx/jisho.nvim",
+    cmd = "Jisho",
+    opts = {}, -- Calls setup() automatically
   },
 }

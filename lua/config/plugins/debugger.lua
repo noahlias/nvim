@@ -39,12 +39,6 @@ return {
       end,
     },
     "theHamsta/nvim-dap-virtual-text",
-    {
-      "rcarriga/nvim-dap-ui",
-      dependencies = {
-        "nvim-neotest/nvim-nio",
-      },
-    },
     "nvim-dap-virtual-text",
     {
       "mfussenegger/nvim-dap-python",
@@ -213,17 +207,45 @@ return {
     {
       "<leader>'u",
       function()
-        require("dapui").toggle()
+        require("dap-view").toggle()
       end,
-      desc = "Toggle UI",
+      desc = "Toggle Dap View",
+    },
+    {
+      "<leader>'w",
+      function()
+        require("dap-view").add_expr()
+      end,
+      mode = { "n", "v" },
+      desc = "Watch expression",
+    },
+    {
+      "<leader>'S",
+      function()
+        require("dap-view").jump_to_view "scopes"
+      end,
+      desc = "Dap View scopes",
+    },
+    {
+      "<leader>'B",
+      function()
+        require("dap-view").jump_to_view "breakpoints"
+      end,
+      desc = "Dap View breakpoints",
+    },
+    {
+      "<leader>'T",
+      function()
+        require("dap-view").jump_to_view "threads"
+      end,
+      desc = "Dap View threads",
     },
   },
   config = function()
     local dap = require "dap"
-    local dapui = require "dapui"
 
-    dapui.setup()
     require("nvim-dap-virtual-text").setup {}
+    dap.defaults.fallback.switchbuf = "usevisible,usetab,newtab"
 
     -- NOTE: this plugin for neovim debug
     dap.defaults.fallback.external_terminal = {
