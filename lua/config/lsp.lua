@@ -64,7 +64,8 @@ local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 local lsp_handlers = require "vim.lsp.handlers"
 ---@diagnostic disable-next-line: duplicate-set-field
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  local float_opts = assert(vim.tbl_deep_extend("keep", opts or {}, preview_opts))
+  local float_opts =
+    assert(vim.tbl_deep_extend("keep", opts or {}, preview_opts))
   float_opts.border = float_opts.border or "rounded"
   return orig_util_open_floating_preview(contents, syntax, float_opts, ...)
 end
@@ -73,7 +74,12 @@ local function show_documentation()
   vim.lsp.buf.hover()
 end
 
-vim.lsp.handlers["textDocument/signatureHelp"] = function(err, result, ctx, config)
+vim.lsp.handlers["textDocument/signatureHelp"] = function(
+  err,
+  result,
+  ctx,
+  config
+)
   local signature_opts = vim.tbl_extend("keep", config or {}, {
     focusable = false,
     border = "rounded",
@@ -194,6 +200,7 @@ vim.lsp.enable {
   "kotlin_language_server",
   "neocmake",
   "qmlls",
+  "tombi",
 }
 -- vim.lsp.inlay_hint.enable()
 if vim.lsp.inline_completion then

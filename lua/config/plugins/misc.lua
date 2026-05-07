@@ -30,7 +30,10 @@ local function dap_view_tabpage_windows()
 
     if
       not is_dap_view_window(win)
-      and vim.tbl_contains({ "", "help", "prompt", "quickfix", "terminal" }, buftype)
+      and vim.tbl_contains(
+        { "", "help", "prompt", "quickfix", "terminal" },
+        buftype
+      )
     then
       table.insert(wins, win)
     end
@@ -45,7 +48,7 @@ local function dap_view_position(prev)
   end
 
   local user_windows = dap_view_tabpage_windows()
-  if vim.o.columns >= 150 and #user_windows <= 1 then
+  if vim.o.columns >= 170 and #user_windows <= 1 then
     return "right"
   end
 
@@ -54,7 +57,7 @@ end
 
 local function dap_view_size(position)
   if position == "right" then
-    return vim.o.columns >= 190 and 0.42 or 0.48
+    return vim.o.columns >= 210 and 0.44 or 0.50
   end
 
   if vim.o.lines >= 55 then
@@ -68,10 +71,34 @@ local function dap_view_terminal_position(position)
   return position == "right" and "below" or "right"
 end
 
-local function dap_view_label(full, short)
-  return function(width)
-    return width < 82 and short or full
+local function dap_view_label(section, full, medium, short)
+  return function(width, current)
+    if width < 68 then
+      return current == section and medium or short
+    end
+
+    if width < 94 then
+      return medium
+    end
+
+    return full
   end
+end
+
+local function set_dap_view_highlights()
+  local set_hl = vim.api.nvim_set_hl
+
+  set_hl(0, "NvimDapViewTab", { link = "Pmenu" })
+  set_hl(0, "NvimDapViewTabSelected", { link = "PmenuSel" })
+  set_hl(0, "NvimDapViewTabFill", { link = "WinSeparator" })
+  set_hl(0, "NvimDapViewControlPlay", { link = "DiagnosticOk" })
+  set_hl(0, "NvimDapViewControlPause", { link = "DiagnosticWarn" })
+  set_hl(0, "NvimDapViewControlTerminate", { link = "DiagnosticError" })
+  set_hl(0, "NvimDapViewControlDisconnect", { link = "DiagnosticError" })
+  set_hl(0, "NvimDapViewControlNC", { link = "Comment" })
+  set_hl(0, "NvimDapViewFileName", { link = "Directory" })
+  set_hl(0, "NvimDapViewLineNumber", { link = "LineNr" })
+  set_hl(0, "NvimDapViewFrameCurrent", { link = "Visual" })
 end
 
 ---@type LazyPluginSpec[]
@@ -428,8 +455,8 @@ return {
       {
         "<leader>ti",
         function()
-          toggle_cached_terminal("genact", {
-            cmd = "genact",
+          toggle_cached_terminal("hunk", {
+            cmd = "hunk diff",
             hidden = true,
             direction = "float",
             float_opts = { border = "rounded" },
@@ -1253,12 +1280,25 @@ return {
     dependencies = {
       "igorlfs/nvim-dap-view",
     },
-    config = true,
+    opts = {
+      dapview = {
+        label = dap_view_label("disassembly", "Disassembly", "Disasm", "Asm"),
+      },
+    },
+    config = function(_, opts)
+      require("dap-disasm").setup(opts)
+    end,
   },
   {
     "igorlfs/nvim-dap-view",
     lazy = false,
     version = "1.*",
+    init = function()
+      set_dap_view_highlights()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        callback = set_dap_view_highlights,
+      })
+    end,
     ---@module 'dap-view'
     ---@type dapview.Config
     opts = {
@@ -1281,26 +1321,51 @@ return {
         show_keymap_hints = false,
         base_sections = {
           breakpoints = {
-            label = dap_view_label("Breakpoints", "Breaks"),
+            label = dap_view_label(
+              "breakpoints",
+              "Breakpoints",
+              "Breaks",
+              "Bp"
+            ),
             keymap = "B",
           },
-          console = { label = "Console", keymap = "C" },
+          console = {
+            label = dap_view_label("console", "Console", "Con", "C"),
+            keymap = "C",
+          },
           exceptions = {
-            label = dap_view_label("Exceptions", "Except"),
+            label = dap_view_label("exceptions", "Exceptions", "Except", "Ex"),
             keymap = "E",
           },
           repl = { label = "REPL", keymap = "R" },
-          scopes = { label = "Scopes", keymap = "S" },
+          scopes = {
+            label = dap_view_label("scopes", "Scopes", "Scope", "S"),
+            keymap = "S",
+          },
           sessions = {
-            label = dap_view_label("Sessions", "Sess"),
+            label = dap_view_label("sessions", "Sessions", "Sess", "Se"),
             keymap = "K",
           },
-          threads = { label = "Threads", keymap = "T" },
-          watches = { label = "Watches", keymap = "W" },
+          threads = {
+            label = dap_view_label("threads", "Threads", "Thread", "T"),
+            keymap = "T",
+          },
+          watches = {
+            label = dap_view_label("watches", "Watches", "Watch", "W"),
+            keymap = "W",
+          },
         },
         controls = {
           enabled = true,
           position = "right",
+          buttons = {
+            "play",
+            "step_over",
+            "step_into",
+            "step_out",
+            "terminate",
+            "disconnect",
+          },
         },
       },
       windows = {
@@ -1312,6 +1377,36 @@ return {
           hide = {
             "delve",
           },
+        },
+      },
+      render = {
+        threads = {
+          format = function(name, lnum, path)
+            return {
+              { text = name, hl = "Function", separator = " " },
+              {
+                text = vim.fn.fnamemodify(path, ":t"),
+                hl = "FileName",
+                separator = ":",
+              },
+              { text = lnum, hl = "LineNumber" },
+            }
+          end,
+          align = true,
+        },
+        breakpoints = {
+          format = function(line, lnum, path)
+            return {
+              {
+                text = vim.fn.fnamemodify(path, ":t"),
+                hl = "FileName",
+                separator = ":",
+              },
+              { text = lnum, hl = "LineNumber", separator = " " },
+              { text = line, hl = true },
+            }
+          end,
+          align = true,
         },
       },
     },
@@ -1342,5 +1437,16 @@ return {
     "Imngzx/jisho.nvim",
     cmd = "Jisho",
     opts = {}, -- Calls setup() automatically
+  },
+  {
+    "NickTsaizer/splitasm.nvim",
+    cmd = {
+      "SplitAsm",
+      "SplitAsmOpen",
+      "SplitAsmSetup",
+      "SplitAsmConfig",
+      "SplitAsmToggleSync",
+    },
+    opts = {},
   },
 }

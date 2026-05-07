@@ -205,43 +205,198 @@ return {
       vim.o.foldenable = true
     end,
     config = function(_, opts)
+      local function get_diagnostic_sign_text(bufnr)
+        local sign_config = vim.diagnostic.config().signs
+        if type(sign_config) == "function" then
+          sign_config = sign_config(nil, bufnr)
+        end
+
+        local fallback = {
+          [vim.diagnostic.severity.ERROR] = "E",
+          [vim.diagnostic.severity.WARN] = "W",
+          [vim.diagnostic.severity.INFO] = "I",
+          [vim.diagnostic.severity.HINT] = "H",
+        }
+
+        if
+          type(sign_config) == "table" and type(sign_config.text) == "table"
+        then
+          return vim.tbl_extend("force", fallback, sign_config.text)
+        end
+
+        return fallback
+      end
+
+      local function get_diagnostics_in_fold(bufnr, lnum, end_lnum)
+        if vim.diagnostic.is_enabled { bufnr = bufnr } == false then
+          return {}
+        end
+
+        local counts = {
+          [vim.diagnostic.severity.ERROR] = 0,
+          [vim.diagnostic.severity.WARN] = 0,
+          [vim.diagnostic.severity.INFO] = 0,
+          [vim.diagnostic.severity.HINT] = 0,
+        }
+        for _, diagnostic in ipairs(vim.diagnostic.get(bufnr)) do
+          local diagnostic_lnum = diagnostic.lnum + 1
+          if diagnostic_lnum > lnum and diagnostic_lnum <= end_lnum then
+            counts[diagnostic.severity] = counts[diagnostic.severity] + 1
+          end
+        end
+
+        local signs = get_diagnostic_sign_text(bufnr)
+        local highlights = {
+          [vim.diagnostic.severity.ERROR] = "DiagnosticError",
+          [vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+          [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+          [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+        }
+        local chunks = {}
+        for _, severity in ipairs {
+          vim.diagnostic.severity.ERROR,
+          vim.diagnostic.severity.WARN,
+          vim.diagnostic.severity.INFO,
+          vim.diagnostic.severity.HINT,
+        } do
+          if counts[severity] > 0 then
+            table.insert(
+              chunks,
+              { signs[severity] .. counts[severity], highlights[severity] }
+            )
+          end
+        end
+
+        return chunks
+      end
+
+      local function get_hunk_overlap_count(hunk, lnum, end_lnum)
+        if hunk.type == "delete" then
+          local deletion_lnum = hunk.added and hunk.added.start
+          local deleted_count = hunk.removed and hunk.removed.count or 0
+          if
+            deletion_lnum
+            and deletion_lnum >= lnum
+            and deletion_lnum <= end_lnum
+          then
+            return deleted_count
+          end
+          return 0
+        end
+
+        if not hunk.added then
+          return 0
+        end
+
+        local hunk_start = hunk.added.start
+        local hunk_end = hunk_start + hunk.added.count - 1
+        local overlap_start = math.max(lnum + 1, hunk_start)
+        local overlap_end = math.min(end_lnum, hunk_end)
+        return math.max(overlap_end - overlap_start + 1, 0)
+      end
+
+      local function get_git_hunks_in_fold(bufnr, lnum, end_lnum)
+        local has_gitsigns, gitsigns = pcall(require, "gitsigns")
+        if not has_gitsigns or type(gitsigns.get_hunks) ~= "function" then
+          return {}
+        end
+
+        local counts = {
+          add = 0,
+          change = 0,
+          delete = 0,
+        }
+        for _, hunk in ipairs(gitsigns.get_hunks(bufnr) or {}) do
+          if counts[hunk.type] then
+            counts[hunk.type] = counts[hunk.type]
+              + get_hunk_overlap_count(hunk, lnum, end_lnum)
+          end
+        end
+
+        local chunks = {}
+        for _, kind in ipairs { "add", "change", "delete" } do
+          if counts[kind] > 0 then
+            local text = ({ add = "+", change = "~", delete = "-" })[kind]
+              .. counts[kind]
+            local highlight = ({
+              add = "GitSignsAdd",
+              change = "GitSignsChange",
+              delete = "GitSignsDelete",
+            })[kind]
+            table.insert(chunks, { text, highlight })
+          end
+        end
+
+        return chunks
+      end
+
+      local function append_suffix_chunks(target, chunks)
+        for _, chunk in ipairs(chunks) do
+          if #target > 0 then
+            table.insert(target, { " ", "Comment" })
+          end
+          table.insert(target, chunk)
+        end
+      end
+
+      local function chunks_width(chunks)
+        local width = 0
+        for _, chunk in ipairs(chunks) do
+          width = width + vim.fn.strdisplaywidth(chunk[1])
+        end
+        return width
+      end
+
       local handler = function(virtText, lnum, endLnum, width, truncate)
         local newVirtText = {}
-        local totalLines = vim.api.nvim_buf_line_count(0)
+        local bufnr = vim.api.nvim_get_current_buf()
+        local totalLines = vim.api.nvim_buf_line_count(bufnr)
         local foldedLines = endLnum - lnum
-        local suffix = ("󰁂 %d %d%%"):format(
-          foldedLines,
-          foldedLines / totalLines * 100
+        local suffix_chunks = {
+          {
+            ("%d lines %d%%"):format(
+              foldedLines,
+              foldedLines / totalLines * 100
+            ),
+            "Comment",
+          },
+        }
+        append_suffix_chunks(
+          suffix_chunks,
+          get_diagnostics_in_fold(bufnr, lnum, endLnum)
         )
-        local sufWidth = vim.fn.strdisplaywidth(suffix)
-        local targetWidth = width - sufWidth
+        append_suffix_chunks(
+          suffix_chunks,
+          get_git_hunks_in_fold(bufnr, lnum, endLnum)
+        )
+
+        local sufWidth = chunks_width(suffix_chunks)
+        local targetWidth = math.max(width - sufWidth - 1, 0)
         local curWidth = 0
         for _, chunk in ipairs(virtText) do
           local chunkText = chunk[1]
           local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-          if targetWidth > curWidth + chunkWidth then
+          local remainingWidth = targetWidth - curWidth
+          if remainingWidth <= 0 then
+            break
+          end
+
+          if chunkWidth <= remainingWidth then
             table.insert(newVirtText, chunk)
           else
-            chunkText = truncate(chunkText, targetWidth - curWidth)
+            chunkText = truncate(chunkText, remainingWidth)
             local hlGroup = chunk[2]
             table.insert(newVirtText, { chunkText, hlGroup })
             chunkWidth = vim.fn.strdisplaywidth(chunkText)
-            -- str width returned from truncate() may less than 2nd argument, need padding
-            if curWidth + chunkWidth < targetWidth then
-              suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-            end
+            curWidth = curWidth + chunkWidth
             break
           end
           curWidth = curWidth + chunkWidth
         end
-        local rAlignAppndx = math.max(
-          math.min(vim.api.nvim_win_get_width(0), width - 1)
-            - curWidth
-            - sufWidth,
-          0
-        )
-        suffix = (" "):rep(rAlignAppndx) .. suffix
-        table.insert(newVirtText, { suffix, "MoreMsg" })
+        if #newVirtText > 0 then
+          table.insert(newVirtText, { " ", "Comment" })
+        end
+        vim.list_extend(newVirtText, suffix_chunks)
         return newVirtText
       end
       opts["fold_virt_text_handler"] = handler
