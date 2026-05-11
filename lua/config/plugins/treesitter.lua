@@ -42,7 +42,7 @@ local ensure_installed = {
 }
 
 local function highlight_disabled(bufnr)
-  if vim.bo[bufnr].filetype == "latex" then
+  if vim.tbl_contains({ "latex", "plaintex", "tex" }, vim.bo[bufnr].filetype) then
     return true
   end
 
@@ -87,6 +87,7 @@ end
 
 local function start_treesitter(bufnr)
   if highlight_disabled(bufnr) then
+    pcall(vim.treesitter.stop, bufnr)
     return
   end
 
@@ -162,16 +163,11 @@ return {
     lazy = false,
     priority = 1000,
     build = ":TSUpdate",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
-      "LiadOz/nvim-dap-repl-highlights",
-    },
     config = function()
       local treesitter = require "nvim-treesitter"
       treesitter.setup {
         install_dir = vim.fs.joinpath(vim.fn.stdpath "data", "site"),
       }
-      require("nvim-dap-repl-highlights").setup()
       set_incremental_selection_keymaps()
       maybe_install_missing_parsers()
 
@@ -181,6 +177,13 @@ return {
           start_treesitter(args.buf)
         end,
       })
+    end,
+  },
+  {
+    "LiadOz/nvim-dap-repl-highlights",
+    ft = "dap-repl",
+    config = function()
+      require("nvim-dap-repl-highlights").setup()
     end,
   },
   {

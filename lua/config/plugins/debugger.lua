@@ -38,6 +38,7 @@ return {
         }
       end,
     },
+    "igorlfs/nvim-dap-view",
     "theHamsta/nvim-dap-virtual-text",
     "nvim-dap-virtual-text",
     {

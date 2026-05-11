@@ -79,9 +79,9 @@ vim.opt.diffopt = {
 }
 vim.g.lsp_zero_extend_lspconfig = 0
 -- vim.opt.conceallevel = 2
+vim.fn.mkdir(vim.fn.expand "$HOME/.config/nvim/tmp/backup", "p")
+vim.fn.mkdir(vim.fn.expand "$HOME/.config/nvim/tmp/undo", "p")
 vim.cmd [[
-silent !mkdir -p $HOME/.config/nvim/tmp/backup
-silent !mkdir -p $HOME/.config/nvim/tmp/undo
 "silent !mkdir -p $HOME/.config/nvim/tmp/sessions
 set clipboard+=unnamedplus
 set backupdir=$HOME/.config/nvim/tmp/backup,.

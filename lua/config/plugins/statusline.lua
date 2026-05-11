@@ -62,6 +62,16 @@ local function dap_or_lsp()
   end
 end
 
+local function sidekick_status()
+  local status = package.loaded["sidekick.status"]
+  return status and status.get()
+end
+
+local function sidekick_cli_status()
+  local status = package.loaded["sidekick.status"]
+  return status and status.cli() or {}
+end
+
 -- Store cached Python versions for each virtual environment
 local python_version_cache = {}
 
@@ -230,7 +240,7 @@ return {
             return " "
           end,
           color = function()
-            local status = require("sidekick.status").get()
+            local status = sidekick_status()
             if status then
               return status.kind == "Error" and "DiagnosticError"
                 or status.busy and "DiagnosticWarn"
@@ -238,8 +248,7 @@ return {
             end
           end,
           cond = function()
-            local status = require "sidekick.status"
-            return status.get() ~= nil
+            return sidekick_status() ~= nil
           end,
         },
         -- "filesize",
@@ -312,7 +321,7 @@ return {
             {
               name = "sidekick-cli-status",
               function()
-                local status = require("sidekick.status").cli()
+                local status = sidekick_cli_status()
                 return " " .. (#status > 1 and #status or "")
               end,
               color = function()

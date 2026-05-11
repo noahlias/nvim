@@ -1276,23 +1276,14 @@ return {
     opts = {},
   },
   {
-    url = "https://codeberg.org/Jorenar/nvim-dap-disasm.git",
+    "igorlfs/nvim-dap-view",
+    lazy = true,
+    version = "1.*",
     dependencies = {
-      "igorlfs/nvim-dap-view",
-    },
-    opts = {
-      dapview = {
-        label = dap_view_label("disassembly", "Disassembly", "Disasm", "Asm"),
+      {
+        url = "https://codeberg.org/Jorenar/nvim-dap-disasm.git",
       },
     },
-    config = function(_, opts)
-      require("dap-disasm").setup(opts)
-    end,
-  },
-  {
-    "igorlfs/nvim-dap-view",
-    lazy = false,
-    version = "1.*",
     init = function()
       set_dap_view_highlights()
       vim.api.nvim_create_autocmd("ColorScheme", {
@@ -1410,6 +1401,20 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      local dap_view = require "dap-view"
+      require("dap-disasm").setup {
+        dapview = {
+          label = dap_view_label(
+            "disassembly",
+            "Disassembly",
+            "Disasm",
+            "Asm"
+          ),
+        },
+      }
+      dap_view.setup(opts)
+    end,
   },
   {
     "kevinhwang91/nvim-fundo",
@@ -1429,17 +1434,20 @@ return {
   },
   {
     "HarshK97/diffmantic.nvim",
+    event = "VeryLazy",
     config = function()
       require("diffmantic").setup()
     end,
   },
   {
     "Imngzx/jisho.nvim",
+    event = "VeryLazy",
     cmd = "Jisho",
     opts = {}, -- Calls setup() automatically
   },
   {
     "NickTsaizer/splitasm.nvim",
+    event = "VeryLazy",
     cmd = {
       "SplitAsm",
       "SplitAsmOpen",

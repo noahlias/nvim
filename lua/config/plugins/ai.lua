@@ -364,33 +364,40 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    event = "VeryLazy",
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionActions",
+      "CodeCompanionChat",
+      "CodeCompanionCLI",
+      "CodeCompanionCmd",
+      "CodeCompanionHistory",
+    },
+    keys = {
+      {
+        "<leader>ac",
+        "<cmd>CodeCompanionActions<cr>",
+        mode = { "n", "v" },
+        desc = "CodeCompanion Actions",
+      },
+      {
+        "<leader>at",
+        "<cmd>CodeCompanionChat Toggle<cr>",
+        mode = { "n", "v" },
+        desc = "CodeCompanion Chat",
+      },
+      {
+        "<leader>aa",
+        "<cmd>CodeCompanionChat Add<cr>",
+        mode = "v",
+        desc = "CodeCompanion Add",
+      },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "ravitemer/codecompanion-history.nvim",
     },
     config = function()
-      -- codecompanion
-      vim.keymap.set(
-        { "n", "v" },
-        "<leader>ac",
-        "<cmd>CodeCompanionActions<cr>",
-        { noremap = true, silent = true }
-      )
-      vim.keymap.set(
-        { "n", "v" },
-        "<leader>at",
-        "<cmd>CodeCompanionChat Toggle<cr>",
-        { noremap = true, silent = true }
-      )
-      vim.keymap.set(
-        "v",
-        "<leader>aa",
-        "<cmd>CodeCompanionChat Add<cr>",
-        { noremap = true, silent = true }
-      )
-
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = "codecompanion",
         callback = function()
